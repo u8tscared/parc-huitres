@@ -1581,8 +1581,11 @@ function tDays(){const out=[];const d=new Date();for(let i=0;out.length<4&&i<8;i
 function renderPickup(){
   const ds=tDays();
   $('#tdays').innerHTML=ds.map((d,i)=>{const lab=i===0&&d.toDateString()===new Date().toDateString()?tr('today'):(new Date(Date.now()+864e5).toDateString()===d.toDateString()?tr('tomorrow'):d.toLocaleDateString(loc(),{weekday:'short'}));return `<button type="button" data-i="${i}" aria-pressed="${i===T.day}"><small>${lab}</small><b>${d.getDate()}</b></button>`;}).join('');
-  const sl=["11:30","12:00","12:30","13:00","13:30","14:00","14:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00"];
-  $('#tslots').innerHTML=slotHTML(sl,T.slot,null);
+  // Retrait des commandes : 11h30-14h le midi, 18h30-21h le soir. Le jour même, pas de créneau à moins de 30 min.
+  const sl=["11:30","12:00","12:30","13:00","13:30","14:00","18:30","19:00","19:30","20:00","20:30","21:00"];
+  const isToday=ds[T.day]&&ds[T.day].toDateString()===new Date().toDateString();const nowM=new Date().getHours()*60+new Date().getMinutes()+30;
+  const past={};if(isToday)sl.forEach(s=>{if(+s.slice(0,2)*60+ +s.slice(3)<nowM)past[s]=1;});if(past[T.slot])T.slot=null;
+  $('#tslots').innerHTML=slotHTML(sl,T.slot,past);
 }
 $('#tdays').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;T.day=+b.dataset.i;renderPickup();});
 $('#tslots').addEventListener('click',e=>{const b=e.target.closest('button[data-s]');if(!b)return;T.slot=b.dataset.s;renderPickup();renderBasket();});
