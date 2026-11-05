@@ -233,6 +233,7 @@ section{position:relative}
 .lineup{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
 .ocard{display:grid;gap:10px;justify-items:center;text-align:center;padding:22px 14px;border-radius:24px;background:var(--white);border:1.5px solid var(--line);cursor:pointer;transition:transform .4s var(--ease),background .3s,border-color .3s;position:relative;overflow:hidden}
 .ocard:hover{transform:translateY(-6px)}
+.otog{display:inline-flex;margin-top:10px;border:1.5px solid var(--navy);border-radius:999px;padding:2px;gap:2px}.otog button{border:0;background:none;font:inherit;font-size:.82rem;font-weight:600;color:var(--navy);padding:.35em .8em;border-radius:999px;cursor:pointer}.otog button small{font-size:.75em;opacity:.8}.otog button[aria-pressed="true"]{background:var(--navy);color:var(--cream)}.prod .ohint{font-size:.8rem;color:var(--ink-soft);margin:6px 0 0}
 .ocard.open{background:var(--navy);color:var(--cream);border-color:var(--navy)}
 .ocard.open .oy{--shell:var(--cream);--shell2:var(--navy)}
 .ocard .oy{width:100%;max-width:170px}
@@ -962,12 +963,7 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
               <div class="blines" id="blines"></div>
               <div class="btotal"><span data-i="total_site">À régler au retrait</span><b id="btotal">0,00 €</b></div>
               <div class="paybox"><svg viewBox="0 0 40 40" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"><rect x="4" y="10" width="24" height="16" rx="3"/><path d="M4 15h24"/><rect x="16" y="18" width="20" height="13" rx="2" fill="var(--lemon)"/><circle cx="26" cy="24.5" r="3"/></svg><div><b data-i="pay_t">Paiement sur place</b><span data-i="pay_d">Par carte bancaire ou en espèces, au moment du retrait. Ticket de caisse remis avec la commande.</span></div></div>
-              <fieldset class="fs" style="margin-bottom:16px"><legend style="font-size:1.05rem" data-i="oys_opt">Vos huîtres</legend>
-                <div class="opts">
-                  <label><input type="radio" name="open" value="closed" checked><b data-i="o_closed">Fermées</b><span data-i="o_closed_d">En bourriche, à ouvrir chez vous</span></label>
-                  <label><input type="radio" name="open" value="open"><b data-i="o_open">Ouvertes</b><span data-i="o_open_d">Sur plateau, à déguster vite</span></label>
-                </div>
-              </fieldset>
+              
               <fieldset class="fs" style="margin-bottom:16px"><legend style="font-size:1.05rem" data-i="pickup">Retrait</legend>
                 <div class="days" id="tdays"></div>
                 <div class="slots" id="tslots"></div>
@@ -1032,7 +1028,7 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
       <div class="card reveal" style="box-shadow:none;border-width:1.5px;border-color:var(--line)">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px"><h2 style="font-size:2rem" data-i="f_hours">Horaires</h2><span class="status" id="status"><i></i><span></span></span></div>
         <div class="hours" id="hours"></div>
-        <p style="margin-top:14px"><span class="demo" data-i="hours_demo">Horaires d'exemple, à remplacer par les vôtres</span></p>
+        
       </div>
       <form class="card reveal" id="cform" novalidate>
         <h2 style="font-size:2rem;margin-bottom:6px" data-i="write_t">Écrivez-nous</h2>
@@ -1170,7 +1166,7 @@ pill1:["Prête à l'heure choisie","Lista a la hora elegida","Ready at your chos
 ts1:["Votre sélection","Su selección","Your selection"],ts2:["Retrait","Recogida","Collection"],ts3:["Coordonnées","Datos","Details"],ts4:["Confirmation","Confirmación","Confirmation"],
 all:["Tout","Todo","All"],add:["Ajouter","Añadir","Add"],cart:["Votre commande","Su pedido","Your order"],empty:["Votre panier est vide. Ajoutez une douzaine pour commencer.","Su cesta está vacía. Añada una docena para empezar.","Your basket is empty. Add a dozen to start."],
 total_site:["À régler au retrait","A pagar al recoger","To pay on collection"],pay_t:["Paiement sur place","Pago en el local","Pay on site"],pay_d:["Par carte bancaire ou en espèces, au moment du retrait. Ticket de caisse remis avec la commande.","Con tarjeta o en efectivo, al recoger. Se entrega el ticket con el pedido.","By card or cash when you collect. Receipt handed over with your order."],
-oys_opt:["Vos huîtres","Sus ostras","Your oysters"],o_closed:["Fermées","Cerradas","Closed"],o_closed_d:["En bourriche, à ouvrir chez vous","En cesta, para abrir en casa","In a basket, to open at home"],o_open:["Ouvertes","Abiertas","Opened"],o_open_d:["Sur plateau, à déguster vite","En bandeja, para tomar pronto","On a tray, to enjoy soon"],
+oys_opt:["Vos huîtres","Sus ostras","Your oysters"],o_closed:["Fermées","Cerradas","Closed"],o_closed_d:["En bourriche, à ouvrir chez vous","En cesta, para abrir en casa","In a basket, to open at home"],o_open:["Ouvertes","Abiertas","Opened"],tray_s:["Consigne petit plateau","Fianza bandeja pequeña","Small tray deposit"],tray_l:["Consigne grand plateau","Fianza bandeja grande","Large tray deposit"],tray_note:["rendue au retour du plateau","se devuelve al traer la bandeja","refunded when you bring the tray back"],o_always:["Huîtres ouvertes","Ostras abiertas","Oysters opened"],o_always_d:["Un plateau est toujours servi ouvert","Una bandeja siempre se sirve abierta","A platter always comes opened"],o_open_d:["Sur plateau consigné, à déguster vite","En bandeja con fianza, para tomar enseguida","On a deposit tray, to enjoy quickly"],
 pickup:["Retrait","Recogida","Collection"],today:["Aujourd'hui","Hoy","Today"],tomorrow:["Demain","Mañana","Tomorrow"],
 t_confirm:["Valider ma commande","Confirmar pedido","Place my order"],t_need:["Ajoutez au moins un produit, choisissez une heure et indiquez nom et téléphone.","Añada al menos un producto, elija hora e indique nombre y teléfono.","Add at least one item, pick a time and add your name and phone."],
 t_ok:["Commande enregistrée","Pedido registrado","Order recorded"],t_pick:["Retrait","Recogida","Collection"],t_pay:["À régler sur place","A pagar en el local","To pay on site"],t_paym:["CB ou espèces","Tarjeta o efectivo","Card or cash"],t_again:["Nouvelle commande","Nuevo pedido","New order"],stamp:["Enregistrée","Registrado","Recorded"],
@@ -1268,7 +1264,7 @@ const MENU=[
  ["Café glacé","Café con hielo","Iced coffee","","","","2,50","",0],
  ["Thé / thé au lait","Té / té con leche","Tea / tea with milk","","","","3,00 / 3,20","",0]]}
 ];
-const HOURS=[null,[["12:00","14:30"],["19:00","22:30"]],[["12:00","14:30"],["19:00","22:30"]],[["12:00","14:30"],["19:00","22:30"]],[["12:00","14:30"],["19:00","23:00"]],[["12:00","15:00"],["19:00","23:00"]],[["12:00","15:00"]]]; // Mon..Sun (sample)
+const HOURS=[null,null,[["11:00","15:00"],["18:00","23:00"]],[["11:00","15:00"],["18:00","23:00"]],[["11:00","15:00"],["18:00","23:00"]],[["11:00","15:00"],["18:00","23:00"]],[["11:00","15:00"],["18:00","23:00"]]]; // Mon..Sun · ouvert du mercredi au dimanche, 11h-15h et 18h-23h
 
 let LANG='fr',AUTO=true;
 const li=()=>({fr:0,es:1,en:2})[LANG];
@@ -1349,7 +1345,7 @@ const ST=`stroke="${cN}" stroke-width="2.4" stroke-linejoin="round" stroke-linec
 const T_=(x,y,s,r)=>`transform="translate(${x} ${y}) rotate(${r||0}) scale(${s||1})"`;
 function oysC(x,y,s,r,seed,c2,round){return `<g ${T_(x,y,s,r)}>${rings(4,0,0,30,round?25:17,seed||1,cN,c2||cS)}</g>`;}
 function oysO(x,y,s,r,seed,gratin){return `<g ${T_(x,y,s,r)}><path d="${ringPath(0,0,30,18,0,seed||2)}" fill="${cN}"/><path d="${ringPath(1,0,24,13,1,seed||2)}" fill="${cS}"/><path d="${ringPath(2,0,17,9,2,seed||2)}" fill="${gratin?cGo:'#E4DCC8'}" stroke="${cN}" stroke-width="1.2"/>${gratin?`<path d="M-8 -2l3 2 3-2 3 2 3-2 3 2" stroke="#B9782E" stroke-width="1.6" fill="none"/>`:`<path d="M-2 -3 q5 -3 10 0" stroke="#fff" stroke-width="1.6" fill="none"/>`}</g>`;}
-function shrimp(x,y,s,r){return `<g ${T_(x,y,s,r)}><path d="M-18 6 C-18 -14 14 -18 18 -2 C20 8 8 14 2 8" fill="none" stroke="${cR}" stroke-width="9" stroke-linecap="round"/><path d="M-11 -7l-3-4M-3 -12l-1-4M6 -12l1-4M13 -8l3-3" stroke="${cN}" stroke-width="1.6" stroke-linecap="round"/><path d="M2 8 l-9 5 M2 8 l-2 10" stroke="${cR}" stroke-width="4" stroke-linecap="round"/><circle cx="14" cy="-4" r="1.8" fill="${cN}"/><path d="M18 -3 C28 -13 32 -11 37 -17" stroke="${cN}" stroke-width="1.2" fill="none"/></g>`;}
+function shrimp(x,y,s,r){   const R=15,cx=0,cy=4,P=a=>[cx+R*Math.cos(a*Math.PI/180),cy-R*Math.sin(a*Math.PI/180)];   const segs=[[205,5.2],[180,6.4],[152,7.4],[124,8.2],[96,8.8],[68,9.2]];   const pk='#F28C78',pk2='#E0644F',ink=cN;   const [tx,ty]=P(222);   const tail=[-34,0,34].map(d=>`<path d="M0 -1 C-4 4 -3.5 10 0 12 C3.5 10 4 4 0 -1Z" transform="translate(${tx.toFixed(1)} ${ty.toFixed(1)}) rotate(${-42+d})" fill="${pk}" stroke="${ink}" stroke-width="1.4" stroke-linejoin="round"/>`).join('');   const legs=[96,124,152].map(a=>{const [lx,ly]=[cx+(R-7)*Math.cos(a*Math.PI/180),cy-(R-7)*Math.sin(a*Math.PI/180)];const [ex,ey]=[cx+(R-13)*Math.cos((a-14)*Math.PI/180),cy-(R-13)*Math.sin((a-14)*Math.PI/180)];return `<path d="M${lx.toFixed(1)} ${ly.toFixed(1)} L${ex.toFixed(1)} ${ey.toFixed(1)}" stroke="${pk2}" stroke-width="1.6" stroke-linecap="round"/>`;}).join('');   const body=segs.map(([a,w])=>{const [px,py]=P(a);return `<ellipse cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" rx="${w}" ry="${(w*0.78).toFixed(1)}" transform="rotate(${-a} ${px.toFixed(1)} ${py.toFixed(1)})" fill="${pk}" stroke="${ink}" stroke-width="1.4"/>`;}).join('');   const [hx,hy]=P(28);   const head=`<g transform="translate(${hx.toFixed(1)} ${hy.toFixed(1)}) rotate(${-28+90})">     <path d="M-10 -2 C-10 -12 6 -14 11 -6 L22 -12 L13 -2 C12 6 4 9 -2 9 C-8 9 -10 5 -10 -2Z" fill="${pk}" stroke="${ink}" stroke-width="1.4" stroke-linejoin="round"/>     <path d="M-4 -8 C0 -4 0 2 -3 7" stroke="${pk2}" stroke-width="1.3" fill="none"/>     <circle cx="6" cy="-4" r="2.1" fill="${ink}"/><circle cx="6.6" cy="-4.6" r=".6" fill="#fff"/>     <path d="M15 -6 C30 -12 30 -32 6 -36 C-12 -39 -28 -32 -36 -22" stroke="${ink}" stroke-width="1.1" fill="none" stroke-linecap="round"/>     <path d="M4 7 l2 6 M0 8 l0 6 M-4 8 l-2 6" stroke="${pk2}" stroke-width="1.5" stroke-linecap="round"/>   </g>`;   return `<g transform="translate(${x} ${y}) rotate(${r||0}) scale(${s||1})">${tail}${legs}${body}${head}</g>`; }
 function whelk(x,y,s,r){return `<g ${T_(x,y,s,r)}><path d="M-11 10 L0 -15 L11 10 Q0 17 -11 10Z" fill="${cC}" ${ST}/><path d="M-7 3 Q0 0 7 3 M-4 -4 Q0 -6 4 -4 M-2 -10 Q0 -11 2 -10" stroke="${cN}" stroke-width="1.6" fill="none"/><ellipse cx="2" cy="10" rx="5" ry="3" fill="${cR}"/></g>`;}
 function crab(x,y,s){return `<g ${T_(x,y,s)}>${[-1,1].map(d=>`<path d="M${d*22} 2 l${d*14} 8 M${d*22} 8 l${d*12} 12 M${d*20} 12 l${d*8} 14" stroke="${cN}" stroke-width="2.6" stroke-linecap="round"/><path d="M${d*20} -8 q${d*14} -10 ${d*22} -4" stroke="${cN}" stroke-width="2.6" fill="none"/><path d="M${d*42} -12 a7 6 0 1 1 0.1 0z" fill="${cO}" ${ST}/>`).join('')}<ellipse cx="0" cy="2" rx="27" ry="17" fill="${cO}" ${ST}/><path d="M-14 -4 q14 -8 28 0" stroke="#B4572A" stroke-width="2" fill="none"/><circle cx="-6" cy="-14" r="2" fill="${cN}"/><circle cx="6" cy="-14" r="2" fill="${cN}"/></g>`;}
 function langou(x,y,s,r){return `<g ${T_(x,y,s,r)}><path d="M-30 0 Q-34 -6 -40 -4 M-30 0 Q-34 6 -40 4" stroke="${cP}" stroke-width="3" fill="none" stroke-linecap="round"/>${[0,1,2,3,4].map(i=>`<ellipse cx="${-24+i*8}" cy="0" rx="5" ry="${5+i*.4}" fill="${cP}" ${ST.replace('2.4','1.6')}/>`).join('')}<ellipse cx="22" cy="0" rx="10" ry="7" fill="${cP}" ${ST.replace('2.4','1.6')}/><path d="M28 -4 L50 -12 M28 4 L50 12" stroke="${cP}" stroke-width="3.5" stroke-linecap="round"/><path d="M30 -2 L56 -22 M30 2 L56 22" stroke="${cN}" stroke-width="1" fill="none"/></g>`;}
@@ -1375,7 +1371,7 @@ const ILL={
  'plateaux:0':()=>SV(platter(64,34,[oysO(42,46,.62,-20,1),oysO(98,46,.62,20,2),oysO(44,64,.62,15,3),oysO(96,64,.62,-15,4)].join('')+shrimp(70,40,.6,10)+shrimp(70,70,.6,190)+whelk(58,55,.55,-20)+whelk(84,56,.55,20)+whelk(70,57,.5,0)+lemon(70,54,.0))),
  'plateaux:1':()=>SV(platter(66,36,[oysO(36,50,.58,-30,1),oysO(104,50,.58,30,2),oysO(40,68,.58,20,3),oysO(100,68,.58,-20,4)].join('')+shrimp(58,36,.5,-10)+shrimp(84,36,.5,20)+whelk(56,74,.5,-20)+whelk(84,74,.5,20)+crab(70,55,.55))),
  'plateaux:2':()=>SV(platter(64,34,[0,1,2,3,4,5,6,7,8,9,10,11].map(i=>{const a=i/12*Math.PI*2;return i%3===0?oysO(70+Math.cos(a)*44,53+Math.sin(a)*20,.42,a*57,i):oysO(70+Math.cos(a)*44,53+Math.sin(a)*20,.42,a*57,i)}).join('')+lemon(70,53,1))),
- 'coquillages:0':()=>SV(shrimp(40,52,.9,-10)+shrimp(76,46,.9,10)+shrimp(108,56,.9,30)),
+ 'coquillages:0':()=>SV(shrimp(26,62,.68,-8)+shrimp(68,54,.68,4)+shrimp(110,64,.68,14)),
  'coquillages:1':()=>SV(whelk(36,56,1,-20)+whelk(60,46,1,10)+whelk(52,72,.9,40)+`<ellipse cx="102" cy="60" rx="22" ry="8" fill="${cW}" ${ST}/><path d="M80 60 q0 18 22 18 q22 0 22 -18" fill="${cW}" ${ST}/><ellipse cx="102" cy="60" rx="16" ry="5" fill="#F5E6A8"/>`),
  'coquillages:2':()=>SV(langou(64,34,.85,-6)+langou(64,58,.85,4)+langou(64,80,.85,-2)),
  'coquillages:3':()=>SV(crab(70,54,1.25)),
@@ -1420,7 +1416,7 @@ function renderLineup(){
 }
 $('#lineup').addEventListener('click',e=>{const b=e.target.closest('.ocard');if(!b)return;const on=!b.classList.contains('open');b.classList.toggle('open',on);b.setAttribute('aria-pressed',on);b.querySelector('.oy').classList.toggle('open',on);});
 function renderPlateaux(){
-  $('#plateaux').innerHTML=MENU[1].items.map((it,i)=>`<article class="pcard reveal"><div class="ill">${ill('plateaux:'+i)}</div><div class="body"><h3>${it[li()]}</h3><ul>${it[3+li()].split(', ').map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="foot"><b>${eur(it[6])}</b><button type="button" class="add" data-add="plateaux:${i}">+ ${tr('add_take')}</button></div></article>`).join('');
+  $('#plateaux').innerHTML=MENU[1].items.map((it,i)=>`<article class="pcard reveal"><div class="ill">${ill('plateaux:'+i)}</div><div class="body"><h3>${it[li()]}</h3><ul>${it[3+li()].split(', ').map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="foot"><b>${eur(it[6])}</b>${i===0?`<a class="add" href="#emporter">${tr('add_take')} →</a>`:`<a class="add" href="#reserver">${tr('cta_book_s')}</a>`}</div></article>`).join('');
 }
 function renderMarquee(){
   const words=MENU[0].items.map(i=>i[li()]).concat([tr('s2_t'),'Ostras','Oysters','Hendaye']);
@@ -1497,18 +1493,19 @@ function renderTerroirs(){
 
 /* =============== booking =============== */
 const B={date:null,slot:null,covers:2,month:null};
-const SL={lunch:["12:00","12:30","13:00","13:30","14:00"],dinner:["19:00","19:30","20:00","20:30","21:00","21:30"]};
+const SL={lunch:["11:30","12:00","12:30","13:00","13:30","14:00"],dinner:["18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00"]};
+const SHUT=d=>d.getDay()===1||d.getDay()===2;
 const FULL={"13:00":1,"20:30":1};
 function ymd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function renderCal(){
   const today=new Date();today.setHours(0,0,0,0);
   if(!B.month){B.month=new Date(today.getFullYear(),today.getMonth(),1);}
-  if(!B.date){const d=new Date(today);d.setDate(d.getDate()+1);if(d.getDay()===1)d.setDate(d.getDate()+1);B.date=ymd(d);}
+  if(!B.date){const d=new Date(today);d.setDate(d.getDate()+1);while(SHUT(d))d.setDate(d.getDate()+1);B.date=ymd(d);}
   const m=B.month;$('#calmonth').textContent=m.toLocaleDateString(loc(),{month:'long',year:'numeric'});
   const first=(m.getDay()+6)%7,days=new Date(m.getFullYear(),m.getMonth()+1,0).getDate();
   let h=DAYS.map(d=>`<span class="dow">${d[li()].slice(0,2)}</span>`).join('');
   for(let i=0;i<first;i++)h+='<span></span>';
-  for(let d=1;d<=days;d++){const dt=new Date(m.getFullYear(),m.getMonth(),d);const k=ymd(dt);const dis=dt<today||dt.getDay()===1;h+=`<button type="button" data-d="${k}" aria-pressed="${k===B.date}" ${dis?'disabled':''}>${d}</button>`;}
+  for(let d=1;d<=days;d++){const dt=new Date(m.getFullYear(),m.getMonth(),d);const k=ymd(dt);const dis=dt<today||SHUT(dt);h+=`<button type="button" data-d="${k}" aria-pressed="${k===B.date}" ${dis?'disabled':''}>${d}</button>`;}
   $('#cal').innerHTML=h;
   $('#calprev').disabled=m<=new Date(today.getFullYear(),today.getMonth(),1);
 }
@@ -1517,7 +1514,7 @@ $('#calprev').addEventListener('click',()=>{B.month=new Date(B.month.getFullYear
 $('#calnext').addEventListener('click',()=>{B.month=new Date(B.month.getFullYear(),B.month.getMonth()+1,1);renderCal();});
 function slotHTML(list,sel,full){return list.map(s=>`<button type="button" data-s="${s}" aria-pressed="${s===sel}" ${full&&full[s]?'disabled':''}>${s}</button>`).join('');}
 function renderBSlots(){
-  const dow=B.date?(new Date(B.date+'T12:00').getDay()+6)%7:1;const sun=dow===6;
+  const dow=B.date?(new Date(B.date+'T12:00').getDay()+6)%7:1;const sun=false;
   $('#bslots').innerHTML=`<span class="lbl">${tr('lunch')}</span>`+slotHTML(SL.lunch,B.slot,FULL)+(sun?'':`<span class="lbl">${tr('dinner')}</span>`+slotHTML(SL.dinner,B.slot,FULL));
 }
 $('#bslots').addEventListener('click',e=>{const b=e.target.closest('button[data-s]');if(!b||b.disabled)return;B.slot=b.dataset.s;renderBSlots();recap();step('#bstepper',2);});
@@ -1539,16 +1536,31 @@ $('#bookform').addEventListener('submit',e=>{
 
 /* =============== takeaway =============== */
 const CART={};let TCAT='all';const T={day:0,slot:null};
-const PRODS=[];MENU.forEach(c=>c.items.forEach((it,i)=>{if(it[8])PRODS.push({k:c.id+':'+i,cat:c,it});}));
+/* Takeaway catalogue (tarifs à emporter du Parc) : huîtres à la douzaine, fermées en bourriche ou ouvertes (+2 € la douzaine), plateau toujours ouvert. */
+const TK_OYS=[19.2,21,23.4,28.8,39.6],OPEN_FEE=2;
+const TK_PLATEAU=["Plateau du Parc","Bandeja El Parque","Le Parc platter","12 Fines de Claires n°3, 6 crevettes roses de Madagascar, 12 bulots cuits, mayonnaise, aïoli, citron, vinaigre","12 Fines de Claires n°3, 6 langostinos rosas de Madagascar, 12 caracoles de mar cocidos, mayonesa, alioli, limón, vinagre","12 Fines de Claires n°3, 6 Madagascar pink prawns, 12 cooked whelks, mayonnaise, aïoli, lemon, vinegar",37.8,"0367",1];
+const PRODS=[];MENU.forEach(c=>{if(c.id==='plateaux'){PRODS.push({k:'plateaux:0',cat:c,it:TK_PLATEAU,price:TK_PLATEAU[6],mode:'always'});return;}
+  c.items.forEach((it,i)=>{if(!it[8])return;if(c.id==='huitres')PRODS.push({k:c.id+':'+i,cat:c,it,price:TK_OYS[i],mode:'choice'});else PRODS.push({k:c.id+':'+i,cat:c,it,price:it[6],mode:null});});});
+/* Consigne des plateaux pour les huîtres ouvertes : jusqu'à 2 douzaines sur un petit plateau, 3 douzaines sur un grand.
+   MONTANTS PROVISOIRES, à remplacer par les vrais tarifs de consigne. */
+const CONSIGNE={small:5,large:10};
+function trays(){let n=0;PRODS.forEach(p=>{if(p.mode==='choice')n+=CART[p.k+'|o']||0;});if(!n)return [];const L=Math.floor(n/3),r=n%3,out=[];if(L)out.push({label:tr('tray_l'),q:L,u:CONSIGNE.large});if(r)out.push({label:tr('tray_s'),q:1,u:CONSIGNE.small});return out;}
+const OPEN={};// per oyster product: 'c' fermées (default) or 'o' ouvertes
+const pk=p=>p.mode==='choice'?p.k+'|'+(OPEN[p.k]||'c'):p.k;
+const unit=(p,v)=>p.price+(v==='o'?OPEN_FEE:0);
+function cartLines(){const out=[];PRODS.forEach(p=>{(p.mode==='choice'?['c','o']:[null]).forEach(v=>{const key=v?p.k+'|'+v:p.k;const q=CART[key]||0;if(!q)return;const u=unit(p,v);out.push({p,v,q,u,label:p.it[li()]+(v==='o'?' · '+tr('o_open'):v==='c'?' · '+tr('o_closed'):p.mode==='always'?' · '+tr('o_always'):'')});});});return out;}
 function renderShop(){
   const l=li();const cats=MENU.filter(c=>c.items.some(i=>i[8]));
   $('#tcats').innerHTML=`<button type="button" data-c="all" aria-pressed="${TCAT==='all'}">${tr('all')}</button>`+cats.map(c=>`<button type="button" data-c="${c.id}" aria-pressed="${TCAT===c.id}">${c.t[l]}</button>`).join('');
-  $('#products').innerHTML=PRODS.filter(p=>TCAT==='all'||p.cat.id===TCAT).map(p=>{const q=CART[p.k]||0;return `<article class="prod"><div class="ill">${ill(p.k)}${p.cat.id==='huitres'?`<span class="tagq">${tr('per12')}</span>`:''}</div><div class="body"><h3>${p.it[l]}</h3>${p.it[3+l]?`<p class="d">${p.it[3+l]}</p>`:''}</div><div class="foot"><b>${eur(p.it[6])}</b>${q?`<span class="qmini"><button type="button" data-q="-1" data-k="${p.k}" aria-label="−">−</button><output>${q}</output><button type="button" data-q="1" data-k="${p.k}" aria-label="+">+</button></span>`:`<button type="button" class="add" data-add="${p.k}">+ ${tr('add')}</button>`}</div></article>`;}).join('');
+  $('#products').innerHTML=PRODS.filter(p=>TCAT==='all'||p.cat.id===TCAT).map(p=>{const key=pk(p),v=p.mode==='choice'?(OPEN[p.k]||'c'):null,q=CART[key]||0;
+    const tog=p.mode==='choice'?`<div class="otog" role="group" aria-label="${tr('oys_opt')}"><button type="button" data-ov="c" data-k="${p.k}" aria-pressed="${v==='c'}">${tr('o_closed')}</button><button type="button" data-ov="o" data-k="${p.k}" aria-pressed="${v==='o'}">${tr('o_open')} <small>+${OPEN_FEE} €</small></button></div><p class="ohint">${tr(v==='o'?'o_open_d':'o_closed_d')}</p>`:p.mode==='always'?`<p class="ohint"><b>${tr('o_always')}</b> · ${tr('o_always_d')}</p>`:'';
+    return `<article class="prod"><div class="ill">${ill(p.k)}${p.cat.id==='huitres'?`<span class="tagq">${tr('per12')}</span>`:''}</div><div class="body"><h3>${p.it[li()]}</h3>${p.it[3+li()]?`<p class="d">${p.it[3+li()]}</p>`:''}${tog}</div><div class="foot"><b>${eur(unit(p,v))}</b>${q?`<span class="qmini"><button type="button" data-q="-1" data-k="${key}" aria-label="−">−</button><output>${q}</output><button type="button" data-q="1" data-k="${key}" aria-label="+">+</button></span>`:`<button type="button" class="add" data-add="${key}">+ ${tr('add')}</button>`}</div></article>`;}).join('');
   renderBasket();
 }
 function renderBasket(){
   const l=li();let tot=0,n=0;const lines=[];
-  PRODS.forEach(p=>{const q=CART[p.k]||0;if(q){tot+=q*p.it[6];n+=q;lines.push(`<div class="bl"><span>${p.it[l]}<br><span class="q">${q} × ${eur(p.it[6])}</span></span><b>${eur(q*p.it[6])}</b></div>`);}});
+  cartLines().forEach(c=>{tot+=c.q*c.u;n+=c.q;lines.push(`<div class="bl"><span>${c.label}<br><span class="q">${c.q} × ${eur(c.u)}</span></span><b>${eur(c.q*c.u)}</b></div>`);});
+  trays().forEach(c=>{tot+=c.q*c.u;lines.push(`<div class="bl tray"><span>${c.label}<br><span class="q">${c.q} × ${eur(c.u)} · ${tr('tray_note')}</span></span><b>${eur(c.q*c.u)}</b></div>`);});
   $('#blines').innerHTML=lines.join('')||`<div class="bempty">${bourriche(false)}<span>${tr('empty')}</span></div>`;
   $('#btotal').textContent=eur(tot);$('#bcount').textContent=n;$('#cartcount').textContent=n;
   $('#mcount').textContent=n;$('#mtotal').textContent=eur(tot);$('#mbar').classList.toggle('on',n>0&&current==='emporter');
@@ -1558,17 +1570,18 @@ function renderBasket(){
 function addItem(k,src){
   CART[k]=(CART[k]||0)+1;
   if(src&&!RM){const r=src.getBoundingClientRect(),t=$('#cartbtn').getBoundingClientRect();const f=document.createElement('div');f.className='fly';f.innerHTML=`<svg viewBox="0 0 300 190">${rings(5,158,95,128,78,1.3,'var(--rasp)','var(--cream)')}</svg>`;f.style.left=r.left+r.width/2-17+'px';f.style.top=r.top+'px';document.body.appendChild(f);requestAnimationFrame(()=>{f.style.transform=`translate(${t.left+t.width/2-r.left-r.width/2}px,${t.top-r.top}px) scale(.6) rotate(-30deg)`;f.style.opacity='.4';});setTimeout(()=>{f.remove();const c=$('#cartbtn');c.classList.remove('bump');void c.offsetWidth;c.classList.add('bump');},800);}
-  const p=PRODS.find(x=>x.k===k);if(p)toast(p.it[li()]+' '+tr('added'));
+  const p=PRODS.find(x=>x.k===k.split('|')[0]);if(p)toast(p.it[li()]+' '+tr('added'));
   renderShop();if(current==='accueil')renderPlateaux();
 }
 document.addEventListener('click',e=>{const a=e.target.closest('[data-add]');if(a){addItem(a.dataset.add,a);}});
 $('#products').addEventListener('click',e=>{const b=e.target.closest('button[data-q]');if(!b)return;const k=b.dataset.k;CART[k]=Math.max(0,(CART[k]||0)+ +b.dataset.q);renderShop();});
+$('#products').addEventListener('click',e=>{const b=e.target.closest('button[data-ov]');if(!b)return;OPEN[b.dataset.k]=b.dataset.ov;renderShop();});
 $('#tcats').addEventListener('click',e=>{const b=e.target.closest('button[data-c]');if(!b)return;TCAT=b.dataset.c;renderShop();});
-function tDays(){const out=[];const d=new Date();for(let i=0;out.length<4&&i<8;i++){const x=new Date(d);x.setDate(d.getDate()+i);if(x.getDay()!==1)out.push(x);}return out;}
+function tDays(){const out=[];const d=new Date();for(let i=0;out.length<4&&i<8;i++){const x=new Date(d);x.setDate(d.getDate()+i);if(!SHUT(x))out.push(x);}return out;}
 function renderPickup(){
   const ds=tDays();
   $('#tdays').innerHTML=ds.map((d,i)=>{const lab=i===0&&d.toDateString()===new Date().toDateString()?tr('today'):(new Date(Date.now()+864e5).toDateString()===d.toDateString()?tr('tomorrow'):d.toLocaleDateString(loc(),{weekday:'short'}));return `<button type="button" data-i="${i}" aria-pressed="${i===T.day}"><small>${lab}</small><b>${d.getDate()}</b></button>`;}).join('');
-  const sl=["11:30","12:00","12:30","13:00","17:30","18:00","18:30","19:00","19:30"];
+  const sl=["11:30","12:00","12:30","13:00","13:30","14:00","14:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00"];
   $('#tslots').innerHTML=slotHTML(sl,T.slot,null);
 }
 $('#tdays').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;T.day=+b.dataset.i;renderPickup();});
@@ -1578,10 +1591,9 @@ $('#takeform').addEventListener('submit',e=>{
   if(!tot||!T.slot||!$('#tname').value.trim()||!$('#tphone').value.trim()){err.hidden=false;err.textContent=tr('t_need');return;}
   err.hidden=true;step('#tstepper',3);
   const no='PAH-'+String(Math.floor(1000+Math.random()*9000));const d=tDays()[T.day];
-  const lines=PRODS.filter(p=>CART[p.k]).map(p=>`<div class="tl"><span>${CART[p.k]} × ${p.it[li()]}</span><span>${eur(CART[p.k]*p.it[6])}</span></div>`).join('');
-  const openTxt=document.querySelector('input[name="open"]:checked').value==='open'?tr('o_open'):tr('o_closed');
+  const lines=cartLines().concat(trays()).map(c=>`<div class="tl"><span>${c.q} × ${c.label}</span><span>${eur(c.q*c.u)}</span></div>`).join('');
   $('#takebody').hidden=true;const ok=$('#takeok');ok.hidden=false;
-  ok.innerHTML=`<h3 style="font-size:1.5rem;margin-bottom:14px">${tr('t_ok')}</h3><div class="ticket"><div style="display:flex;justify-content:center;margin-bottom:8px"><svg viewBox="0 0 300 190" width="70">${rings(5,158,95,128,78,1.3,'var(--navy)','var(--white)')}</svg></div><div style="text-align:center;font-family:var(--fd);letter-spacing:.14em">LE PARC À HUÎTRES</div><div style="text-align:center;font-size:.8rem;color:var(--ink-soft)">5 rue des Orangers · 64700 Hendaye</div><hr><div class="tnum">${no}</div><span class="stamp">${tr('stamp')}</span><hr>${lines}<div class="tl"><span>${tr('oys_opt')}</span><span>${openTxt}</span></div><hr><div class="tl" style="font-weight:700;font-size:1.05rem"><span>${tr('t_pay')}</span><span>${eur(tot)}</span></div><div class="tl"><span>${tr('t_paym')}</span><span></span></div><hr><div class="tl"><span>${tr('t_pick')}</span><span>${d.toLocaleDateString(loc(),{weekday:'short',day:'numeric',month:'short'})} · ${T.slot}</span></div><div class="tl"><span>${tr('f_name')}</span><span>${$('#tname').value}</span></div></div><p style="margin-top:16px;text-align:center"><span class="demo">${tr('demo_gg')}</span></p><button type="button" class="btn ghost sm" id="tagain" style="margin:14px auto 0;display:flex">${tr('t_again')}</button>`;
+  ok.innerHTML=`<h3 style="font-size:1.5rem;margin-bottom:14px">${tr('t_ok')}</h3><div class="ticket"><div style="display:flex;justify-content:center;margin-bottom:8px"><svg viewBox="0 0 300 190" width="70">${rings(5,158,95,128,78,1.3,'var(--navy)','var(--white)')}</svg></div><div style="text-align:center;font-family:var(--fd);letter-spacing:.14em">LE PARC À HUÎTRES</div><div style="text-align:center;font-size:.8rem;color:var(--ink-soft)">5 rue des Orangers · 64700 Hendaye</div><hr><div class="tnum">${no}</div><span class="stamp">${tr('stamp')}</span><hr>${lines}<hr><div class="tl" style="font-weight:700;font-size:1.05rem"><span>${tr('t_pay')}</span><span>${eur(tot)}</span></div><div class="tl"><span>${tr('t_paym')}</span><span></span></div><hr><div class="tl"><span>${tr('t_pick')}</span><span>${d.toLocaleDateString(loc(),{weekday:'short',day:'numeric',month:'short'})} · ${T.slot}</span></div><div class="tl"><span>${tr('f_name')}</span><span>${$('#tname').value}</span></div></div><p style="margin-top:16px;text-align:center"><span class="demo">${tr('demo_gg')}</span></p><button type="button" class="btn ghost sm" id="tagain" style="margin:14px auto 0;display:flex">${tr('t_again')}</button>`;
   ok.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});
   $('#tagain').onclick=()=>{Object.keys(CART).forEach(k=>delete CART[k]);T.slot=null;ok.hidden=true;$('#takebody').hidden=false;renderPickup();renderShop();};
 });
