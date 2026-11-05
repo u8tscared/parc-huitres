@@ -4,6 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Le Parc à Huîtres, bar à huîtres et fruits de mer à Hendaye. Huîtres ouvertes à la minute, coquillages cuits maison, réservation et vente à emporter.">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#F6F7EC">
+<meta name="apple-mobile-web-app-title" content="Parc à Huîtres">
 <title>Le Parc à Huîtres</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -173,7 +178,7 @@ section{position:relative}
   .hero .sub::before{width:26px}
   .hero .lead{grid-area:lead;font-size:1rem;margin:16px 0 18px}
   .hero .cta{grid-area:cta;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .hero .cta .btn{justify-content:center;padding:.8em .6em;font-size:.92rem}
+  .hero .cta .btn{justify-content:center;text-align:center;padding:.8em .6em;font-size:.92rem}
   .hero .cta .btn:first-child{grid-column:1/-1}
   .hero .rating{grid-area:rt;margin-top:16px}
   .plate{grid-area:pl;max-width:none;margin:0;width:118%;margin-left:-4%}
@@ -664,7 +669,7 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
         <span class="eyebrow" data-i="kicker">Bar à huîtres · Hendaye · à deux pas du port</span>
         <h1 id="htitle" style="margin-top:18px"><span class="w">Le Parc</span><br><span class="w">à <span class="accent">Huîtres</span></span></h1>
         <div class="sub" data-i="tag">Perle d'Hendaye</div>
-        <p class="lead" data-i="hero_lead">Huîtres ouvertes à la minute, coquillages cuits maison et cuisine de l'océan, au bord de la baie.</p>
+        <p class="lead" data-i="hero_lead">Au bord de la baie de Txingudi, entre France et Espagne, Le Parc à Huîtres est un comptoir iodé où l'on vient comme chez des amis. Huîtres ouvertes à la minute, coquillages cuits maison, crustacés et cuisine de l'océan, à partager sur place ou à emporter.</p>
         <div class="cta">
           <a class="btn" href="#reserver"><span data-i="cta_book">Réserver une table</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn ghost" href="#emporter" data-i="cta_take">Commander à emporter</a>
@@ -1106,7 +1111,7 @@ const I={
 tag:["Perle d'Hendaye","Perla de Hendaya","Pearl of Hendaye"],
 nav_home:["Accueil","Inicio","Home"],nav_house:["La Maison","La Casa","Our story"],nav_menu:["La Carte","La Carta","Menu"],nav_book:["Réserver","Reservar","Book"],nav_take:["À emporter","Para llevar","Takeaway"],nav_contact:["Contact","Contacto","Contact"],
 kicker:["Bar à huîtres · Hendaye · à deux pas du port","Bar de ostras · Hendaya · junto al puerto","Oyster bar · Hendaye · steps from the harbour"],
-hero_lead:["Huîtres ouvertes à la minute, coquillages cuits maison et cuisine de l'océan, au bord de la baie.","Ostras abiertas al momento, mariscos cocidos en casa y cocina del océano, junto a la bahía.","Oysters opened to order, shellfish cooked in-house and ocean cooking, right by the bay."],
+hero_lead:["Au bord de la baie de Txingudi, entre France et Espagne, Le Parc à Huîtres est un comptoir iodé où l'on vient comme chez des amis. Huîtres ouvertes à la minute, coquillages cuits maison, crustacés et cuisine de l'océan, à partager sur place ou à emporter.","Junto a la bahía de Txingudi, entre Francia y España, Le Parc à Huîtres es una barra con sabor a mar donde uno se siente como en casa de amigos. Ostras abiertas al momento, mariscos cocidos en casa, crustáceos y cocina del océano, para compartir aquí o para llevar.","On Txingudi bay, between France and Spain, Le Parc à Huîtres is a sea-salted counter where you feel like you're at a friend's place. Oysters opened to order, shellfish cooked in-house, crustaceans and ocean cooking, to share here or take away."],
 cta_book:["Réserver une table","Reservar mesa","Book a table"],cta_book_s:["Réserver","Reservar","Book"],cta_take:["Commander à emporter","Pedir para llevar","Order takeaway"],cta_menu:["Voir la carte","Ver la carta","See the menu"],cta_ourmenu:["Notre carte","Nuestra carta","Our menu"],
 reviews_n:["458 avis Google","458 reseñas en Google","458 Google reviews"],reviews_w:["avis Google","reseñas en Google","Google reviews"],
 ways_k:["Venez comme vous voulez","Como usted prefiera","However you like"],ways_t:["Trois façons de nous goûter","Tres formas de probarnos","Three ways to taste us"],
