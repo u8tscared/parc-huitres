@@ -1,0 +1,1680 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Le Parc à Huîtres, bar à huîtres et fruits de mer à Hendaye. Huîtres ouvertes à la minute, coquillages cuits maison, réservation et vente à emporter.">
+<title>Le Parc à Huîtres</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lilita+One&display=swap">
+<style>
+[hidden]{display:none!important}
+html,body{margin:0}
+/* Layout: one-look brand site (navy ink on cream card stock, framboise marinière rules), six routed pages, oyster motion as the signature. */
+:root{
+  --cream:#F6F7EC; --cream2:#ECEEDF; --sky:#E4EBF5; --navy:#13306B; --navy2:#0B1F4D; --navy3:#2A4A8C;
+  --rasp:#B23A5B; --lemon:#F2C94C; --ink-soft:#4D6191; --white:#FFFFFF;
+  --line:color-mix(in srgb,var(--navy) 16%,transparent);
+  --fd:"Lilita One","Arial Rounded MT Bold","Trebuchet MS",sans-serif;
+  --fb:"Fredoka","Trebuchet MS",system-ui,sans-serif;
+  --hh:72px; --ease:cubic-bezier(.65,.05,.25,1);
+  color-scheme:light;
+}
+@property --open{syntax:'<number>';inherits:true;initial-value:0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--navy);font-family:var(--fb);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:90;background:var(--cream)}
+a{color:inherit}
+img,svg{max-width:100%}
+h1,h2,h3,h4{font-family:var(--fd);font-weight:400;text-transform:uppercase;letter-spacing:.03em;line-height:1;margin:0;text-wrap:balance}
+p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--rasp);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.eyebrow{font-weight:600;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rasp)}
+.tilt{display:inline-block;transform:rotate(-2deg)}
+.lead{font-size:1.15rem;color:var(--ink-soft);max-width:52ch}
+.tab{font-variant-numeric:tabular-nums}
+.demo{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);border:1.5px dashed color-mix(in srgb,var(--navy) 35%,transparent);border-radius:999px;padding:.35em .8em}
+.stripes{height:12px;background:repeating-linear-gradient(180deg,var(--rasp) 0 2px,transparent 2px 7px);opacity:.8}
+.stripes.navy{background:repeating-linear-gradient(180deg,var(--navy) 0 2px,transparent 2px 7px)}
+
+/* buttons */
+.btn{--b:var(--navy);--f:var(--cream);position:relative;display:inline-flex;align-items:center;gap:.6em;font-weight:600;font-size:1rem;padding:.85em 1.5em;border-radius:999px;border:2px solid var(--b);background:var(--b);color:var(--f);cursor:pointer;text-decoration:none;overflow:hidden;isolation:isolate;transition:transform .25s var(--ease),box-shadow .25s}
+.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--rasp);transform:translateY(102%);border-radius:40% 40% 0 0;transition:transform .45s var(--ease),border-radius .45s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 0 -2px color-mix(in srgb,var(--navy) 25%,transparent)}
+.btn:hover::after{transform:translateY(0);border-radius:0}
+.btn:hover{border-color:var(--rasp);color:var(--cream)}
+.btn.ghost{--f:var(--navy);background:transparent}
+.btn.light{--b:var(--cream);--f:var(--navy)}
+.btn.sm{font-size:.88rem;padding:.6em 1.1em}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* ---------------- header ---------------- */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:80;background:color-mix(in srgb,var(--cream) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:box-shadow .3s}
+header.top.scrolled{box-shadow:0 1px 0 var(--line),0 10px 30px -20px rgba(19,48,107,.35)}
+header.top .wrap{display:flex;align-items:center;gap:22px;height:var(--hh)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:none}
+.brand svg{width:52px;height:34px;transition:transform .5s var(--ease)}
+.brand:hover svg{transform:rotate(-8deg) scale(1.06)}
+.brand b{display:block;font-family:var(--fd);font-weight:400;font-size:1.02rem;letter-spacing:.18em;text-transform:uppercase;line-height:1}
+.brand small{display:block;font-weight:600;font-size:.76rem;color:var(--ink-soft);margin-top:3px}
+nav.main{display:flex;gap:4px;margin-left:auto}
+nav.main a{position:relative;text-decoration:none;font-weight:500;font-size:.95rem;padding:.5em .8em;border-radius:999px}
+nav.main a::after{content:"";position:absolute;left:.8em;right:.8em;bottom:.25em;height:6px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 6'%3E%3Cpath d='M0 3 Q3 0 6 3 T12 3 T18 3 T24 3' fill='none' stroke='%23B23A5B' stroke-width='1.6'/%3E%3C/svg%3E") repeat-x 0 0/12px 6px;transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+nav.main a:hover::after,nav.main a[aria-current="page"]::after{transform:scaleX(1);animation:wavex 1.2s linear infinite}
+@keyframes wavex{to{background-position:12px 0}}
+.hd-tools{display:flex;align-items:center;gap:10px;flex:none}
+.lang{display:flex;background:var(--white);border:1.5px solid var(--line);border-radius:999px;padding:3px}
+.lang button{border:0;background:transparent;font-size:.74rem;font-weight:700;letter-spacing:.06em;padding:.4em .65em;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.lang button[aria-pressed="true"]{background:var(--navy);color:var(--cream)}
+.cartbtn{position:relative;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:var(--white);display:grid;place-items:center;cursor:pointer;text-decoration:none}
+.cartbtn svg{width:22px;height:22px}
+.cartbtn .count{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;border-radius:10px;background:var(--rasp);color:var(--cream);font-size:.72rem;font-weight:700;display:grid;place-items:center;padding:0 5px}
+.cartbtn.bump{animation:bump .5s var(--ease)}
+@keyframes bump{30%{transform:scale(1.25) rotate(-8deg)}60%{transform:scale(.92)}}
+.burger{display:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--navy);cursor:pointer;place-items:center}
+.burger i{display:block;width:18px;height:2px;background:var(--cream);position:relative;transition:transform .3s}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--cream);transition:transform .3s}
+.burger i::before{top:-6px}.burger i::after{top:6px}
+body.menu-open .burger i{background:transparent}
+body.menu-open .burger i::before{transform:translateY(6px) rotate(45deg)}
+body.menu-open .burger i::after{transform:translateY(-6px) rotate(-45deg)}
+.hd-cta{display:inline-flex}
+@media (max-width:1060px){nav.main{display:none}.burger{display:grid}.hd-tools{margin-left:auto}}
+@media (max-width:560px){.hd-cta{display:none}header.top .wrap{gap:10px}.hd-tools{gap:8px}.hd-tools .lang{display:none}.brand{gap:8px}.brand b{font-size:.84rem;letter-spacing:.1em}.brand svg{width:40px}}
+.mnav .lang{margin-top:22px;align-self:flex-start;background:transparent;border-color:color-mix(in srgb,var(--cream) 35%,transparent)}
+.mnav .lang button{color:var(--cream);font-size:.9rem;padding:.5em .9em}
+.mnav .lang button[aria-pressed="true"]{background:var(--cream);color:var(--navy)}
+
+/* mobile menu */
+.mnav{position:fixed;inset:0;z-index:75;background:var(--navy);color:var(--cream);clip-path:circle(0% at calc(100% - 40px) 36px);transition:clip-path .7s var(--ease);display:flex;flex-direction:column;justify-content:center;padding:calc(var(--hh) + env(safe-area-inset-top,0px)) max(28px,env(safe-area-inset-right,0px)) calc(28px + env(safe-area-inset-bottom,0px)) max(28px,env(safe-area-inset-left,0px));overflow:hidden}
+body.menu-open .mnav{clip-path:circle(150% at calc(100% - 40px) 36px)}
+.mnav a{font-family:var(--fd);font-size:clamp(2.2rem,10vw,3.4rem);text-transform:uppercase;text-decoration:none;line-height:1.15;transform:translateY(30px);opacity:0;transition:transform .5s var(--ease),opacity .4s}
+body.menu-open .mnav a{transform:none;opacity:1}
+.mnav a:nth-child(2){transition-delay:.05s}.mnav a:nth-child(3){transition-delay:.1s}.mnav a:nth-child(4){transition-delay:.15s}.mnav a:nth-child(5){transition-delay:.2s}.mnav a:nth-child(6){transition-delay:.25s}
+.mnav .mfoot{margin-top:32px;font-size:.95rem;opacity:.8}
+.mnav .rings{position:absolute;right:-120px;bottom:-60px;width:420px;opacity:.12;pointer-events:none}
+body.menu-open header.top{background:transparent;backdrop-filter:none}
+body.menu-open header.top .brand,body.menu-open header.top .lang,body.menu-open header.top .cartbtn,body.menu-open header.top .hd-cta{visibility:hidden}
+
+/* page transition */
+.wipe{position:fixed;inset:0;z-index:95;pointer-events:none;transform:translateY(105%)}
+.wipe svg{position:absolute;left:0;width:100%;height:60px}
+.wipe .top{top:-59px}.wipe .bot{bottom:-59px;transform:scaleY(-1)}
+.wipe .body{position:absolute;inset:0;background:var(--navy);display:grid;place-items:center}
+.wipe .body svg{position:static;width:120px;height:80px}
+.wipe.run{animation:wipe 1s var(--ease) forwards}
+@keyframes wipe{0%{transform:translateY(105%)}45%,55%{transform:translateY(0)}100%{transform:translateY(-110%)}}
+
+/* loader */
+.loader{position:fixed;inset:0;z-index:99;background:var(--cream);display:grid;place-items:center;transition:clip-path .8s var(--ease);clip-path:inset(0 0 0 0)}
+.loader.out{clip-path:inset(0 0 100% 0)}
+.loader svg{width:min(260px,60vw)}
+.loader svg path{transform-box:fill-box;transform-origin:center;animation:ringin .7s var(--ease) both}
+@keyframes ringin{from{transform:scale(0) rotate(-20deg)}}
+
+/* pages */
+.page[hidden]{display:none!important}
+section{position:relative}
+.sec{padding-block:clamp(64px,9vw,128px)}
+.sec-head{display:grid;gap:14px;margin-bottom:clamp(32px,5vw,56px);max-width:760px}
+.sec-head h2{font-size:clamp(2.2rem,5.4vw,3.8rem)}
+.sec-head.center{margin-inline:auto;text-align:center;justify-items:center}
+.reveal{transition:transform .9s var(--ease),opacity .9s var(--ease)}
+.reveal.pre{opacity:0;transform:translateY(40px) rotate(-1deg)}
+
+/* oyster */
+.oy svg{display:block;width:100%;height:auto;overflow:visible}
+.oy .lid{transform-box:fill-box;transform-origin:4% 62%;transform:rotate(calc(var(--open) * -38deg)) translate(calc(var(--open) * -5%),calc(var(--open) * -24%))}
+.oy .pearl{opacity:clamp(0,calc(var(--open) * 1.6 - .4),1);transform-box:fill-box;transform-origin:center;transform:scale(calc(.5 + var(--open) * .5))}
+.oy .glint{opacity:clamp(0,calc(var(--open) * 2 - 1),1)}
+.oy .shadow{opacity:calc(.16 - var(--open) * .06)}
+.oy.breathe{animation:breathe 7s var(--ease) infinite}
+@keyframes breathe{0%,12%{--open:0}34%,72%{--open:1}92%,100%{--open:0}}
+.oy.tap{cursor:pointer;transition:--open .8s var(--ease)}
+.oy.tap.open{--open:1}
+
+/* ---------------- HOME ---------------- */
+.hero{overflow:hidden}
+.hero .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;padding-block:clamp(28px,5vw,64px) clamp(48px,7vw,90px)}
+.hero .grid > *{min-width:0}
+.hero h1{font-size:clamp(3.2rem,9.4vw,7.8rem);line-height:.9;letter-spacing:.01em;color:var(--navy)}
+.hero h1 .w{display:inline-block;white-space:nowrap}
+.hero h1 .ch{display:inline-block;animation:drop .9s var(--ease) both}
+@keyframes drop{from{transform:translateY(-80%) rotate(-12deg);opacity:0}}
+.hero h1 .accent{color:var(--rasp)}
+.hero .sub{font-weight:600;font-size:clamp(1.2rem,2.4vw,1.6rem);margin:18px 0 10px;display:flex;align-items:center;gap:12px}
+.hero .sub::before{content:"";width:46px;height:8px;background:repeating-linear-gradient(180deg,var(--rasp) 0 2px,transparent 2px 4px)}
+.hero .lead{margin-bottom:30px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px}
+.rating{display:flex;align-items:center;gap:10px;margin-top:28px;font-size:.92rem;color:var(--ink-soft)}
+.stars{letter-spacing:2px;font-size:1.05rem;-webkit-text-stroke:.6px var(--navy);background:linear-gradient(90deg,var(--lemon) calc(var(--r,5) / 5 * 100%),color-mix(in srgb,var(--navy) 12%,transparent) 0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.plate{position:relative;aspect-ratio:1;max-width:560px;width:100%;margin-left:auto}
+.plate canvas{position:absolute;inset:-10%;width:120%;height:120%;pointer-events:none}
+.plate .dish{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 50% 45%,var(--sky) 0 55%,color-mix(in srgb,var(--sky) 70%,var(--navy)) 56% 57%,var(--sky) 58% 64%,var(--white) 65% 100%);box-shadow:0 30px 60px -30px rgba(19,48,107,.45),inset 0 0 0 10px var(--white),inset 0 0 0 12px color-mix(in srgb,var(--navy) 20%,transparent);animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.plate .ice{position:absolute;inset:14%;border-radius:50%;overflow:hidden}
+.plate .ice svg{width:100%;height:100%}
+.plate .oy{position:absolute;left:12%;right:8%;top:22%}
+.plate .lemon{position:absolute;width:24%;right:6%;bottom:10%;animation:bob 5s ease-in-out infinite}
+.plate .lemon2{position:absolute;width:15%;left:10%;bottom:20%;animation:bob 6s ease-in-out -2s infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(6deg)}}
+.plate .sticker{position:absolute;top:4%;left:2%;width:30%;aspect-ratio:1;animation:spin 22s linear infinite}
+.plate .sticker text{font-family:var(--fd);font-size:13px;letter-spacing:2.5px;fill:var(--rasp)}
+@media (max-width:860px){.hero .grid{grid-template-columns:1fr}.plate{margin:0 auto;max-width:440px}}
+
+.waveband{display:block;width:100%;height:70px;margin-bottom:-1px}
+.marquee{background:var(--navy);color:var(--cream);overflow:hidden;white-space:nowrap;padding-block:16px;border-block:6px solid var(--navy)}
+.marquee .track{display:inline-flex;gap:28px;animation:mq 40s linear infinite;font-family:var(--fd);font-size:1.5rem;text-transform:uppercase;letter-spacing:.06em}
+.marquee .track span{display:inline-flex;align-items:center;gap:28px}
+.marquee .track i{display:inline-block;width:28px;height:18px;flex:none}
+.marquee.rev .track{animation-direction:reverse}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+.ways{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.way{position:relative;display:grid;gap:12px;padding:28px 26px 26px;border-radius:26px;background:var(--white);border:2px solid var(--navy);text-decoration:none;transition:transform .4s var(--ease),box-shadow .4s var(--ease);box-shadow:6px 6px 0 var(--navy);overflow:hidden}
+.way:hover{transform:translate(-3px,-3px) rotate(-.6deg);box-shadow:10px 10px 0 var(--rasp)}
+.way .ill{height:140px;display:grid;place-items:center;background:var(--sky);border-radius:18px;overflow:hidden}
+.way .ill svg{height:120px;width:auto}
+.way h3{font-size:1.7rem}
+.way p{color:var(--ink-soft)}
+.way .go{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--rasp)}
+.way .go svg{width:20px;transition:transform .3s var(--ease)}
+.way:hover .go svg{transform:translateX(6px)}
+@media (max-width:860px){.ways{grid-template-columns:1fr}}
+
+/* geste (scroll-pinned) */
+.geste{height:300vh;background:var(--navy);color:var(--cream)}
+.geste .stick{position:sticky;top:calc(var(--hh) + env(safe-area-inset-top,0px));height:calc(100vh - var(--hh) - env(safe-area-inset-top,0px));display:grid;align-items:center;overflow:hidden}
+.geste .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}
+.geste .grid > *{min-width:0}
+.geste h2{font-size:clamp(2.2rem,5vw,3.8rem);color:var(--cream)}
+.geste .eyebrow{color:var(--lemon)}
+.steps{display:grid;gap:18px;margin-top:30px;counter-reset:s}
+.step{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;opacity:.35;transition:opacity .5s,transform .5s var(--ease)}
+.step.on{opacity:1;transform:translateX(8px)}
+.step b{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;border:2px solid var(--cream);font-family:var(--fd);font-weight:400;font-size:1.4rem}
+.step.on b{background:var(--rasp);border-color:var(--rasp)}
+.step h3{font-size:1.5rem;margin-bottom:4px}
+.step p{opacity:.85;font-size:.98rem}
+.geste .stage{position:relative;aspect-ratio:1.25;max-height:72vh;margin:0 auto;width:100%}
+.geste .stage .oy{position:absolute;left:8%;right:8%;top:22%;--shell:var(--cream);--shell2:var(--navy)}
+.geste .knife{position:absolute;width:42%;left:-6%;top:44%;transform-origin:90% 50%;transition:transform .2s linear}
+.geste .ice{position:absolute;inset:auto 0 4% 0;height:24%;opacity:0;transition:opacity .4s}
+.geste .ice.on{opacity:1}
+.geste .progress{position:absolute;left:0;right:0;bottom:24px;display:flex;gap:6px;justify-content:center}
+.geste .progress i{width:36px;height:4px;border-radius:2px;background:color-mix(in srgb,var(--cream) 25%,transparent);overflow:hidden;position:relative}
+.geste .progress i::after{content:"";position:absolute;inset:0;background:var(--lemon);transform:scaleX(var(--p,0));transform-origin:left}
+@media (max-width:860px){.geste .grid{grid-template-columns:1fr;gap:0}.geste .stage{max-height:38vh;aspect-ratio:1.4}.steps{margin-top:16px;gap:10px}.step p{display:none}.step.on p{display:block}.geste .sec-head{margin-bottom:0}}
+
+/* oyster lineup */
+.lineup{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.ocard{display:grid;gap:10px;justify-items:center;text-align:center;padding:22px 14px;border-radius:24px;background:var(--white);border:1.5px solid var(--line);cursor:pointer;transition:transform .4s var(--ease),background .3s,border-color .3s;position:relative;overflow:hidden}
+.ocard:hover{transform:translateY(-6px)}
+.ocard.open{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.ocard.open .oy{--shell:var(--cream);--shell2:var(--navy)}
+.ocard .oy{width:100%;max-width:170px}
+.ocard h3{font-size:1.15rem;line-height:1.05}
+.ocard .orig{font-size:.82rem;font-weight:600;color:var(--rasp)}
+.ocard.open .orig{color:var(--lemon)}
+.ocard .note{font-size:.9rem;max-height:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .4s;opacity:0}
+.ocard.open .note{max-height:160px;opacity:.9}
+.ocard .price{font-family:var(--fd);font-size:1.3rem}
+.ocard .price small{font-family:var(--fb);font-size:.75rem;opacity:.7}
+.taste{display:flex;gap:4px;justify-content:center}
+.taste i{width:10px;height:10px;border-radius:50%;border:1.5px solid currentColor}
+.taste i.f{background:currentColor}
+@media (max-width:1000px){.lineup{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:620px){.lineup{grid-template-columns:repeat(2,1fr)}}
+
+.calib{display:flex;flex-wrap:wrap;align-items:flex-end;gap:18px;justify-content:center;margin-top:40px;font-size:.8rem;color:var(--ink-soft)}
+.calib div{display:grid;justify-items:center;gap:6px}
+.calib i{display:block;background:var(--navy);border-radius:58% 42% 50% 50%/62% 60% 40% 38%;opacity:.85}
+.calib .on{color:var(--navy);font-weight:700}
+.calib .on i{background:var(--rasp)}
+
+.plateaux{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pcard{display:grid;grid-template-rows:auto 1fr auto;border-radius:26px;overflow:hidden;background:var(--white);border:2px solid var(--navy)}
+.pcard .ill{background:var(--sky);display:grid;place-items:center;padding:20px;position:relative;overflow:hidden}
+.pcard .ill svg{width:92%;transition:transform .8s var(--ease)}
+.pcard:hover .ill svg{transform:rotate(-14deg) scale(1.05)}
+.pcard .body{padding:22px 24px;display:grid;gap:8px}
+.pcard h3{font-size:1.45rem}
+.pcard ul{margin:0;padding:0;list-style:none;color:var(--ink-soft);font-size:.95rem}
+.pcard ul li::before{content:"✦ ";color:var(--rasp)}
+.pcard .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 24px;border-top:1.5px dashed var(--line)}
+.pcard .foot b{font-family:var(--fd);font-weight:400;font-size:1.6rem}
+@media (max-width:860px){.plateaux{grid-template-columns:1fr}}
+
+.proof{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,72px);align-items:center;background:var(--sky);border-radius:36px;padding:clamp(28px,5vw,64px)}
+.proof > *{min-width:0}
+.proof .big{font-family:var(--fd);font-size:clamp(5rem,14vw,10rem);line-height:.85;color:var(--navy)}
+.proof .big small{display:block;font-family:var(--fb);font-weight:600;font-size:1rem;margin-top:12px;color:var(--ink-soft);text-transform:none}
+.proof h2{font-size:clamp(1.8rem,4vw,2.8rem);margin:10px 0 14px}
+@media (max-width:700px){.proof{grid-template-columns:1fr}}
+
+.revs{overflow:hidden;padding-block:36px 8px;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.revtrack{display:flex;gap:18px;width:max-content;animation:mq 70s linear infinite}
+.revs:hover .revtrack{animation-play-state:paused}
+.rev{width:320px;flex:none;background:var(--white);border:2px solid var(--navy);border-radius:24px;padding:22px;display:grid;gap:12px;align-content:start;transform:rotate(var(--rot,0deg));transition:transform .4s var(--ease),box-shadow .4s}
+.rev:hover{transform:rotate(0) translateY(-6px);box-shadow:6px 6px 0 var(--rasp)}
+.rev q{font-size:1.02rem;line-height:1.45;quotes:"« " " »"}
+.rev .who{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--ink-soft)}
+.rev .who b{color:var(--navy);display:block;font-size:.95rem}
+.rev .av{width:38px;height:38px;border-radius:50%;background:var(--navy);color:var(--cream);display:grid;place-items:center;font-family:var(--fd);font-size:1rem;flex:none}
+.rev .g{margin-left:auto;font-weight:700;font-size:.8rem;color:var(--ink-soft)}
+.revnote{font-size:.8rem;color:var(--ink-soft);margin-top:10px;text-align:center}
+/* ---------------- MAISON ---------------- */
+.phero{padding-block:clamp(40px,7vw,96px) clamp(30px,5vw,60px);overflow:hidden}
+.phero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.phero .grid > *{min-width:0}
+.phero h1{font-size:clamp(2.8rem,8vw,6.2rem);line-height:.92}
+.phero h1 .accent{color:var(--rasp)}
+.phero .lead{margin-top:20px}
+@media (max-width:860px){.phero .grid{grid-template-columns:1fr}}
+.story{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,5vw,72px);font-size:1.12rem}
+.story p + p{margin-top:16px}
+.story .quote{font-family:var(--fd);text-transform:uppercase;font-size:clamp(1.8rem,4vw,3rem);line-height:1.05;color:var(--rasp)}
+@media (max-width:760px){.story{grid-template-columns:1fr}}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.value{padding:26px 22px;border-radius:24px;border:2px solid var(--navy);background:var(--white);display:grid;gap:10px;align-content:start;transition:transform .4s var(--ease)}
+.value:hover{transform:rotate(-1.2deg) translateY(-4px)}
+.value svg{width:56px;height:56px}
+.value h3{font-size:1.4rem}
+.value p{color:var(--ink-soft);font-size:.96rem}
+@media (max-width:960px){.values{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.values{grid-template-columns:1fr}}
+.route{position:relative}
+.route svg.line{position:absolute;left:0;top:44px;width:100%;height:60px;overflow:visible}
+.route svg.line path{fill:none;stroke:var(--rasp);stroke-width:3;stroke-dasharray:8 10}
+.route ol{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;list-style:none;margin:0;padding:0}
+.route li{display:grid;gap:10px;justify-items:center;text-align:center}
+.route li .dot{width:88px;height:88px;border-radius:50%;background:var(--white);border:2.5px solid var(--navy);display:grid;place-items:center;transition:transform .5s var(--ease),background .4s}
+.route li .dot svg{width:48px;height:48px}
+.route li.on .dot{background:var(--navy);transform:scale(1.08)}
+.route li.on .dot svg *{stroke:var(--cream)}
+.route li h3{font-size:1.15rem}
+.route li p{font-size:.9rem;color:var(--ink-soft)}
+.route .boat{position:absolute;top:18px;left:0;width:56px;transition:left 1.6s var(--ease)}
+@media (max-width:860px){.route ol{grid-template-columns:1fr;gap:22px}.route li{grid-template-columns:88px 1fr;justify-items:start;text-align:left;align-items:center}.route li > div{display:grid;gap:4px}.route svg.line,.route .boat{display:none}}
+.terroirs{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,5vw,60px);align-items:center}
+.terroirs > *{min-width:0}
+.tmap{background:var(--navy);border-radius:32px;padding:16px;overflow:hidden}
+.tmap svg{width:100%;height:auto;display:block}
+.tmap .route-l{fill:none;stroke:var(--lemon);stroke-width:2;stroke-dasharray:6 7;animation:dash 2.5s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-26}}
+.tmap .pin{transform-box:fill-box;transform-origin:center;animation:pulse 2.2s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+.tlist{display:grid;gap:12px}
+.tlist div{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:14px 0;border-bottom:1.5px dashed var(--line)}
+.tlist b{font-family:var(--fd);font-weight:400;text-transform:uppercase;font-size:1.15rem;grid-column:2}
+.tlist span{grid-column:2;color:var(--ink-soft);font-size:.95rem}
+.tlist i{grid-row:1/3;width:14px;height:14px;border-radius:50%;background:var(--rasp);margin-top:6px}
+@media (max-width:860px){.terroirs{grid-template-columns:1fr}}
+
+/* ---------------- CARTE ---------------- */
+.mtools{position:sticky;top:calc(var(--hh) + env(safe-area-inset-top,0px));z-index:20;background:var(--cream);padding-block:12px;border-bottom:1.5px solid var(--line);margin-bottom:36px}
+.mtools .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0;padding-block:2px}
+.chips::-webkit-scrollbar{display:none}
+.chips a{flex:none;text-decoration:none;font-weight:600;font-size:.88rem;padding:.5em 1em;border-radius:999px;border:1.5px solid var(--line);background:var(--white);transition:background .2s,color .2s}
+.chips a.on{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.toggle{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.88rem;cursor:pointer;flex:none}
+.toggle input{appearance:none;width:44px;height:26px;border-radius:13px;background:color-mix(in srgb,var(--navy) 20%,transparent);position:relative;cursor:pointer;transition:background .2s;margin:0}
+.toggle input::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--white);transition:transform .3s var(--ease)}
+.toggle input:checked{background:var(--rasp)}
+.toggle input:checked::after{transform:translateX(18px)}
+.mlangbar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:18px}
+.mlangbar .lang button{font-size:.9rem;padding:.5em 1em}
+.mlangbar .note{font-size:.88rem;color:var(--ink-soft);display:inline-flex;gap:8px;align-items:center}
+.mlangbar .note::before{content:"";width:8px;height:8px;border-radius:50%;background:#2E9E6A;box-shadow:0 0 0 4px color-mix(in srgb,#2E9E6A 25%,transparent)}
+.mgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 56px}
+.mcat{scroll-margin-top:calc(var(--hh) + 90px)}
+.mcat.wide{grid-column:1/-1}
+.mcat header{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;border-bottom:3px solid var(--navy);padding-bottom:10px;margin-bottom:6px}
+.mcat h2{font-size:clamp(1.7rem,3.4vw,2.3rem);transform:rotate(-1.5deg);transform-origin:left bottom}
+.mcat header small{font-weight:600;color:var(--rasp);font-size:.85rem;text-align:right}
+.mi{display:grid;grid-template-columns:78px 1fr auto;align-items:start;gap:2px 16px;padding:13px 0;border-bottom:1.5px dotted color-mix(in srgb,var(--navy) 25%,transparent);transition:background .2s}
+.mi:hover{background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--sky) 80%,transparent),transparent)}
+.mi .n{font-weight:600;min-width:0;grid-column:2}
+.mi .ic{grid-column:1;grid-row:1/span 3;width:78px;height:56px;border-radius:14px;background:var(--sky);display:grid;place-items:center;overflow:hidden}
+.mi .ic svg{width:100%;height:100%;transition:transform .5s var(--ease)}
+.mi:hover .ic svg{transform:scale(1.15) rotate(-6deg)}
+.mi .p{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums;grid-column:3;grid-row:1}
+.mi .d{grid-column:2/-1;font-size:.88rem;color:var(--ink-soft)}
+.mi .al{grid-column:2/-1;display:none;gap:4px;flex-wrap:wrap}
+.show-al .mi .al{display:flex}
+.mi .al span{font-size:.7rem;font-weight:700;padding:.15em .55em;border-radius:999px;background:var(--sky)}
+.mnote{margin-top:44px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.mnote div{padding:18px 20px;border-radius:18px;background:var(--white);border:1.5px solid var(--line);font-size:.92rem}
+.mnote b{display:block;font-family:var(--fd);font-weight:400;text-transform:uppercase;margin-bottom:4px}
+@media (max-width:860px){.mgrid{grid-template-columns:1fr}.mnote{grid-template-columns:1fr}}
+
+/* ---------------- FORMS / BOOK ---------------- */
+.flow{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,4vw,48px);align-items:start}
+@media (max-width:960px){.flow{grid-template-columns:1fr}}
+.card{background:var(--white);border:2px solid var(--navy);border-radius:28px;padding:clamp(20px,3.4vw,36px);box-shadow:8px 8px 0 var(--navy)}
+.stepper{display:flex;gap:6px;margin-bottom:26px;flex-wrap:wrap}
+.stepper span{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:600;padding:.45em .9em .45em .45em;border-radius:999px;background:var(--cream2);color:var(--ink-soft);transition:background .3s,color .3s}
+.stepper span b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--white);font-size:.75rem}
+.stepper span.on{background:var(--navy);color:var(--cream)}
+.stepper span.on b{background:var(--rasp);color:var(--cream)}
+.stepper span.done{background:var(--sky);color:var(--navy)}
+.fs{border:0;margin:0 0 26px;padding:0;display:grid;gap:12px;min-width:0}
+.fs legend{font-family:var(--fd);text-transform:uppercase;font-size:1.25rem;margin-bottom:12px;padding:0}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal .dow{font-size:.72rem;font-weight:700;text-align:center;color:var(--ink-soft);text-transform:uppercase}
+.cal button{aspect-ratio:1;border-radius:14px;border:1.5px solid var(--line);background:var(--cream);cursor:pointer;font-weight:600;font-variant-numeric:tabular-nums;display:grid;place-items:center;transition:transform .2s,background .2s;padding:0;font-size:.95rem}
+.cal button:hover:not(:disabled){transform:translateY(-2px);border-color:var(--navy)}
+.cal button[aria-pressed="true"]{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.cal button:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.calhd{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-weight:600;text-transform:capitalize}
+.calhd button{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);background:var(--white);cursor:pointer}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slots .lbl{width:100%;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
+.slots button{padding:.55em 1em;border-radius:999px;border:1.5px solid var(--line);background:var(--cream);cursor:pointer;font-weight:600;font-variant-numeric:tabular-nums;transition:transform .2s}
+.slots button:hover:not(:disabled){transform:translateY(-2px)}
+.slots button[aria-pressed="true"]{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.slots button:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.counter{display:inline-flex;align-items:center;gap:14px;background:var(--cream);border-radius:999px;padding:6px;border:1.5px solid var(--line)}
+.counter button{width:42px;height:42px;border-radius:50%;border:0;background:var(--navy);color:var(--cream);font-size:1.3rem;cursor:pointer}
+.counter output{font-family:var(--fd);font-size:1.6rem;min-width:2ch;text-align:center}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.fields .full{grid-column:1/-1}
+@media (max-width:560px){.fields{grid-template-columns:1fr}}
+.f{display:grid;gap:6px;font-size:.82rem;font-weight:600;color:var(--ink-soft)}
+.f input,.f textarea,.f select{font:inherit;font-size:1rem;font-weight:400;color:var(--navy);background:var(--cream);border:1.5px solid var(--line);border-radius:14px;padding:.75em .9em;width:100%;min-width:0;transition:border-color .2s,box-shadow .2s}
+.f input:focus,.f textarea:focus,.f select:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 4px color-mix(in srgb,var(--navy) 12%,transparent)}
+.f textarea{min-height:90px;resize:vertical}
+.formfoot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:8px}
+.aside{display:grid;gap:18px}
+.aside .card{box-shadow:none;border-width:1.5px;border-color:var(--line)}
+.aside h3{font-size:1.25rem;margin-bottom:8px}
+.recap{display:grid;gap:10px}
+.recap div{display:flex;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1.5px dashed var(--line)}
+.recap span:first-child{color:var(--ink-soft)}
+.recap span:last-child{font-weight:600;text-align:right}
+.success{display:grid;justify-items:center;text-align:center;gap:14px;padding:20px 0}
+.success .oy{width:200px}
+.success h3{font-size:2rem}
+.info-list{display:grid;gap:10px;font-size:.95rem}
+.info-list div{display:flex;gap:10px;align-items:flex-start}
+.info-list svg{width:22px;height:22px;flex:none;margin-top:2px}
+
+/* ---------------- TAKEAWAY ---------------- */
+.thero{background:var(--navy);color:var(--cream);overflow:hidden}
+.thero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-block:clamp(40px,7vw,90px) clamp(30px,5vw,60px)}
+.thero .grid > *{min-width:0}
+.thero h1{font-size:clamp(2.8rem,8vw,6.4rem);line-height:.92;color:var(--cream)}
+.thero h1 .accent{color:var(--lemon)}
+.thero .lead{color:color-mix(in srgb,var(--cream) 85%,transparent);margin-top:18px}
+.thero .eyebrow{color:var(--lemon)}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.pills > span{display:inline-flex;align-items:center;gap:8px;padding:.55em 1em;border-radius:999px;border:1.5px solid color-mix(in srgb,var(--cream) 35%,transparent);font-weight:500;font-size:.92rem}
+.pills svg{width:18px;height:18px}
+.bourriche{position:relative;max-width:420px;margin-left:auto;width:100%}
+.bourriche svg{width:100%;height:auto;overflow:visible}
+.bourriche .lidb{transform-box:fill-box;transform-origin:0% 100%;animation:lidb 5s var(--ease) infinite}
+@keyframes lidb{0%,20%{transform:rotate(0)}40%,75%{transform:rotate(-22deg) translateY(-6px)}95%,100%{transform:rotate(0)}}
+.bourriche .pop{transform-box:fill-box;transform-origin:50% 100%;animation:popup 5s var(--ease) infinite}
+@keyframes popup{0%,25%{transform:translateY(30px) scale(.8);opacity:0}45%,72%{transform:none;opacity:1}90%,100%{transform:translateY(30px) scale(.8);opacity:0}}
+@media (max-width:860px){.thero .grid{grid-template-columns:1fr}.bourriche{margin:0 auto;max-width:300px}}
+.shop{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:clamp(24px,4vw,44px);align-items:start}
+@media (max-width:1000px){.shop{grid-template-columns:1fr}}
+.cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.cats button{font-weight:600;font-size:.9rem;padding:.55em 1.1em;border-radius:999px;border:1.5px solid var(--line);background:var(--white);cursor:pointer;transition:background .2s,color .2s}
+.cats button[aria-pressed="true"]{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.prod{display:grid;grid-template-rows:auto 1fr auto;border-radius:22px;background:var(--white);border:1.5px solid var(--line);overflow:hidden;transition:transform .35s var(--ease),border-color .3s,box-shadow .35s}
+.prod:hover{transform:translateY(-4px);border-color:var(--navy);box-shadow:6px 6px 0 var(--navy)}
+.prod .ill{height:130px;background:var(--sky);display:grid;place-items:center;position:relative}
+.prod .ill svg{height:118px;width:auto;transition:transform .5s var(--ease)}
+.prod:hover .ill svg{transform:scale(1.08) rotate(-6deg)}
+.prod .tagq{position:absolute;top:10px;left:10px;font-size:.72rem;font-weight:700;background:var(--rasp);color:var(--cream);padding:.25em .7em;border-radius:999px}
+.prod .body{padding:16px 18px 6px;display:grid;gap:4px;align-content:start}
+.prod h3{font-family:var(--fb);text-transform:none;letter-spacing:0;font-weight:600;font-size:1.05rem;line-height:1.25}
+.prod .d{font-size:.85rem;color:var(--ink-soft)}
+.prod .foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 18px 16px}
+.prod .foot b{font-weight:700;font-variant-numeric:tabular-nums}
+.add{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:999px;background:var(--navy);color:var(--cream);font-weight:600;font-size:.88rem;padding:.55em 1em;cursor:pointer;transition:transform .2s,background .2s}
+.add:hover{background:var(--rasp)}
+.add:active{transform:scale(.94)}
+.qmini{display:inline-flex;align-items:center;gap:8px}
+.qmini button{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--navy);background:var(--white);cursor:pointer;font-size:1.05rem;line-height:1}
+.qmini output{font-weight:700;min-width:1.4ch;text-align:center;font-variant-numeric:tabular-nums}
+.basket{position:sticky;top:calc(var(--hh) + 20px + env(safe-area-inset-top,0px))}
+.basket .card{padding:24px}
+.basket h3{font-size:1.5rem;display:flex;justify-content:space-between;align-items:center}
+.blines{display:grid;gap:10px;margin:16px 0;max-height:280px;overflow:auto}
+.bl{display:grid;grid-template-columns:1fr auto;gap:2px 10px;font-size:.92rem;animation:slidein .4s var(--ease)}
+@keyframes slidein{from{transform:translateX(20px);opacity:0}}
+.bl .q{color:var(--ink-soft);font-size:.82rem}
+.bl b{font-variant-numeric:tabular-nums}
+.bempty{display:grid;justify-items:center;gap:8px;text-align:center;color:var(--ink-soft);padding:18px 0;font-size:.92rem}
+.bempty svg{width:70px;opacity:.6}
+.btotal{display:flex;justify-content:space-between;align-items:baseline;border-top:2px solid var(--navy);padding-top:14px;margin-top:6px}
+.btotal b{font-family:var(--fd);font-size:2rem;font-weight:400;font-variant-numeric:tabular-nums}
+.paybox{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:var(--sky);border-radius:16px;padding:14px;margin:16px 0;font-size:.9rem}
+.paybox svg{width:40px;height:40px}
+.paybox b{display:block}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opts label{display:grid;gap:2px;padding:12px;border-radius:14px;border:1.5px solid var(--line);cursor:pointer;font-size:.85rem;background:var(--cream);transition:border-color .2s,background .2s}
+.opts label b{font-size:.92rem}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts label:has(input:checked){border-color:var(--navy);background:var(--white);box-shadow:inset 0 0 0 1.5px var(--navy)}
+.days{display:flex;gap:8px;flex-wrap:wrap}
+.days button{display:grid;justify-items:center;padding:.5em .9em;border-radius:14px;border:1.5px solid var(--line);background:var(--cream);cursor:pointer;line-height:1.15;min-width:64px}
+.days button small{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft)}
+.days button b{font-size:1.05rem}
+.days button[aria-pressed="true"]{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.days button[aria-pressed="true"] small{color:var(--lemon)}
+.ticket{position:relative;background:var(--white);border-radius:6px;padding:26px 24px 30px;font-size:.92rem;filter:drop-shadow(0 18px 24px rgba(19,48,107,.18));animation:print 1.4s var(--ease) both;transform-origin:top;-webkit-mask:radial-gradient(circle 8px at 50% 100%,transparent 98%,#000) 0 0/22px 100% repeat-x;mask:radial-gradient(circle 8px at 50% 100%,transparent 98%,#000) 0 0/22px 100% repeat-x}
+@keyframes print{from{clip-path:inset(0 0 100% 0);transform:translateY(-20px)}to{clip-path:inset(0 0 0 0)}}
+.ticket .tl{display:flex;justify-content:space-between;gap:10px;padding:4px 0;font-variant-numeric:tabular-nums}
+.ticket hr{border:0;border-top:1.5px dashed var(--line);margin:12px 0}
+.ticket .tnum{font-family:var(--fd);font-size:2rem;text-align:center;letter-spacing:.06em}
+.ticket .stamp{position:absolute;right:14px;top:150px;transform:rotate(-14deg);border:3px solid var(--rasp);color:var(--rasp);font-family:var(--fd);text-transform:uppercase;padding:.2em .6em;border-radius:8px;font-size:1rem;opacity:.85;animation:stamp .5s 1.3s var(--ease) both}
+@keyframes stamp{from{transform:rotate(-14deg) scale(2.2);opacity:0}}
+.fly{position:fixed;z-index:120;width:34px;height:22px;pointer-events:none;transition:transform .8s cubic-bezier(.5,-0.4,.6,1),opacity .8s}
+.mbar{display:none}
+@media (max-width:1000px){
+  .basket{position:static}
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;justify-content:space-between;align-items:center;gap:12px;background:var(--navy);color:var(--cream);padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));transform:translateY(110%);transition:transform .4s var(--ease)}
+  .mbar.on{transform:none}
+  .mbar b{font-family:var(--fd);font-weight:400;font-size:1.4rem}
+}
+.keep{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.keep div{background:var(--white);border:1.5px solid var(--line);border-radius:22px;padding:22px;display:grid;gap:8px;align-content:start}
+.keep svg{width:46px;height:46px}
+.keep h3{font-size:1.2rem}
+.keep p{font-size:.94rem;color:var(--ink-soft)}
+@media (max-width:860px){.keep{grid-template-columns:1fr}}
+
+/* ---------------- CONTACT ---------------- */
+.chero{overflow:hidden}
+.chero .grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,5vw,60px);align-items:center;padding-block:clamp(36px,6vw,80px)}
+@media (max-width:900px){.chero .grid{grid-template-columns:1fr}}
+.chero h1{font-size:clamp(2.8rem,8vw,6rem);line-height:.92}
+.bay{position:relative;border-radius:34px;overflow:hidden;border:2px solid var(--navy);box-shadow:8px 8px 0 var(--navy);background:var(--sky)}
+.bay svg{display:block;width:100%;height:auto}
+.bay .lbl{font-family:var(--fb);font-weight:600;font-size:13px;fill:var(--navy)}
+.bay .lbl.it{font-style:italic;fill:var(--ink-soft);font-weight:500}
+.bay .wv{animation:wv 6s ease-in-out infinite}
+@keyframes wv{50%{transform:translateX(-14px)}}
+.bay .boat{animation:sail 18s ease-in-out infinite}
+@keyframes sail{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,-30px)}}
+.bay .pinring{transform-box:fill-box;transform-origin:center;animation:pulse 2s ease-out infinite}
+.bay .pinb{animation:pinb 2s var(--ease) infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes pinb{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.bay .overlay{position:absolute;left:16px;bottom:16px;right:16px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;pointer-events:none}
+.bay .overlay > *{pointer-events:auto}
+.addrcard{background:var(--white);border-radius:18px;padding:14px 16px;border:1.5px solid var(--navy);display:grid;gap:2px;font-size:.92rem}
+.addrcard b{font-family:var(--fd);font-weight:400;text-transform:uppercase;font-size:1.05rem}
+.status{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.85rem;padding:.4em .9em;border-radius:999px;background:var(--white);border:1.5px solid var(--line)}
+.status i{width:9px;height:9px;border-radius:50%;background:#2E9E6A;box-shadow:0 0 0 0 rgba(46,158,106,.6);animation:live 1.8s infinite}
+.status.closed i{background:var(--rasp);animation:none}
+@keyframes live{70%{box-shadow:0 0 0 10px rgba(46,158,106,0)}}
+.ccards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.cc{background:var(--white);border:2px solid var(--navy);border-radius:24px;padding:22px;display:grid;gap:10px;align-content:start;transition:transform .35s var(--ease),box-shadow .35s}
+.cc:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--rasp)}
+.cc .ic{width:52px;height:52px;border-radius:16px;background:var(--sky);display:grid;place-items:center}
+.cc .ic svg{width:28px;height:28px}
+.cc h3{font-size:1.15rem}
+.cc .v{font-weight:600;word-break:break-word;font-size:1rem}
+.cc .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:600;padding:.4em .85em;border-radius:999px;border:1.5px solid var(--navy);background:transparent;cursor:pointer;text-decoration:none}
+.chip:hover{background:var(--navy);color:var(--cream)}
+@media (max-width:1000px){.ccards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:540px){.ccards{grid-template-columns:1fr}}
+.hours{display:grid;gap:0}
+.hours div{display:grid;grid-template-columns:1fr auto;gap:12px;padding:12px 14px;border-radius:12px;font-variant-numeric:tabular-nums}
+.hours div:nth-child(odd){background:var(--cream)}
+.hours div.today{background:var(--navy);color:var(--cream);font-weight:600}
+.hours .off{color:var(--rasp)}
+.hours div.today .off{color:var(--lemon)}
+.faq{display:grid;gap:10px}
+.faq details{background:var(--white);border:1.5px solid var(--line);border-radius:18px;overflow:hidden;transition:border-color .2s}
+.faq details[open]{border-color:var(--navy)}
+.faq summary{list-style:none;cursor:pointer;padding:16px 20px;font-weight:600;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--fd);font-size:1.6rem;line-height:1;transition:transform .3s var(--ease);color:var(--rasp)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 20px 18px;color:var(--ink-soft)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,48px);align-items:start}
+@media (max-width:900px){.two{grid-template-columns:1fr}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);z-index:130;background:var(--navy);color:var(--cream);padding:.8em 1.3em;border-radius:999px;font-weight:600;transition:transform .45s var(--ease);font-size:.95rem}
+.toast.on{transform:translate(-50%,0)}
+
+/* ---------------- FOOTER ---------------- */
+footer.site{position:relative;background:var(--navy);color:var(--cream);margin-top:clamp(60px,8vw,110px)}
+footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:100%;display:block}
+.fcta{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;padding-block:clamp(48px,7vw,80px) 40px;border-bottom:1.5px solid color-mix(in srgb,var(--cream) 18%,transparent)}
+.fcta h2{font-size:clamp(2.2rem,6vw,4.6rem);color:var(--cream)}
+.fcta h2 .accent{color:var(--lemon)}
+.fcta .acts{display:flex;gap:12px;flex-wrap:wrap}
+@media (max-width:800px){.fcta{grid-template-columns:1fr}}
+.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.3fr;gap:36px;padding-block:48px}
+.fgrid > *{min-width:0}
+.fgrid h3{font-size:1rem;letter-spacing:.14em;color:var(--lemon);margin-bottom:16px}
+.fgrid ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.fgrid a{text-decoration:none;opacity:.88;transition:opacity .2s}
+.fgrid a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.flogo{display:grid;gap:14px;align-content:start}
+.flogo svg{width:140px;height:auto}
+.flogo b{font-family:var(--fd);font-weight:400;font-size:1.4rem;letter-spacing:.2em;text-transform:uppercase}
+.flogo p{opacity:.8;font-size:.95rem;max-width:34ch}
+.social{display:flex;gap:10px}
+.social a{width:44px;height:44px;border-radius:50%;border:1.5px solid color-mix(in srgb,var(--cream) 40%,transparent);display:grid;place-items:center;opacity:1;transition:background .25s,transform .3s var(--ease)}
+.social a:hover{background:var(--rasp);border-color:var(--rasp);transform:rotate(-10deg);text-decoration:none}
+.social svg{width:20px;height:20px}
+.fhours{display:grid;gap:6px;font-size:.92rem;font-variant-numeric:tabular-nums}
+.fhours div{display:flex;justify-content:space-between;gap:12px;opacity:.9}
+.news{display:flex;gap:8px;margin-top:12px;background:color-mix(in srgb,var(--cream) 10%,transparent);border-radius:999px;padding:5px}
+.news input{flex:1;min-width:0;background:transparent;border:0;color:var(--cream);font:inherit;padding:.5em .9em}
+.news input::placeholder{color:color-mix(in srgb,var(--cream) 60%,transparent)}
+.news button{border:0;border-radius:999px;background:var(--lemon);color:var(--navy);font-weight:700;padding:.5em 1.1em;cursor:pointer}
+@media (max-width:960px){.fgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.fgrid{grid-template-columns:1fr}}
+.giant{overflow:hidden;white-space:nowrap;padding-block:10px 0;user-select:none}
+.giant .track{display:inline-flex;gap:40px;animation:mq 60s linear infinite}
+.giant span{font-family:var(--fd);text-transform:uppercase;font-size:clamp(4rem,14vw,11rem);line-height:1;color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb,var(--cream) 45%,transparent);display:inline-flex;align-items:center;gap:40px}
+.giant span svg{width:clamp(70px,12vw,150px);height:auto;flex:none}
+.fbot{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;padding-block:22px calc(28px + env(safe-area-inset-bottom,0px));border-top:1.5px solid color-mix(in srgb,var(--cream) 18%,transparent);font-size:.82rem;opacity:.85}
+.fbot nav{display:flex;flex-wrap:wrap;gap:6px 18px}
+.fbot a{text-decoration:none}
+.fbot a:hover{text-decoration:underline}
+.fbot .lang{background:transparent;border-color:color-mix(in srgb,var(--cream) 30%,transparent)}
+.fbot .lang button{color:var(--cream)}
+.fbot .lang button[aria-pressed="true"]{background:var(--cream);color:var(--navy)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .oy.breathe{--open:.85}
+  .reveal.pre{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true"><svg viewBox="0 0 300 190" data-logo="7"></svg></div>
+<div class="wipe" id="wipe" aria-hidden="true">
+  <svg class="top" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0 60 C150 0 300 0 450 30 S750 60 900 20 S1100 10 1200 40 L1200 60Z" fill="var(--navy)"/></svg>
+  <div class="body"><svg viewBox="0 0 300 190" data-logo="6" data-inv="1"></svg></div>
+  <svg class="bot" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0 60 C150 0 300 0 450 30 S750 60 900 20 S1100 10 1200 40 L1200 60Z" fill="var(--navy)"/></svg>
+</div>
+
+<header class="top" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="#accueil" aria-label="Le Parc à Huîtres">
+      <svg viewBox="0 0 300 190" data-logo="5" aria-hidden="true"></svg>
+      <span><b>Le Parc à Huîtres</b><small data-i="tag">Perle d'Hendaye</small></span>
+    </a>
+    <nav class="main" aria-label="Navigation">
+      <a href="#accueil" data-i="nav_home">Accueil</a>
+      <a href="#maison" data-i="nav_house">La Maison</a>
+      <a href="#carte" data-i="nav_menu">La Carte</a>
+      <a href="#reserver" data-i="nav_book">Réserver</a>
+      <a href="#emporter" data-i="nav_take">À emporter</a>
+      <a href="#contact" data-i="nav_contact">Contact</a>
+    </nav>
+    <div class="hd-tools">
+      <div class="lang" role="group" aria-label="Langue"><button type="button" data-lang="fr">FR</button><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button></div>
+      <a class="cartbtn" id="cartbtn" href="#emporter" aria-label="Panier à emporter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16l-1.5 10.5a2 2 0 0 1-2 1.5h-9a2 2 0 0 1-2-1.5z"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/><path d="M5 13h14M6 16.5h12"/></svg><span class="count" id="cartcount">0</span></a>
+      <a class="btn sm hd-cta" href="#reserver" data-i="cta_book_s">Réserver</a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false"><i></i></button>
+    </div>
+  </div>
+</header>
+
+<nav class="mnav" id="mnav" aria-label="Menu mobile">
+  <a href="#accueil" data-i="nav_home">Accueil</a>
+  <a href="#maison" data-i="nav_house">La Maison</a>
+  <a href="#carte" data-i="nav_menu">La Carte</a>
+  <a href="#reserver" data-i="nav_book">Réserver</a>
+  <a href="#emporter" data-i="nav_take">À emporter</a>
+  <a href="#contact" data-i="nav_contact">Contact</a>
+  <div class="lang" role="group" aria-label="Langue"><button type="button" data-lang="fr">FR</button><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button></div>
+  <div class="mfoot">5 rue des Orangers, 64700 Hendaye<br>05 59 20 32 38</div>
+  <svg class="rings" viewBox="0 0 300 190" data-logo="7" data-inv="1"></svg>
+</nav>
+
+<main id="main">
+
+<!-- =========================== ACCUEIL =========================== -->
+<div class="page" data-page="accueil">
+  <section class="hero">
+    <div class="stripes"></div>
+    <div class="wrap grid">
+      <div>
+        <span class="eyebrow" data-i="kicker">Bar à huîtres · Hendaye · à deux pas du port</span>
+        <h1 id="htitle" style="margin-top:18px"><span class="w">Le Parc</span><br><span class="w">à <span class="accent">Huîtres</span></span></h1>
+        <div class="sub" data-i="tag">Perle d'Hendaye</div>
+        <p class="lead" data-i="hero_lead">Huîtres ouvertes à la minute, coquillages cuits maison et cuisine de l'océan, au bord de la baie.</p>
+        <div class="cta">
+          <a class="btn" href="#reserver"><span data-i="cta_book">Réserver une table</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn ghost" href="#emporter" data-i="cta_take">Commander à emporter</a>
+        </div>
+        <div class="rating"><span class="stars" style="--r:4.6">★★★★★</span><span><b>4,6</b> · <span data-i="reviews_n">456 avis Google</span></span></div>
+      </div>
+      <div class="plate" id="plate">
+        <canvas id="bubbles" aria-hidden="true"></canvas>
+        <div class="dish"></div>
+        <div class="ice" id="ice"></div>
+        <div class="oy" id="heroOy" data-oy="7"></div>
+        <svg class="lemon" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="var(--lemon)" stroke="var(--navy)" stroke-width="3"/><circle cx="50" cy="50" r="36" fill="#FBE7A1"/><g stroke="var(--lemon)" stroke-width="3">
+          <line x1="50" y1="50" x2="50" y2="15"/><line x1="50" y1="50" x2="80" y2="32"/><line x1="50" y1="50" x2="80" y2="68"/><line x1="50" y1="50" x2="50" y2="85"/><line x1="50" y1="50" x2="20" y2="68"/><line x1="50" y1="50" x2="20" y2="32"/></g></svg>
+        <svg class="lemon2" viewBox="0 0 100 100" aria-hidden="true"><path d="M8 70 A46 46 0 0 1 92 70Z" fill="var(--lemon)" stroke="var(--navy)" stroke-width="4"/><path d="M18 66 A34 34 0 0 1 82 66Z" fill="#FBE7A1"/></svg>
+        <svg class="sticker" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="circ" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs><circle cx="60" cy="60" r="58" fill="var(--cream)" stroke="var(--rasp)" stroke-width="2"/><text><textPath href="#circ" id="stickertxt">OUVERTES À LA MINUTE ✦ PERLE D'HENDAYE ✦ </textPath></text><circle cx="60" cy="60" r="10" fill="var(--rasp)"/></svg>
+      </div>
+    </div>
+  </section>
+  <svg class="waveband" data-wave="cream>navy" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path fill="var(--navy)"/></svg>
+  <div class="marquee" aria-hidden="true"><div class="track" id="mq1"></div></div>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i="ways_k">Venez comme vous voulez</span>
+        <h2 class="tilt" data-i="ways_t">Trois façons de nous goûter</h2>
+      </div>
+      <div class="ways">
+        <a class="way reveal" href="#reserver">
+          <div class="ill"><svg viewBox="0 0 200 120" aria-hidden="true"><ellipse cx="100" cy="92" rx="88" ry="16" fill="var(--navy)" opacity=".12"/><rect x="20" y="60" width="160" height="10" rx="5" fill="var(--navy)"/><rect x="40" y="70" width="6" height="34" fill="var(--navy)"/><rect x="154" y="70" width="6" height="34" fill="var(--navy)"/><g class="wobble"><path d="M70 34 l0 26 M70 34 q-10 -16 0 -26 q10 10 0 26" fill="var(--sky)" stroke="var(--navy)" stroke-width="3"/><path d="M130 34 l0 26 M130 34 q-10 -16 0 -26 q10 10 0 26" fill="#FBE7A1" stroke="var(--navy)" stroke-width="3"/></g><ellipse cx="100" cy="56" rx="22" ry="5" fill="var(--white)" stroke="var(--navy)" stroke-width="3"/></svg></div>
+          <h3 data-i="way1_t">Sur place</h3>
+          <p data-i="way1_d">Au comptoir ou à table, une douzaine et un verre de Txakoli face à la baie.</p>
+          <span class="go"><span data-i="cta_book">Réserver une table</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="way reveal" href="#emporter">
+          <div class="ill" data-bourriche="small"></div>
+          <h3 data-i="way2_t">À emporter</h3>
+          <p data-i="way2_d">Commandez en ligne, passez prendre à l'heure choisie, réglez sur place.</p>
+          <span class="go"><span data-i="cta_take">Commander à emporter</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="way reveal" href="#carte">
+          <div class="ill"><svg viewBox="0 0 200 120" aria-hidden="true"><g transform="rotate(-6 100 60)"><rect x="56" y="10" width="88" height="104" rx="8" fill="var(--white)" stroke="var(--navy)" stroke-width="3"/><path d="M68 26h64M68 31h64" stroke="var(--rasp)" stroke-width="2"/><rect x="68" y="42" width="40" height="6" rx="3" fill="var(--navy)"/><rect x="116" y="42" width="16" height="6" rx="3" fill="var(--navy)"/><rect x="68" y="56" width="50" height="5" rx="2.5" fill="var(--ink-soft)"/><rect x="68" y="70" width="36" height="6" rx="3" fill="var(--navy)"/><rect x="116" y="70" width="16" height="6" rx="3" fill="var(--navy)"/><rect x="68" y="84" width="44" height="5" rx="2.5" fill="var(--ink-soft)"/></g><g font-family="Lilita One" font-size="14" fill="var(--rasp)"><text x="150" y="40">ES</text><text x="20" y="80">EN</text><text x="160" y="100">FR</text></g></svg></div>
+          <h3 data-i="way3_t">La carte</h3>
+          <p data-i="way3_d">En français, en español, in English : elle s'ouvre dans la langue de votre téléphone.</p>
+          <span class="go"><span data-i="cta_menu">Voir la carte</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="geste" id="geste">
+    <div class="stick">
+      <div class="wrap grid">
+        <div>
+          <div class="sec-head" style="margin-bottom:0">
+            <span class="eyebrow" data-i="geste_k">Le geste</span>
+            <h2 data-i="geste_t">De la bourriche à l'assiette</h2>
+          </div>
+          <div class="steps" id="steps">
+            <div class="step on"><b>1</b><div><h3 data-i="s1_t">On choisit</h3><p data-i="s1_d">Cinq huîtres, cinq terroirs, triées au calibre selon les arrivages.</p></div></div>
+            <div class="step"><b>2</b><div><h3 data-i="s2_t">On ouvre à la minute</h3><p data-i="s2_d">Jamais à l'avance. La lame dans la charnière, un quart de tour, le muscle tranché net.</p></div></div>
+            <div class="step"><b>3</b><div><h3 data-i="s3_t">On sert sur glace</h3><p data-i="s3_d">Pain de seigle, beurre demi-sel, citron, aïoli et mayonnaise maison.</p></div></div>
+          </div>
+        </div>
+        <div class="stage">
+          <svg class="ice" id="gesteIce" viewBox="0 0 400 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <div class="oy" id="gesteOy" data-oy="7"></div>
+          <svg class="knife" id="knife" viewBox="0 0 200 50" aria-hidden="true"><rect x="0" y="12" width="96" height="26" rx="13" fill="#C98A4B" stroke="var(--cream)" stroke-width="2"/><rect x="10" y="20" width="76" height="3" rx="1.5" fill="#A66C35"/><rect x="92" y="8" width="10" height="34" rx="3" fill="var(--cream)"/><path d="M102 18 L180 22 Q196 25 180 28 L102 32Z" fill="#DDE3EC" stroke="var(--cream)" stroke-width="2"/></svg>
+        </div>
+      </div>
+      <div class="progress" aria-hidden="true"><i id="pg1"></i><i id="pg2"></i><i id="pg3"></i></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="eyebrow" data-i="oys_k">Notre sélection</span>
+        <h2 class="tilt" data-i="oys_t">Nos huîtres</h2>
+        <p class="lead" data-i="oys_d">Touchez une huître pour l'ouvrir et découvrir son caractère.</p>
+      </div>
+      <div class="lineup" id="lineup"></div>
+      <div class="calib reveal" id="calib" aria-label="Calibres"></div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i="plat_k">À partager</span>
+        <h2 class="tilt" data-i="plat_t">Les plateaux</h2>
+        <p class="lead" data-i="plat_d">Sur place ou à emporter. Composition fixe, vous pouvez ajouter coquillages et crustacés.</p>
+      </div>
+      <div class="plateaux" id="plateaux"></div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="proof reveal">
+        <div class="big"><span id="count5">4,6</span><small><span class="stars" style="--r:4.6">★★★★★</span> · <span id="count456">458</span> <span data-i="reviews_w">avis Google</span></small></div>
+        <div>
+          <span class="eyebrow" data-i="proof_k">Ils en parlent</span>
+          <h2 data-i="proof_t">Une note parfaite, une huître à la fois.</h2>
+          <p class="lead" data-i="proof_d">Merci à tous ceux qui partagent ce moment avec nous. Venez vérifier par vous-même.</p>
+          <div class="cta" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px"><a class="btn" href="#reserver" data-i="cta_book">Réserver une table</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Le+Parc+A+Huitres+Hendaye" target="_blank" rel="noopener" data-i="rev_all">Lire tous les avis sur Google</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="revs" aria-label="Avis Google"><div class="revtrack" id="revs"></div></div>
+    <p class="wrap revnote" data-i="rev_lang">Avis Google, en français</p>
+  </section>
+</div>
+
+<!-- =========================== MAISON =========================== -->
+<div class="page" data-page="maison" hidden>
+  <section class="phero">
+    <div class="wrap grid">
+      <div>
+        <span class="eyebrow" data-i="nav_house">La Maison</span>
+        <h1 style="margin-top:16px" data-ih="house_h">Passionnés<br>de la <span class="accent">mer</span></h1>
+        <p class="lead" data-i="house_lead">Des artisans du goût, un comptoir au bord de la baie, et une seule règle : la fraîcheur d'abord.</p>
+      </div>
+      <div class="oy breathe" data-oy="7"></div>
+    </div>
+  </section>
+  <div class="stripes"></div>
+  <section class="sec">
+    <div class="wrap story">
+      <div class="reveal">
+        <p data-i="house_p1">Le Parc à Huîtres, c'est un comptoir posé à deux pas du port de plaisance et de l'ancien port de pêche d'Hendaye. On y vient pour une douzaine au soleil, un plateau à partager ou une soupe de poissons de la criée basque.</p>
+        <p data-i="house_p2">Depuis des années, on goûte, on compare, on choisit. On travaille avec des ostréiculteurs et des producteurs artisans qu'on connaît, et la carte suit les saisons et les arrivages, sans compromis.</p>
+      </div>
+      <div class="reveal">
+        <p class="quote" data-i="house_q">« Ici, on cuisine avec passion et on partage avec plaisir. »</p>
+        <p style="margin-top:18px" data-i="house_p3">Ce savoir-faire se transmet de main en main : choisir une huître, l'ouvrir proprement, la servir au bon moment. C'est ce qu'on aime partager à table.</p>
+      </div>
+    </div>
+  </section>
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow" data-i="val_k">Ce qui nous tient</span><h2 class="tilt" data-i="val_t">Nos engagements</h2></div>
+      <div class="values">
+        <div class="value reveal"><svg viewBox="0 0 56 56" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round"><path d="M6 34c6-4 10-4 16 0s10 4 16 0 10-4 12-2"/><path d="M6 42c6-4 10-4 16 0s10 4 16 0 10-4 12-2"/><circle cx="38" cy="16" r="8" stroke="var(--rasp)"/></svg><h3 data-i="v1_t">Fraîcheur</h3><p data-i="v1_d">Huîtres ouvertes à la commande, coquillages cuits sur place, rien ne patiente en vitrine.</p></div>
+        <div class="value reveal"><svg viewBox="0 0 56 56" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 46V22l14-12 14 12v24z"/><path d="M23 46V32h10v14" stroke="var(--rasp)"/></svg><h3 data-i="v2_t">Artisans</h3><p data-i="v2_d">Ostréiculteurs, fermes du Pays basque, criée locale : des producteurs qu'on connaît.</p></div>
+        <div class="value reveal"><svg viewBox="0 0 56 56" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round"><path d="M10 30c0-8 8-14 18-14s18 6 18 14"/><path d="M18 30l-6 12M38 30l6 12" stroke="var(--rasp)"/><circle cx="28" cy="30" r="4"/></svg><h3 data-i="v3_t">Transmission</h3><p data-i="v3_d">Un geste appris, répété, transmis. Chaque ouverture est faite à la main.</p></div>
+        <div class="value reveal"><svg viewBox="0 0 56 56" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round"><path d="M16 12l4 18a8 8 0 0 1-16 0l4-18z" transform="translate(6 0)"/><path d="M36 12l4 18a8 8 0 0 1-16 0l4-18z" transform="translate(10 0)" stroke="var(--rasp)"/><path d="M18 38v8M38 38v8"/></svg><h3 data-i="v4_t">Partage</h3><p data-i="v4_d">Des plateaux faits pour la table, des vins choisis pour l'iode, trois langues à la carte.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="sec" style="background:var(--sky)">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow" data-i="route_k">Le voyage d'une huître</span><h2 class="tilt" data-i="route_t">Du parc à votre assiette</h2></div>
+      <div class="route" id="route">
+        <svg class="line" viewBox="0 0 1000 60" preserveAspectRatio="none"><path d="M60 30 C160 0 240 60 340 30 S540 0 640 30 S840 60 940 30"/></svg>
+        <svg class="boat" id="boat" viewBox="0 0 60 40" aria-hidden="true"><path d="M6 26h48l-8 10H14z" fill="var(--rasp)"/><path d="M30 4v22M30 6l16 16H30z" fill="var(--white)" stroke="var(--navy)" stroke-width="2"/></svg>
+        <ol>
+          <li><span class="dot"><svg viewBox="0 0 48 48" fill="none" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round"><path d="M6 30c5-3 8-3 12 0s8 3 12 0 8-3 12 0"/><path d="M12 30V14M24 30V10M36 30V14"/></svg></span><div><h3 data-i="r1_t">Le parc</h3><p data-i="r1_d">Deux à quatre ans d'élevage en mer, au rythme des marées.</p></div></li>
+          <li><span class="dot"><svg viewBox="0 0 48 48" fill="none" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round"><rect x="8" y="20" width="32" height="18" rx="3"/><path d="M8 26h32"/><path d="M16 14c2-4 6-4 8 0s6 4 8 0"/></svg></span><div><h3 data-i="r2_t">L'affinage</h3><p data-i="r2_d">En claires pour les Fines de Claires de Marennes-Oléron.</p></div></li>
+          <li><span class="dot"><svg viewBox="0 0 48 48" fill="none" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round"><path d="M6 32h36l-6 8H12z"/><path d="M24 8v24M24 10l12 14H24"/></svg></span><div><h3 data-i="r3_t">L'arrivage</h3><p data-i="r3_d">Selon les marées et les saisons, jusqu'à notre comptoir.</p></div></li>
+          <li><span class="dot"><svg viewBox="0 0 48 48" fill="none" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round"><path d="M8 30h16"/><path d="M24 26l16 4-16 4z"/><path d="M14 22c4-6 14-8 20-4"/></svg></span><div><h3 data-i="r4_t">L'ouverture</h3><p data-i="r4_d">À la minute, au couteau, juste avant de servir.</p></div></li>
+          <li><span class="dot"><svg viewBox="0 0 48 48" fill="none" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round"><ellipse cx="24" cy="28" rx="18" ry="8"/><path d="M16 26c3-4 13-4 16 0"/><path d="M38 12v8M34 16h8"/></svg></span><div><h3 data-i="r5_t">La table</h3><p data-i="r5_d">Sur glace, avec seigle, beurre demi-sel et citron.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap terroirs">
+      <div class="tmap reveal" id="tmap"></div>
+      <div>
+        <div class="sec-head reveal" style="margin-bottom:20px"><span class="eyebrow" data-i="ter_k">D'où ça vient</span><h2 class="tilt" data-i="ter_t">Nos terroirs</h2></div>
+        <div class="tlist">
+          <div><i></i><b>Normandie</b><span data-i="t1">Huîtres de pleine mer, tourteau</span></div>
+          <div><i></i><b>Marennes-Oléron</b><span data-i="t2">Fines de Claires n°3</span></div>
+          <div><i></i><b data-i="t3n">Irlande</b><span data-i="t3">Spéciales Royales n°3</span></div>
+          <div><i></i><b data-i="t4n">Pays basque</b><span data-i="t4">Criée, Ferme Elizaldia, Txakoli de Getaria</span></div>
+          <div><i></i><b data-i="t5n">Landes & Pyrénées</b><span data-i="t5">Foie gras de Castelnau, caviar de truite</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- =========================== CARTE =========================== -->
+<div class="page" data-page="carte" hidden>
+  <section class="phero" style="padding-bottom:20px">
+    <div class="wrap">
+      <span class="eyebrow" data-i="nav_menu">La Carte</span>
+      <h1 style="margin-top:14px" data-ih="menu_h">La <span class="accent">carte</span></h1>
+      <p class="lead" style="margin-top:16px" data-i="menu_lead">Elle s'affiche dans la langue de votre téléphone. Vous pouvez la changer à tout moment.</p>
+      <div class="mlangbar">
+        <div class="lang" role="group" aria-label="Langue de la carte"><button type="button" data-lang="fr">Français</button><button type="button" data-lang="es">Español</button><button type="button" data-lang="en">English</button></div>
+        <span class="note" id="langnote"></span>
+      </div>
+    </div>
+  </section>
+  <section style="padding-bottom:40px">
+    <div class="wrap">
+      <div class="mtools"><div class="row"><div class="chips" id="chips"></div><label class="toggle"><input type="checkbox" id="altoggle"><span data-i="al_show">Allergènes</span></label></div></div>
+      <div class="mgrid" id="menu"></div>
+      <div class="mnote">
+        <div><b data-i="mn1_t">Accompagnement</b><span data-i="mn1_d">Huîtres, coquillages et crustacés servis avec pain de seigle, beurre demi-sel, citron, aïoli et mayonnaise maison.</span></div>
+        <div><b data-i="mn2_t">Allergènes</b><span id="allegend"></span></div>
+        <div><b data-i="mn3_t">Règlement</b><span data-i="mn3_d">Prix nets, taxes et service compris. CB et espèces acceptées, pas de chèques.</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- =========================== RÉSERVER =========================== -->
+<div class="page" data-page="reserver" hidden>
+  <section class="phero" style="padding-bottom:30px">
+    <div class="wrap grid">
+      <div>
+        <span class="eyebrow" data-i="nav_book">Réserver</span>
+        <h1 style="margin-top:14px" data-ih="book_h">Une table<br>face à la <span class="accent">baie</span></h1>
+        <p class="lead" style="margin-top:16px" data-i="book_lead">Trois étapes, trente secondes. Confirmation immédiate par SMS.</p>
+      </div>
+      <div class="oy breathe" data-oy="6" style="max-width:340px;margin-left:auto;width:100%"></div>
+    </div>
+  </section>
+  <section style="padding-bottom:40px">
+    <div class="wrap flow">
+      <form class="card" id="bookform" novalidate>
+        <div class="stepper" id="bstepper"><span class="on"><b>1</b><span data-i="bs1">Date</span></span><span><b>2</b><span data-i="bs2">Heure & couverts</span></span><span><b>3</b><span data-i="bs3">Coordonnées</span></span></div>
+        <div id="bookbody">
+          <fieldset class="fs"><legend data-i="b_date">Choisissez un jour</legend>
+            <div class="calhd"><button type="button" id="calprev" aria-label="Mois précédent">‹</button><span id="calmonth"></span><button type="button" id="calnext" aria-label="Mois suivant">›</button></div>
+            <div class="cal" id="cal"></div>
+          </fieldset>
+          <fieldset class="fs"><legend data-i="b_time">Heure et couverts</legend>
+            <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><span class="f" style="font-size:.95rem" data-i="covers">Couverts</span><div class="counter"><button type="button" id="cminus" aria-label="−">−</button><output id="covers">2</output><button type="button" id="cplus" aria-label="+">+</button></div></div>
+            <div class="slots" id="bslots"></div>
+          </fieldset>
+          <fieldset class="fs"><legend data-i="b_you">Vos coordonnées</legend>
+            <div class="fields">
+              <label class="f"><span data-i="f_name">Nom</span><input id="bname" autocomplete="name" placeholder="Martin"></label>
+              <label class="f"><span data-i="f_phone">Téléphone</span><input id="bphone" type="tel" autocomplete="tel" placeholder="06 12 34 56 78"></label>
+              <label class="f full"><span data-i="f_email">E-mail (facultatif)</span><input id="bemail" type="email" autocomplete="email"></label>
+              <label class="f full"><span data-i="f_note">Une occasion, une allergie ?</span><textarea id="bnote"></textarea></label>
+            </div>
+          </fieldset>
+          <div class="formfoot"><span class="demo" data-i="demo_gg">Démo · connexion Growth Gusto à venir</span><button class="btn" type="submit" data-i="b_confirm">Confirmer la réservation</button></div>
+        </div>
+        <div id="bookok" hidden></div>
+      </form>
+      <div class="aside">
+        <div class="card"><h3 data-i="recap">Récapitulatif</h3><div class="recap" id="brecap"></div></div>
+        <div class="card"><h3 data-i="good_k">Bon à savoir</h3><div class="info-list">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="var(--rasp)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i="g1">Table gardée 15 minutes après l'heure réservée.</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="var(--rasp)" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6M15 20c0-3 1.5-5 4-5"/></svg><span data-i="g2">Plus de 8 personnes ou privatisation : écrivez-nous depuis la page Contact.</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="var(--rasp)" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg><span data-i="g3">CB et espèces acceptées, pas de chèques.</span></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- =========================== À EMPORTER =========================== -->
+<div class="page" data-page="emporter" hidden>
+  <section class="thero">
+    <div class="wrap grid">
+      <div>
+        <span class="eyebrow" data-i="nav_take">À emporter</span>
+        <h1 style="margin-top:14px" data-ih="take_h">Le plateau,<br><span class="accent">chez vous</span></h1>
+        <p class="lead" data-i="take_lead">Composez votre commande, choisissez votre heure de retrait et réglez au comptoir. Aucun paiement en ligne.</p>
+        <div class="pills">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i="pill1">Prête à l'heure choisie</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span data-i="pill2">Retrait 5 rue des Orangers</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg><span data-i="pill3">CB ou espèces au retrait</span></span>
+        </div>
+      </div>
+      <div class="bourriche" data-bourriche="big"></div>
+    </div>
+    <svg class="waveband" data-wave="navy>cream" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true" style="margin-bottom:-2px"><path fill="var(--cream)"/></svg>
+  </section>
+  <section class="sec" style="padding-top:36px">
+    <div class="wrap">
+      <div class="stepper" id="tstepper" style="margin-bottom:28px"><span class="on"><b>1</b><span data-i="ts1">Votre sélection</span></span><span><b>2</b><span data-i="ts2">Retrait</span></span><span><b>3</b><span data-i="ts3">Coordonnées</span></span><span><b>4</b><span data-i="ts4">Confirmation</span></span></div>
+      <div class="shop">
+        <div>
+          <div class="cats" id="tcats"></div>
+          <div class="products" id="products"></div>
+        </div>
+        <div class="basket" id="basket">
+          <form class="card" id="takeform" novalidate>
+            <div id="takebody">
+              <h3><span data-i="cart">Votre commande</span><span class="demo" style="font-family:var(--fb)" id="bcount">0</span></h3>
+              <div class="blines" id="blines"></div>
+              <div class="btotal"><span data-i="total_site">À régler au retrait</span><b id="btotal">0,00 €</b></div>
+              <div class="paybox"><svg viewBox="0 0 40 40" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"><rect x="4" y="10" width="24" height="16" rx="3"/><path d="M4 15h24"/><rect x="16" y="18" width="20" height="13" rx="2" fill="var(--lemon)"/><circle cx="26" cy="24.5" r="3"/></svg><div><b data-i="pay_t">Paiement sur place</b><span data-i="pay_d">Par carte bancaire ou en espèces, au moment du retrait. Ticket de caisse remis avec la commande.</span></div></div>
+              <fieldset class="fs" style="margin-bottom:16px"><legend style="font-size:1.05rem" data-i="oys_opt">Vos huîtres</legend>
+                <div class="opts">
+                  <label><input type="radio" name="open" value="closed" checked><b data-i="o_closed">Fermées</b><span data-i="o_closed_d">En bourriche, à ouvrir chez vous</span></label>
+                  <label><input type="radio" name="open" value="open"><b data-i="o_open">Ouvertes</b><span data-i="o_open_d">Sur plateau, à déguster vite</span></label>
+                </div>
+              </fieldset>
+              <fieldset class="fs" style="margin-bottom:16px"><legend style="font-size:1.05rem" data-i="pickup">Retrait</legend>
+                <div class="days" id="tdays"></div>
+                <div class="slots" id="tslots"></div>
+              </fieldset>
+              <fieldset class="fs" style="margin-bottom:16px"><legend style="font-size:1.05rem" data-i="b_you">Vos coordonnées</legend>
+                <div class="fields">
+                  <label class="f"><span data-i="f_name">Nom</span><input id="tname" autocomplete="name" placeholder="Martin"></label>
+                  <label class="f"><span data-i="f_phone">Téléphone</span><input id="tphone" type="tel" autocomplete="tel" placeholder="06 12 34 56 78"></label>
+                </div>
+              </fieldset>
+              <button class="btn" type="submit" style="width:100%;justify-content:center" data-i="t_confirm">Valider ma commande</button>
+              <p style="margin-top:12px;text-align:center"><span class="demo" data-i="demo_gg">Démo · connexion Growth Gusto à venir</span></p>
+              <p id="terr" style="color:var(--rasp);font-weight:600;font-size:.9rem;margin-top:10px" hidden></p>
+            </div>
+            <div id="takeok" hidden></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow" data-i="keep_k">Conseils</span><h2 class="tilt" data-i="keep_t">Bien garder vos huîtres</h2></div>
+      <div class="keep">
+        <div class="reveal"><svg viewBox="0 0 46 46" fill="none" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round"><rect x="15" y="4" width="16" height="30" rx="8"/><circle cx="23" cy="36" r="7" fill="var(--rasp)" stroke="var(--rasp)"/><path d="M23 12v18" stroke="var(--rasp)"/></svg><h3 data-i="k1_t">Au frais</h3><p data-i="k1_d">Entre 5 et 15 °C, dans le bas du réfrigérateur, jamais dans l'eau.</p></div>
+        <div class="reveal"><svg viewBox="0 0 46 46" fill="none" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round"><path d="M6 28c4-10 30-10 34 0-4 6-30 6-34 0z"/><path d="M10 22c6-6 20-6 26 0" stroke="var(--rasp)"/></svg><h3 data-i="k2_t">Bien à plat</h3><p data-i="k2_d">Côté creux en dessous, pour qu'elles gardent leur eau.</p></div>
+        <div class="reveal"><svg viewBox="0 0 46 46" fill="none" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round"><rect x="6" y="10" width="34" height="30" rx="4"/><path d="M6 18h34M15 6v8M31 6v8"/><path d="M16 28l5 5 9-10" stroke="var(--rasp)"/></svg><h3 data-i="k3_t">Ouvertes ? Tout de suite</h3><p data-i="k3_d">Une huître ouverte se déguste dans l'heure. Fermée, elle patiente quelques jours.</p></div>
+      </div>
+    </div>
+  </section>
+  <div class="mbar" id="mbar"><span><span data-i="cart">Votre commande</span> · <span id="mcount">0</span></span><b id="mtotal">0,00 €</b><a class="btn light sm" href="#basket" id="mgo" data-i="see_cart">Voir</a></div>
+</div>
+
+<!-- =========================== CONTACT =========================== -->
+<div class="page" data-page="contact" hidden>
+  <section class="chero">
+    <div class="wrap grid">
+      <div>
+        <span class="eyebrow" data-i="nav_contact">Contact</span>
+        <h1 style="margin-top:14px" data-ih="contact_h">Venez<br>nous <span style="color:var(--rasp)">voir</span></h1>
+        <p class="lead" style="margin-top:16px" data-i="contact_lead">Au bord de la baie de Txingudi, à deux pas du port de plaisance et de l'ancien port de pêche.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Le+Parc+A+Huitres+5+Rue+des+Orangers+64700+Hendaye" target="_blank" rel="noopener"><span data-i="route_btn">Itinéraire</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+          <a class="btn ghost" href="#reserver" data-i="cta_book">Réserver une table</a>
+        </div>
+      </div>
+      <div class="bay" id="bay"></div>
+    </div>
+  </section>
+  <section style="padding-bottom:60px">
+    <div class="wrap">
+      <div class="ccards">
+        <div class="cc reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span><h3 data-i="f_addr">Adresse</h3><span class="v">5 rue des Orangers<br>64700 Hendaye</span><div class="acts"><button type="button" class="chip" data-copy="5 rue des Orangers, 64700 Hendaye" data-i="copy">Copier</button></div></div>
+        <div class="cc reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><h3 data-i="f_phone">Téléphone</h3><span class="v tab">05 59 20 32 38</span><div class="acts"><button type="button" class="chip" data-copy="05 59 20 32 38" data-i="copy">Copier</button><a class="chip" href="tel:+33559203238" data-i="call">Appeler</a></div></div>
+        <div class="cc reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><h3>E-mail</h3><span class="v">contact@leparcahuitres-hendaye.fr</span><div class="acts"><button type="button" class="chip" data-copy="contact@leparcahuitres-hendaye.fr" data-i="copy">Copier</button></div></div>
+        <div class="cc reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="var(--navy)"/></svg></span><h3 data-i="f_follow">Suivez-nous</h3><span class="v">@leparcahuitres_hendaye</span><div class="acts"><a class="chip" href="https://www.instagram.com/leparcahuitres_hendaye/" target="_blank" rel="noopener">Instagram</a><a class="chip" href="https://www.facebook.com/leparcahuitres.hendaye" target="_blank" rel="noopener">Facebook</a></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="sec" style="padding-top:0">
+    <div class="wrap two">
+      <div class="card reveal" style="box-shadow:none;border-width:1.5px;border-color:var(--line)">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px"><h2 style="font-size:2rem" data-i="f_hours">Horaires</h2><span class="status" id="status"><i></i><span></span></span></div>
+        <div class="hours" id="hours"></div>
+        <p style="margin-top:14px"><span class="demo" data-i="hours_demo">Horaires d'exemple, à remplacer par les vôtres</span></p>
+      </div>
+      <form class="card reveal" id="cform" novalidate>
+        <h2 style="font-size:2rem;margin-bottom:6px" data-i="write_t">Écrivez-nous</h2>
+        <p style="color:var(--ink-soft);margin-bottom:18px" data-i="write_d">Groupes, privatisation, presse ou simple question : on vous répond rapidement.</p>
+        <div class="fields">
+          <label class="f full"><span data-i="subject">Sujet</span><select id="csub"><option data-i="sub1">Groupe de plus de 8 personnes</option><option data-i="sub2">Privatisation</option><option data-i="sub3">Presse</option><option data-i="sub4">Autre question</option></select></label>
+          <label class="f"><span data-i="f_name">Nom</span><input id="cname" autocomplete="name"></label>
+          <label class="f"><span data-i="f_email2">E-mail</span><input id="cemail" type="email" autocomplete="email"></label>
+          <label class="f full"><span data-i="f_msg">Message</span><textarea id="cmsg"></textarea></label>
+        </div>
+        <div class="formfoot" style="margin-top:16px"><span class="demo" data-i="demo">Démo</span><button class="btn" type="submit" data-i="send">Envoyer</button></div>
+        <p id="cok" style="margin-top:12px;font-weight:600;color:var(--navy)" hidden></p>
+      </form>
+    </div>
+  </section>
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow">FAQ</span><h2 class="tilt" data-i="faq_t">Questions fréquentes</h2></div>
+      <div class="faq" id="faq"></div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="site">
+  <svg class="fwave" data-wave="cream>navy" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path fill="var(--navy)"/></svg>
+  <div class="wrap">
+    <div class="fcta">
+      <h2 data-ih="foot_cta">Une table,<br><span class="accent">une douzaine ?</span></h2>
+      <div class="acts"><a class="btn light" href="#reserver" data-i="cta_book">Réserver une table</a><a class="btn light ghost" style="--f:var(--cream);border-color:var(--cream)" href="#emporter" data-i="cta_take">Commander à emporter</a></div>
+    </div>
+    <div class="fgrid">
+      <div class="flogo">
+        <svg viewBox="0 0 300 190" data-logo="6" data-inv="1" aria-hidden="true"></svg>
+        <b>Le Parc à Huîtres</b>
+        <p data-i="foot_about">Bar à huîtres et fruits de mer à Hendaye. Huîtres ouvertes à la minute, coquillages cuits maison, cuisine de l'océan.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/leparcahuitres_hendaye/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://www.facebook.com/leparcahuitres.hendaye" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v7h4v-7h3l1-4h-4V8z"/></svg></a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Le+Parc+A+Huitres+5+Rue+des+Orangers+64700+Hendaye" target="_blank" rel="noopener" aria-label="Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3 data-i="f_nav">Le site</h3>
+        <ul><li><a href="#maison" data-i="nav_house">La Maison</a></li><li><a href="#carte" data-i="nav_menu">La Carte</a></li><li><a href="#reserver" data-i="nav_book">Réserver</a></li><li><a href="#emporter" data-i="nav_take">À emporter</a></li><li><a href="#contact" data-i="nav_contact">Contact</a></li></ul>
+      </div>
+      <div>
+        <h3 data-i="f_find">Nous trouver</h3>
+        <ul><li>5 rue des Orangers</li><li>64700 Hendaye</li><li class="tab">05 59 20 32 38</li><li style="word-break:break-word">contact@leparcahuitres-hendaye.fr</li></ul>
+      </div>
+      <div>
+        <h3 data-i="f_hours">Horaires</h3>
+        <div class="fhours" id="fhours"></div>
+        <h3 style="margin-top:24px" data-i="news_t">Les arrivages</h3>
+        <form class="news" id="news" novalidate><input type="email" id="newsmail" aria-label="E-mail" data-iph="news_ph" placeholder="Votre e-mail"><button type="submit">OK</button></form>
+      </div>
+    </div>
+  </div>
+  <div class="giant" aria-hidden="true"><div class="track" id="giant"></div></div>
+  <div class="wrap fbot">
+    <span>© 2026 Le Parc à Huîtres · Hendaye</span>
+    <nav><a href="#contact" data-i="legal">Mentions légales</a><a href="#carte" data-i="mn2_t">Allergènes</a><a href="#contact" data-i="cookies">Cookies</a></nav>
+    <span data-i="alcohol">L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</span>
+    <div class="lang" role="group" aria-label="Langue"><button type="button" data-lang="fr">FR</button><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+
+/* =============== i18n strings [fr, es, en] =============== */
+const I={
+tag:["Perle d'Hendaye","Perla de Hendaya","Pearl of Hendaye"],
+nav_home:["Accueil","Inicio","Home"],nav_house:["La Maison","La Casa","Our story"],nav_menu:["La Carte","La Carta","Menu"],nav_book:["Réserver","Reservar","Book"],nav_take:["À emporter","Para llevar","Takeaway"],nav_contact:["Contact","Contacto","Contact"],
+kicker:["Bar à huîtres · Hendaye · à deux pas du port","Bar de ostras · Hendaya · junto al puerto","Oyster bar · Hendaye · steps from the harbour"],
+hero_lead:["Huîtres ouvertes à la minute, coquillages cuits maison et cuisine de l'océan, au bord de la baie.","Ostras abiertas al momento, mariscos cocidos en casa y cocina del océano, junto a la bahía.","Oysters opened to order, shellfish cooked in-house and ocean cooking, right by the bay."],
+cta_book:["Réserver une table","Reservar mesa","Book a table"],cta_book_s:["Réserver","Reservar","Book"],cta_take:["Commander à emporter","Pedir para llevar","Order takeaway"],cta_menu:["Voir la carte","Ver la carta","See the menu"],
+reviews_n:["458 avis Google","458 reseñas en Google","458 Google reviews"],reviews_w:["avis Google","reseñas en Google","Google reviews"],
+ways_k:["Venez comme vous voulez","Como usted prefiera","However you like"],ways_t:["Trois façons de nous goûter","Tres formas de probarnos","Three ways to taste us"],
+way1_t:["Sur place","En el local","Dine in"],way1_d:["Au comptoir ou à table, une douzaine et un verre de Txakoli face à la baie.","En la barra o en mesa, una docena y una copa de Txakoli frente a la bahía.","At the counter or at a table, a dozen and a glass of Txakoli facing the bay."],
+way2_t:["À emporter","Para llevar","Takeaway"],way2_d:["Commandez en ligne, passez prendre à l'heure choisie, réglez sur place.","Pida en línea, recoja a la hora elegida y pague en el local.","Order online, collect at your chosen time, pay on site."],
+way3_t:["La carte","La carta","The menu"],way3_d:["En français, en español, in English : elle s'ouvre dans la langue de votre téléphone.","En français, en español, in English: se abre en el idioma de su teléfono.","En français, en español, in English: it opens in your phone's language."],
+geste_k:["Le geste","El gesto","The craft"],geste_t:["De la bourriche à l'assiette","De la cesta al plato","From basket to plate"],
+s1_t:["On choisit","Elegimos","We select"],s1_d:["Cinq huîtres, cinq terroirs, triées au calibre selon les arrivages.","Cinco ostras, cinco terruños, clasificadas por calibre según las llegadas.","Five oysters, five terroirs, graded by size as they arrive."],
+s2_t:["On ouvre à la minute","Abrimos al momento","We open to order"],s2_d:["Jamais à l'avance. La lame dans la charnière, un quart de tour, le muscle tranché net.","Nunca antes. La hoja en la charnela, un cuarto de vuelta, el músculo cortado limpio.","Never in advance. Blade in the hinge, a quarter turn, the muscle cut clean."],
+s3_t:["On sert sur glace","Servimos sobre hielo","We serve on ice"],s3_d:["Pain de seigle, beurre demi-sel, citron, aïoli et mayonnaise maison.","Pan de centeno, mantequilla semisalada, limón, alioli y mayonesa casera.","Rye bread, salted butter, lemon, aïoli and house mayonnaise."],
+oys_k:["Notre sélection","Nuestra selección","Our selection"],oys_t:["Nos huîtres","Nuestras ostras","Our oysters"],oys_d:["Touchez une huître pour l'ouvrir et découvrir son caractère.","Toque una ostra para abrirla y descubrir su carácter.","Tap an oyster to open it and discover its character."],
+per12:["les 12","las 12","per dozen"],iod:["Iode","Yodo","Brine"],
+plat_k:["À partager","Para compartir","To share"],plat_t:["Les plateaux","Las bandejas","Platters"],plat_d:["Sur place ou à emporter. Composition fixe, vous pouvez ajouter coquillages et crustacés.","En el local o para llevar. Composición fija, puede añadir mariscos y crustáceos.","Dine in or take away. Fixed platters, you can add extra shellfish."],
+add_take:["À emporter","Para llevar","Take away"],
+proof_k:["Ils en parlent","Lo dicen ellos","In their words"],proof_t:["Nos clients en parlent mieux que nous.","Nuestros clientes lo cuentan mejor.","Our guests say it best."],rev_lang:["Avis Google, en français","Reseñas de Google, en francés","Google reviews, in French"],rev_all:["Lire tous les avis sur Google","Leer todas las reseñas en Google","Read all reviews on Google"],visited:["Visité en","Visitado en","Visited in"],proof_d:["4,6 sur 5 sur Google, 458 avis. Merci à tous ceux qui partagent ce moment avec nous.","4,6 sobre 5 en Google, 458 reseñas. Gracias a todos los que comparten este momento con nosotros.","4.6 out of 5 on Google, 458 reviews. Thank you to everyone who shares this moment with us."],
+house_h:["Passionnés<br>de la <span class=\"accent\">mer</span>","Apasionados<br>del <span class=\"accent\">mar</span>","In love<br>with the <span class=\"accent\">sea</span>"],
+house_lead:["Des artisans du goût, un comptoir au bord de la baie, et une seule règle : la fraîcheur d'abord.","Artesanos del sabor, una barra junto a la bahía y una sola regla: la frescura primero.","Flavour artisans, a counter by the bay, and one rule: freshness first."],
+house_p1:["Le Parc à Huîtres, c'est un comptoir posé à deux pas du port de plaisance et de l'ancien port de pêche d'Hendaye. On y vient pour une douzaine au soleil, un plateau à partager ou une soupe de poissons de la criée basque.","Le Parc à Huîtres es una barra a dos pasos del puerto deportivo y del antiguo puerto pesquero de Hendaya. Se viene por una docena al sol, una bandeja para compartir o una sopa de pescado de la lonja vasca.","Le Parc à Huîtres is a counter a few steps from Hendaye's marina and old fishing port. People come for a dozen in the sun, a platter to share or a fish soup from the Basque fish market."],
+house_p2:["Depuis des années, on goûte, on compare, on choisit. On travaille avec des ostréiculteurs et des producteurs artisans qu'on connaît, et la carte suit les saisons et les arrivages, sans compromis.","Desde hace años probamos, comparamos y elegimos. Trabajamos con ostricultores y productores artesanos que conocemos, y la carta sigue las estaciones y las llegadas, sin concesiones.","For years we have tasted, compared and chosen. We work with oyster farmers and artisan producers we know, and the menu follows the seasons and the catch, with no compromise."],
+house_q:["« Ici, on cuisine avec passion et on partage avec plaisir. »","« Aquí cocinamos con pasión y compartimos con placer. »","“We cook with passion and share with pleasure.”"],
+house_p3:["Ce savoir-faire se transmet de main en main : choisir une huître, l'ouvrir proprement, la servir au bon moment. C'est ce qu'on aime partager à table.","Este oficio se transmite de mano en mano: elegir una ostra, abrirla bien, servirla en su momento. Es lo que nos gusta compartir en la mesa.","This craft is passed hand to hand: choosing an oyster, opening it cleanly, serving it at the right moment. That is what we love to share at the table."],
+val_k:["Ce qui nous tient","Lo que nos mueve","What drives us"],val_t:["Nos engagements","Nuestros compromisos","Our commitments"],
+v1_t:["Fraîcheur","Frescura","Freshness"],v1_d:["Huîtres ouvertes à la commande, coquillages cuits sur place, rien ne patiente en vitrine.","Ostras abiertas al pedirlas, mariscos cocidos aquí, nada espera en la vitrina.","Oysters opened to order, shellfish cooked here, nothing waits in a display case."],
+v2_t:["Artisans","Artesanos","Artisans"],v2_d:["Ostréiculteurs, fermes du Pays basque, criée locale : des producteurs qu'on connaît.","Ostricultores, granjas del País Vasco, lonja local: productores que conocemos.","Oyster farmers, Basque farms, the local fish market: producers we know."],
+v3_t:["Transmission","Transmisión","Know-how"],v3_d:["Un geste appris, répété, transmis. Chaque ouverture est faite à la main.","Un gesto aprendido, repetido, transmitido. Cada ostra se abre a mano.","A skill learned, repeated, passed on. Every oyster is opened by hand."],
+v4_t:["Partage","Compartir","Sharing"],v4_d:["Des plateaux faits pour la table, des vins choisis pour l'iode, trois langues à la carte.","Bandejas para la mesa, vinos elegidos para el yodo, tres idiomas en la carta.","Platters made for the table, wines chosen for the brine, three languages on the menu."],
+route_k:["Le voyage d'une huître","El viaje de una ostra","An oyster's journey"],route_t:["Du parc à votre assiette","Del parque a su plato","From the farm to your plate"],
+r1_t:["Le parc","El parque","The farm"],r1_d:["Deux à quatre ans d'élevage en mer, au rythme des marées.","De dos a cuatro años de cría en el mar, al ritmo de las mareas.","Two to four years growing at sea, with the tides."],
+r2_t:["L'affinage","El afinado","Refining"],r2_d:["En claires pour les Fines de Claires de Marennes-Oléron.","En «claires» para las Fines de Claires de Marennes-Oléron.","In claires ponds for Marennes-Oléron Fines de Claires."],
+r3_t:["L'arrivage","La llegada","Arrival"],r3_d:["Selon les marées et les saisons, jusqu'à notre comptoir.","Según mareas y estaciones, hasta nuestra barra.","With the tides and seasons, all the way to our counter."],
+r4_t:["L'ouverture","La apertura","Opening"],r4_d:["À la minute, au couteau, juste avant de servir.","Al momento, a cuchillo, justo antes de servir.","To order, by knife, just before serving."],
+r5_t:["La table","La mesa","The table"],r5_d:["Sur glace, avec seigle, beurre demi-sel et citron.","Sobre hielo, con centeno, mantequilla y limón.","On ice, with rye, salted butter and lemon."],
+ter_k:["D'où ça vient","De dónde viene","Where it comes from"],ter_t:["Nos terroirs","Nuestros terruños","Our terroirs"],
+t1:["Huîtres de pleine mer, tourteau","Ostras de mar abierto, buey de mar","Open-sea oysters, brown crab"],t2:["Fines de Claires n°3","Fines de Claires n°3","Fines de Claires n°3"],t3n:["Irlande","Irlanda","Ireland"],t3:["Spéciales Royales n°3","Especiales Royales n°3","Royale Spéciales n°3"],t4n:["Pays basque","País Vasco","Basque Country"],t4:["Criée, Ferme Elizaldia, Txakoli de Getaria","Lonja, Granja Elizaldia, Txakoli de Getaria","Fish market, Elizaldia farm, Getaria Txakoli"],t5n:["Landes & Pyrénées","Landas y Pirineos","Landes & Pyrenees"],t5:["Foie gras de Castelnau, caviar de truite","Foie gras de Castelnau, caviar de trucha","Castelnau foie gras, trout caviar"],
+menu_h:["La <span class=\"accent\">carte</span>","La <span class=\"accent\">carta</span>","The <span class=\"accent\">menu</span>"],
+menu_lead:["Elle s'affiche dans la langue de votre téléphone. Vous pouvez la changer à tout moment.","Se muestra en el idioma de su teléfono. Puede cambiarlo cuando quiera.","It appears in your phone's language. You can switch at any time."],
+auto:["Langue détectée sur votre téléphone","Idioma detectado en su teléfono","Language detected from your phone"],manual:["Langue choisie","Idioma elegido","Language chosen"],
+al_show:["Allergènes","Alérgenos","Allergens"],mn1_t:["Accompagnement","Acompañamiento","Served with"],mn1_d:["Huîtres, coquillages et crustacés servis avec pain de seigle, beurre demi-sel, citron, aïoli et mayonnaise maison.","Ostras y mariscos servidos con pan de centeno, mantequilla semisalada, limón, alioli y mayonesa casera.","Oysters and shellfish come with rye bread, salted butter, lemon, aïoli and house mayonnaise."],
+mn2_t:["Allergènes","Alérgenos","Allergens"],mn3_t:["Règlement","Pago","Payment"],mn3_d:["Prix nets, taxes et service compris. CB et espèces acceptées, pas de chèques.","Precios netos, impuestos y servicio incluidos. Tarjeta y efectivo, no se aceptan cheques.","Net prices, tax and service included. Card and cash, no cheques."],
+market:["Selon cours","Según mercado","Market price"],
+book_h:["Une table<br>face à la <span class=\"accent\">baie</span>","Una mesa<br>frente a la <span class=\"accent\">bahía</span>","A table<br>facing the <span class=\"accent\">bay</span>"],
+book_lead:["Trois étapes, trente secondes. Confirmation immédiate par SMS.","Tres pasos, treinta segundos. Confirmación inmediata por SMS.","Three steps, thirty seconds. Instant confirmation by text."],
+bs1:["Date","Fecha","Date"],bs2:["Heure & couverts","Hora y comensales","Time & guests"],bs3:["Coordonnées","Datos","Details"],
+b_date:["Choisissez un jour","Elija un día","Pick a day"],b_time:["Heure et couverts","Hora y comensales","Time and guests"],b_you:["Vos coordonnées","Sus datos","Your details"],
+covers:["Couverts","Comensales","Guests"],lunch:["Midi","Mediodía","Lunch"],dinner:["Soir","Noche","Dinner"],
+f_name:["Nom","Nombre","Name"],f_phone:["Téléphone","Teléfono","Phone"],f_email:["E-mail (facultatif)","E-mail (opcional)","Email (optional)"],f_email2:["E-mail","E-mail","Email"],f_note:["Une occasion, une allergie ?","¿Una ocasión, una alergia?","An occasion, an allergy?"],f_msg:["Message","Mensaje","Message"],
+demo_gg:["Démo · connexion Growth Gusto à venir","Demo · conexión Growth Gusto próximamente","Demo · Growth Gusto connection coming"],demo:["Démo","Demo","Demo"],
+b_confirm:["Confirmer la réservation","Confirmar reserva","Confirm booking"],recap:["Récapitulatif","Resumen","Summary"],
+good_k:["Bon à savoir","Conviene saber","Good to know"],g1:["Table gardée 15 minutes après l'heure réservée.","Mesa guardada 15 minutos después de la hora reservada.","Table held for 15 minutes after your time."],g2:["Plus de 8 personnes ou privatisation : écrivez-nous depuis la page Contact.","Más de 8 personas o privatización: escríbanos desde la página Contacto.","More than 8 guests or a private event: write to us from the Contact page."],g3:["CB et espèces acceptées, pas de chèques.","Tarjeta y efectivo, no se aceptan cheques.","Card and cash accepted, no cheques."],
+r_day:["Jour","Día","Day"],r_time:["Heure","Hora","Time"],r_cov:["Couverts","Comensales","Guests"],r_where:["Lieu","Lugar","Where"],
+b_ok_t:["Table réservée !","¡Mesa reservada!","Table booked!"],b_ok_d:["Un SMS de confirmation vous sera envoyé. À très vite.","Recibirá un SMS de confirmación. Hasta pronto.","A confirmation text will follow. See you soon."],b_need:["Choisissez un jour et une heure, puis indiquez votre nom et votre téléphone.","Elija día y hora, e indique su nombre y teléfono.","Pick a day and a time, then add your name and phone."],
+again:["Nouvelle réservation","Nueva reserva","New booking"],
+take_h:["Le plateau,<br><span class=\"accent\">chez vous</span>","La bandeja,<br><span class=\"accent\">en su casa</span>","The platter,<br><span class=\"accent\">at home</span>"],
+take_lead:["Composez votre commande, choisissez votre heure de retrait et réglez au comptoir. Aucun paiement en ligne.","Prepare su pedido, elija la hora de recogida y pague en la barra. Sin pago en línea.","Build your order, pick a collection time and pay at the counter. No online payment."],
+pill1:["Prête à l'heure choisie","Lista a la hora elegida","Ready at your chosen time"],pill2:["Retrait 5 rue des Orangers","Recogida 5 rue des Orangers","Collect at 5 rue des Orangers"],pill3:["CB ou espèces au retrait","Tarjeta o efectivo al recoger","Card or cash on collection"],
+ts1:["Votre sélection","Su selección","Your selection"],ts2:["Retrait","Recogida","Collection"],ts3:["Coordonnées","Datos","Details"],ts4:["Confirmation","Confirmación","Confirmation"],
+all:["Tout","Todo","All"],add:["Ajouter","Añadir","Add"],cart:["Votre commande","Su pedido","Your order"],empty:["Votre panier est vide. Ajoutez une douzaine pour commencer.","Su cesta está vacía. Añada una docena para empezar.","Your basket is empty. Add a dozen to start."],
+total_site:["À régler au retrait","A pagar al recoger","To pay on collection"],pay_t:["Paiement sur place","Pago en el local","Pay on site"],pay_d:["Par carte bancaire ou en espèces, au moment du retrait. Ticket de caisse remis avec la commande.","Con tarjeta o en efectivo, al recoger. Se entrega el ticket con el pedido.","By card or cash when you collect. Receipt handed over with your order."],
+oys_opt:["Vos huîtres","Sus ostras","Your oysters"],o_closed:["Fermées","Cerradas","Closed"],o_closed_d:["En bourriche, à ouvrir chez vous","En cesta, para abrir en casa","In a basket, to open at home"],o_open:["Ouvertes","Abiertas","Opened"],o_open_d:["Sur plateau, à déguster vite","En bandeja, para tomar pronto","On a tray, to enjoy soon"],
+pickup:["Retrait","Recogida","Collection"],today:["Aujourd'hui","Hoy","Today"],tomorrow:["Demain","Mañana","Tomorrow"],
+t_confirm:["Valider ma commande","Confirmar pedido","Place my order"],t_need:["Ajoutez au moins un produit, choisissez une heure et indiquez nom et téléphone.","Añada al menos un producto, elija hora e indique nombre y teléfono.","Add at least one item, pick a time and add your name and phone."],
+t_ok:["Commande enregistrée","Pedido registrado","Order recorded"],t_pick:["Retrait","Recogida","Collection"],t_pay:["À régler sur place","A pagar en el local","To pay on site"],t_paym:["CB ou espèces","Tarjeta o efectivo","Card or cash"],t_again:["Nouvelle commande","Nuevo pedido","New order"],stamp:["Enregistrée","Registrado","Recorded"],
+see_cart:["Voir","Ver","View"],
+keep_k:["Conseils","Consejos","Tips"],keep_t:["Bien garder vos huîtres","Cómo conservar sus ostras","Keeping your oysters"],
+k1_t:["Au frais","En fresco","Keep cool"],k1_d:["Entre 5 et 15 °C, dans le bas du réfrigérateur, jamais dans l'eau.","Entre 5 y 15 °C, en la parte baja de la nevera, nunca en agua.","Between 5 and 15 °C, low in the fridge, never in water."],
+k2_t:["Bien à plat","Bien planas","Lay them flat"],k2_d:["Côté creux en dessous, pour qu'elles gardent leur eau.","Con la parte cóncava abajo, para que conserven su agua.","Cupped side down, so they keep their water."],
+k3_t:["Ouvertes ? Tout de suite","¿Abiertas? Enseguida","Opened? Straight away"],k3_d:["Une huître ouverte se déguste dans l'heure. Fermée, elle patiente quelques jours.","Una ostra abierta se toma en la hora. Cerrada, aguanta unos días.","An opened oyster is best within the hour. Closed, it keeps a few days."],
+added:["ajouté au panier","añadido a la cesta","added to basket"],
+contact_h:["Venez<br>nous <span style=\"color:var(--rasp)\">voir</span>","Venga<br>a <span style=\"color:var(--rasp)\">vernos</span>","Come<br>and <span style=\"color:var(--rasp)\">visit</span>"],
+contact_lead:["Au bord de la baie de Txingudi, à deux pas du port de plaisance et de l'ancien port de pêche.","Junto a la bahía de Txingudi, a dos pasos del puerto deportivo y del antiguo puerto pesquero.","On Txingudi bay, a few steps from the marina and the old fishing port."],
+route_btn:["Itinéraire","Cómo llegar","Directions"],f_addr:["Adresse","Dirección","Address"],copy:["Copier","Copiar","Copy"],call:["Appeler","Llamar","Call"],copied:["Copié","Copiado","Copied"],f_follow:["Suivez-nous","Síganos","Follow us"],
+f_hours:["Horaires","Horario","Hours"],hours_demo:["Horaires d'exemple, à remplacer par les vôtres","Horario de ejemplo, a sustituir","Sample hours, to be replaced"],open_now:["Ouvert maintenant","Abierto ahora","Open now"],closed_now:["Fermé pour le moment","Cerrado ahora","Closed now"],closed:["Fermé","Cerrado","Closed"],
+write_t:["Écrivez-nous","Escríbanos","Write to us"],write_d:["Groupes, privatisation, presse ou simple question : on vous répond rapidement.","Grupos, privatización, prensa o cualquier pregunta: le respondemos rápido.","Groups, private events, press or a simple question: we reply quickly."],
+subject:["Sujet","Asunto","Subject"],sub1:["Groupe de plus de 8 personnes","Grupo de más de 8 personas","Group of more than 8"],sub2:["Privatisation","Privatización","Private event"],sub3:["Presse","Prensa","Press"],sub4:["Autre question","Otra pregunta","Other question"],
+send:["Envoyer","Enviar","Send"],c_ok:["Message prêt à être envoyé (démo, rien n'est parti).","Mensaje listo (demo, no se ha enviado nada).","Message ready (demo, nothing was sent)."],
+faq_t:["Questions fréquentes","Preguntas frecuentes","FAQ"],
+foot_cta:["Une table,<br><span class=\"accent\">une douzaine ?</span>","¿Una mesa,<br><span class=\"accent\">una docena?</span>","A table,<br><span class=\"accent\">a dozen?</span>"],
+foot_about:["Bar à huîtres et fruits de mer à Hendaye. Huîtres ouvertes à la minute, coquillages cuits maison, cuisine de l'océan.","Bar de ostras y mariscos en Hendaya. Ostras abiertas al momento, mariscos cocidos en casa, cocina del océano.","Oyster and seafood bar in Hendaye. Oysters opened to order, shellfish cooked in-house, ocean cooking."],
+f_nav:["Le site","El sitio","Explore"],f_find:["Nous trouver","Dónde estamos","Find us"],news_t:["Les arrivages","Las llegadas","Fresh arrivals"],news_ph:["Votre e-mail","Su e-mail","Your email"],news_ok:["Inscription notée (démo).","Suscripción anotada (demo).","Signed up (demo)."],
+legal:["Mentions légales","Aviso legal","Legal notice"],cookies:["Cookies","Cookies","Cookies"],alcohol:["L'abus d'alcool est dangereux pour la santé, à consommer avec modération.","El abuso del alcohol es peligroso para la salud, consumir con moderación.","Alcohol abuse is dangerous for your health, drink responsibly."]
+};
+const DAYS=[["Lundi","Lunes","Monday"],["Mardi","Martes","Tuesday"],["Mercredi","Miércoles","Wednesday"],["Jeudi","Jueves","Thursday"],["Vendredi","Viernes","Friday"],["Samedi","Sábado","Saturday"],["Dimanche","Domingo","Sunday"]];
+const ALL=[["Amidon","Almidón","Starch"],["Produits laitiers","Lácteos","Dairy"],["Œufs","Huevos","Eggs"],["Gluten","Gluten","Gluten"],["Poisson","Pescado","Fish"],["Mollusques","Moluscos","Molluscs"],["Sulfites","Sulfitos","Sulphites"],["Arachide","Cacahuete","Peanut"],["Moutarde","Mostaza","Mustard"],["Crustacés","Crustáceos","Crustaceans"]]; // index 0..8 = codes 1..9, index 9 = code 0
+const FAQ=[
+[["Faut-il réserver ?","¿Hay que reservar?","Do I need to book?"],["C'est conseillé, surtout le week-end et l'été. Réservez en ligne en trente secondes.","Es recomendable, sobre todo el fin de semana y en verano. Reserve en línea en treinta segundos.","It is a good idea, especially at weekends and in summer. Book online in thirty seconds."]],
+[["Quels moyens de paiement acceptez-vous ?","¿Qué formas de pago aceptan?","How can I pay?"],["Carte bancaire et espèces. Nous n'acceptons pas les chèques. À emporter, le règlement se fait au retrait.","Tarjeta y efectivo. No aceptamos cheques. Para llevar, se paga al recoger.","Card and cash. We do not accept cheques. For takeaway, you pay when you collect."]],
+[["Peut-on modifier un plateau ?","¿Se puede modificar una bandeja?","Can I change a platter?"],["La composition des plateaux est fixe, mais vous pouvez y ajouter d'autres coquillages et crustacés.","La composición es fija, pero puede añadir otros mariscos y crustáceos.","Platters are fixed, but you can add other shellfish and crustaceans."]],
+[["Où trouver la liste des allergènes ?","¿Dónde está la lista de alérgenos?","Where is the allergen list?"],["Sur la page La Carte, activez « Allergènes » pour les voir plat par plat. L'équipe reste à votre disposition sur place.","En La Carta, active «Alérgenos» para verlos plato por plato. El equipo está a su disposición.","On the Menu page, switch on “Allergens” to see them dish by dish. Our team is happy to help on site."]],
+[["Les moules sont-elles toujours à la carte ?","¿Hay mejillones todo el año?","Are mussels always on the menu?"],["Les moules de bouchot et les moules marinières sont servies de juin à décembre.","Los mejillones de bouchot y a la marinera se sirven de junio a diciembre.","Bouchot mussels and moules marinières are served from June to December."]]
+];
+const OYS=[
+ {n:"Fines de Claires",c:"n°3",o:["Marennes-Oléron","Marennes-Oléron","Marennes-Oléron"],p:26.4,i:3,note:["Affinée en claires : équilibrée, légèrement sucrée, l'huître pour commencer.","Afinada en «claires»: equilibrada, ligeramente dulce, la ostra para empezar.","Refined in claires: balanced, slightly sweet, the one to start with."]},
+ {n:["Normandes","Normandes","Normandy"],c:"n°3",o:["Pleine mer","Mar abierto","Open sea"],p:28.2,i:5,note:["Élevée en pleine mer : très iodée, franche, une vraie bouffée d'océan.","Criada en mar abierto: muy yodada, franca, un golpe de océano.","Grown in the open sea: very briny and bright, a real gust of ocean."]},
+ {n:["Spéciales Boudeuses","Especiales Boudeuse","Boudeuse Spéciales"],c:"n°4",o:["Forme ronde et creuse","Forma redonda y honda","Round, deep shell"],p:32.8,i:3,note:["Coquille ronde et profonde, chair charnue et croquante, finale douce.","Concha redonda y honda, carne firme y crujiente, final suave.","Round, deep shell, plump and crunchy flesh, a gentle finish."]},
+ {n:["Spéciales Royales","Especiales Royales","Royale Spéciales"],c:"n°3",o:["Irlande","Irlanda","Ireland"],p:42.0,i:4,note:["Des eaux froides d'Irlande : charnue, ample, notes de noisette.","De las aguas frías de Irlanda: carnosa, amplia, notas de avellana.","From Ireland's cold waters: meaty, generous, hazelnut notes."]},
+ {n:["Spéciales Gillardeau","Especiales Gillardeau","Gillardeau Spéciales"],c:"n°3",o:["La signature","La firma","The signature"],p:47.4,i:4,note:["La plus célèbre : chair ferme et croquante, longue finale sucrée.","La más célebre: carne firme y crujiente, largo final dulce.","The most famous: firm, crunchy flesh and a long sweet finish."]}
+];
+
+/* =============== MENU DATA (carte V5) [fr,es,en,dfr,des,den,price,allergens,takeaway] =============== */
+const MENU=[
+{id:"huitres",t:["Nos huîtres","Nuestras ostras","Our oysters"],n:["Les 12 · par 6, 9 ou 12","Las 12 · por 6, 9 o 12","Per dozen · by 6, 9 or 12"],icon:"oyster",items:[
+ ["Fines de Claires n°3","Fines de Claires n°3","Fines de Claires n°3","Marennes-Oléron","Marennes-Oléron","Marennes-Oléron",26.4,"6",1],
+ ["Normandes n°3","Normandes n°3","Normandy n°3","Pleine mer","Mar abierto","Open sea",28.2,"6",1],
+ ["Spéciales Boudeuses n°4","Especiales Boudeuse n°4","Boudeuse Spéciales n°4","","","",32.8,"6",1],
+ ["Spéciales Royales n°3","Especiales Royales n°3","Royale Spéciales n°3","Irlande","Irlanda","Ireland",42.0,"6",1],
+ ["Spéciales Gillardeau n°3","Especiales Gillardeau n°3","Gillardeau Spéciales n°3","","","",47.4,"6",1]]},
+{id:"plateaux",t:["L'iode à partager","El yodo para compartir","Platters to share"],n:["Le temps d'une marée","El tiempo de una marea","For one tide"],icon:"platter",items:[
+ ["Plateau Le Parc","Bandeja El Parque","Le Parc platter","10 Normandes n°3, 4 crevettes roses de Madagascar, 10 bulots cuits maison","10 Normandes n°3, 4 langostinos rosas, 10 caracoles de mar cocidos en casa","10 Normandy n°3, 4 Madagascar pink prawns, 10 house-cooked whelks",36.8,"0367",1],
+ ["Le Parc + tourteau","El Parque + buey de mar","Le Parc + brown crab","10 Normandes n°3, 4 crevettes roses, 10 bulots maison, 1 tourteau cuit de Normandie","10 Normandes n°3, 4 langostinos rosas, 10 caracoles de mar, 1 buey de mar de Normandía","10 Normandy n°3, 4 pink prawns, 10 house whelks, 1 cooked Normandy brown crab",61.8,"0367",1],
+ ["Huîtres assorties","Ostras surtidas","Assorted oysters","4 Fines de Claires, 4 Normandes, 4 Spéciales Royales n°3","4 Fines de Claires, 4 Normandes, 4 Especiales Royales n°3","4 Fines de Claires, 4 Normandy, 4 Royale Spéciales n°3",33.9,"6",1]]},
+{id:"coquillages",t:["Coquillages & crustacés","Mariscos y crustáceos","Shellfish & crustaceans"],n:["Selon nos arrivages","Según llegadas","Depending on the catch"],icon:"shrimp",items:[
+ ["Crevettes roses de Madagascar","Langostinos rosas de Madagascar","Madagascar pink prawns","6 pièces · calibre 30/35","6 piezas · calibre 30/35","6 pieces · size 30/35",17.8,"07",1],
+ ["Bulots & aïoli","Caracoles de mar y alioli","Whelks & aïoli","300 g, cuits maison","300 g, cocidos en casa","300 g, cooked in-house",13.8,"36",1],
+ ["Langoustines","Cigalas","Langoustines","3 pièces, cuites maison","3 piezas, cocidas en casa","3 pieces, cooked in-house",18.6,"03",1],
+ ["Tourteau cuit","Buey de mar cocido","Cooked brown crab","700 g la pièce","700 g la pieza","700 g each",28.6,"03",1],
+ ["Homard bleu","Bogavante azul","Blue lobster","700 g la pièce","700 g la pieza","700 g each",null,"03",0],
+ ["Moules de bouchot crues","Mejillones de bouchot crudos","Raw bouchot mussels","12 pièces · juin à décembre","12 piezas · junio a diciembre","12 pieces · June to December",null,"6",0]]},
+{id:"assiettes",t:["Petites assiettes","Platos pequeños","Small plates"],n:["À partager… ou pas","Para compartir… o no","To share… or not"],icon:"jar",items:[
+ ["Pâté basque au piment d'Espelette","Paté vasco con pimiento de Espelette","Basque pâté with Espelette pepper","Guindillas · Ferme Elizaldia · 125 g","Guindillas · Granja Elizaldia · 125 g","Guindillas · Elizaldia farm · 125 g",8.9,"7832",1],
+ ["Caviar de truite des Pyrénées","Caviar de trucha de los Pirineos","Pyrenees trout caviar","Crème épaisse · 80 g","Crema espesa · 80 g","Thick cream · 80 g",23.8,"57",1],
+ ["Saumon gravlax","Salmón gravlax","Salmon gravlax","Fait maison · 150 g","Hecho en casa · 150 g","House-cured · 150 g",20.8,"597",1],
+ ["Saumon fumé","Salmón ahumado","Smoked salmon","Tranché main · 150 g","Cortado a mano · 150 g","Hand-sliced · 150 g",20.8,"5",1],
+ ["Soupe de poissons","Sopa de pescado","Fish soup","Criée Pays basque · croûtons, aïoli, rouille, emmental","Lonja vasca · picatostes, alioli, rouille, queso","Basque fish market · croutons, aïoli, rouille, cheese",13.8,"12567",0],
+ ["Foie gras, pain toasté","Foie gras, pan tostado","Foie gras, toasted bread","La Basse-Cour de Castelnau, Landes","La Basse-Cour de Castelnau, Landas","La Basse-Cour de Castelnau, Landes",20.9,"",0],
+ ["Saucisson de montagne","Salchichón de montaña","Mountain saucisson","Ferme Elizaldia","Granja Elizaldia","Elizaldia farm",13.8,"",1]]},
+{id:"cuisine",t:["Sortie de cuisine","Salida de cocina","From the kitchen"],n:["Attention, c'est chaud","Cuidado, quema","Careful, it's hot"],icon:"pot",items:[
+ ["Noix de Saint-Jacques","Vieiras","Scallops","Comme en Normandie · 20 min de cuisson","Como en Normandía · 20 min de cocción","Normandy style · 20 min cooking",27.8,"12467",0],
+ ["Txangurro","Txangurro","Txangurro","20 min de cuisson","20 min de cocción","20 min cooking",24.9,"0561",0],
+ ["Bourride","Bourride","Bourride","Soupe de poisson, merlu basque, pommes de terre safranées · 20 min","Sopa de pescado, merluza vasca, patatas al azafrán · 20 min","Fish soup, Basque hake, saffron potatoes · 20 min",25.9,"145678",0],
+ ["Huîtres gratinées","Ostras gratinadas","Oysters gratin","Au beurre blanc · 6 pièces","Con beurre blanc · 6 piezas","Beurre blanc · 6 pieces",18.6,"12467",0],
+ ["Moules marinières","Mejillones a la marinera","Moules marinières","Riz blanc · 700 g · juin à décembre","Arroz blanco · 700 g · junio a diciembre","White rice · 700 g · June to December",18.8,"1467",0],
+ ["Garniture","Guarnición","Side","Riz ou salade","Arroz o ensalada","Rice or salad",3.2,"",0]]},
+{id:"desserts",t:["Les gourmands","Los golosos","Something sweet"],n:["À croquer sans culpabilité","Para disfrutar sin culpa","Guilt-free"],icon:"jar",items:[
+ ["Fromage de brebis du Pays basque","Queso de oveja del País Vasco","Basque sheep's cheese","Confiture de cerises noires","Mermelada de cereza negra","Black cherry jam",7.8,"1234",0],
+ ["Tarte aux pommes","Tarta de manzana","Apple tart","","","",7.8,"1234",0],
+ ["Île flottante maison","Isla flotante casera","Île flottante","Crème anglaise","Crema inglesa","Custard",7.8,"1234",0],
+ ["Baba au rhum","Baba al ron","Rum baba","Sirop et chantilly","Sirope y nata","Syrup and whipped cream",8.0,"1234",0]]},
+{id:"vins",t:["On arrose ça ?","¿Lo brindamos?","Shall we drink?"],n:["Verre 12,5 cl / bouteille 75 cl","Copa 12,5 cl / botella 75 cl","Glass 12.5 cl / bottle 75 cl"],icon:"glass",items:[
+ ["Entre-deux-Mers AOC","Entre-deux-Mers AOC","Entre-deux-Mers AOC","Blanc","Blanco","White","3,90 / 22,80","",0],
+ ["Uby n°2, Gascogne IGP","Uby n°2, Gascogne IGP","Uby n°2, Gascogne IGP","Blanc","Blanco","White","3,80 / 23,40","",0],
+ ["Jurançon AOC","Jurançon AOC","Jurançon AOC","Blanc","Blanco","White","4,90 / 28,60","",0],
+ ["Rueda AOP","Rueda AOP","Rueda AOP","Blanc","Blanco","White","3,90 / 23,60","",0],
+ ["Txakoli Getaria AOP","Txakoli Getaria AOP","Txakoli Getaria AOP","Blanc · bouteille","Blanco · botella","White · bottle","29,90","",0],
+ ["Gascogne Alain Brumont","Gascogne Alain Brumont","Gascogne Alain Brumont","Blanc","Blanco","White","3,80 / 21,60","",0],
+ ["Bordeaux Graves AOC","Bordeaux Graves AOC","Bordeaux Graves AOC","Rouge","Tinto","Red","3,90 / 24,80","",0],
+ ["Domaine des Cavaliers","Domaine des Cavaliers","Domaine des Cavaliers","Rosé · Côtes de Provence AOP","Rosado · Côtes de Provence AOP","Rosé · Côtes de Provence AOP","4,50 / 26,60","",0],
+ ["Champagne Veuve Pelletier","Champán Veuve Pelletier","Veuve Pelletier Champagne","37,5 cl","37,5 cl","37.5 cl","33,80","",0],
+ ["Bière La Locale","Cerveza La Locale","La Locale beer","33 cl","33 cl","33 cl","5,70","",0]]},
+{id:"soifs",t:["Petites soifs","Pequeñas sedes","Soft & hot drinks"],n:["Chaudes ou froides","Calientes o frías","Hot or cold"],icon:"glass",items:[
+ ["Eau plate ou gazeuse","Agua sin o con gas","Still or sparkling water","50 cl","50 cl","50 cl","3,80","",0],
+ ["Coca-Cola","Coca-Cola","Coca-Cola","50 cl","50 cl","50 cl","4,50","",0],
+ ["Sirop à l'eau","Sirope con agua","Cordial","","","","2,80","",0],
+ ["Café / noisette","Café / cortado","Espresso / macchiato","","","","2,30 / 2,50","",0],
+ ["Café glacé","Café con hielo","Iced coffee","","","","2,50","",0],
+ ["Thé / thé au lait","Té / té con leche","Tea / tea with milk","","","","3,00 / 3,20","",0]]}
+];
+const HOURS=[null,[["12:00","14:30"],["19:00","22:30"]],[["12:00","14:30"],["19:00","22:30"]],[["12:00","14:30"],["19:00","22:30"]],[["12:00","14:30"],["19:00","23:00"]],[["12:00","15:00"],["19:00","23:00"]],[["12:00","15:00"]]]; // Mon..Sun (sample)
+
+let LANG='fr',AUTO=true;
+const li=()=>({fr:0,es:1,en:2})[LANG];
+const tr=k=>I[k]?I[k][li()]:k;
+const tx=v=>Array.isArray(v)?v[li()]:v;
+const eur=v=>v==null?tr('market'):(typeof v==='string'?v+' €':(LANG==='en'?v.toFixed(2):v.toFixed(2).replace('.',','))+' €');
+const loc=()=>({fr:'fr-FR',es:'es-ES',en:'en-GB'})[LANG];
+
+/* =============== SVG generators =============== */
+function ringPath(cx,cy,rx,ry,k,seed){
+  const N=110,pts=[];
+  for(let i=0;i<N;i++){const t=i/N*Math.PI*2;const taper=1-0.22*Math.max(0,-Math.cos(t));
+    const w=1+0.045*Math.sin(9*t+seed+k*1.7)+0.025*Math.sin(5*t+k*.9+seed*2)+0.014*Math.sin(17*t+k);
+    pts.push([cx+rx*Math.cos(t)*w,cy+ry*Math.sin(t)*w*taper]);}
+  let d='';for(let i=0;i<=N;i++){const a=pts[i%N],b=pts[(i+1)%N],mx=((a[0]+b[0])/2).toFixed(1),my=((a[1]+b[1])/2).toFixed(1);d+=i===0?`M${mx} ${my}`:`Q${a[0].toFixed(1)} ${a[1].toFixed(1)} ${mx} ${my}`;}
+  return d+'Z';
+}
+function rings(n,ox,oy,RX,RY,seed,c1,c2,anim){
+  let s='';for(let k=0;k<n;k++){const f=1-k*(0.82/n);s+=`<path d="${ringPath(ox-(1-f)*RX*.62,oy+(1-f)*RY*.08,RX*f,RY*f,k,seed)}" fill="${k%2?c2:c1}"${anim?` style="animation-delay:${k*70}ms"`:''}/>`;}return s;
+}
+$$('svg[data-logo]').forEach(svg=>{const inv=svg.dataset.inv;svg.innerHTML=rings(+svg.dataset.logo,158,95,128,78,1.3,inv?'var(--cream)':'var(--navy)',inv?'var(--navy)':'var(--cream)',svg.closest('.loader'));});
+let OYID=0;
+function oyster(n){
+  const id=++OYID;
+  return `<svg viewBox="0 0 420 300" aria-hidden="true">
+  <defs><radialGradient id="nac${id}" cx="45%" cy="42%" r="65%"><stop offset="0" stop-color="#FBFAF4"/><stop offset=".5" stop-color="#D6DEEC"/><stop offset=".85" stop-color="#9FB0CF"/><stop offset="1" stop-color="var(--shell,var(--navy))"/></radialGradient>
+  <radialGradient id="prl${id}" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#EEEAF3"/><stop offset="1" stop-color="#B9C2D8"/></radialGradient></defs>
+  <ellipse class="shadow" cx="215" cy="262" rx="165" ry="16" fill="#13306B"/>
+  <path d="${ringPath(205,168,152,80,0,2.4)}" fill="var(--shell,var(--navy))"/>
+  <path d="${ringPath(210,162,130,63,1,3.1)}" fill="url(#nac${id})"/>
+  <path d="${ringPath(218,158,100,48,3,5)}" fill="#8C8A7E" opacity=".45"/>
+  <path d="${ringPath(218,158,93,43,2,4.2)}" fill="#DCD5C4"/>
+  <path d="${ringPath(222,152,54,20,4,6)}" fill="#F3F1EA" opacity=".6"/>
+  <circle class="pearl" cx="240" cy="150" r="13" fill="url(#prl${id})"/>
+  <g class="glint"><path d="M262 128 l3 -9 3 9 9 3 -9 3 -3 9 -3 -9 -9 -3z" fill="#fff"/></g>
+  <g class="lid">${rings(n||7,215,150,154,82,.7,'var(--shell,var(--navy))','var(--shell2,var(--cream))')}</g></svg>`;
+}
+$$('[data-oy]').forEach(el=>el.innerHTML=oyster(+el.dataset.oy));
+function iconSVG(kind){
+  const N='var(--navy)',R='var(--rasp)';
+  if(kind==='oyster')return `<svg viewBox="0 0 140 90"><path d="${ringPath(70,50,58,30,0,1)}" fill="${N}"/><path d="${ringPath(66,50,44,22,1,1)}" fill="var(--sky)"/><path d="${ringPath(62,50,30,15,2,1)}" fill="${N}"/><path d="${ringPath(58,50,16,8,3,1)}" fill="var(--sky)"/></svg>`;
+  if(kind==='platter')return `<svg viewBox="0 0 140 90"><ellipse cx="70" cy="56" rx="62" ry="26" fill="${N}"/><ellipse cx="70" cy="52" rx="54" ry="20" fill="#fff"/><g>${[0,1,2,3,4,5].map(i=>{const a=i/6*Math.PI*2;return `<ellipse cx="${70+Math.cos(a)*34}" cy="${52+Math.sin(a)*11}" rx="11" ry="6" fill="${N}" transform="rotate(${i*30} ${70+Math.cos(a)*34} ${52+Math.sin(a)*11})"/>`}).join('')}</g><circle cx="70" cy="50" r="9" fill="var(--lemon)" stroke="${N}" stroke-width="2"/></svg>`;
+  if(kind==='shrimp')return `<svg viewBox="0 0 140 90" fill="none" stroke-linecap="round"><path d="M40 60 C40 24 100 18 104 46 C106 62 86 70 76 60" stroke="${R}" stroke-width="16"/><path d="M52 34l-4 -6M64 28l-2 -7M78 26l0 -7M92 30l3 -7" stroke="${N}" stroke-width="3"/><path d="M76 60 l-14 10 M76 60 l-4 16" stroke="${R}" stroke-width="6"/><circle cx="98" cy="40" r="3" fill="${N}"/><path d="M104 40 C120 26 128 30 132 22" stroke="${N}" stroke-width="2"/></svg>`;
+  if(kind==='jar')return `<svg viewBox="0 0 140 90"><rect x="44" y="22" width="52" height="58" rx="10" fill="#fff" stroke="${N}" stroke-width="3"/><rect x="40" y="12" width="60" height="14" rx="4" fill="${R}"/><rect x="52" y="44" width="36" height="18" rx="3" fill="var(--sky)"/><path d="M58 53h24" stroke="${N}" stroke-width="2"/></svg>`;
+  if(kind==='glass')return `<svg viewBox="0 0 140 90" fill="none" stroke="${N}" stroke-width="3" stroke-linecap="round"><path d="M56 10h28l-2 26a12 12 0 0 1-24 0z" fill="#FBE7A1"/><path d="M70 48v26M58 78h24"/></svg>`;
+  return `<svg viewBox="0 0 140 90"><ellipse cx="70" cy="60" rx="50" ry="18" fill="${N}"/><rect x="26" y="30" width="88" height="34" rx="12" fill="${N}"/><path d="M40 30c4-12 12-12 16 0M64 30c4-14 12-14 16 0M86 30c4-10 10-10 14 0" stroke="#fff" stroke-width="3" fill="none"/></svg>`;
+}
+function bourriche(big){
+  const N='var(--navy)',C='var(--cream)';
+  const weave=Array.from({length:9},(_,i)=>`<path d="M${40+i*30} 140 L${40+i*30} 260" stroke="${big?'#C98A4B':'#C98A4B'}" stroke-width="6"/>`).join('')+Array.from({length:5},(_,i)=>`<path d="M30 ${152+i*22} Q170 ${160+i*22} 310 ${152+i*22}" stroke="#A66C35" stroke-width="7" fill="none"/>`).join('');
+  return `<svg viewBox="0 0 340 300" aria-hidden="true">
+   <ellipse cx="170" cy="282" rx="150" ry="12" fill="#000" opacity=".15"/>
+   <g class="pop">${[0,1,2].map(i=>`<g transform="translate(${70+i*70} ${92-(i%2)*14}) rotate(${-14+i*14})"><path d="${ringPath(0,0,42,22,0,i+1)}" fill="${big?C:N}"/><path d="${ringPath(-4,0,30,15,1,i+1)}" fill="${big?N:'var(--sky)'}"/><path d="${ringPath(-8,0,18,9,2,i+1)}" fill="${big?C:N}"/></g>`).join('')}</g>
+   <path d="M24 136 L316 136 L298 268 Q170 284 42 268 Z" fill="#D9A066" stroke="${big?C:N}" stroke-width="3"/>
+   <clipPath id="bclip${big?1:0}"><path d="M24 136 L316 136 L298 268 Q170 284 42 268 Z"/></clipPath>
+   <g clip-path="url(#bclip${big?1:0})">${weave}</g>
+   <rect x="118" y="182" width="104" height="44" rx="6" fill="${C}" stroke="${N}" stroke-width="2.5"/>
+   <text x="170" y="210" text-anchor="middle" font-family="Lilita One, sans-serif" font-size="15" fill="${N}" letter-spacing="1">LE PARC</text>
+   <g class="lidb"><path d="M14 122 L326 122 L322 140 L18 140 Z" fill="#C98A4B" stroke="${big?C:N}" stroke-width="3"/><path d="M150 122 q20 -26 40 0" stroke="${big?C:N}" stroke-width="5" fill="none"/></g>
+  </svg>`;
+}
+$$('[data-bourriche]').forEach(el=>el.innerHTML=bourriche(el.dataset.bourriche==='big'));
+$('#gesteIce').innerHTML=Array.from({length:46},(_,i)=>{const x=(i*37)%400,y=20+((i*53)%70),s=8+(i*7)%14;return `<path d="M${x} ${y} l${s} ${-s/2} l${s/2} ${s} l${-s} ${s/3}z" fill="#E7EEF7" opacity="${.5+(i%5)/10}"/>`}).join('');
+$('#ice').innerHTML=`<svg viewBox="0 0 200 200">${Array.from({length:70},(_,i)=>{const a=i*2.39996,r=Math.sqrt(i/70)*95,x=100+Math.cos(a)*r,y=100+Math.sin(a)*r,s=6+(i*13)%10;return `<path d="M${x.toFixed(1)} ${y.toFixed(1)} l${s} ${-s/2} l${s/2} ${s} l${-s} ${s/3}z" fill="#fff" opacity="${(.45+(i%5)/10).toFixed(2)}"/>`}).join('')}</svg>`;
+
+/* waves (animated paths) */
+const WAVES=$$('svg[data-wave]');
+function drawWaves(t){
+  WAVES.forEach((svg,j)=>{const p=svg.querySelector('path');let d='M0 70 ';const W=1440;
+    for(let x=0;x<=W;x+=24){const y=34+Math.sin(x/140+t/900+j)*12+Math.sin(x/53-t/650)*5;d+='L'+x+' '+y.toFixed(1)+' ';}
+    p.setAttribute('d',d+'L1440 70Z');});
+}
+drawWaves(0);
+
+/* =============== product illustrations (one per item) =============== */
+const cN='var(--navy)',cR='var(--rasp)',cY='var(--lemon)',cS='var(--sky)',cW='#fff',cC='var(--cream)',cO='#D9733B',cP='#F29C82',cG='#5E9B63',cGo='#E8B54A';
+const ST=`stroke="${cN}" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"`;
+const T_=(x,y,s,r)=>`transform="translate(${x} ${y}) rotate(${r||0}) scale(${s||1})"`;
+function oysC(x,y,s,r,seed,c2,round){return `<g ${T_(x,y,s,r)}>${rings(4,0,0,30,round?25:17,seed||1,cN,c2||cS)}</g>`;}
+function oysO(x,y,s,r,seed,gratin){return `<g ${T_(x,y,s,r)}><path d="${ringPath(0,0,30,18,0,seed||2)}" fill="${cN}"/><path d="${ringPath(1,0,24,13,1,seed||2)}" fill="${cS}"/><path d="${ringPath(2,0,17,9,2,seed||2)}" fill="${gratin?cGo:'#E4DCC8'}" stroke="${cN}" stroke-width="1.2"/>${gratin?`<path d="M-8 -2l3 2 3-2 3 2 3-2 3 2" stroke="#B9782E" stroke-width="1.6" fill="none"/>`:`<path d="M-2 -3 q5 -3 10 0" stroke="#fff" stroke-width="1.6" fill="none"/>`}</g>`;}
+function shrimp(x,y,s,r){return `<g ${T_(x,y,s,r)}><path d="M-18 6 C-18 -14 14 -18 18 -2 C20 8 8 14 2 8" fill="none" stroke="${cR}" stroke-width="9" stroke-linecap="round"/><path d="M-11 -7l-3-4M-3 -12l-1-4M6 -12l1-4M13 -8l3-3" stroke="${cN}" stroke-width="1.6" stroke-linecap="round"/><path d="M2 8 l-9 5 M2 8 l-2 10" stroke="${cR}" stroke-width="4" stroke-linecap="round"/><circle cx="14" cy="-4" r="1.8" fill="${cN}"/><path d="M18 -3 C28 -13 32 -11 37 -17" stroke="${cN}" stroke-width="1.2" fill="none"/></g>`;}
+function whelk(x,y,s,r){return `<g ${T_(x,y,s,r)}><path d="M-11 10 L0 -15 L11 10 Q0 17 -11 10Z" fill="${cC}" ${ST}/><path d="M-7 3 Q0 0 7 3 M-4 -4 Q0 -6 4 -4 M-2 -10 Q0 -11 2 -10" stroke="${cN}" stroke-width="1.6" fill="none"/><ellipse cx="2" cy="10" rx="5" ry="3" fill="${cR}"/></g>`;}
+function crab(x,y,s){return `<g ${T_(x,y,s)}>${[-1,1].map(d=>`<path d="M${d*22} 2 l${d*14} 8 M${d*22} 8 l${d*12} 12 M${d*20} 12 l${d*8} 14" stroke="${cN}" stroke-width="2.6" stroke-linecap="round"/><path d="M${d*20} -8 q${d*14} -10 ${d*22} -4" stroke="${cN}" stroke-width="2.6" fill="none"/><path d="M${d*42} -12 a7 6 0 1 1 0.1 0z" fill="${cO}" ${ST}/>`).join('')}<ellipse cx="0" cy="2" rx="27" ry="17" fill="${cO}" ${ST}/><path d="M-14 -4 q14 -8 28 0" stroke="#B4572A" stroke-width="2" fill="none"/><circle cx="-6" cy="-14" r="2" fill="${cN}"/><circle cx="6" cy="-14" r="2" fill="${cN}"/></g>`;}
+function langou(x,y,s,r){return `<g ${T_(x,y,s,r)}><path d="M-30 0 Q-34 -6 -40 -4 M-30 0 Q-34 6 -40 4" stroke="${cP}" stroke-width="3" fill="none" stroke-linecap="round"/>${[0,1,2,3,4].map(i=>`<ellipse cx="${-24+i*8}" cy="0" rx="5" ry="${5+i*.4}" fill="${cP}" ${ST.replace('2.4','1.6')}/>`).join('')}<ellipse cx="22" cy="0" rx="10" ry="7" fill="${cP}" ${ST.replace('2.4','1.6')}/><path d="M28 -4 L50 -12 M28 4 L50 12" stroke="${cP}" stroke-width="3.5" stroke-linecap="round"/><path d="M30 -2 L56 -22 M30 2 L56 22" stroke="${cN}" stroke-width="1" fill="none"/></g>`;}
+function lobster(x,y,s,r){return `<g ${T_(x,y,s,r)}><path d="M-34 0 l-8 -6 M-34 0 l-8 6" stroke="${cN}" stroke-width="3" stroke-linecap="round"/>${[0,1,2,3].map(i=>`<ellipse cx="${-28+i*9}" cy="0" rx="6" ry="${6+i*.6}" fill="#2A4A8C" ${ST.replace('2.4','1.6')}/>`).join('')}<ellipse cx="14" cy="0" rx="13" ry="9" fill="#2A4A8C" ${ST}/><path d="M24 -6 L34 -16 M24 6 L34 16" stroke="${cN}" stroke-width="3"/><path d="M34 -16 q16 -10 18 2 q-8 2 -18 -2z M34 16 q16 10 18 -2 q-8 -2 -18 2z" fill="#2A4A8C" ${ST}/><path d="M26 -2 L56 -28 M26 2 L56 28" stroke="${cN}" stroke-width="1" fill="none"/></g>`;}
+function mussel(x,y,s,r){return `<g ${T_(x,y,s,r)}><path d="M-14 0 C-14 -10 4 -10 16 -2 C18 0 18 2 16 4 C4 10 -14 8 -14 0Z" fill="#1F2A44" ${ST.replace('2.4','1.6')}/><path d="M-8 -1 C0 -5 8 -4 13 -1" stroke="#6E86B8" stroke-width="1.5" fill="none"/></g>`;}
+function lemon(x,y,s){return `<g ${T_(x,y,s)}><circle r="12" fill="${cY}" ${ST.replace('2.4','2')}/><circle r="8.5" fill="#FBE7A1"/>${[0,1,2,3,4,5].map(i=>`<line x1="0" y1="0" x2="${(Math.cos(i*1.047)*8).toFixed(1)}" y2="${(Math.sin(i*1.047)*8).toFixed(1)}" stroke="${cY}" stroke-width="1.6"/>`).join('')}</g>`;}
+function platter(rx,ry,inner){return `<ellipse cx="70" cy="56" rx="${rx}" ry="${ry}" fill="${cN}"/><ellipse cx="70" cy="53" rx="${rx-6}" ry="${ry-6}" fill="${cW}"/>${Array.from({length:18},(_,i)=>{const a=i*2.4,rr=Math.sqrt(i/18);return `<path d="M${(70+Math.cos(a)*rr*(rx-14)).toFixed(1)} ${(53+Math.sin(a)*rr*(ry-10)).toFixed(1)} l5 -2 l2 4 l-5 1z" fill="${cS}"/>`}).join('')}${inner}`;}
+function bowl(fill,inner){return `<ellipse cx="70" cy="44" rx="44" ry="12" fill="${fill}" ${ST}/>${inner||''}<path d="M26 44 Q30 84 70 84 Q110 84 114 44" fill="${cW}" ${ST}/><path d="M34 58 Q70 66 106 58" stroke="${cR}" stroke-width="2" fill="none"/><path d="M34 63 Q70 71 106 63" stroke="${cR}" stroke-width="2" fill="none"/><ellipse cx="70" cy="88" rx="22" ry="4" fill="${cN}" opacity=".15"/>`;}
+function glass(liq,kind){
+  if(kind==='flute')return `<path d="M62 8 h16 l-2 40 a6 6 0 0 1-12 0z" fill="${liq}" ${ST}/><circle cx="70" cy="24" r="1.6" fill="#fff"/><circle cx="68" cy="34" r="1.2" fill="#fff"/><circle cx="72" cy="40" r="1.4" fill="#fff"/><path d="M70 54v26M58 84h24" ${ST}/>`;
+  if(kind==='tumbler')return `<path d="M50 20 h40 l-5 64 h-30z" fill="${cW}" ${ST}/><path d="M52 40 h36 l-3.4 42 h-29.2z" fill="${liq}"/><rect x="58" y="44" width="8" height="8" rx="2" fill="#fff" opacity=".7"/><rect x="70" y="52" width="8" height="8" rx="2" fill="#fff" opacity=".7"/>`;
+  if(kind==='cup')return `<path d="M44 40 h46 v18 a20 20 0 0 1-20 20 h-6 a20 20 0 0 1-20-20z" fill="${cW}" ${ST}/><path d="M90 46 a8 8 0 0 1 0 16" fill="none" ${ST}/><ellipse cx="67" cy="40" rx="23" ry="5" fill="${liq}" ${ST}/><ellipse cx="67" cy="84" rx="34" ry="5" fill="${cW}" ${ST}/><path d="M60 30 q-4 -8 2 -14 M72 30 q-4 -8 2 -14" stroke="${cN}" stroke-width="1.6" fill="none" opacity=".5"/>`;
+  return `<path d="M54 10 h32 l-2 26 a14 14 0 0 1-28 0z" fill="${cW}" ${ST}/><path d="M55.5 22 h29 l-0.9 14 a13 13 0 0 1-27.2 0z" fill="${liq}"/><path d="M70 50v28M56 82h28" ${ST}/>`;
+}
+function bottle(fill,label){return `<path d="M64 6 h12 v18 q12 6 12 20 v40 q0 6 -6 6 h-24 q-6 0 -6 -6 v-40 q0 -14 12 -20z" fill="${fill}" ${ST}/><rect x="58" y="48" width="24" height="22" rx="3" fill="${cC}" ${ST.replace('2.4','1.6')}/><text x="70" y="63" text-anchor="middle" font-family="Lilita One, sans-serif" font-size="8" fill="${cN}">${label||''}</text>`;}
+const SV=c=>`<svg viewBox="0 0 140 100" aria-hidden="true">${c}</svg>`;
+const ILL={
+ 'huitres:0':()=>SV(oysC(48,56,1,-12,2,cS)+oysC(96,44,.85,14,3,cS)+oysO(92,74,.8,-6,4)+`<text x="20" y="22" font-family="Lilita One, sans-serif" font-size="11" fill="${cR}">CLAIRES</text>`),
+ 'huitres:1':()=>SV(`<path d="M10 82 q15 -8 30 0 t30 0 t30 0 t30 0" stroke="${cS}" stroke-width="4" fill="none"/>`+oysC(46,50,1.05,-8,5,cW)+oysC(98,48,.9,18,6,cW)+oysO(72,78,.7,0,7)),
+ 'huitres:2':()=>SV(oysC(48,52,1,-8,8,cS,1)+oysC(98,56,.95,12,9,cS,1)+`<circle cx="74" cy="22" r="6" fill="${cR}"/>`),
+ 'huitres:3':()=>SV(oysC(50,54,1.1,-14,10,cR)+oysO(100,52,.9,10,11)+`<path d="M108 14 l4 8 l8 1 l-6 6 l2 8 l-8 -4 l-8 4 l2 -8 l-6 -6 l8 -1z" fill="${cY}" ${ST.replace('2.4','1.4')}/>`),
+ 'huitres:4':()=>SV(oysC(52,52,1.15,-10,12,cS)+`<text x="40" y="58" font-family="Lilita One, sans-serif" font-size="16" fill="${cY}" stroke="${cN}" stroke-width=".8">G</text>`+oysO(102,62,.9,8,13)),
+ 'plateaux:0':()=>SV(platter(64,34,[oysO(42,46,.62,-20,1),oysO(98,46,.62,20,2),oysO(44,64,.62,15,3),oysO(96,64,.62,-15,4)].join('')+shrimp(70,40,.6,10)+shrimp(70,70,.6,190)+whelk(58,55,.55,-20)+whelk(84,56,.55,20)+whelk(70,57,.5,0)+lemon(70,54,.0))),
+ 'plateaux:1':()=>SV(platter(66,36,[oysO(36,50,.58,-30,1),oysO(104,50,.58,30,2),oysO(40,68,.58,20,3),oysO(100,68,.58,-20,4)].join('')+shrimp(58,36,.5,-10)+shrimp(84,36,.5,20)+whelk(56,74,.5,-20)+whelk(84,74,.5,20)+crab(70,55,.55))),
+ 'plateaux:2':()=>SV(platter(64,34,[0,1,2,3,4,5,6,7,8,9,10,11].map(i=>{const a=i/12*Math.PI*2;return i%3===0?oysO(70+Math.cos(a)*44,53+Math.sin(a)*20,.42,a*57,i):oysO(70+Math.cos(a)*44,53+Math.sin(a)*20,.42,a*57,i)}).join('')+lemon(70,53,1))),
+ 'coquillages:0':()=>SV(shrimp(40,52,.9,-10)+shrimp(76,46,.9,10)+shrimp(108,56,.9,30)),
+ 'coquillages:1':()=>SV(whelk(36,56,1,-20)+whelk(60,46,1,10)+whelk(52,72,.9,40)+`<ellipse cx="102" cy="60" rx="22" ry="8" fill="${cW}" ${ST}/><path d="M80 60 q0 18 22 18 q22 0 22 -18" fill="${cW}" ${ST}/><ellipse cx="102" cy="60" rx="16" ry="5" fill="#F5E6A8"/>`),
+ 'coquillages:2':()=>SV(langou(64,34,.85,-6)+langou(64,58,.85,4)+langou(64,80,.85,-2)),
+ 'coquillages:3':()=>SV(crab(70,54,1.25)),
+ 'coquillages:4':()=>SV(lobster(66,52,1.15,-8)),
+ 'coquillages:5':()=>SV(mussel(40,46,1.1,-20)+mussel(76,40,1.1,10)+mussel(56,66,1.1,30)+mussel(98,62,1.1,-10)+lemon(112,30,.9)),
+ 'assiettes:0':()=>SV(`<rect x="40" y="26" width="48" height="58" rx="8" fill="${cW}" ${ST}/><rect x="36" y="16" width="56" height="13" rx="4" fill="${cR}" ${ST}/><rect x="44" y="50" width="40" height="30" rx="4" fill="#C98378"/><rect x="48" y="40" width="32" height="10" rx="2" fill="${cC}" ${ST.replace('2.4','1.4')}/><path d="M98 80 C96 60 104 40 116 30 C118 34 110 56 104 80Z" fill="${cG}" ${ST.replace('2.4','1.6')}/><path d="M108 82 C110 64 118 50 128 44 C128 50 120 66 114 82Z" fill="${cG}" ${ST.replace('2.4','1.6')}/>`),
+ 'assiettes:1':()=>SV(`<ellipse cx="66" cy="62" rx="40" ry="18" fill="${cN}"/><ellipse cx="66" cy="56" rx="40" ry="18" fill="#2A4A8C" ${ST}/><ellipse cx="66" cy="56" rx="32" ry="13" fill="#F08A4B"/>${Array.from({length:40},(_,i)=>{const a=i*2.4,r=Math.sqrt(i/40);return `<circle cx="${(66+Math.cos(a)*r*28).toFixed(1)}" cy="${(56+Math.sin(a)*r*11).toFixed(1)}" r="2" fill="#F7B27E"/>`}).join('')}<path d="M98 30 l26 -14" stroke="${cN}" stroke-width="3" stroke-linecap="round"/><ellipse cx="96" cy="32" rx="8" ry="5" fill="#E8D9B0" ${ST.replace('2.4','1.6')}/>`),
+ 'assiettes:2':()=>SV(`<ellipse cx="70" cy="62" rx="56" ry="22" fill="${cW}" ${ST}/><path d="M30 60 C40 40 90 34 112 52 C100 70 50 76 30 60Z" fill="#F4A27E" ${ST}/>${[0,1,2,3].map(i=>`<path d="M${46+i*15} 48 q4 8 0 18" stroke="#fff" stroke-width="2.4" fill="none" opacity=".8"/>`).join('')}<path d="M98 34 l10 -14 M102 28 l8 2 M104 24 l6 -4 M100 32 l-6 -6" stroke="${cG}" stroke-width="2" stroke-linecap="round"/>`),
+ 'assiettes:3':()=>SV(`<ellipse cx="70" cy="62" rx="56" ry="22" fill="${cW}" ${ST}/>${[0,1,2].map(i=>`<path d="M${30+i*26} 66 C${32+i*26} 44 ${52+i*26} 40 ${60+i*26} 52 C${56+i*26} 64 ${44+i*26} 72 ${30+i*26} 66Z" fill="${cP}" ${ST.replace('2.4','1.8')}/><path d="M${38+i*26} 60 q8 -10 16 -6" stroke="#fff" stroke-width="2" fill="none" opacity=".8"/>`).join('')}`+lemon(112,40,.8)),
+ 'assiettes:4':()=>SV(bowl(cO,`<rect x="50" y="38" width="8" height="6" rx="1" fill="${cGo}" ${ST.replace('2.4','1')}/><rect x="74" y="40" width="8" height="6" rx="1" fill="${cGo}" ${ST.replace('2.4','1')}/><circle cx="64" cy="46" r="3.4" fill="${cR}"/><circle cx="88" cy="44" r="3" fill="#F5E6A8"/>`)),
+ 'assiettes:5':()=>SV(`<path d="M24 64 L92 50 L116 66 L48 82Z" fill="${cGo}" ${ST}/><path d="M44 58 L88 48 C98 50 102 58 96 62 L52 72 C44 70 40 62 44 58Z" fill="#F3D9C2" ${ST}/><path d="M56 60 q12 -4 28 -6" stroke="#E2B89A" stroke-width="2" fill="none"/>${[0,1,2,3,4].map(i=>`<rect x="${58+i*7}" y="${54-i}" width="2.4" height="2.4" fill="#fff" ${ST.replace('2.4','.6')}/>`).join('')}`),
+ 'assiettes:6':()=>SV(`<rect x="18" y="40" width="70" height="24" rx="12" fill="#8C3B3B" ${ST}/><path d="M24 44 q30 -4 58 0" stroke="#fff" stroke-width="1.4" fill="none" opacity=".4"/>${[0,1,2].map(i=>`<g transform="translate(${100+(i%2)*14} ${36+i*18})"><circle r="10" fill="#B85A55" ${ST.replace('2.4','1.6')}/><circle cx="-3" cy="-2" r="1.6" fill="#fff"/><circle cx="3" cy="2" r="1.6" fill="#fff"/><circle cx="2" cy="-4" r="1.2" fill="#fff"/></g>`).join('')}`),
+ 'cuisine:0':()=>SV([46,94].map((x,i)=>`<g transform="translate(${x} 56) rotate(${i?14:-14})"><path d="M-26 6 L0 -24 L26 6 Q0 20 -26 6Z" fill="#F2D5B8" ${ST}/>${[-16,-8,0,8,16].map(d=>`<path d="M0 -22 L${d} 10" stroke="${cN}" stroke-width="1.2" opacity=".5"/>`).join('')}<ellipse cx="0" cy="2" rx="10" ry="7" fill="${cW}" ${ST.replace('2.4','1.6')}/><ellipse cx="0" cy="0" rx="6" ry="3" fill="${cGo}" opacity=".6"/></g>`).join('')),
+ 'cuisine:1':()=>SV(`<ellipse cx="70" cy="58" rx="44" ry="26" fill="${cO}" ${ST}/><ellipse cx="70" cy="54" rx="34" ry="18" fill="${cGo}" ${ST.replace('2.4','1.6')}/>${Array.from({length:14},(_,i)=>`<circle cx="${(50+(i*13)%42).toFixed(0)}" cy="${(46+(i*7)%16).toFixed(0)}" r="2.2" fill="#B9782E"/>`).join('')}<path d="M30 46 l-10 -10 M110 46 l10 -10" stroke="${cN}" stroke-width="2.6" stroke-linecap="round"/>`),
+ 'cuisine:2':()=>SV(bowl('#F0B64A',`<path d="M54 40 q16 -10 32 0 q-16 8 -32 0z" fill="${cW}" ${ST.replace('2.4','1.6')}/><rect x="86" y="38" width="9" height="8" rx="2" fill="${cY}" ${ST.replace('2.4','1')}/><rect x="44" y="40" width="9" height="8" rx="2" fill="${cY}" ${ST.replace('2.4','1')}/>`)),
+ 'cuisine:3':()=>SV(oysO(44,50,1,-12,3,1)+oysO(96,50,1,12,5,1)+oysO(70,74,.9,0,7,1)),
+ 'cuisine:4':()=>SV(`<path d="M26 40 h88 v30 a14 14 0 0 1-14 14 h-60 a14 14 0 0 1-14-14z" fill="${cN}" ${ST}/><rect x="16" y="44" width="12" height="6" rx="3" fill="${cN}"/><rect x="112" y="44" width="12" height="6" rx="3" fill="${cN}"/>`+mussel(46,36,.8,-30)+mussel(66,32,.8,10)+mussel(86,36,.8,40)+mussel(100,38,.7,-10)+`<path d="M50 20 q-4 -8 2 -14 M70 18 q-4 -8 2 -14 M90 20 q-4 -8 2 -14" stroke="${cN}" stroke-width="1.6" fill="none" opacity=".45"/>`),
+ 'cuisine:5':()=>SV(bowl(cW,`${Array.from({length:16},(_,i)=>`<ellipse cx="${46+(i*11)%48}" cy="${40+(i*5)%8}" rx="3" ry="1.6" fill="#EDE7D6" stroke="${cN}" stroke-width=".6"/>`).join('')}<path d="M96 30 q16 -12 24 2 q-12 8 -24 -2z" fill="${cG}" ${ST.replace('2.4','1.6')}/>`)),
+ 'desserts:0':()=>SV(`<path d="M20 70 L80 40 L80 70Z" fill="#F7E7B4" ${ST}/><path d="M20 70 L80 70 L80 80 L20 80Z" fill="#EBD48E" ${ST}/><circle cx="56" cy="62" r="3" fill="#E2C77A"/><circle cx="68" cy="56" r="2" fill="#E2C77A"/><path d="M94 48 h30 v28 a6 6 0 0 1-6 6 h-18 a6 6 0 0 1-6-6z" fill="${cW}" ${ST}/><rect x="96" y="56" width="26" height="22" rx="3" fill="#6B1E33"/><rect x="92" y="40" width="34" height="9" rx="3" fill="${cR}" ${ST.replace('2.4','1.6')}/>`),
+ 'desserts:1':()=>SV(`<path d="M24 74 L70 22 L116 74Z" fill="#E9C27D" ${ST}/><path d="M34 70 L70 30 L106 70Z" fill="#F5D99A"/>${[0,1,2,3].map(i=>`<path d="M${44+i*14} 66 q6 -14 12 0" fill="#F0B64A" ${ST.replace('2.4','1.4')}/>`).join('')}<path d="M24 74 h92 v8 h-92z" fill="#D9A55A" ${ST}/>`),
+ 'desserts:2':()=>SV(bowl('#F5E6A8',`<path d="M48 42 C44 22 70 12 84 22 C98 30 94 46 80 46 Z" fill="${cW}" ${ST}/><path d="M56 26 q10 6 24 -2 M60 34 q12 4 22 -4" stroke="#C8862F" stroke-width="2" fill="none"/>`)),
+ 'desserts:3':()=>SV(`<ellipse cx="70" cy="80" rx="40" ry="8" fill="${cW}" ${ST}/><path d="M42 78 C38 50 50 40 70 40 C90 40 102 50 98 78Z" fill="${cGo}" ${ST}/><path d="M48 50 q22 8 44 0" stroke="#B9782E" stroke-width="2" fill="none"/><path d="M56 40 C50 24 66 16 70 26 C74 16 90 24 84 40Z" fill="${cW}" ${ST}/><path d="M70 22 v-8" stroke="${cR}" stroke-width="3" stroke-linecap="round"/><circle cx="70" cy="12" r="4" fill="${cR}"/>`),
+ 'vins:0':()=>SV(glass('#F4E3A1')),'vins:1':()=>SV(glass('#F4E3A1')),'vins:2':()=>SV(glass('#EFCB6B')),'vins:3':()=>SV(glass('#F4E3A1')),
+ 'vins:4':()=>SV(bottle(cG,'TXAKOLI')+`<path d="M98 30 h22 l-1.6 18 a9 9 0 0 1-18.8 0z" fill="#F4E3A1" ${ST.replace('2.4','1.8')}/><path d="M109 58v18M101 80h16" ${ST.replace('2.4','1.8')}/>`),
+ 'vins:5':()=>SV(glass('#F4E3A1')),'vins:6':()=>SV(glass('#7A1E3A')),'vins:7':()=>SV(glass('#F4A6B0')),
+ 'vins:8':()=>SV(glass('#F2D27A','flute')+`<path d="M98 26 l14 -10 M106 30 l14 -4 M100 34 l12 6" stroke="${cY}" stroke-width="2" stroke-linecap="round"/>`),
+ 'vins:9':()=>SV(`<path d="M50 14 h40 l-4 70 h-32z" fill="#E9A53A" ${ST}/><path d="M50 14 h40 v12 h-40z" fill="${cW}" ${ST}/><circle cx="62" cy="40" r="2" fill="#fff" opacity=".7"/><circle cx="74" cy="56" r="2" fill="#fff" opacity=".7"/><path d="M90 30 h8 a8 8 0 0 1 8 8 v16 a8 8 0 0 1-8 8 h-10" fill="none" ${ST}/>`),
+ 'soifs:0':()=>SV(`<path d="M60 8 h20 v10 q12 6 12 20 v46 q0 6 -6 6 h-32 q-6 0 -6 -6 v-46 q0 -14 12 -20z" fill="${cS}" ${ST}/><path d="M50 50 q20 -6 40 0" stroke="${cN}" stroke-width="1.6" fill="none"/><circle cx="64" cy="64" r="2" fill="#fff"/><circle cx="74" cy="72" r="2.6" fill="#fff"/>`),
+ 'soifs:1':()=>SV(glass('#3B1F1A','tumbler')+lemon(96,28,.7)),
+ 'soifs:2':()=>SV(glass('#E66B8A','tumbler')),
+ 'soifs:3':()=>SV(glass('#5A3A22','cup')),
+ 'soifs:4':()=>SV(glass('#A8774F','tumbler')),
+ 'soifs:5':()=>SV(glass('#C98A4B','cup')+`<path d="M86 42 l12 -20" stroke="${cN}" stroke-width="1.2"/><rect x="94" y="14" width="10" height="10" rx="1" fill="${cY}" ${ST.replace('2.4','1.2')}/>`)
+};
+const ill=k=>(ILL[k]?ILL[k]():'');
+
+/* =============== render dynamic content =============== */
+function renderLineup(){
+  $('#lineup').innerHTML=OYS.map((o,i)=>`<button type="button" class="ocard reveal" data-k="${i}" aria-pressed="false"><div class="oy tap" data-oyh="${i}">${oyster(6)}</div><span class="orig">${tx(o.o)}</span><h3>${tx(o.n)} ${o.c}</h3><div class="taste" title="${tr('iod')}">${[1,2,3,4,5].map(x=>`<i class="${x<=o.i?'f':''}"></i>`).join('')}</div><p class="note">${tx(o.note)}</p><span class="price">${eur(o.p)} <small>${tr('per12')}</small></span></button>`).join('');
+  const c=[["n°5","30–45 g",16],["n°4","46–65 g",22],["n°3","66–85 g",28],["n°2","86–120 g",34],["n°1","121–150 g",40]];
+  $('#calib').innerHTML=c.map(([n,g,s])=>`<div class="${n==='n°3'?'on':''}"><i style="width:${s*1.55}px;height:${s}px"></i><b>${n}</b><span class="tab">${g}</span></div>`).join('');
+}
+$('#lineup').addEventListener('click',e=>{const b=e.target.closest('.ocard');if(!b)return;const on=!b.classList.contains('open');b.classList.toggle('open',on);b.setAttribute('aria-pressed',on);b.querySelector('.oy').classList.toggle('open',on);});
+function renderPlateaux(){
+  $('#plateaux').innerHTML=MENU[1].items.map((it,i)=>`<article class="pcard reveal"><div class="ill">${ill('plateaux:'+i)}</div><div class="body"><h3>${it[li()]}</h3><ul>${it[3+li()].split(', ').map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="foot"><b>${eur(it[6])}</b><button type="button" class="add" data-add="plateaux:${i}">+ ${tr('add_take')}</button></div></article>`).join('');
+}
+function renderMarquee(){
+  const words=MENU[0].items.map(i=>i[li()]).concat([tr('s2_t'),'Ostras','Oysters','Hendaye']);
+  const oy=`<i><svg viewBox="0 0 300 190">${rings(5,158,95,128,78,1.3,'var(--cream)','var(--navy)')}</svg></i>`;
+  const one=`<span>${words.map(w=>w+' '+oy).join(' ')}</span>`;
+  $('#mq1').innerHTML=one+one;
+  const g=`<span>Le Parc à Huîtres <svg viewBox="0 0 300 190">${rings(6,158,95,128,78,1.3,'color-mix(in srgb,var(--cream) 45%,transparent)','var(--navy)')}</svg> ${tr('tag')} <svg viewBox="0 0 300 190">${rings(6,158,95,128,78,1.3,'color-mix(in srgb,var(--cream) 45%,transparent)','var(--navy)')}</svg></span>`;
+  $('#giant').innerHTML=g+g;
+  $('#stickertxt').textContent=({fr:"OUVERTES À LA MINUTE ✦ PERLE D'HENDAYE ✦ ",es:"ABIERTAS AL MOMENTO ✦ PERLA DE HENDAYA ✦ ",en:"OPENED TO ORDER ✦ PEARL OF HENDAYE ✦ "})[LANG];
+}
+function alCodes(s){return s.split('').map(ch=>{const idx=ch==='0'?9:(+ch-1);return ALL[idx][li()];});}
+function renderMenu(){
+  const l=li();
+  $('#chips').innerHTML=MENU.map((c,i)=>`<a href="#carte" data-jump="${c.id}" class="${i===0?'on':''}">${c.t[l]}</a>`).join('');
+  $('#menu').innerHTML=MENU.map(c=>`<div class="mcat reveal" id="m-${c.id}"><header><h2>${c.t[l]}</h2><small>${c.n[l]}</small></header>${c.items.map((i,ix)=>`<div class="mi"><span class="ic">${ill(c.id+':'+ix)}</span><span class="n">${i[l]}</span><span class="p">${eur(i[6])}</span>${i[3+l]?`<span class="d">${i[3+l]}</span>`:''}${i[7]?`<span class="al">${alCodes(i[7]).map(a=>`<span>${a}</span>`).join('')}</span>`:''}</div>`).join('')}</div>`).join('');
+  $('#allegend').textContent=({fr:"Activez « Allergènes » en haut de la carte pour les voir plat par plat. Liste complète sur demande.",es:"Active «Alérgenos» arriba para verlos plato por plato. Lista completa bajo petición.",en:"Switch on “Allergens” above to see them dish by dish. Full list on request."})[LANG];
+  $('#langnote').textContent=(AUTO?tr('auto'):tr('manual'))+' · '+({fr:'Français',es:'Español',en:'English'})[LANG];
+}
+$('#altoggle').addEventListener('change',e=>$('#menu').classList.toggle('show-al',e.target.checked));
+$('#chips').addEventListener('click',e=>{const a=e.target.closest('a[data-jump]');if(!a)return;e.preventDefault();const el=$('#m-'+a.dataset.jump);window.scrollTo({top:el.getBoundingClientRect().top+scrollY-(innerHeight<700?150:160),behavior:RM?'auto':'smooth'});});
+const REVIEWS=[
+ ["Marie M.","Allez-y les yeux fermés, tout est bon, que dis-je ! Pas bon ! Excellent !",7],
+ ["Aurélia M.","Service au top, équipe agréable, prix corrects et surtout des fruits de mer délicieux et de très bonne qualité.",8],
+ ["Danielle G.","Les plats sont cuisinés avec soin et le baba au rhum est super bon !",4],
+ ["Tamara C.","Les huîtres un vrai régal !!!",4],
+ ["Titemo","Des fruits de mer délicieux d'une très grande fraîcheur. Un plateau préparé avec soin.",6],
+ ["Eva L.","Très bon moment sans chichis.",7],
+ ["Sophie B.","Très belle expérience gustative ! […] Une adresse que je recommande sans hésitation.",6],
+ ["Christian M.","Très bonne cuisine et produits de qualités !",8]
+];
+const MONTHS=[["janvier","enero","January"],["février","febrero","February"],["mars","marzo","March"],["avril","abril","April"],["mai","mayo","May"],["juin","junio","June"],["juillet","julio","July"],["août","agosto","August"],["septembre","septiembre","September"]];
+function renderReviews(){
+  const one=REVIEWS.map((r,i)=>`<figure class="rev" style="--rot:${[-1.2,.8,-.5,1.1][i%4]}deg"><q>${r[1]}</q><figcaption class="who"><span class="av">${r[0][0]}</span><span><b>${r[0]}</b>${tr('visited')} ${MONTHS[r[2]][li()]}</span><span class="g">Google</span></figcaption></figure>`).join('');
+  $('#revs').innerHTML=one+one;
+}
+function renderFAQ(){ $('#faq').innerHTML=FAQ.map((q,i)=>`<details class="reveal"${i===0?' open':''}><summary>${tx(q[0])}</summary><p>${tx(q[1])}</p></details>`).join(''); }
+function fmtSlots(day){return day?day.map(s=>s.join('–')).join(' · '):tr('closed');}
+function renderHours(){
+  const now=new Date();const di=(now.getDay()+6)%7;
+  $('#hours').innerHTML=DAYS.map((d,i)=>`<div class="${i===di?'today':''}"><span>${d[li()]}</span><span class="${HOURS[i]?'':'off'}">${fmtSlots(HOURS[i])}</span></div>`).join('');
+  $('#fhours').innerHTML=DAYS.map((d,i)=>`<div><span>${d[li()].slice(0,3)}.</span><span>${HOURS[i]?HOURS[i].map(s=>s[0].replace(':00','h')+'–'+s[1].replace(':00','h').replace(':30','h30')).join(' · '):tr('closed')}</span></div>`).join('');
+  const hm=now.getHours()*60+now.getMinutes();const open=(HOURS[di]||[]).some(([a,b])=>{const A=+a.slice(0,2)*60+ +a.slice(3),B=+b.slice(0,2)*60+ +b.slice(3);return hm>=A&&hm<B;});
+  const st=$('#status');st.classList.toggle('closed',!open);st.querySelector('span').textContent=open?tr('open_now'):tr('closed_now');
+}
+function renderBay(){
+  $('#bay').innerHTML=`<svg viewBox="0 0 640 440" aria-hidden="true">
+  <rect width="640" height="440" fill="#CFDDEE"/>
+  ${[0,1,2,3,4,5].map(i=>`<path class="wv" style="animation-delay:${-i}s" d="M${-20} ${60+i*60} q20 -8 40 0 t40 0 t40 0" stroke="#fff" stroke-width="2" fill="none" opacity=".7" transform="translate(${(i*97)%300} 0)"/>`).join('')}
+  <path d="M640 0 L640 440 L360 440 C380 380 330 340 360 300 C390 260 350 220 380 190 C410 160 420 120 460 100 C500 80 520 40 540 0Z" fill="var(--cream)" stroke="var(--navy)" stroke-width="3"/>
+  <path d="M0 440 L0 300 C40 310 80 290 120 300 C160 312 190 350 220 360 C250 372 270 410 290 440Z" fill="var(--cream)" stroke="var(--navy)" stroke-width="3"/>
+  <path d="M0 0 L0 120 C40 110 70 70 110 60 C150 50 170 20 190 0Z" fill="var(--cream2)" stroke="var(--navy)" stroke-width="2" opacity=".9"/>
+  <g stroke="var(--navy)" stroke-width="10" stroke-linecap="round" opacity=".12"><path d="M470 140 L600 180"/><path d="M430 240 L620 260"/><path d="M420 330 L620 360"/><path d="M500 60 L520 420"/></g>
+  <g fill="var(--navy)" opacity=".85"><rect x="368" y="214" width="34" height="58" rx="4" fill="none" stroke="var(--navy)" stroke-width="3"/>${[0,1,2,3,4].map(i=>`<path d="M374 ${222+i*10} h22" stroke="var(--navy)" stroke-width="2"/>`).join('')}</g>
+  <g class="boat"><path d="M220 230 h36 l-6 8 h-24z" fill="var(--rasp)"/><path d="M238 206 v24 M238 208 l14 18 h-14z" fill="#fff" stroke="var(--navy)" stroke-width="2"/></g>
+  <text class="lbl it" x="190" y="170">Baie de Txingudi</text>
+  <text class="lbl" x="350" y="300" text-anchor="end">Port de plaisance</text>
+  <text class="lbl" x="520" y="420">Hendaye</text>
+  <text class="lbl it" x="30" y="400">Hondarribia</text>
+  <text class="lbl it" x="420" y="60">Bidassoa</text>
+  <g transform="translate(468 196)"><circle class="pinring" r="14" fill="var(--rasp)" opacity=".5"/><g class="pinb"><path d="M0 0 C-14 -16 -16 -34 0 -38 C16 -34 14 -16 0 0Z" fill="var(--rasp)" stroke="var(--navy)" stroke-width="2.5"/><circle cy="-26" r="6" fill="var(--cream)"/></g></g>
+  </svg>
+  <div class="overlay"><div class="addrcard"><b>Le Parc à Huîtres</b><span>5 rue des Orangers, 64700 Hendaye</span></div></div>`;
+}
+function renderTerroirs(){
+  const pts=[["Normandie",255,70],["Irlande",90,30],["Marennes-Oléron",230,250],["Landes",265,330],["Pays basque",250,392]];
+  const H=[255,395];
+  $('#tmap').innerHTML=`<svg viewBox="0 0 400 440" aria-hidden="true">
+   <path d="M400 40 L330 50 C300 60 280 50 260 70 C240 90 290 110 300 140 C310 170 270 190 250 220 C235 245 250 270 260 300 C270 340 262 370 258 400 L300 440 L400 440Z" fill="color-mix(in srgb,var(--cream) 14%,transparent)" stroke="var(--cream)" stroke-width="2"/>
+   <path d="M40 10 C70 0 120 10 130 40 C140 70 100 90 70 80 C40 70 20 40 40 10Z" fill="color-mix(in srgb,var(--cream) 14%,transparent)" stroke="var(--cream)" stroke-width="2"/>
+   <path d="M258 400 C230 410 200 420 160 440" stroke="var(--cream)" stroke-width="2" fill="none" opacity=".6"/>
+   ${pts.filter(p=>p[0]!=='Pays basque').map(([n,x,y])=>`<path class="route-l" d="M${x} ${y} Q${(x+H[0])/2-80} ${(y+H[1])/2} ${H[0]} ${H[1]}"/>`).join('')}
+   ${pts.map(([n,x,y])=>`<g><circle class="pin" cx="${x}" cy="${y}" r="7" fill="var(--lemon)" opacity=".6"/><circle cx="${x}" cy="${y}" r="6" fill="${n==='Pays basque'?'var(--rasp)':'var(--lemon)'}" stroke="var(--navy)" stroke-width="2"/><text x="${x+(x>200?-12:12)}" y="${y+5}" text-anchor="${x>200?'end':'start'}" font-family="Fredoka, sans-serif" font-weight="600" font-size="14" fill="var(--cream)">${n==='Pays basque'?'Hendaye':n}</text></g>`).join('')}
+  </svg>`;
+}
+
+/* =============== booking =============== */
+const B={date:null,slot:null,covers:2,month:null};
+const SL={lunch:["12:00","12:30","13:00","13:30","14:00"],dinner:["19:00","19:30","20:00","20:30","21:00","21:30"]};
+const FULL={"13:00":1,"20:30":1};
+function ymd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function renderCal(){
+  const today=new Date();today.setHours(0,0,0,0);
+  if(!B.month){B.month=new Date(today.getFullYear(),today.getMonth(),1);}
+  if(!B.date){const d=new Date(today);d.setDate(d.getDate()+1);if(d.getDay()===1)d.setDate(d.getDate()+1);B.date=ymd(d);}
+  const m=B.month;$('#calmonth').textContent=m.toLocaleDateString(loc(),{month:'long',year:'numeric'});
+  const first=(m.getDay()+6)%7,days=new Date(m.getFullYear(),m.getMonth()+1,0).getDate();
+  let h=DAYS.map(d=>`<span class="dow">${d[li()].slice(0,2)}</span>`).join('');
+  for(let i=0;i<first;i++)h+='<span></span>';
+  for(let d=1;d<=days;d++){const dt=new Date(m.getFullYear(),m.getMonth(),d);const k=ymd(dt);const dis=dt<today||dt.getDay()===1;h+=`<button type="button" data-d="${k}" aria-pressed="${k===B.date}" ${dis?'disabled':''}>${d}</button>`;}
+  $('#cal').innerHTML=h;
+  $('#calprev').disabled=m<=new Date(today.getFullYear(),today.getMonth(),1);
+}
+$('#cal').addEventListener('click',e=>{const b=e.target.closest('button[data-d]');if(!b||b.disabled)return;B.date=b.dataset.d;renderCal();renderBSlots();recap();step('#bstepper',1);});
+$('#calprev').addEventListener('click',()=>{B.month=new Date(B.month.getFullYear(),B.month.getMonth()-1,1);renderCal();});
+$('#calnext').addEventListener('click',()=>{B.month=new Date(B.month.getFullYear(),B.month.getMonth()+1,1);renderCal();});
+function slotHTML(list,sel,full){return list.map(s=>`<button type="button" data-s="${s}" aria-pressed="${s===sel}" ${full&&full[s]?'disabled':''}>${s}</button>`).join('');}
+function renderBSlots(){
+  const dow=B.date?(new Date(B.date+'T12:00').getDay()+6)%7:1;const sun=dow===6;
+  $('#bslots').innerHTML=`<span class="lbl">${tr('lunch')}</span>`+slotHTML(SL.lunch,B.slot,FULL)+(sun?'':`<span class="lbl">${tr('dinner')}</span>`+slotHTML(SL.dinner,B.slot,FULL));
+}
+$('#bslots').addEventListener('click',e=>{const b=e.target.closest('button[data-s]');if(!b||b.disabled)return;B.slot=b.dataset.s;renderBSlots();recap();step('#bstepper',2);});
+$('#cminus').addEventListener('click',()=>{B.covers=Math.max(1,B.covers-1);$('#covers').value=B.covers;recap();});
+$('#cplus').addEventListener('click',()=>{B.covers=Math.min(8,B.covers+1);$('#covers').value=B.covers;recap();});
+function fmtDate(k){return new Date(k+'T12:00').toLocaleDateString(loc(),{weekday:'long',day:'numeric',month:'long'});}
+function recap(){
+  $('#brecap').innerHTML=[[tr('r_day'),B.date?fmtDate(B.date):'—'],[tr('r_time'),B.slot||'—'],[tr('r_cov'),B.covers],[tr('r_where'),'5 rue des Orangers']].map(([a,b])=>`<div><span>${a}</span><span>${b}</span></div>`).join('');
+}
+function step(sel,n){$$(sel+' > span').forEach((s,i)=>{s.classList.toggle('on',i===n);s.classList.toggle('done',i<n);});}
+$('#bookform').addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!B.date||!B.slot||!$('#bname').value.trim()||!$('#bphone').value.trim()){toast(tr('b_need'));return;}
+  step('#bstepper',3);$$('#bstepper > span').forEach(s=>{s.classList.remove('on');s.classList.add('done');});
+  $('#bookbody').hidden=true;const ok=$('#bookok');ok.hidden=false;
+  ok.innerHTML=`<div class="success"><div class="oy breathe" style="--open:1">${oyster(6)}</div><h3>${tr('b_ok_t')}</h3><p>${$('#bname').value} · ${B.covers} · ${fmtDate(B.date)} · ${B.slot}</p><p style="color:var(--ink-soft)">${tr('b_ok_d')}</p><span class="demo">${tr('demo_gg')}</span><button type="button" class="btn ghost sm" id="bagain">${tr('again')}</button></div>`;
+  $('#bagain').onclick=()=>{ok.hidden=true;$('#bookbody').hidden=false;step('#bstepper',0);};
+});
+
+/* =============== takeaway =============== */
+const CART={};let TCAT='all';const T={day:0,slot:null};
+const PRODS=[];MENU.forEach(c=>c.items.forEach((it,i)=>{if(it[8])PRODS.push({k:c.id+':'+i,cat:c,it});}));
+function renderShop(){
+  const l=li();const cats=MENU.filter(c=>c.items.some(i=>i[8]));
+  $('#tcats').innerHTML=`<button type="button" data-c="all" aria-pressed="${TCAT==='all'}">${tr('all')}</button>`+cats.map(c=>`<button type="button" data-c="${c.id}" aria-pressed="${TCAT===c.id}">${c.t[l]}</button>`).join('');
+  $('#products').innerHTML=PRODS.filter(p=>TCAT==='all'||p.cat.id===TCAT).map(p=>{const q=CART[p.k]||0;return `<article class="prod"><div class="ill">${ill(p.k)}${p.cat.id==='huitres'?`<span class="tagq">${tr('per12')}</span>`:''}</div><div class="body"><h3>${p.it[l]}</h3>${p.it[3+l]?`<p class="d">${p.it[3+l]}</p>`:''}</div><div class="foot"><b>${eur(p.it[6])}</b>${q?`<span class="qmini"><button type="button" data-q="-1" data-k="${p.k}" aria-label="−">−</button><output>${q}</output><button type="button" data-q="1" data-k="${p.k}" aria-label="+">+</button></span>`:`<button type="button" class="add" data-add="${p.k}">+ ${tr('add')}</button>`}</div></article>`;}).join('');
+  renderBasket();
+}
+function renderBasket(){
+  const l=li();let tot=0,n=0;const lines=[];
+  PRODS.forEach(p=>{const q=CART[p.k]||0;if(q){tot+=q*p.it[6];n+=q;lines.push(`<div class="bl"><span>${p.it[l]}<br><span class="q">${q} × ${eur(p.it[6])}</span></span><b>${eur(q*p.it[6])}</b></div>`);}});
+  $('#blines').innerHTML=lines.join('')||`<div class="bempty">${bourriche(false)}<span>${tr('empty')}</span></div>`;
+  $('#btotal').textContent=eur(tot);$('#bcount').textContent=n;$('#cartcount').textContent=n;
+  $('#mcount').textContent=n;$('#mtotal').textContent=eur(tot);$('#mbar').classList.toggle('on',n>0&&current==='emporter');
+  if(n>0)step('#tstepper',T.slot?2:1);else step('#tstepper',0);
+  return tot;
+}
+function addItem(k,src){
+  CART[k]=(CART[k]||0)+1;
+  if(src&&!RM){const r=src.getBoundingClientRect(),t=$('#cartbtn').getBoundingClientRect();const f=document.createElement('div');f.className='fly';f.innerHTML=`<svg viewBox="0 0 300 190">${rings(5,158,95,128,78,1.3,'var(--rasp)','var(--cream)')}</svg>`;f.style.left=r.left+r.width/2-17+'px';f.style.top=r.top+'px';document.body.appendChild(f);requestAnimationFrame(()=>{f.style.transform=`translate(${t.left+t.width/2-r.left-r.width/2}px,${t.top-r.top}px) scale(.6) rotate(-30deg)`;f.style.opacity='.4';});setTimeout(()=>{f.remove();const c=$('#cartbtn');c.classList.remove('bump');void c.offsetWidth;c.classList.add('bump');},800);}
+  const p=PRODS.find(x=>x.k===k);if(p)toast(p.it[li()]+' '+tr('added'));
+  renderShop();if(current==='accueil')renderPlateaux();
+}
+document.addEventListener('click',e=>{const a=e.target.closest('[data-add]');if(a){addItem(a.dataset.add,a);}});
+$('#products').addEventListener('click',e=>{const b=e.target.closest('button[data-q]');if(!b)return;const k=b.dataset.k;CART[k]=Math.max(0,(CART[k]||0)+ +b.dataset.q);renderShop();});
+$('#tcats').addEventListener('click',e=>{const b=e.target.closest('button[data-c]');if(!b)return;TCAT=b.dataset.c;renderShop();});
+function tDays(){const out=[];const d=new Date();for(let i=0;out.length<4&&i<8;i++){const x=new Date(d);x.setDate(d.getDate()+i);if(x.getDay()!==1)out.push(x);}return out;}
+function renderPickup(){
+  const ds=tDays();
+  $('#tdays').innerHTML=ds.map((d,i)=>{const lab=i===0&&d.toDateString()===new Date().toDateString()?tr('today'):(new Date(Date.now()+864e5).toDateString()===d.toDateString()?tr('tomorrow'):d.toLocaleDateString(loc(),{weekday:'short'}));return `<button type="button" data-i="${i}" aria-pressed="${i===T.day}"><small>${lab}</small><b>${d.getDate()}</b></button>`;}).join('');
+  const sl=["11:30","12:00","12:30","13:00","17:30","18:00","18:30","19:00","19:30"];
+  $('#tslots').innerHTML=slotHTML(sl,T.slot,null);
+}
+$('#tdays').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;T.day=+b.dataset.i;renderPickup();});
+$('#tslots').addEventListener('click',e=>{const b=e.target.closest('button[data-s]');if(!b)return;T.slot=b.dataset.s;renderPickup();renderBasket();});
+$('#takeform').addEventListener('submit',e=>{
+  e.preventDefault();const tot=renderBasket();const err=$('#terr');
+  if(!tot||!T.slot||!$('#tname').value.trim()||!$('#tphone').value.trim()){err.hidden=false;err.textContent=tr('t_need');return;}
+  err.hidden=true;step('#tstepper',3);
+  const no='PAH-'+String(Math.floor(1000+Math.random()*9000));const d=tDays()[T.day];
+  const lines=PRODS.filter(p=>CART[p.k]).map(p=>`<div class="tl"><span>${CART[p.k]} × ${p.it[li()]}</span><span>${eur(CART[p.k]*p.it[6])}</span></div>`).join('');
+  const openTxt=document.querySelector('input[name="open"]:checked').value==='open'?tr('o_open'):tr('o_closed');
+  $('#takebody').hidden=true;const ok=$('#takeok');ok.hidden=false;
+  ok.innerHTML=`<h3 style="font-size:1.5rem;margin-bottom:14px">${tr('t_ok')}</h3><div class="ticket"><div style="display:flex;justify-content:center;margin-bottom:8px"><svg viewBox="0 0 300 190" width="70">${rings(5,158,95,128,78,1.3,'var(--navy)','var(--white)')}</svg></div><div style="text-align:center;font-family:var(--fd);letter-spacing:.14em">LE PARC À HUÎTRES</div><div style="text-align:center;font-size:.8rem;color:var(--ink-soft)">5 rue des Orangers · 64700 Hendaye</div><hr><div class="tnum">${no}</div><span class="stamp">${tr('stamp')}</span><hr>${lines}<div class="tl"><span>${tr('oys_opt')}</span><span>${openTxt}</span></div><hr><div class="tl" style="font-weight:700;font-size:1.05rem"><span>${tr('t_pay')}</span><span>${eur(tot)}</span></div><div class="tl"><span>${tr('t_paym')}</span><span></span></div><hr><div class="tl"><span>${tr('t_pick')}</span><span>${d.toLocaleDateString(loc(),{weekday:'short',day:'numeric',month:'short'})} · ${T.slot}</span></div><div class="tl"><span>${tr('f_name')}</span><span>${$('#tname').value}</span></div></div><p style="margin-top:16px;text-align:center"><span class="demo">${tr('demo_gg')}</span></p><button type="button" class="btn ghost sm" id="tagain" style="margin:14px auto 0;display:flex">${tr('t_again')}</button>`;
+  ok.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});
+  $('#tagain').onclick=()=>{Object.keys(CART).forEach(k=>delete CART[k]);T.slot=null;ok.hidden=true;$('#takebody').hidden=false;renderPickup();renderShop();};
+});
+$('#mgo').addEventListener('click',e=>{e.preventDefault();$('#basket').scrollIntoView({behavior:RM?'auto':'smooth'});});
+
+/* =============== misc =============== */
+let toastT;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('on'),2200);}
+document.addEventListener('click',e=>{const c=e.target.closest('[data-copy]');if(!c)return;const v=c.dataset.copy;const done=()=>toast(tr('copied')+' : '+v);try{navigator.clipboard.writeText(v).then(done,()=>{toast(v)});}catch(_){toast(v);}});
+$('#cform').addEventListener('submit',e=>{e.preventDefault();const p=$('#cok');p.hidden=false;p.textContent=tr('c_ok');});
+$('#news').addEventListener('submit',e=>{e.preventDefault();toast(tr('news_ok'));});
+
+/* =============== language =============== */
+function applyLang(lang,auto){
+  LANG=lang;AUTO=auto;document.documentElement.lang=lang;
+  $$('[data-i]').forEach(el=>{const k=el.dataset.i;if(I[k])el.textContent=I[k][li()];});
+  $$('[data-ih]').forEach(el=>{const k=el.dataset.ih;if(I[k])el.innerHTML=I[k][li()];});
+  $$('[data-iph]').forEach(el=>{const k=el.dataset.iph;if(I[k])el.placeholder=I[k][li()];});
+  $$('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang?'true':'false'));
+  renderLineup();renderPlateaux();renderMarquee();renderReviews();renderMenu();renderFAQ();renderHours();renderCal();renderBSlots();recap();renderShop();renderPickup();
+  if(!auto){try{localStorage.setItem('pah-lang',lang)}catch(e){}}
+  observeReveals();
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-lang]');if(b)applyLang(b.dataset.lang,false);});
+
+/* =============== reveal =============== */
+let IO=null;
+function observeReveals(){
+  if(RM||!('IntersectionObserver' in window))return;
+  if(!IO)IO=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.remove('pre');IO.unobserve(en.target);}}),{rootMargin:'0px 0px -8% 0px'});
+  $$('.page:not([hidden]) .reveal:not(.seen)').forEach(el=>{el.classList.add('seen');const r=el.getBoundingClientRect();if(r.top>innerHeight*0.92){el.classList.add('pre');IO.observe(el);}});
+}
+
+/* =============== router =============== */
+const PAGES=['accueil','maison','carte','reserver','emporter','contact'];
+let current=null;
+function show(p,anim){
+  if(!PAGES.includes(p))p='accueil';
+  const swap=()=>{$$('.page').forEach(pg=>pg.hidden=pg.dataset.page!==p);current=p;
+    $$('nav.main a,.mnav a').forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+p?'page':'false'));
+    window.scrollTo(0,0);document.title=p==='accueil'?'Le Parc à Huîtres':'Le Parc à Huîtres · '+tr('nav_'+({maison:'house',carte:'menu',reserver:'book',emporter:'take',contact:'contact'})[p]);
+    observeReveals();renderBasket();onScroll();if(p==='maison')setTimeout(routeAnim,300);};
+  document.body.classList.remove('menu-open');$('#burger').setAttribute('aria-expanded','false');
+  if(anim&&!RM&&current){const w=$('#wipe');w.classList.remove('run');void w.offsetWidth;w.classList.add('run');setTimeout(swap,450);}else swap();
+}
+window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(PAGES.includes(h))show(h,true);});
+$('#burger').addEventListener('click',()=>{const on=!document.body.classList.contains('menu-open');document.body.classList.toggle('menu-open',on);$('#burger').setAttribute('aria-expanded',on);});
+
+/* route boat animation */
+function routeAnim(){
+  const lis=$$('#route li');let i=0;
+  const tick=()=>{lis.forEach((l,j)=>l.classList.toggle('on',j===i));const boat=$('#boat');if(boat&&innerWidth>860){const pct=6+i*(88/4);boat.style.left=`calc(${pct}% - 28px)`;}i=(i+1)%lis.length;};
+  clearInterval(window._rt);tick();window._rt=setInterval(tick,RM?4000:2200);
+}
+
+/* =============== scroll-linked motion =============== */
+const heroOy=$('#heroOy'),gOy=$('#gesteOy'),geste=$('#geste'),knife=$('#knife');
+let ticking=false;
+function onScroll(){
+  $('#hdr').classList.toggle('scrolled',scrollY>8);
+  if(current!=='accueil')return;
+  // hero oyster: starts slightly open, opens fully as you scroll
+  const h=Math.min(1,scrollY/420);heroOy.style.setProperty('--open',(RM?.8:Math.max(idle,h)).toFixed(3));
+  // geste pinned sequence
+  const r=geste.getBoundingClientRect();const total=r.height-innerHeight;const p=Math.min(1,Math.max(0,-r.top/Math.max(1,total)));
+  const s=p<.33?0:p<.66?1:2;
+  $$('#steps .step').forEach((el,i)=>el.classList.toggle('on',i===s));
+  [$('#pg1'),$('#pg2'),$('#pg3')].forEach((el,i)=>el.style.setProperty('--p',Math.min(1,Math.max(0,(p-i/3)*3)).toFixed(3)));
+  const kin=Math.min(1,Math.max(0,(p-.25)/.2));const open=Math.min(1,Math.max(0,(p-.42)/.2));
+  knife.style.transform=`translate(${kin*38 - (open>0?open*30:0)}%, ${-open*40}%) rotate(${open*-30}deg)`;knife.style.opacity=p>.7?String(Math.max(0,1-(p-.7)/.1)):'1';
+  gOy.style.setProperty('--open',(RM?.9:open).toFixed(3));
+  $('#gesteIce').classList.toggle('on',p>.62);
+}
+let idle=0.12;
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(()=>{ticking=false;onScroll();});}},{passive:true});
+addEventListener('resize',onScroll);
+
+/* hero idle breathing + bubbles + waves loop */
+const cv=$('#bubbles'),cx=cv.getContext('2d');let B2=[];
+function sizeCv(){const r=cv.getBoundingClientRect();cv.width=r.width*devicePixelRatio;cv.height=r.height*devicePixelRatio;B2=Array.from({length:26},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,r:(2+Math.random()*7)*devicePixelRatio,v:(.2+Math.random()*.6)*devicePixelRatio,o:Math.random()*6}));}
+sizeCv();addEventListener('resize',sizeCv);
+function loop(t){
+  if(!document.hidden){
+    drawWaves(t);
+    if(current==='accueil'){
+      idle=.1+.12*(.5+.5*Math.sin(t/900));if(scrollY<5)heroOy.style.setProperty('--open',idle.toFixed(3));
+      cx.clearRect(0,0,cv.width,cv.height);
+      B2.forEach(b=>{b.y-=b.v;b.x+=Math.sin(t/700+b.o)*.4;if(b.y<-10){b.y=cv.height+10;b.x=Math.random()*cv.width;}cx.beginPath();cx.arc(b.x,b.y,b.r,0,7);cx.strokeStyle='rgba(19,48,107,.28)';cx.lineWidth=1.5*devicePixelRatio;cx.stroke();});
+    }
+  }
+  requestAnimationFrame(loop);
+}
+if(!RM)requestAnimationFrame(loop);
+
+/* count-up */
+let counted=false;
+function countUp(){if(counted)return;const el=$('#count456');const r=el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0){counted=true;if(RM)return;const t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/1400);el.textContent=Math.round(458*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f);};requestAnimationFrame(f);}}
+addEventListener('scroll',countUp,{passive:true});
+
+/* hero title letters */
+(function(){const h=$('#htitle');let n=0;h.querySelectorAll('.w').forEach(w=>{const walk=node=>{[...node.childNodes].forEach(c=>{if(c.nodeType===3){const frag=document.createDocumentFragment();[...c.textContent].forEach(ch=>{const s=document.createElement('span');s.className='ch';s.textContent=ch===' '?' ':ch;s.style.animationDelay=(0.45+n++*0.04)+'s';frag.appendChild(s);});c.replaceWith(frag);}else walk(c);});};walk(w);});})();
+
+/* =============== boot =============== */
+function detect(){try{const s=localStorage.getItem('pah-lang');if(s&&['fr','es','en'].includes(s))return [s,false];}catch(e){}
+  const ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'fr']).map(x=>x.slice(0,2).toLowerCase());for(const x of ls)if(['fr','es','en'].includes(x))return [x,true];return ['en',true];}
+const [L0,A0]=detect();
+renderBay();renderTerroirs();
+show((location.hash||'#accueil').slice(1),false);
+applyLang(L0,A0);
+const ld=$('#loader');if(RM){ld.remove();}else{setTimeout(()=>{ld.classList.add('out');setTimeout(()=>ld.remove(),900);},850);}
+</script>
+
+</body>
+</html>
