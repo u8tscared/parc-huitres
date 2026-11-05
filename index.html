@@ -164,7 +164,21 @@ section{position:relative}
 @keyframes bob{50%{transform:translateY(-8px) rotate(6deg)}}
 .plate .sticker{position:absolute;top:4%;left:2%;width:30%;aspect-ratio:1;animation:spin 22s linear infinite}
 .plate .sticker text{font-family:var(--fd);font-size:13px;letter-spacing:2.5px;fill:var(--rasp)}
-@media (max-width:860px){.hero .grid{grid-template-columns:1fr}.plate{margin:0 auto;max-width:440px}}
+@media (max-width:860px){
+  .hero .grid{grid-template-columns:minmax(0,1fr) 40%;grid-template-areas:"eb eb" "h1 pl" "sub pl" "lead lead" "cta cta" "rt rt";column-gap:6px;row-gap:0;align-items:center;padding-block:18px 34px}
+  .hero .grid > div:first-child{display:contents}
+  .hero .grid .eyebrow{grid-area:eb;font-size:.68rem;letter-spacing:.14em}
+  .hero h1{grid-area:h1;font-size:clamp(2.3rem,10.6vw,4.6rem);margin-top:12px!important;align-self:end}
+  .hero .sub{grid-area:sub;font-size:1rem;margin:10px 0 0;align-self:start}
+  .hero .sub::before{width:26px}
+  .hero .lead{grid-area:lead;font-size:1rem;margin:16px 0 18px}
+  .hero .cta{grid-area:cta;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .hero .cta .btn{justify-content:center;padding:.8em .6em;font-size:.92rem}
+  .hero .cta .btn:first-child{grid-column:1/-1}
+  .hero .rating{grid-area:rt;margin-top:16px}
+  .plate{grid-area:pl;max-width:none;margin:0;width:118%;margin-left:-4%}
+  .plate .sticker{width:38%;top:-2%;left:-6%}
+}
 
 .waveband{display:block;width:100%;height:70px;margin-bottom:-1px}
 .marquee{background:var(--navy);color:var(--cream);overflow:hidden;white-space:nowrap;padding-block:16px;border-block:6px solid var(--navy)}
@@ -596,8 +610,6 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
   .reveal.pre{opacity:1;transform:none}
 }
 </style>
-</head>
-<body>
 
 <div class="loader" id="loader" aria-hidden="true"><svg viewBox="0 0 300 190" data-logo="7"></svg></div>
 <div class="wipe" id="wipe" aria-hidden="true">
@@ -656,6 +668,7 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
         <div class="cta">
           <a class="btn" href="#reserver"><span data-i="cta_book">Réserver une table</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn ghost" href="#emporter" data-i="cta_take">Commander à emporter</a>
+          <a class="btn ghost" href="#carte" data-i="cta_ourmenu">Notre carte</a>
         </div>
         <div class="rating"><span class="stars" style="--r:4.6">★★★★★</span><span><b>4,6</b> · <span data-i="reviews_n">456 avis Google</span></span></div>
       </div>
@@ -667,7 +680,7 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
         <svg class="lemon" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="var(--lemon)" stroke="var(--navy)" stroke-width="3"/><circle cx="50" cy="50" r="36" fill="#FBE7A1"/><g stroke="var(--lemon)" stroke-width="3">
           <line x1="50" y1="50" x2="50" y2="15"/><line x1="50" y1="50" x2="80" y2="32"/><line x1="50" y1="50" x2="80" y2="68"/><line x1="50" y1="50" x2="50" y2="85"/><line x1="50" y1="50" x2="20" y2="68"/><line x1="50" y1="50" x2="20" y2="32"/></g></svg>
         <svg class="lemon2" viewBox="0 0 100 100" aria-hidden="true"><path d="M8 70 A46 46 0 0 1 92 70Z" fill="var(--lemon)" stroke="var(--navy)" stroke-width="4"/><path d="M18 66 A34 34 0 0 1 82 66Z" fill="#FBE7A1"/></svg>
-        <svg class="sticker" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="circ" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs><circle cx="60" cy="60" r="58" fill="var(--cream)" stroke="var(--rasp)" stroke-width="2"/><text><textPath href="#circ" id="stickertxt">OUVERTES À LA MINUTE ✦ PERLE D'HENDAYE ✦ </textPath></text><circle cx="60" cy="60" r="10" fill="var(--rasp)"/></svg>
+        <svg class="sticker" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="circ" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs><circle cx="60" cy="60" r="58" fill="var(--cream)" stroke="var(--rasp)" stroke-width="2"/><text><textPath href="#circ" id="stickertxt" textLength="272" lengthAdjust="spacing">LE PARC À HUÎTRES ✦ PERLE D'HENDAYE ✦</textPath></text><circle cx="60" cy="60" r="10" fill="var(--rasp)"/></svg>
       </div>
     </div>
   </section>
@@ -1094,7 +1107,7 @@ tag:["Perle d'Hendaye","Perla de Hendaya","Pearl of Hendaye"],
 nav_home:["Accueil","Inicio","Home"],nav_house:["La Maison","La Casa","Our story"],nav_menu:["La Carte","La Carta","Menu"],nav_book:["Réserver","Reservar","Book"],nav_take:["À emporter","Para llevar","Takeaway"],nav_contact:["Contact","Contacto","Contact"],
 kicker:["Bar à huîtres · Hendaye · à deux pas du port","Bar de ostras · Hendaya · junto al puerto","Oyster bar · Hendaye · steps from the harbour"],
 hero_lead:["Huîtres ouvertes à la minute, coquillages cuits maison et cuisine de l'océan, au bord de la baie.","Ostras abiertas al momento, mariscos cocidos en casa y cocina del océano, junto a la bahía.","Oysters opened to order, shellfish cooked in-house and ocean cooking, right by the bay."],
-cta_book:["Réserver une table","Reservar mesa","Book a table"],cta_book_s:["Réserver","Reservar","Book"],cta_take:["Commander à emporter","Pedir para llevar","Order takeaway"],cta_menu:["Voir la carte","Ver la carta","See the menu"],
+cta_book:["Réserver une table","Reservar mesa","Book a table"],cta_book_s:["Réserver","Reservar","Book"],cta_take:["Commander à emporter","Pedir para llevar","Order takeaway"],cta_menu:["Voir la carte","Ver la carta","See the menu"],cta_ourmenu:["Notre carte","Nuestra carta","Our menu"],
 reviews_n:["458 avis Google","458 reseñas en Google","458 Google reviews"],reviews_w:["avis Google","reseñas en Google","Google reviews"],
 ways_k:["Venez comme vous voulez","Como usted prefiera","However you like"],ways_t:["Trois façons de nous goûter","Tres formas de probarnos","Three ways to taste us"],
 way1_t:["Sur place","En el local","Dine in"],way1_d:["Au comptoir ou à table, une douzaine et un verre de Txakoli face à la baie.","En la barra o en mesa, una docena y una copa de Txakoli frente a la bahía.","At the counter or at a table, a dozen and a glass of Txakoli facing the bay."],
@@ -1411,7 +1424,6 @@ function renderMarquee(){
   $('#mq1').innerHTML=one+one;
   const g=`<span>Le Parc à Huîtres <svg viewBox="0 0 300 190">${rings(6,158,95,128,78,1.3,'color-mix(in srgb,var(--cream) 45%,transparent)','var(--navy)')}</svg> ${tr('tag')} <svg viewBox="0 0 300 190">${rings(6,158,95,128,78,1.3,'color-mix(in srgb,var(--cream) 45%,transparent)','var(--navy)')}</svg></span>`;
   $('#giant').innerHTML=g+g;
-  $('#stickertxt').textContent=({fr:"OUVERTES À LA MINUTE ✦ PERLE D'HENDAYE ✦ ",es:"ABIERTAS AL MOMENTO ✦ PERLA DE HENDAYA ✦ ",en:"OPENED TO ORDER ✦ PEARL OF HENDAYE ✦ "})[LANG];
 }
 function alCodes(s){return s.split('').map(ch=>{const idx=ch==='0'?9:(+ch-1);return ALL[idx][li()];});}
 function renderMenu(){
