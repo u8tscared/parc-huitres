@@ -15,9 +15,55 @@ site_url: https://u8tscared.github.io/parc-huitres/
 logo:
   src: https://u8tscared.github.io/parc-huitres/icon-192.png
 media_folder: images
+public_folder: images
 editor:
   preview: false
 singletons:
+- name: etat
+  label: Fermé / complet
+  icon: toggle_on
+  file: content/etat.json
+  fields:
+  - name: mode
+    label: État d'aujourd'hui
+    widget: select
+    default: normal
+    options:
+    - label: Normal
+      value: normal
+    - label: Complet (plus de tables, l'emporter reste ouvert)
+      value: complet
+    - label: Fermé (ni tables ni emporter)
+      value: ferme
+    hint: Un bandeau s'affiche en haut du site, et la réservation (et l'emporter si fermé) est bloquée pour ce jour.
+  - name: jour
+    label: Pour le jour
+    widget: datetime
+    type: date
+    format: YYYY-MM-DD
+    required: false
+    hint: 'Mettez la date du jour : le lendemain, le site redevient normal tout seul. Vide = reste actif jusqu''à ce que vous
+      remettiez « Normal ».'
+  - name: message
+    label: Message du bandeau (facultatif)
+    widget: object
+    hint: Vide = « Complet aujourd'hui » ou « Fermé aujourd'hui ».
+    fields:
+    - name: fr
+      label: Français
+      widget: string
+      required: false
+    - name: es
+      label: Espagnol
+      widget: string
+      hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
+      required: false
+    - name: en
+      label: Anglais
+      widget: string
+      hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
+      required: false
+    required: false
 - name: infos
   label: Coordonnées
   icon: contact_phone
@@ -145,12 +191,12 @@ singletons:
     - name: es
       label: Espagnol
       widget: text
-      hint: Vide = le texte français est affiché
+      hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
       required: false
     - name: en
       label: Anglais
       widget: text
-      hint: Vide = le texte français est affiché
+      hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
       required: false
     required: false
 - name: huitres
@@ -170,7 +216,7 @@ singletons:
     widget: object
     collapsed: true
     required: false
-    hint: Facultatif. Si une traduction est vide, le site affiche le français.
+    hint: 'Si vous changez le français, mettez aussi à jour ces traductions, ou videz-les : le site affichera alors le français.'
     fields:
     - name: es
       label: Espagnol
@@ -234,7 +280,7 @@ singletons:
       widget: string
       hint: Le supplément pour les huîtres ouvertes se règle dans « À emporter ».
       required: false
-      pattern: &id004
+      pattern: &id005
       - ^\d+([,.]\d{1,2})?$
       - Écrivez un prix simple, par exemple 19,20
     - name: iode
@@ -378,12 +424,18 @@ singletons:
         value: soifs:4
       - label: Petites soifs · Thé / thé au lait
         value: soifs:5
+    - &id004
+      name: photo
+      label: Photo (facultatif)
+      widget: image
+      required: false
+      hint: Si une photo est ajoutée, elle remplace le dessin. Format paysage conseillé.
     - name: traductions
       label: Traductions (espagnol, anglais)
       widget: object
       collapsed: true
       required: false
-      hint: Facultatif. Si une traduction est vide, le site affiche le français.
+      hint: 'Si vous changez le français, mettez aussi à jour ces traductions, ou videz-les : le site affichera alors le français.'
       fields:
       - name: es
         label: Espagnol
@@ -447,7 +499,7 @@ singletons:
       widget: object
       collapsed: true
       required: false
-      hint: Facultatif. Si une traduction est vide, le site affiche le français.
+      hint: 'Si vous changez le français, mettez aussi à jour ces traductions, ou videz-les : le site affichera alors le français.'
       fields:
       - name: es
         label: Espagnol
@@ -497,12 +549,14 @@ singletons:
         pattern: *id001
       - *id002
       - *id003
+      - *id004
       - name: traductions
         label: Traductions (espagnol, anglais)
         widget: object
         collapsed: true
         required: false
-        hint: Facultatif. Si une traduction est vide, le site affiche le français.
+        hint: 'Si vous changez le français, mettez aussi à jour ces traductions, ou videz-les : le site affichera alors le
+          français.'
         fields:
         - name: es
           label: Espagnol
@@ -538,17 +592,17 @@ singletons:
   - name: supplement_ouverture
     label: Supplément huîtres ouvertes (€ par douzaine)
     widget: string
-    pattern: *id004
+    pattern: *id005
   - name: consigne_petit
     label: Consigne petit plateau (€)
     widget: string
     hint: 'Petit plateau : jusqu''à 2 douzaines d''huîtres ouvertes.'
-    pattern: *id004
+    pattern: *id005
   - name: consigne_grand
     label: Consigne grand plateau (€)
     widget: string
     hint: 'Grand plateau : 3 douzaines.'
-    pattern: *id004
+    pattern: *id005
   - name: retrait
     label: Créneaux de retrait
     widget: object
@@ -632,7 +686,7 @@ singletons:
     - name: prix
       label: Prix à emporter (€)
       widget: string
-      pattern: *id004
+      pattern: *id005
     - name: toujours_ouvert
       label: Plateau ouvert (avec consigne)
       widget: boolean
@@ -640,12 +694,13 @@ singletons:
       hint: À cocher pour un plateau toujours servi ouvert.
     - *id002
     - *id003
+    - *id004
     - name: traductions
       label: Traductions (espagnol, anglais)
       widget: object
       collapsed: true
       required: false
-      hint: Facultatif. Si une traduction est vide, le site affiche le français.
+      hint: 'Si vous changez le français, mettez aussi à jour ces traductions, ou videz-les : le site affichera alors le français.'
       fields:
       - name: es
         label: Espagnol
@@ -673,6 +728,42 @@ singletons:
           label: Description
           widget: text
           required: false
+- name: photos
+  label: Photos
+  icon: photo_library
+  file: content/photos.json
+  fields:
+  - name: galerie
+    label: Galerie (page La Maison)
+    label_singular: photo
+    widget: list
+    required: false
+    summary: '{{fields.legende.fr}}'
+    hint: Les photos s'affichent sur la page La Maison, dans cet ordre. Sans photo, la galerie n'apparaît pas. Pour la photo
+      d'un plat, ouvrez le plat dans « La carte ».
+    fields:
+    - name: image
+      label: Photo
+      widget: image
+    - name: legende
+      label: Légende (facultatif)
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+        required: false
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
+        required: false
+      required: false
 - name: textes
   label: Textes du site
   icon: edit_note
@@ -693,12 +784,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: hero_lead
       label: Texte de présentation
@@ -710,12 +801,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: ways_t
       label: Titre « Trois façons »
@@ -727,12 +818,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: way1_t
       label: 'Bloc 1 : titre'
@@ -744,12 +835,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: way1_d
       label: 'Bloc 1 : texte'
@@ -761,12 +852,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: way2_t
       label: 'Bloc 2 : titre'
@@ -778,12 +869,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: way2_d
       label: 'Bloc 2 : texte'
@@ -795,12 +886,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: way3_t
       label: 'Bloc 3 : titre'
@@ -812,12 +903,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: way3_d
       label: 'Bloc 3 : texte'
@@ -829,12 +920,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: geste_t
       label: Titre « Le geste »
@@ -846,12 +937,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: s1_t
       label: 'Étape 1 : titre'
@@ -863,12 +954,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: s1_d
       label: 'Étape 1 : texte'
@@ -880,12 +971,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: s2_t
       label: 'Étape 2 : titre'
@@ -897,12 +988,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: s2_d
       label: 'Étape 2 : texte'
@@ -914,12 +1005,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: s3_t
       label: 'Étape 3 : titre'
@@ -931,12 +1022,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: s3_d
       label: 'Étape 3 : texte'
@@ -948,12 +1039,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: oys_t
       label: Titre « Nos huîtres »
@@ -965,12 +1056,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: oys_d
       label: Texte sous « Nos huîtres »
@@ -982,12 +1073,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: plat_t
       label: Titre « Les plateaux »
@@ -999,12 +1090,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: plat_d
       label: Texte sous « Les plateaux »
@@ -1016,12 +1107,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: proof_t
       label: Titre des avis clients
@@ -1033,12 +1124,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
   - name: maison
     label: La Maison (à propos)
@@ -1055,12 +1146,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: house_p1
       label: Paragraphe 1
@@ -1072,12 +1163,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: house_p2
       label: Paragraphe 2
@@ -1089,12 +1180,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: house_q
       label: Citation
@@ -1106,12 +1197,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: house_p3
       label: Paragraphe 3
@@ -1123,12 +1214,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: val_t
       label: Titre des engagements
@@ -1140,12 +1231,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: v1_t
       label: 'Engagement 1 : titre'
@@ -1157,12 +1248,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: v1_d
       label: 'Engagement 1 : texte'
@@ -1174,12 +1265,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: v2_t
       label: 'Engagement 2 : titre'
@@ -1191,12 +1282,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: v2_d
       label: 'Engagement 2 : texte'
@@ -1208,12 +1299,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: v3_t
       label: 'Engagement 3 : titre'
@@ -1225,12 +1316,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: v3_d
       label: 'Engagement 3 : texte'
@@ -1242,12 +1333,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: v4_t
       label: 'Engagement 4 : titre'
@@ -1259,12 +1350,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: v4_d
       label: 'Engagement 4 : texte'
@@ -1276,12 +1367,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: route_t
       label: Titre « Le voyage d'une huître »
@@ -1293,12 +1384,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: r1_t
       label: 'Étape 1 : titre'
@@ -1310,12 +1401,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: r1_d
       label: 'Étape 1 : texte'
@@ -1327,12 +1418,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: r2_t
       label: 'Étape 2 : titre'
@@ -1344,12 +1435,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: r2_d
       label: 'Étape 2 : texte'
@@ -1361,12 +1452,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: r3_t
       label: 'Étape 3 : titre'
@@ -1378,12 +1469,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: r3_d
       label: 'Étape 3 : texte'
@@ -1395,12 +1486,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: r4_t
       label: 'Étape 4 : titre'
@@ -1412,12 +1503,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: r4_d
       label: 'Étape 4 : texte'
@@ -1429,12 +1520,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: r5_t
       label: 'Étape 5 : titre'
@@ -1446,12 +1537,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: r5_d
       label: 'Étape 5 : texte'
@@ -1463,12 +1554,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
   - name: carte
     label: La carte
@@ -1485,12 +1576,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: mn1_t
       label: 'Encadré 1 : titre'
@@ -1502,12 +1593,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: mn1_d
       label: 'Encadré 1 : texte'
@@ -1519,12 +1610,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: mn3_t
       label: 'Encadré « Règlement » : titre'
@@ -1536,12 +1627,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: mn3_d
       label: 'Encadré « Règlement » : texte'
@@ -1553,12 +1644,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
   - name: emporter
     label: À emporter
@@ -1575,12 +1666,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: pill1
       label: Pastille 1
@@ -1592,12 +1683,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: pill3
       label: Pastille 3 (paiement)
@@ -1609,12 +1700,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: o_closed_d
       label: Explication « huîtres fermées »
@@ -1626,12 +1717,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: o_open_d
       label: Explication « huîtres ouvertes »
@@ -1643,12 +1734,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: o_always_d
       label: Explication « plateau toujours ouvert »
@@ -1660,12 +1751,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: tray_note
       label: Note sur la consigne
@@ -1677,12 +1768,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: pay_t
       label: 'Encadré paiement : titre'
@@ -1694,12 +1785,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: pay_d
       label: 'Encadré paiement : texte'
@@ -1711,12 +1802,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: keep_t
       label: Titre des conseils
@@ -1728,12 +1819,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: k1_t
       label: 'Conseil 1 : titre'
@@ -1745,12 +1836,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: k1_d
       label: 'Conseil 1 : texte'
@@ -1762,12 +1853,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: k2_t
       label: 'Conseil 2 : titre'
@@ -1779,12 +1870,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: k2_d
       label: 'Conseil 2 : texte'
@@ -1796,12 +1887,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: k3_t
       label: 'Conseil 3 : titre'
@@ -1813,12 +1904,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: k3_d
       label: 'Conseil 3 : texte'
@@ -1830,12 +1921,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
   - name: contact
     label: Contact et bas de page
@@ -1852,12 +1943,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: write_t
       label: 'Formulaire : titre'
@@ -1869,12 +1960,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: write_d
       label: 'Formulaire : texte'
@@ -1886,12 +1977,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: foot_about
       label: Présentation en bas de page
@@ -1903,12 +1994,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
   - name: faq
     label: Questions fréquentes
@@ -1927,12 +2018,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: string
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
     - name: reponse
       label: Réponse
@@ -1944,12 +2035,12 @@ singletons:
       - name: es
         label: Espagnol
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
       - name: en
         label: Anglais
         widget: text
-        hint: Vide = le texte français est affiché
+        hint: 'Si vous changez le français, changez aussi ce texte, ou videz-le : le français sera affiché.'
         required: false
   - name: avis
     label: Avis clients (accueil)
@@ -1982,3 +2073,66 @@ singletons:
       - octobre
       - novembre
       - décembre
+- name: mentions
+  label: Mentions légales
+  icon: gavel
+  file: content/mentions.json
+  fields:
+  - name: raison_sociale
+    label: Raison sociale
+    widget: string
+    hint: Le nom de la société, tel que sur le Kbis.
+    required: false
+  - name: forme_juridique
+    label: Forme juridique
+    widget: string
+    hint: SARL, SAS, EI…
+    required: false
+  - name: capital
+    label: Capital social
+    widget: string
+    hint: Par exemple 10 000 €
+    required: false
+  - name: siege
+    label: Adresse du siège
+    widget: string
+    required: false
+  - name: siret
+    label: SIRET
+    widget: string
+    required: false
+    pattern:
+    - ^(\d ?){14}$|^$
+    - 14 chiffres
+  - name: rcs
+    label: RCS
+    widget: string
+    hint: Par exemple RCS Bayonne 123 456 789
+    required: false
+  - name: tva
+    label: N° de TVA intracommunautaire
+    widget: string
+    required: false
+  - name: directeur_publication
+    label: Directeur ou directrice de la publication
+    widget: string
+    hint: La personne responsable du site (souvent le gérant).
+    required: false
+  - name: hebergeur_nom
+    label: Hébergeur
+    widget: string
+  - name: hebergeur_adresse
+    label: Adresse de l'hébergeur
+    widget: string
+  - name: hebergeur_site
+    label: Site de l'hébergeur
+    widget: string
+    type: url
+  - name: autres
+    label: Autres mentions (facultatif)
+    widget: text
+    hint: Médiateur de la consommation, crédits…
+    required: false
+  - name: cookies
+    label: Données personnelles et cookies
+    widget: text

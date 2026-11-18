@@ -9,12 +9,17 @@ la carte et les prix, la vente à emporter, les horaires, les coordonnées et le
 
 | Rubrique | Ce qu'elle contient |
 | --- | --- |
+| **Fermé / complet** | En un clic : « Complet » (plus de tables, l'emporter reste ouvert) ou « Fermé » (ni tables ni emporter) pour aujourd'hui. Un bandeau s'affiche en haut du site. Avec la date du jour, le site redevient normal tout seul le lendemain. |
 | **Coordonnées** | Nom, adresse, téléphone, e-mail, liens Instagram et Facebook, note et nombre d'avis Google. |
 | **Horaires** | La semaine type (jours ouverts, services du midi et du soir), les fermetures exceptionnelles, et un message affiché en haut du site (par exemple « Horaires d'hiver à partir du 1er novembre »). |
 | **Nos huîtres** | Chaque huître : nom, calibre, origine, prix sur place, prix à emporter, niveau d'iode, description. Elles apparaissent sur l'accueil, sur la carte et dans la vente à emporter. |
 | **La carte** | Toutes les rubriques et tous les plats servis sur place (hors huîtres) : noms, descriptions, prix, allergènes, dessin. On peut ajouter, supprimer et réordonner. |
 | **À emporter** | Supplément pour les huîtres ouvertes, consignes des plateaux, créneaux de retrait, et les produits à emporter (hors huîtres). |
+| **Photos** | La galerie de la page La Maison (avec légendes). Chaque plat, huître ou produit à emporter peut aussi avoir sa photo, qui remplace le dessin : elle s'ajoute dans sa fiche. |
 | **Textes du site** | Les textes des pages (accueil, La Maison, carte, à emporter, contact), les questions fréquentes et les avis clients. |
+| **Mentions légales** | Raison sociale, SIRET, RCS, TVA, directeur de la publication, hébergeur, texte sur les données personnelles. Elles s'affichent sur la page « Mentions légales » du site (lien en bas de page). **À remplir.** |
+
+La **carte en PDF** se fabrique toute seule à partir de « Nos huîtres » et « La carte » : bouton « Carte en PDF » sur la page La Carte (adresse directe : https://u8tscared.github.io/parc-huitres/carte-pdf.html). Elle est donc toujours à jour.
 
 Les réservations ne sont pas dans l'admin : elles passeront plus tard par Growth Gusto.
 
@@ -27,7 +32,8 @@ Les réservations ne sont pas dans l'admin : elles passeront plus tard par Growt
 Quelques règles de saisie :
 
 - **Prix** : écrire `26,40`. Pour les vins, `3,90 / 22,80` (verre / bouteille). Un prix vide affiche « Selon cours ».
-- **Traductions** : l'espagnol et l'anglais sont rangés dans « Traductions ». S'ils sont vides, le site affiche le français.
+- **Traductions** : l'espagnol et l'anglais sont rangés dans « Traductions » (ou à côté du français pour les textes). Ils ne se traduisent pas tout seuls : **si vous changez le français, changez aussi l'espagnol et l'anglais, ou videz-les** (le site affichera alors le français).
+- **Photos** : de préférence en format paysage, et pas trop lourdes (moins de 1 Mo).
 - **Horaires** : un jour décoché est affiché « Fermé ». Le site s'en sert aussi pour proposer les jours de retrait à emporter et les jours du calendrier de réservation.
 - **Fermetures exceptionnelles** : ces jours-là, le site affiche « Fermé » et ne propose pas de retrait. Les dates passées sont ignorées.
 

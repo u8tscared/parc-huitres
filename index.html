@@ -552,6 +552,20 @@ section{position:relative}
 .hours{display:grid;gap:0}
 .hnote{display:grid;gap:6px;margin-top:14px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,var(--rasp) 10%,var(--white));font-size:.9rem}
 .hnote b{color:var(--rasp)}
+.annonce.alert{background:var(--rasp)}
+.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mi .ic{position:relative}
+.pdfl{text-decoration:none;color:inherit}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.gallery figure{margin:0;border-radius:22px;overflow:hidden;border:2px solid var(--navy);background:var(--white)}
+.gallery img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.gallery figcaption{padding:10px 14px;font-size:.92rem;color:var(--ink-soft)}
+.legalbox{box-shadow:none;border-width:1.5px;border-color:var(--line);max-width:820px}
+.legalbox h2{font-size:1.35rem;margin:22px 0 10px}.legalbox h2:first-child{margin-top:0}
+.legalbox dl{display:grid;gap:8px;margin:0}.legalbox dl div{display:grid;grid-template-columns:minmax(120px,220px) 1fr;gap:12px}
+.legalbox dt{font-weight:600}.legalbox dd{margin:0;color:var(--ink-soft);word-break:break-word}
+.legalbox p{color:var(--ink-soft)}
+@media (max-width:560px){.legalbox dl div{grid-template-columns:1fr;gap:0}}
 .annonce{background:var(--navy);color:var(--cream);text-align:center;font-weight:600;font-size:.92rem;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px));line-height:1.35}
 .hours div{display:grid;grid-template-columns:1fr auto;gap:12px;padding:12px 14px;border-radius:12px;font-variant-numeric:tabular-nums}
 .hours div:nth-child(odd){background:var(--cream)}
@@ -857,6 +871,12 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
       </div>
     </div>
   </section>
+  <section class="sec" id="galsec" hidden>
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow" data-i="nav_house">La Maison</span><h2 class="tilt" data-i="gal_t">En images</h2></div>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
 </div>
 
 <!-- =========================== CARTE =========================== -->
@@ -874,7 +894,7 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
   </section>
   <section style="padding-bottom:40px">
     <div class="wrap">
-      <div class="mtools"><div class="row"><div class="chips" id="chips"></div><label class="toggle"><input type="checkbox" id="altoggle"><span data-i="al_show">Allergènes</span></label></div></div>
+      <div class="mtools"><div class="row"><div class="chips" id="chips"></div><label class="toggle"><input type="checkbox" id="altoggle"><span data-i="al_show">Allergènes</span></label><a class="toggle pdfl" id="pdflink" href="carte-pdf.html" target="_blank" rel="noopener"><span data-i="pdf">Carte en PDF</span></a></div></div>
       <div class="mgrid" id="menu"></div>
       <div class="mnote">
         <div><b data-i="mn1_t">Accompagnement</b><span data-i="mn1_d">Huîtres, coquillages et crustacés servis avec pain de seigle, beurre demi-sel, citron, aïoli et mayonnaise maison.</span></div>
@@ -1056,6 +1076,20 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
     </div>
   </section>
 </div>
+
+<!-- =========================== MENTIONS LÉGALES (content/mentions.json) =========================== -->
+<div class="page" data-page="mentions" hidden>
+  <section class="phero" style="padding-bottom:20px">
+    <div class="wrap">
+      <span class="eyebrow" data-i="legal">Mentions légales</span>
+      <h1 style="margin-top:14px" data-i="legal">Mentions légales</h1>
+      <p class="lead" style="margin-top:16px" data-i="legal_fr">Les mentions légales sont rédigées en français.</p>
+    </div>
+  </section>
+  <section class="sec" style="padding-top:0">
+    <div class="wrap"><div class="card legalbox" id="mentions"></div></div>
+  </section>
+</div>
 </main>
 
 <footer class="site">
@@ -1095,7 +1129,7 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
   <div class="giant" aria-hidden="true"><div class="track" id="giant"></div></div>
   <div class="wrap fbot">
     <span>© 2026 Le Parc à Huîtres · Hendaye</span>
-    <nav><a href="#contact" data-i="legal">Mentions légales</a><a href="#carte" data-i="mn2_t">Allergènes</a><a href="#contact" data-i="cookies">Cookies</a></nav>
+    <nav><a href="#mentions" data-i="legal">Mentions légales</a><a href="#carte" data-i="mn2_t">Allergènes</a><a href="#mentions" data-i="cookies">Cookies</a></nav>
     <span data-i="alcohol">L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</span>
     <div class="lang" role="group" aria-label="Langue"><button type="button" data-lang="fr">FR</button><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button></div>
   </div>
@@ -1192,12 +1226,13 @@ faq_t:["Questions fréquentes","Preguntas frecuentes","FAQ"],
 foot_cta:["Une table,<br><span class=\"accent\">une douzaine ?</span>","¿Una mesa,<br><span class=\"accent\">una docena?</span>","A table,<br><span class=\"accent\">a dozen?</span>"],
 foot_about:["Bar à huîtres et fruits de mer à Hendaye. Huîtres ouvertes à la minute, coquillages cuits maison, cuisine de l'océan.","Bar de ostras y mariscos en Hendaya. Ostras abiertas al momento, mariscos cocidos en casa, cocina del océano.","Oyster and seafood bar in Hendaye. Oysters opened to order, shellfish cooked in-house, ocean cooking."],
 f_nav:["Le site","El sitio","Explore"],f_find:["Nous trouver","Dónde estamos","Find us"],news_t:["Les arrivages","Las llegadas","Fresh arrivals"],news_ph:["Votre e-mail","Su e-mail","Your email"],news_ok:["Inscription notée (démo).","Suscripción anotada (demo).","Signed up (demo)."],
-legal:["Mentions légales","Aviso legal","Legal notice"],cookies:["Cookies","Cookies","Cookies"],alcohol:["L'abus d'alcool est dangereux pour la santé, à consommer avec modération.","El abuso del alcohol es peligroso para la salud, consumir con moderación.","Alcohol abuse is dangerous for your health, drink responsibly."]
+legal:["Mentions légales","Aviso legal","Legal notice"],etat_full:["Complet aujourd'hui · la vente à emporter reste ouverte","Completo hoy · el servicio para llevar sigue abierto","Fully booked today · takeaway is still open"],etat_closed:["Fermé aujourd'hui","Cerrado hoy","Closed today"],pdf:["Carte en PDF","Carta en PDF","Menu as PDF"],gal_t:["En images","En imágenes","In pictures"],legal_fr:["Les mentions légales sont rédigées en français.","El aviso legal está redactado en francés.","The legal notice is written in French."],cookies:["Cookies","Cookies","Cookies"],alcohol:["L'abus d'alcool est dangereux pour la santé, à consommer avec modération.","El abuso del alcohol es peligroso para la salud, consumir con moderación.","Alcohol abuse is dangerous for your health, drink responsibly."]
 };
 const DAYS=[["Lundi","Lunes","Monday"],["Mardi","Martes","Tuesday"],["Mercredi","Miércoles","Wednesday"],["Jeudi","Jueves","Thursday"],["Vendredi","Viernes","Friday"],["Samedi","Sábado","Saturday"],["Dimanche","Domingo","Sunday"]];
 const ALL=[["Amidon","Almidón","Starch"],["Produits laitiers","Lácteos","Dairy"],["Œufs","Huevos","Eggs"],["Gluten","Gluten","Gluten"],["Poisson","Pescado","Fish"],["Mollusques","Moluscos","Molluscs"],["Sulfites","Sulfitos","Sulphites"],["Arachide","Cacahuete","Peanut"],["Moutarde","Mostaza","Mustard"],["Crustacés","Crustáceos","Crustaceans"]]; // index 0..8 = codes 1..9, index 9 = code 0
 
 /* =============== CONTENT (chargé depuis content/*.json, modifiable dans /admin/) =============== */
+let ETAT={mode:'normal',jour:'',msg:['','','']},GALLERY=[],MENTIONS={};
 let FAQ=[],OYS=[],MENU=[],HOURS=[null,null,null,null,null,null,null],REVIEWS=[],PRODS=[],CLOSURES=[],ANN=['','',''];
 let OPEN_FEE=2,CONSIGNE={small:5,large:10},PICK={md:'11:30',mf:'14:00',sd:'18:30',sf:'21:00',step:30,delay:30,days:4};
 let INFO={nom:'Le Parc à Huîtres',rue:'5 rue des Orangers',code_postal:'64700',ville:'Hendaye',telephone:'05 59 20 32 38',email:'contact@leparcahuitres-hendaye.fr',instagram:'',facebook:'',google_note:'4,6',google_avis:458};
@@ -1222,29 +1257,35 @@ function buildContent(C){
   (O.liste||[]).forEach(o=>{const tr_=o.traductions||{};const nm=t3(o.nom,tr_,'nom'),cal=clean(o.calibre),orig=t3(o.origine,tr_,'origine');
     const full=nm.map(n=>cal?n+' '+cal:n);
     OYS.push({n:nm,c:cal,o:orig,p:num(o.prix),i:Math.max(1,Math.min(5,+o.iode||3)),note:t3(o.description,tr_,'description')});
-    const it=[...full,...orig,num(o.prix),alc(o.allergenes),o.a_emporter?1:0,o.illustration||''];it.tk=num(o.prix_emporter);oysCat.items.push(it);});
+    const it=[...full,...orig,num(o.prix),alc(o.allergenes),o.a_emporter?1:0,o.illustration||'',imgUrl(o.photo)];it.tk=num(o.prix_emporter);oysCat.items.push(it);});
   MENU=[oysCat];
   ((C.carte||{}).categories||[]).forEach((c,ci)=>{MENU.push({id:c.id||('cat'+ci),t:t3(c.titre,c.traductions,'titre'),n:t3(c.sous_titre,c.traductions,'sous_titre'),
-    items:(c.plats||[]).map(p=>{const tr_=p.traductions||{};return [...t3(p.nom,tr_,'nom'),...t3(p.description,tr_,'description'),num(p.prix),alc(p.allergenes),0,p.illustration||''];})});});
+    items:(c.plats||[]).map(p=>{const tr_=p.traductions||{};return [...t3(p.nom,tr_,'nom'),...t3(p.description,tr_,'description'),num(p.prix),alc(p.allergenes),0,p.illustration||'',imgUrl(p.photo)];})});});
   const E=C.emporter||{};
   const n_=(v,d)=>{const x=num(v);return typeof x==='number'?x:d;};
   OPEN_FEE=n_(E.supplement_ouverture,OPEN_FEE);CONSIGNE={small:n_(E.consigne_petit,CONSIGNE.small),large:n_(E.consigne_grand,CONSIGNE.large)};
   const R=E.retrait||{};PICK={md:R.midi_debut||PICK.md,mf:R.midi_fin||PICK.mf,sd:R.soir_debut||PICK.sd,sf:R.soir_fin||PICK.sf,step:Math.max(5,+R.intervalle||30),delay:Math.max(0,+(R.delai??30)),days:Math.max(1,Math.min(14,+R.jours_affiches||4))};
   PRODS=[];
-  oysCat.items.forEach((it,i)=>{if(it[8]&&typeof it.tk==='number')PRODS.push({k:'oy'+i,cat:oysCat,it,price:it.tk,mode:'choice',ill:it[9]});});
+  oysCat.items.forEach((it,i)=>{if(it[8]&&typeof it.tk==='number')PRODS.push({k:'oy'+i,cat:oysCat,it,price:it.tk,mode:'choice'});});
   (E.produits||[]).forEach((p,i)=>{const pr=num(p.prix);if(typeof pr!=='number')return;const tr_=p.traductions||{};
     const cat=MENU.find(c=>c.id===p.rayon)||{id:p.rayon||'autres',t:RAYON[p.rayon]||['Autres','Otros','Other']};
-    const it=[...t3(p.nom,tr_,'nom'),...t3(p.description,tr_,'description'),pr,alc(p.allergenes),1,p.illustration||''];
-    PRODS.push({k:'tk'+i,cat,it,price:pr,mode:p.toujours_ouvert?'always':null,ill:it[9]});});
+    const it=[...t3(p.nom,tr_,'nom'),...t3(p.description,tr_,'description'),pr,alc(p.allergenes),1,p.illustration||'',imgUrl(p.photo)];
+    PRODS.push({k:'tk'+i,cat,it,price:pr,mode:p.toujours_ouvert?'always':null});});
   const X=C.textes||{};
   Object.keys(X).forEach(g=>{const grp=X[g];if(!grp||Array.isArray(grp)||typeof grp!=='object')return;Object.keys(grp).forEach(k=>{const v=grp[k];if(v&&v.fr)I[k]=[v.fr,v.es||v.fr,v.en||v.fr];});});
   if(Array.isArray(X.faq))FAQ=X.faq.filter(q=>q&&q.question&&q.question.fr).map(q=>[o3(q.question),o3(q.reponse)]);
+  const ET=C.etat||{};ETAT={mode:['complet','ferme'].includes(ET.mode)?ET.mode:'normal',jour:(ET.jour||'').slice(0,10),msg:o3(ET.message)};
+  GALLERY=((C.photos||{}).galerie||[]).filter(g=>g&&g.image).map(g=>({src:imgUrl(g.image),cap:o3(g.legende)}));
+  MENTIONS=C.mentions||{};
   if(Array.isArray(X.avis))REVIEWS=X.avis.filter(r=>r&&r.texte).map(r=>[clean(r.nom),clean(r.texte),Math.max(0,MONTHS.findIndex(m=>m[0]===r.mois))]);
 }
-const CFILES=['infos','horaires','huitres','carte','emporter','textes'];
+const CFILES=['infos','horaires','huitres','carte','emporter','textes','etat','photos','mentions'];
 function loadContent(){return Promise.all(CFILES.map(f=>fetch('content/'+f+'.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null))).then(a=>{const C={};CFILES.forEach((f,i)=>C[f]=a[i]);buildContent(C);return a.some(x=>!x);});}
+const imgUrl=v=>v?String(v).replace(/^\/+/,'').replace(/"/g,'%22'):'';
+const pic=it=>it&&it[10]?`<img class="ph" src="${it[10]}" alt="" loading="lazy">`:ill(it&&it[9]);
+const etatToday=()=>ETAT.mode!=='normal'&&(!ETAT.jour||ETAT.jour===ymdS(new Date()))?ETAT.mode:null;
 const ymdS=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-const closure=d=>{const k=ymdS(d);return CLOSURES.find(f=>k>=f.du&&k<=f.au);};
+const closure=d=>{const k=ymdS(d);if(k===ymdS(new Date())&&etatToday()==='ferme')return {du:k,au:k,motif:''};return CLOSURES.find(f=>k>=f.du&&k<=f.au);};
 const telHref=t=>'tel:'+(String(t).replace(/\D/g,'').replace(/^0/,'+33'));
 const mapsHref=()=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(INFO.nom+' '+INFO.rue+' '+INFO.code_postal+' '+INFO.ville);
 const eurS=v=>(Number.isInteger(v)?String(v):(LANG==='en'?v.toFixed(2):v.toFixed(2).replace('.',',')))+' €';
@@ -1400,7 +1441,7 @@ function renderLineup(){
 }
 $('#lineup').addEventListener('click',e=>{const b=e.target.closest('.ocard');if(!b)return;const on=!b.classList.contains('open');b.classList.toggle('open',on);b.setAttribute('aria-pressed',on);b.querySelector('.oy').classList.toggle('open',on);});
 function renderPlateaux(){
-  $('#plateaux').innerHTML=((MENU.find(c=>c.id==='plateaux')||{}).items||[]).map((it,i)=>`<article class="pcard reveal"><div class="ill">${ill(it[9])}</div><div class="body"><h3>${it[li()]}</h3><ul>${it[3+li()].split(', ').filter(Boolean).map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="foot"><b>${eur(it[6])}</b>${i===0?`<a class="add" href="#emporter">${tr('add_take')} →</a>`:`<a class="add" href="#reserver">${tr('cta_book_s')}</a>`}</div></article>`).join('');
+  $('#plateaux').innerHTML=((MENU.find(c=>c.id==='plateaux')||{}).items||[]).map((it,i)=>`<article class="pcard reveal"><div class="ill">${pic(it)}</div><div class="body"><h3>${it[li()]}</h3><ul>${it[3+li()].split(', ').filter(Boolean).map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="foot"><b>${eur(it[6])}</b>${i===0?`<a class="add" href="#emporter">${tr('add_take')} →</a>`:`<a class="add" href="#reserver">${tr('cta_book_s')}</a>`}</div></article>`).join('');
 }
 function renderMarquee(){
   const words=(MENU[0]?MENU[0].items:[]).map(i=>i[li()]).concat([tr('s2_t'),'Ostras','Oysters','Hendaye']);
@@ -1414,8 +1455,9 @@ function alCodes(s){return s.split('').map(ch=>{const idx=ch==='0'?9:(+ch-1);ret
 function renderMenu(){
   const l=li();
   $('#chips').innerHTML=MENU.map((c,i)=>`<a href="#carte" data-jump="${c.id}" class="${i===0?'on':''}">${c.t[l]}</a>`).join('');
-  $('#menu').innerHTML=MENU.map(c=>`<div class="mcat reveal" id="m-${c.id}"><header><h2>${c.t[l]}</h2><small>${c.n[l]}</small></header>${c.items.map((i,ix)=>`<div class="mi"><span class="ic">${ill(i[9])}</span><span class="n">${i[l]}</span><span class="p">${eur(i[6])}</span>${i[3+l]?`<span class="d">${i[3+l]}</span>`:''}${i[7]?`<span class="al">${alCodes(i[7]).map(a=>`<span>${a}</span>`).join('')}</span>`:''}</div>`).join('')}</div>`).join('');
+  $('#menu').innerHTML=MENU.map(c=>`<div class="mcat reveal" id="m-${c.id}"><header><h2>${c.t[l]}</h2><small>${c.n[l]}</small></header>${c.items.map((i,ix)=>`<div class="mi"><span class="ic">${pic(i)}</span><span class="n">${i[l]}</span><span class="p">${eur(i[6])}</span>${i[3+l]?`<span class="d">${i[3+l]}</span>`:''}${i[7]?`<span class="al">${alCodes(i[7]).map(a=>`<span>${a}</span>`).join('')}</span>`:''}</div>`).join('')}</div>`).join('');
   $('#allegend').textContent=({fr:"Activez « Allergènes » en haut de la carte pour les voir plat par plat. Liste complète sur demande.",es:"Active «Alérgenos» arriba para verlos plato por plato. Lista completa bajo petición.",en:"Switch on “Allergens” above to see them dish by dish. Full list on request."})[LANG];
+  $('#pdflink').href='carte-pdf.html?lang='+LANG;
   $('#langnote').textContent=(AUTO?tr('auto'):tr('manual'))+' · '+({fr:'Français',es:'Español',en:'English'})[LANG];
 }
 $('#altoggle').addEventListener('change',e=>$('#menu').classList.toggle('show-al',e.target.checked));
@@ -1475,12 +1517,12 @@ function ymd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'
 function renderCal(){
   const today=new Date();today.setHours(0,0,0,0);
   if(!B.month){B.month=new Date(today.getFullYear(),today.getMonth(),1);}
-  if(!B.date){const d=new Date(today);d.setDate(d.getDate()+1);for(let g=0;g<60&&SHUT(d);g++)d.setDate(d.getDate()+1);B.date=ymd(d);}
+  if(!B.date){const d=new Date(today);d.setDate(d.getDate()+1);for(let g=0;g<60&&(SHUT(d)||(ymd(d)===ymd(today)&&etatToday()));g++)d.setDate(d.getDate()+1);B.date=ymd(d);}
   const m=B.month;$('#calmonth').textContent=m.toLocaleDateString(loc(),{month:'long',year:'numeric'});
   const first=(m.getDay()+6)%7,days=new Date(m.getFullYear(),m.getMonth()+1,0).getDate();
   let h=DAYS.map(d=>`<span class="dow">${d[li()].slice(0,2)}</span>`).join('');
   for(let i=0;i<first;i++)h+='<span></span>';
-  for(let d=1;d<=days;d++){const dt=new Date(m.getFullYear(),m.getMonth(),d);const k=ymd(dt);const dis=dt<today||SHUT(dt);h+=`<button type="button" data-d="${k}" aria-pressed="${k===B.date}" ${dis?'disabled':''}>${d}</button>`;}
+  for(let d=1;d<=days;d++){const dt=new Date(m.getFullYear(),m.getMonth(),d);const k=ymd(dt);const dis=dt<today||SHUT(dt)||(k===ymd(today)&&!!etatToday());h+=`<button type="button" data-d="${k}" aria-pressed="${k===B.date}" ${dis?'disabled':''}>${d}</button>`;}
   $('#cal').innerHTML=h;
   $('#calprev').disabled=m<=new Date(today.getFullYear(),today.getMonth(),1);
 }
@@ -1524,7 +1566,7 @@ function renderShop(){
   $('#tcats').innerHTML=`<button type="button" data-c="all" aria-pressed="${TCAT==='all'}">${tr('all')}</button>`+cats.map(c=>`<button type="button" data-c="${c.id}" aria-pressed="${TCAT===c.id}">${c.t[l]}</button>`).join('');
   $('#products').innerHTML=PRODS.filter(p=>TCAT==='all'||p.cat.id===TCAT).map(p=>{const key=pk(p),v=p.mode==='choice'?(OPEN[p.k]||'c'):null,q=CART[key]||0;
     const tog=p.mode==='choice'?`<div class="otog" role="group" aria-label="${tr('oys_opt')}"><button type="button" data-ov="c" data-k="${p.k}" aria-pressed="${v==='c'}">${tr('o_closed')}</button><button type="button" data-ov="o" data-k="${p.k}" aria-pressed="${v==='o'}">${tr('o_open')} <small>+${eurS(OPEN_FEE)}</small></button></div><p class="ohint">${tr(v==='o'?'o_open_d':'o_closed_d')}</p>`:p.mode==='always'?`<p class="ohint"><b>${tr('o_always')}</b> · ${tr('o_always_d')}</p>`:'';
-    return `<article class="prod"><div class="ill">${ill(p.ill)}${p.cat.id==='huitres'?`<span class="tagq">${tr('per12')}</span>`:''}</div><div class="body"><h3>${p.it[li()]}</h3>${p.it[3+li()]?`<p class="d">${p.it[3+li()]}</p>`:''}${tog}</div><div class="foot"><b>${eur(unit(p,v))}</b>${q?`<span class="qmini"><button type="button" data-q="-1" data-k="${key}" aria-label="−">−</button><output>${q}</output><button type="button" data-q="1" data-k="${key}" aria-label="+">+</button></span>`:`<button type="button" class="add" data-add="${key}">+ ${tr('add')}</button>`}</div></article>`;}).join('');
+    return `<article class="prod"><div class="ill">${pic(p.it)}${p.cat.id==='huitres'?`<span class="tagq">${tr('per12')}</span>`:''}</div><div class="body"><h3>${p.it[li()]}</h3>${p.it[3+li()]?`<p class="d">${p.it[3+li()]}</p>`:''}${tog}</div><div class="foot"><b>${eur(unit(p,v))}</b>${q?`<span class="qmini"><button type="button" data-q="-1" data-k="${key}" aria-label="−">−</button><output>${q}</output><button type="button" data-q="1" data-k="${key}" aria-label="+">+</button></span>`:`<button type="button" class="add" data-add="${key}">+ ${tr('add')}</button>`}</div></article>`;}).join('');
   renderBasket();
 }
 function renderBasket(){
@@ -1588,7 +1630,21 @@ function applyInfos(){
   const L={tel:telHref(INFO.telephone),email:'mailto:'+INFO.email,maps:mapsHref(),insta:INFO.instagram,fb:INFO.facebook};
   $$('[data-ch]').forEach(el=>{const v=L[el.dataset.ch];if(v){el.href=v;el.hidden=false;}else el.hidden=true;});
   $$('.stars[data-cstar]').forEach(el=>el.style.setProperty('--r',String(INFO.google_note).replace(',','.')));
-  const an=$('#annonce');const t=ANN[li()];an.hidden=!t;an.textContent=t||'';
+  const an=$('#annonce');const et=etatToday();const t=et?(ETAT.msg[li()]||tr(et==='ferme'?'etat_closed':'etat_full')):ANN[li()];an.hidden=!t;an.textContent=t||'';an.classList.toggle('alert',!!et);
+  renderGallery();renderMentions();
+}
+function renderGallery(){
+  const s=$('#galsec');if(!s)return;s.hidden=!GALLERY.length;
+  $('#gallery').innerHTML=GALLERY.map(g=>`<figure class="reveal"><img src="${g.src}" alt="${g.cap[li()].replace(/"/g,'&quot;')}" loading="lazy">${g.cap[li()]?`<figcaption>${g.cap[li()]}</figcaption>`:''}</figure>`).join('');
+}
+function renderMentions(){
+  const el=$('#mentions');if(!el)return;const M=MENTIONS,e=clean;
+  const row=(k,v)=>v?`<div><dt>${k}</dt><dd>${e(v)}</dd></div>`:'';
+  const ed=[row('Raison sociale',M.raison_sociale),row('Forme juridique',M.forme_juridique),row('Capital social',M.capital),row('Siège',M.siege),
+    row('SIRET',M.siret),row('RCS',M.rcs),row('TVA intracommunautaire',M.tva),row('Directeur·rice de la publication',M.directeur_publication),
+    row('Contact',INFO.email+' · '+INFO.telephone)].join('');
+  const host=[row('Hébergeur',M.hebergeur_nom),row('Adresse',M.hebergeur_adresse),M.hebergeur_site?`<div><dt>Site</dt><dd><a href="${e(M.hebergeur_site)}" target="_blank" rel="noopener">${e(M.hebergeur_site)}</a></dd></div>`:''].join('');
+  el.innerHTML=`<h2>Éditeur du site</h2><dl>${ed}</dl><h2>Hébergement</h2><dl>${host}</dl>${M.autres?`<h2>Autres mentions</h2><p>${e(M.autres).replace(/\n/g,'<br>')}</p>`:''}<h2 id="cookies">Données personnelles et cookies</h2><p>${e(M.cookies||'').replace(/\n/g,'<br>')}</p>`;
 }
 function renderHNote(){
   const el=$('#hnote');if(!el)return;const today=ymdS(new Date());
@@ -1621,13 +1677,13 @@ function observeReveals(){
 }
 
 /* =============== router =============== */
-const PAGES=['accueil','maison','carte','reserver','emporter','contact'];
+const PAGES=['accueil','maison','carte','reserver','emporter','contact','mentions'];
 let current=null;
 function show(p,anim){
   if(!PAGES.includes(p))p='accueil';
   const swap=()=>{$$('.page').forEach(pg=>pg.hidden=pg.dataset.page!==p);current=p;
     $$('nav.main a,.mnav a').forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+p?'page':'false'));
-    window.scrollTo(0,0);document.title=p==='accueil'?'Le Parc à Huîtres':'Le Parc à Huîtres · '+tr('nav_'+({maison:'house',carte:'menu',reserver:'book',emporter:'take',contact:'contact'})[p]);
+    window.scrollTo(0,0);document.title=p==='accueil'?'Le Parc à Huîtres':'Le Parc à Huîtres · '+(p==='mentions'?tr('legal'):tr('nav_'+({maison:'house',carte:'menu',reserver:'book',emporter:'take',contact:'contact'})[p]));
     observeReveals();renderBasket();onScroll();if(p==='maison')setTimeout(routeAnim,300);};
   document.body.classList.remove('menu-open');$('#burger').setAttribute('aria-expanded','false');
   if(anim&&!RM&&current){const w=$('#wipe');w.classList.remove('run');void w.offsetWidth;w.classList.add('run');setTimeout(swap,450);}else swap();
