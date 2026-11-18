@@ -1,0 +1,90 @@
+{
+  "jours": [
+    {
+      "jour": "Lundi",
+      "ouvert": false,
+      "services": []
+    },
+    {
+      "jour": "Mardi",
+      "ouvert": false,
+      "services": []
+    },
+    {
+      "jour": "Mercredi",
+      "ouvert": true,
+      "services": [
+        {
+          "debut": "11:00",
+          "fin": "15:00"
+        },
+        {
+          "debut": "18:00",
+          "fin": "23:00"
+        }
+      ]
+    },
+    {
+      "jour": "Jeudi",
+      "ouvert": true,
+      "services": [
+        {
+          "debut": "11:00",
+          "fin": "15:00"
+        },
+        {
+          "debut": "18:00",
+          "fin": "23:00"
+        }
+      ]
+    },
+    {
+      "jour": "Vendredi",
+      "ouvert": true,
+      "services": [
+        {
+          "debut": "11:00",
+          "fin": "15:00"
+        },
+        {
+          "debut": "18:00",
+          "fin": "23:00"
+        }
+      ]
+    },
+    {
+      "jour": "Samedi",
+      "ouvert": true,
+      "services": [
+        {
+          "debut": "11:00",
+          "fin": "15:00"
+        },
+        {
+          "debut": "18:00",
+          "fin": "23:00"
+        }
+      ]
+    },
+    {
+      "jour": "Dimanche",
+      "ouvert": true,
+      "services": [
+        {
+          "debut": "11:00",
+          "fin": "15:00"
+        },
+        {
+          "debut": "18:00",
+          "fin": "23:00"
+        }
+      ]
+    }
+  ],
+  "fermetures": [],
+  "annonce": {
+    "fr": "",
+    "es": "",
+    "en": ""
+  }
+}

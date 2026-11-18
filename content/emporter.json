@@ -1,0 +1,237 @@
+{
+  "supplement_ouverture": "2,00",
+  "consigne_petit": "5,00",
+  "consigne_grand": "10,00",
+  "retrait": {
+    "midi_debut": "11:30",
+    "midi_fin": "14:00",
+    "soir_debut": "18:30",
+    "soir_fin": "21:00",
+    "intervalle": 30,
+    "delai": 30,
+    "jours_affiches": 4
+  },
+  "produits": [
+    {
+      "rayon": "plateaux",
+      "nom": "Plateau du Parc",
+      "description": "12 Fines de Claires n°3, 6 crevettes roses de Madagascar, 12 bulots cuits, mayonnaise, aïoli, citron, vinaigre",
+      "prix": "37,80",
+      "toujours_ouvert": true,
+      "allergenes": [
+        "crustaces",
+        "oeufs",
+        "mollusques",
+        "sulfites"
+      ],
+      "illustration": "plateaux:0",
+      "traductions": {
+        "es": {
+          "nom": "Bandeja El Parque",
+          "description": "12 Fines de Claires n°3, 6 langostinos rosas de Madagascar, 12 caracoles de mar cocidos, mayonesa, alioli, limón, vinagre"
+        },
+        "en": {
+          "nom": "Le Parc platter",
+          "description": "12 Fines de Claires n°3, 6 Madagascar pink prawns, 12 cooked whelks, mayonnaise, aïoli, lemon, vinegar"
+        }
+      }
+    },
+    {
+      "rayon": "coquillages",
+      "nom": "Crevettes roses de Madagascar",
+      "description": "6 pièces · calibre 30/35",
+      "prix": "17,80",
+      "toujours_ouvert": false,
+      "allergenes": [
+        "crustaces",
+        "sulfites"
+      ],
+      "illustration": "coquillages:0",
+      "traductions": {
+        "es": {
+          "nom": "Langostinos rosas de Madagascar",
+          "description": "6 piezas · calibre 30/35"
+        },
+        "en": {
+          "nom": "Madagascar pink prawns",
+          "description": "6 pieces · size 30/35"
+        }
+      }
+    },
+    {
+      "rayon": "coquillages",
+      "nom": "Bulots & aïoli",
+      "description": "300 g, cuits maison",
+      "prix": "13,80",
+      "toujours_ouvert": false,
+      "allergenes": [
+        "oeufs",
+        "mollusques"
+      ],
+      "illustration": "coquillages:1",
+      "traductions": {
+        "es": {
+          "nom": "Caracoles de mar y alioli",
+          "description": "300 g, cocidos en casa"
+        },
+        "en": {
+          "nom": "Whelks & aïoli",
+          "description": "300 g, cooked in-house"
+        }
+      }
+    },
+    {
+      "rayon": "coquillages",
+      "nom": "Langoustines",
+      "description": "3 pièces, cuites maison",
+      "prix": "18,60",
+      "toujours_ouvert": false,
+      "allergenes": [
+        "crustaces",
+        "oeufs"
+      ],
+      "illustration": "coquillages:2",
+      "traductions": {
+        "es": {
+          "nom": "Cigalas",
+          "description": "3 piezas, cocidas en casa"
+        },
+        "en": {
+          "nom": "Langoustines",
+          "description": "3 pieces, cooked in-house"
+        }
+      }
+    },
+    {
+      "rayon": "coquillages",
+      "nom": "Tourteau cuit",
+      "description": "700 g la pièce",
+      "prix": "28,60",
+      "toujours_ouvert": false,
+      "allergenes": [
+        "crustaces",
+        "oeufs"
+      ],
+      "illustration": "coquillages:3",
+      "traductions": {
+        "es": {
+          "nom": "Buey de mar cocido",
+          "description": "700 g la pieza"
+        },
+        "en": {
+          "nom": "Cooked brown crab",
+          "description": "700 g each"
+        }
+      }
+    },
+    {
+      "rayon": "assiettes",
+      "nom": "Pâté basque au piment d'Espelette",
+      "description": "Guindillas · Ferme Elizaldia · 125 g",
+      "prix": "8,90",
+      "toujours_ouvert": false,
+      "allergenes": [
+        "sulfites",
+        "arachide",
+        "oeufs",
+        "lait"
+      ],
+      "illustration": "assiettes:0",
+      "traductions": {
+        "es": {
+          "nom": "Paté vasco con pimiento de Espelette",
+          "description": "Guindillas · Granja Elizaldia · 125 g"
+        },
+        "en": {
+          "nom": "Basque pâté with Espelette pepper",
+          "description": "Guindillas · Elizaldia farm · 125 g"
+        }
+      }
+    },
+    {
+      "rayon": "assiettes",
+      "nom": "Caviar de truite des Pyrénées",
+      "description": "Crème épaisse · 80 g",
+      "prix": "23,80",
+      "toujours_ouvert": false,
+      "allergenes": [
+        "poisson",
+        "sulfites"
+      ],
+      "illustration": "assiettes:1",
+      "traductions": {
+        "es": {
+          "nom": "Caviar de trucha de los Pirineos",
+          "description": "Crema espesa · 80 g"
+        },
+        "en": {
+          "nom": "Pyrenees trout caviar",
+          "description": "Thick cream · 80 g"
+        }
+      }
+    },
+    {
+      "rayon": "assiettes",
+      "nom": "Saumon gravlax",
+      "description": "Fait maison · 150 g",
+      "prix": "20,80",
+      "toujours_ouvert": false,
+      "allergenes": [
+        "poisson",
+        "moutarde",
+        "sulfites"
+      ],
+      "illustration": "assiettes:2",
+      "traductions": {
+        "es": {
+          "nom": "Salmón gravlax",
+          "description": "Hecho en casa · 150 g"
+        },
+        "en": {
+          "nom": "Salmon gravlax",
+          "description": "House-cured · 150 g"
+        }
+      }
+    },
+    {
+      "rayon": "assiettes",
+      "nom": "Saumon fumé",
+      "description": "Tranché main · 150 g",
+      "prix": "20,80",
+      "toujours_ouvert": false,
+      "allergenes": [
+        "poisson"
+      ],
+      "illustration": "assiettes:3",
+      "traductions": {
+        "es": {
+          "nom": "Salmón ahumado",
+          "description": "Cortado a mano · 150 g"
+        },
+        "en": {
+          "nom": "Smoked salmon",
+          "description": "Hand-sliced · 150 g"
+        }
+      }
+    },
+    {
+      "rayon": "assiettes",
+      "nom": "Saucisson de montagne",
+      "description": "Ferme Elizaldia",
+      "prix": "13,80",
+      "toujours_ouvert": false,
+      "allergenes": [],
+      "illustration": "assiettes:6",
+      "traductions": {
+        "es": {
+          "nom": "Salchichón de montaña",
+          "description": "Granja Elizaldia"
+        },
+        "en": {
+          "nom": "Mountain saucisson",
+          "description": "Elizaldia farm"
+        }
+      }
+    }
+  ]
+}

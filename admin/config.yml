@@ -1,0 +1,1984 @@
+# Configuration de l'espace admin (Sveltia CMS).
+# Chaque bloc « singletons » correspond à un fichier de content/ que l'équipe modifie depuis /admin/.
+# Documentation : https://sveltiacms.app/en/docs
+
+backend:
+  name: github
+  repo: u8tscared/parc-huitres
+  branch: main
+  auth_methods:
+  - token
+  commit_messages:
+    update: 'Admin : mise à jour de {{path}}'
+app_title: Admin · Le Parc à Huîtres
+site_url: https://u8tscared.github.io/parc-huitres/
+logo:
+  src: https://u8tscared.github.io/parc-huitres/icon-192.png
+media_folder: images
+editor:
+  preview: false
+singletons:
+- name: infos
+  label: Coordonnées
+  icon: contact_phone
+  file: content/infos.json
+  fields:
+  - name: nom
+    label: Nom du restaurant
+    widget: string
+  - name: rue
+    label: Adresse (rue)
+    widget: string
+  - name: code_postal
+    label: Code postal
+    widget: string
+  - name: ville
+    label: Ville
+    widget: string
+  - name: telephone
+    label: Téléphone
+    widget: string
+    hint: Format 05 59 20 32 38
+    pattern:
+    - ^0\d( ?\d\d){4}$
+    - Écrivez le numéro comme 05 59 20 32 38
+  - name: email
+    label: E-mail de contact
+    widget: string
+    type: email
+  - name: instagram
+    label: Lien Instagram
+    widget: string
+    required: false
+    type: url
+  - name: facebook
+    label: Lien Facebook
+    widget: string
+    required: false
+    type: url
+  - name: google_note
+    label: Note Google
+    widget: string
+    hint: Par exemple 4,6
+    pattern:
+    - ^[0-5]([,.]\d)?$
+    - Une note entre 0 et 5, par exemple 4,6
+  - name: google_avis
+    label: Nombre d'avis Google
+    widget: number
+    value_type: int
+    min: 0
+- name: horaires
+  label: Horaires
+  icon: schedule
+  file: content/horaires.json
+  fields:
+  - name: jours
+    label: Semaine type
+    widget: list
+    allow_add: false
+    allow_remove: false
+    allow_reorder: false
+    collapsed: false
+    summary: '{{fields.jour}}'
+    hint: Changez ces horaires à chaque saison. Un jour fermé n'a pas de service.
+    fields:
+    - name: jour
+      label: Jour
+      widget: string
+      readonly: true
+    - name: ouvert
+      label: Ouvert ce jour-là
+      widget: boolean
+      default: true
+    - name: services
+      label: Services
+      label_singular: service
+      widget: list
+      required: false
+      summary: '{{fields.debut}} – {{fields.fin}}'
+      hint: Midi puis soir, par exemple 11:00 – 15:00 et 18:00 – 23:00.
+      fields:
+      - name: debut
+        label: Ouverture
+        widget: datetime
+        type: time
+        format: HH:mm
+      - name: fin
+        label: Fermeture
+        widget: datetime
+        type: time
+        format: HH:mm
+  - name: fermetures
+    label: Fermetures exceptionnelles
+    label_singular: fermeture
+    widget: list
+    required: false
+    summary: '{{fields.du}} → {{fields.au}} {{fields.motif}}'
+    hint: Congés, jours fériés… Le site affiche « Fermé » et bloque le retrait à emporter ces jours-là. Les dates passées
+      sont ignorées.
+    fields:
+    - name: du
+      label: Du
+      widget: datetime
+      type: date
+      format: YYYY-MM-DD
+    - name: au
+      label: Au (inclus)
+      widget: datetime
+      type: date
+      format: YYYY-MM-DD
+      required: false
+    - name: motif
+      label: Motif (facultatif)
+      widget: string
+      required: false
+  - name: annonce
+    label: Message en haut du site
+    widget: object
+    hint: Par exemple « Horaires d'hiver à partir du 1er novembre ». Laissez vide pour ne rien afficher.
+    fields:
+    - name: fr
+      label: Français
+      widget: text
+      required: false
+    - name: es
+      label: Espagnol
+      widget: text
+      hint: Vide = le texte français est affiché
+      required: false
+    - name: en
+      label: Anglais
+      widget: text
+      hint: Vide = le texte français est affiché
+      required: false
+    required: false
+- name: huitres
+  label: Nos huîtres
+  icon: water
+  file: content/huitres.json
+  fields:
+  - name: titre
+    label: Titre sur la carte
+    widget: string
+  - name: sous_titre
+    label: Sous-titre sur la carte
+    widget: string
+    required: false
+  - name: traductions
+    label: Traductions (espagnol, anglais)
+    widget: object
+    collapsed: true
+    required: false
+    hint: Facultatif. Si une traduction est vide, le site affiche le français.
+    fields:
+    - name: es
+      label: Espagnol
+      widget: object
+      required: false
+      fields:
+      - name: titre
+        label: Titre
+        widget: string
+        required: false
+      - name: sous_titre
+        label: Sous-titre
+        widget: string
+        required: false
+    - name: en
+      label: Anglais
+      widget: object
+      required: false
+      fields:
+      - name: titre
+        label: Titre
+        widget: string
+        required: false
+      - name: sous_titre
+        label: Sous-titre
+        widget: string
+        required: false
+  - name: liste
+    label: Huîtres
+    label_singular: huître
+    widget: list
+    summary: '{{fields.nom}} {{fields.calibre}} · {{fields.prix}} €'
+    fields:
+    - name: nom
+      label: Nom
+      widget: string
+      hint: Par exemple Fines de Claires
+    - name: calibre
+      label: Calibre
+      widget: string
+      hint: Par exemple n°3
+      required: false
+    - name: origine
+      label: Origine ou petite ligne
+      widget: string
+      required: false
+    - name: prix
+      label: Prix sur place (la douzaine)
+      widget: string
+      hint: Vide = « selon cours »
+      required: false
+      pattern: &id001
+      - ^(\d+([,.]\d{1,2})?( / \d+([,.]\d{1,2})?)?)?$
+      - Écrivez le prix comme 26,40 (ou 3,90 / 22,80 pour verre / bouteille)
+    - name: a_emporter
+      label: Proposée à emporter
+      widget: boolean
+      default: true
+    - name: prix_emporter
+      label: Prix à emporter (la douzaine, fermées)
+      widget: string
+      hint: Le supplément pour les huîtres ouvertes se règle dans « À emporter ».
+      required: false
+      pattern: &id004
+      - ^\d+([,.]\d{1,2})?$
+      - Écrivez un prix simple, par exemple 19,20
+    - name: iode
+      label: Niveau d'iode (1 à 5)
+      widget: number
+      value_type: int
+      min: 1
+      max: 5
+      default: 3
+    - name: description
+      label: Description (carte de l'accueil)
+      widget: text
+      required: false
+    - &id002
+      name: allergenes
+      label: Allergènes
+      widget: select
+      multiple: true
+      required: false
+      options:
+      - label: Amidon
+        value: amidon
+      - label: Produits laitiers
+        value: lait
+      - label: Œufs
+        value: oeufs
+      - label: Gluten
+        value: gluten
+      - label: Poisson
+        value: poisson
+      - label: Mollusques
+        value: mollusques
+      - label: Sulfites
+        value: sulfites
+      - label: Arachide
+        value: arachide
+      - label: Moutarde
+        value: moutarde
+      - label: Crustacés
+        value: crustaces
+    - &id003
+      name: illustration
+      label: Dessin
+      widget: select
+      required: false
+      hint: Le petit dessin affiché à côté du produit.
+      options:
+      - label: Aucune
+        value: ''
+      - label: Nos huîtres · Fines de Claires n°3
+        value: huitres:0
+      - label: Nos huîtres · Normandes n°3
+        value: huitres:1
+      - label: Nos huîtres · Spéciales Boudeuses n°4
+        value: huitres:2
+      - label: Nos huîtres · Spéciales Royales n°3
+        value: huitres:3
+      - label: Nos huîtres · Spéciales Gillardeau n°3
+        value: huitres:4
+      - label: L'iode à partager · Plateau Le Parc
+        value: plateaux:0
+      - label: L'iode à partager · Le Parc + tourteau
+        value: plateaux:1
+      - label: L'iode à partager · Huîtres assorties
+        value: plateaux:2
+      - label: Coquillages & crustacés · Crevettes roses de Madagascar
+        value: coquillages:0
+      - label: Coquillages & crustacés · Bulots & aïoli
+        value: coquillages:1
+      - label: Coquillages & crustacés · Langoustines
+        value: coquillages:2
+      - label: Coquillages & crustacés · Tourteau cuit
+        value: coquillages:3
+      - label: Coquillages & crustacés · Homard bleu
+        value: coquillages:4
+      - label: Coquillages & crustacés · Moules de bouchot crues
+        value: coquillages:5
+      - label: Petites assiettes · Pâté basque au piment d'Espelette
+        value: assiettes:0
+      - label: Petites assiettes · Caviar de truite des Pyrénées
+        value: assiettes:1
+      - label: Petites assiettes · Saumon gravlax
+        value: assiettes:2
+      - label: Petites assiettes · Saumon fumé
+        value: assiettes:3
+      - label: Petites assiettes · Soupe de poissons
+        value: assiettes:4
+      - label: Petites assiettes · Foie gras, pain toasté
+        value: assiettes:5
+      - label: Petites assiettes · Saucisson de montagne
+        value: assiettes:6
+      - label: Sortie de cuisine · Noix de Saint-Jacques
+        value: cuisine:0
+      - label: Sortie de cuisine · Txangurro
+        value: cuisine:1
+      - label: Sortie de cuisine · Bourride
+        value: cuisine:2
+      - label: Sortie de cuisine · Huîtres gratinées
+        value: cuisine:3
+      - label: Sortie de cuisine · Moules marinières
+        value: cuisine:4
+      - label: Sortie de cuisine · Garniture
+        value: cuisine:5
+      - label: Les gourmands · Fromage de brebis du Pays basque
+        value: desserts:0
+      - label: Les gourmands · Tarte aux pommes
+        value: desserts:1
+      - label: Les gourmands · Île flottante maison
+        value: desserts:2
+      - label: Les gourmands · Baba au rhum
+        value: desserts:3
+      - label: On arrose ça ? · Entre-deux-Mers AOC
+        value: vins:0
+      - label: On arrose ça ? · Uby n°2, Gascogne IGP
+        value: vins:1
+      - label: On arrose ça ? · Jurançon AOC
+        value: vins:2
+      - label: On arrose ça ? · Rueda AOP
+        value: vins:3
+      - label: On arrose ça ? · Txakoli Getaria AOP
+        value: vins:4
+      - label: On arrose ça ? · Gascogne Alain Brumont
+        value: vins:5
+      - label: On arrose ça ? · Bordeaux Graves AOC
+        value: vins:6
+      - label: On arrose ça ? · Domaine des Cavaliers
+        value: vins:7
+      - label: On arrose ça ? · Champagne Veuve Pelletier
+        value: vins:8
+      - label: On arrose ça ? · Bière La Locale
+        value: vins:9
+      - label: Petites soifs · Eau plate ou gazeuse
+        value: soifs:0
+      - label: Petites soifs · Coca-Cola
+        value: soifs:1
+      - label: Petites soifs · Sirop à l'eau
+        value: soifs:2
+      - label: Petites soifs · Café / noisette
+        value: soifs:3
+      - label: Petites soifs · Café glacé
+        value: soifs:4
+      - label: Petites soifs · Thé / thé au lait
+        value: soifs:5
+    - name: traductions
+      label: Traductions (espagnol, anglais)
+      widget: object
+      collapsed: true
+      required: false
+      hint: Facultatif. Si une traduction est vide, le site affiche le français.
+      fields:
+      - name: es
+        label: Espagnol
+        widget: object
+        required: false
+        fields:
+        - name: nom
+          label: Nom
+          widget: string
+          required: false
+        - name: origine
+          label: Origine
+          widget: string
+          required: false
+        - name: description
+          label: Description
+          widget: text
+          required: false
+      - name: en
+        label: Anglais
+        widget: object
+        required: false
+        fields:
+        - name: nom
+          label: Nom
+          widget: string
+          required: false
+        - name: origine
+          label: Origine
+          widget: string
+          required: false
+        - name: description
+          label: Description
+          widget: text
+          required: false
+- name: carte
+  label: La carte
+  icon: menu_book
+  file: content/carte.json
+  fields:
+  - name: categories
+    label: Rubriques de la carte
+    label_singular: rubrique
+    widget: list
+    summary: '{{fields.titre}}'
+    collapsed: true
+    hint: Glissez une rubrique ou un plat pour changer l'ordre.
+    fields:
+    - name: id
+      label: Identifiant
+      widget: hidden
+    - name: titre
+      label: Titre de la rubrique
+      widget: string
+    - name: sous_titre
+      label: Petite ligne sous le titre
+      widget: string
+      required: false
+    - name: traductions
+      label: Traductions (espagnol, anglais)
+      widget: object
+      collapsed: true
+      required: false
+      hint: Facultatif. Si une traduction est vide, le site affiche le français.
+      fields:
+      - name: es
+        label: Espagnol
+        widget: object
+        required: false
+        fields:
+        - name: titre
+          label: Titre
+          widget: string
+          required: false
+        - name: sous_titre
+          label: Petite ligne
+          widget: string
+          required: false
+      - name: en
+        label: Anglais
+        widget: object
+        required: false
+        fields:
+        - name: titre
+          label: Titre
+          widget: string
+          required: false
+        - name: sous_titre
+          label: Petite ligne
+          widget: string
+          required: false
+    - name: plats
+      label: Plats
+      label_singular: plat
+      widget: list
+      collapsed: true
+      summary: '{{fields.nom}} · {{fields.prix}}'
+      fields:
+      - name: nom
+        label: Nom
+        widget: string
+      - name: description
+        label: Description
+        widget: string
+        required: false
+      - name: prix
+        label: Prix (€)
+        widget: string
+        hint: 'Par exemple 13,80. Pour les vins : 3,90 / 22,80 (verre / bouteille). Vide = « selon cours ».'
+        required: false
+        pattern: *id001
+      - *id002
+      - *id003
+      - name: traductions
+        label: Traductions (espagnol, anglais)
+        widget: object
+        collapsed: true
+        required: false
+        hint: Facultatif. Si une traduction est vide, le site affiche le français.
+        fields:
+        - name: es
+          label: Espagnol
+          widget: object
+          required: false
+          fields:
+          - name: nom
+            label: Nom
+            widget: string
+            required: false
+          - name: description
+            label: Description
+            widget: string
+            required: false
+        - name: en
+          label: Anglais
+          widget: object
+          required: false
+          fields:
+          - name: nom
+            label: Nom
+            widget: string
+            required: false
+          - name: description
+            label: Description
+            widget: string
+            required: false
+- name: emporter
+  label: À emporter
+  icon: shopping_bag
+  file: content/emporter.json
+  fields:
+  - name: supplement_ouverture
+    label: Supplément huîtres ouvertes (€ par douzaine)
+    widget: string
+    pattern: *id004
+  - name: consigne_petit
+    label: Consigne petit plateau (€)
+    widget: string
+    hint: 'Petit plateau : jusqu''à 2 douzaines d''huîtres ouvertes.'
+    pattern: *id004
+  - name: consigne_grand
+    label: Consigne grand plateau (€)
+    widget: string
+    hint: 'Grand plateau : 3 douzaines.'
+    pattern: *id004
+  - name: retrait
+    label: Créneaux de retrait
+    widget: object
+    fields:
+    - name: midi_debut
+      label: 'Midi : premier retrait'
+      widget: datetime
+      type: time
+      format: HH:mm
+    - name: midi_fin
+      label: 'Midi : dernier retrait'
+      widget: datetime
+      type: time
+      format: HH:mm
+    - name: soir_debut
+      label: 'Soir : premier retrait'
+      widget: datetime
+      type: time
+      format: HH:mm
+    - name: soir_fin
+      label: 'Soir : dernier retrait'
+      widget: datetime
+      type: time
+      format: HH:mm
+    - name: intervalle
+      label: Écart entre deux créneaux (minutes)
+      widget: number
+      value_type: int
+      min: 5
+      max: 120
+      default: 30
+    - name: delai
+      label: Délai minimum le jour même (minutes)
+      widget: number
+      value_type: int
+      min: 0
+      max: 480
+      default: 30
+      hint: 'Exemple : 30 = on ne peut pas commander pour dans moins de 30 minutes.'
+    - name: jours_affiches
+      label: Nombre de jours proposés
+      widget: number
+      value_type: int
+      min: 1
+      max: 14
+      default: 4
+      hint: Les jours de fermeture sont sautés automatiquement.
+  - name: produits
+    label: Produits à emporter (hors huîtres)
+    label_singular: produit
+    widget: list
+    summary: '{{fields.nom}} · {{fields.prix}} €'
+    collapsed: true
+    fields:
+    - name: rayon
+      label: Rayon
+      widget: select
+      options:
+      - label: Plateaux
+        value: plateaux
+      - label: Coquillages & crustacés
+        value: coquillages
+      - label: Petites assiettes
+        value: assiettes
+      - label: Sortie de cuisine
+        value: cuisine
+      - label: Desserts
+        value: desserts
+      - label: Vins
+        value: vins
+      - label: Boissons
+        value: soifs
+      hint: Le nom du rayon reprend celui de la rubrique de la carte.
+    - name: nom
+      label: Nom
+      widget: string
+    - name: description
+      label: Description
+      widget: text
+      required: false
+    - name: prix
+      label: Prix à emporter (€)
+      widget: string
+      pattern: *id004
+    - name: toujours_ouvert
+      label: Plateau ouvert (avec consigne)
+      widget: boolean
+      default: false
+      hint: À cocher pour un plateau toujours servi ouvert.
+    - *id002
+    - *id003
+    - name: traductions
+      label: Traductions (espagnol, anglais)
+      widget: object
+      collapsed: true
+      required: false
+      hint: Facultatif. Si une traduction est vide, le site affiche le français.
+      fields:
+      - name: es
+        label: Espagnol
+        widget: object
+        required: false
+        fields:
+        - name: nom
+          label: Nom
+          widget: string
+          required: false
+        - name: description
+          label: Description
+          widget: text
+          required: false
+      - name: en
+        label: Anglais
+        widget: object
+        required: false
+        fields:
+        - name: nom
+          label: Nom
+          widget: string
+          required: false
+        - name: description
+          label: Description
+          widget: text
+          required: false
+- name: textes
+  label: Textes du site
+  icon: edit_note
+  file: content/textes.json
+  fields:
+  - name: accueil
+    label: Page d'accueil
+    widget: object
+    collapsed: true
+    fields:
+    - name: kicker
+      label: Petite ligne au-dessus du titre
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: hero_lead
+      label: Texte de présentation
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: ways_t
+      label: Titre « Trois façons »
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: way1_t
+      label: 'Bloc 1 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: way1_d
+      label: 'Bloc 1 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: way2_t
+      label: 'Bloc 2 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: way2_d
+      label: 'Bloc 2 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: way3_t
+      label: 'Bloc 3 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: way3_d
+      label: 'Bloc 3 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: geste_t
+      label: Titre « Le geste »
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: s1_t
+      label: 'Étape 1 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: s1_d
+      label: 'Étape 1 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: s2_t
+      label: 'Étape 2 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: s2_d
+      label: 'Étape 2 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: s3_t
+      label: 'Étape 3 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: s3_d
+      label: 'Étape 3 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: oys_t
+      label: Titre « Nos huîtres »
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: oys_d
+      label: Texte sous « Nos huîtres »
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: plat_t
+      label: Titre « Les plateaux »
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: plat_d
+      label: Texte sous « Les plateaux »
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: proof_t
+      label: Titre des avis clients
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+  - name: maison
+    label: La Maison (à propos)
+    widget: object
+    collapsed: true
+    fields:
+    - name: house_lead
+      label: Phrase d'introduction
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: house_p1
+      label: Paragraphe 1
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: house_p2
+      label: Paragraphe 2
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: house_q
+      label: Citation
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: house_p3
+      label: Paragraphe 3
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: val_t
+      label: Titre des engagements
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: v1_t
+      label: 'Engagement 1 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: v1_d
+      label: 'Engagement 1 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: v2_t
+      label: 'Engagement 2 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: v2_d
+      label: 'Engagement 2 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: v3_t
+      label: 'Engagement 3 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: v3_d
+      label: 'Engagement 3 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: v4_t
+      label: 'Engagement 4 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: v4_d
+      label: 'Engagement 4 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: route_t
+      label: Titre « Le voyage d'une huître »
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: r1_t
+      label: 'Étape 1 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: r1_d
+      label: 'Étape 1 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: r2_t
+      label: 'Étape 2 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: r2_d
+      label: 'Étape 2 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: r3_t
+      label: 'Étape 3 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: r3_d
+      label: 'Étape 3 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: r4_t
+      label: 'Étape 4 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: r4_d
+      label: 'Étape 4 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: r5_t
+      label: 'Étape 5 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: r5_d
+      label: 'Étape 5 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+  - name: carte
+    label: La carte
+    widget: object
+    collapsed: true
+    fields:
+    - name: menu_lead
+      label: Texte sous le titre
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: mn1_t
+      label: 'Encadré 1 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: mn1_d
+      label: 'Encadré 1 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: mn3_t
+      label: 'Encadré « Règlement » : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: mn3_d
+      label: 'Encadré « Règlement » : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+  - name: emporter
+    label: À emporter
+    widget: object
+    collapsed: true
+    fields:
+    - name: take_lead
+      label: Texte sous le titre
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: pill1
+      label: Pastille 1
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: pill3
+      label: Pastille 3 (paiement)
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: o_closed_d
+      label: Explication « huîtres fermées »
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: o_open_d
+      label: Explication « huîtres ouvertes »
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: o_always_d
+      label: Explication « plateau toujours ouvert »
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: tray_note
+      label: Note sur la consigne
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: pay_t
+      label: 'Encadré paiement : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: pay_d
+      label: 'Encadré paiement : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: keep_t
+      label: Titre des conseils
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: k1_t
+      label: 'Conseil 1 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: k1_d
+      label: 'Conseil 1 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: k2_t
+      label: 'Conseil 2 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: k2_d
+      label: 'Conseil 2 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: k3_t
+      label: 'Conseil 3 : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: k3_d
+      label: 'Conseil 3 : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+  - name: contact
+    label: Contact et bas de page
+    widget: object
+    collapsed: true
+    fields:
+    - name: contact_lead
+      label: Texte sous « Venez nous voir »
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: write_t
+      label: 'Formulaire : titre'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: write_d
+      label: 'Formulaire : texte'
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: foot_about
+      label: Présentation en bas de page
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+  - name: faq
+    label: Questions fréquentes
+    label_singular: question
+    widget: list
+    collapsed: true
+    summary: '{{fields.question.fr}}'
+    fields:
+    - name: question
+      label: Question
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: string
+      - name: es
+        label: Espagnol
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: string
+        hint: Vide = le texte français est affiché
+        required: false
+    - name: reponse
+      label: Réponse
+      widget: object
+      fields:
+      - name: fr
+        label: Français
+        widget: text
+      - name: es
+        label: Espagnol
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+      - name: en
+        label: Anglais
+        widget: text
+        hint: Vide = le texte français est affiché
+        required: false
+  - name: avis
+    label: Avis clients (accueil)
+    label_singular: avis
+    widget: list
+    collapsed: true
+    summary: '{{fields.nom}} : {{fields.texte}}'
+    hint: Recopiez de vrais avis Google, avec le prénom et l'initiale.
+    fields:
+    - name: nom
+      label: Prénom et initiale
+      widget: string
+      hint: Par exemple Marie M.
+    - name: texte
+      label: Avis
+      widget: text
+    - name: mois
+      label: Mois de la visite
+      widget: select
+      options:
+      - janvier
+      - février
+      - mars
+      - avril
+      - mai
+      - juin
+      - juillet
+      - août
+      - septembre
+      - octobre
+      - novembre
+      - décembre

@@ -1,0 +1,146 @@
+{
+  "titre": "Nos huîtres",
+  "sous_titre": "Les 12 · par 6, 9 ou 12",
+  "traductions": {
+    "es": {
+      "titre": "Nuestras ostras",
+      "sous_titre": "Las 12 · por 6, 9 o 12"
+    },
+    "en": {
+      "titre": "Our oysters",
+      "sous_titre": "Per dozen · by 6, 9 or 12"
+    }
+  },
+  "liste": [
+    {
+      "nom": "Fines de Claires",
+      "calibre": "n°3",
+      "origine": "Marennes-Oléron",
+      "prix": "26,40",
+      "prix_emporter": "19,20",
+      "a_emporter": true,
+      "iode": 3,
+      "description": "Affinée en claires : équilibrée, légèrement sucrée, l'huître pour commencer.",
+      "allergenes": [
+        "mollusques"
+      ],
+      "illustration": "huitres:0",
+      "traductions": {
+        "es": {
+          "nom": "Fines de Claires",
+          "origine": "Marennes-Oléron",
+          "description": "Afinada en «claires»: equilibrada, ligeramente dulce, la ostra para empezar."
+        },
+        "en": {
+          "nom": "Fines de Claires",
+          "origine": "Marennes-Oléron",
+          "description": "Refined in claires: balanced, slightly sweet, the one to start with."
+        }
+      }
+    },
+    {
+      "nom": "Normandes",
+      "calibre": "n°3",
+      "origine": "Pleine mer",
+      "prix": "28,20",
+      "prix_emporter": "21,00",
+      "a_emporter": true,
+      "iode": 5,
+      "description": "Élevée en pleine mer : très iodée, franche, une vraie bouffée d'océan.",
+      "allergenes": [
+        "mollusques"
+      ],
+      "illustration": "huitres:1",
+      "traductions": {
+        "es": {
+          "nom": "Normandes",
+          "origine": "Mar abierto",
+          "description": "Criada en mar abierto: muy yodada, franca, un golpe de océano."
+        },
+        "en": {
+          "nom": "Normandy",
+          "origine": "Open sea",
+          "description": "Grown in the open sea: very briny and bright, a real gust of ocean."
+        }
+      }
+    },
+    {
+      "nom": "Spéciales Boudeuses",
+      "calibre": "n°4",
+      "origine": "Forme ronde et creuse",
+      "prix": "32,80",
+      "prix_emporter": "23,40",
+      "a_emporter": true,
+      "iode": 3,
+      "description": "Coquille ronde et profonde, chair charnue et croquante, finale douce.",
+      "allergenes": [
+        "mollusques"
+      ],
+      "illustration": "huitres:2",
+      "traductions": {
+        "es": {
+          "nom": "Especiales Boudeuse",
+          "origine": "Forma redonda y honda",
+          "description": "Concha redonda y honda, carne firme y crujiente, final suave."
+        },
+        "en": {
+          "nom": "Boudeuse Spéciales",
+          "origine": "Round, deep shell",
+          "description": "Round, deep shell, plump and crunchy flesh, a gentle finish."
+        }
+      }
+    },
+    {
+      "nom": "Spéciales Royales",
+      "calibre": "n°3",
+      "origine": "Irlande",
+      "prix": "42,00",
+      "prix_emporter": "28,80",
+      "a_emporter": true,
+      "iode": 4,
+      "description": "Des eaux froides d'Irlande : charnue, ample, notes de noisette.",
+      "allergenes": [
+        "mollusques"
+      ],
+      "illustration": "huitres:3",
+      "traductions": {
+        "es": {
+          "nom": "Especiales Royales",
+          "origine": "Irlanda",
+          "description": "De las aguas frías de Irlanda: carnosa, amplia, notas de avellana."
+        },
+        "en": {
+          "nom": "Royale Spéciales",
+          "origine": "Ireland",
+          "description": "From Ireland's cold waters: meaty, generous, hazelnut notes."
+        }
+      }
+    },
+    {
+      "nom": "Spéciales Gillardeau",
+      "calibre": "n°3",
+      "origine": "La signature",
+      "prix": "47,40",
+      "prix_emporter": "39,60",
+      "a_emporter": true,
+      "iode": 4,
+      "description": "La plus célèbre : chair ferme et croquante, longue finale sucrée.",
+      "allergenes": [
+        "mollusques"
+      ],
+      "illustration": "huitres:4",
+      "traductions": {
+        "es": {
+          "nom": "Especiales Gillardeau",
+          "origine": "La firma",
+          "description": "La más célebre: carne firme y crujiente, largo final dulce."
+        },
+        "en": {
+          "nom": "Gillardeau Spéciales",
+          "origine": "The signature",
+          "description": "The most famous: firm, crunchy flesh and a long sweet finish."
+        }
+      }
+    }
+  ]
+}

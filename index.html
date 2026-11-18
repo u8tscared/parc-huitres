@@ -550,6 +550,9 @@ section{position:relative}
 @media (max-width:1000px){.ccards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:540px){.ccards{grid-template-columns:1fr}}
 .hours{display:grid;gap:0}
+.hnote{display:grid;gap:6px;margin-top:14px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,var(--rasp) 10%,var(--white));font-size:.9rem}
+.hnote b{color:var(--rasp)}
+.annonce{background:var(--navy);color:var(--cream);text-align:center;font-weight:600;font-size:.92rem;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px));line-height:1.35}
 .hours div{display:grid;grid-template-columns:1fr auto;gap:12px;padding:12px 14px;border-radius:12px;font-variant-numeric:tabular-nums}
 .hours div:nth-child(odd){background:var(--cream)}
 .hours div.today{background:var(--navy);color:var(--cream);font-weight:600}
@@ -617,6 +620,7 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
 }
 </style>
 
+<div class="annonce" id="annonce" role="status" hidden></div>
 <div class="loader" id="loader" aria-hidden="true"><svg viewBox="0 0 300 190" data-logo="7"></svg></div>
 <div class="wipe" id="wipe" aria-hidden="true">
   <svg class="top" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0 60 C150 0 300 0 450 30 S750 60 900 20 S1100 10 1200 40 L1200 60Z" fill="var(--navy)"/></svg>
@@ -676,7 +680,7 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
           <a class="btn ghost" href="#emporter" data-i="cta_take">Commander à emporter</a>
           <a class="btn ghost" href="#carte" data-i="cta_ourmenu">Notre carte</a>
         </div>
-        <div class="rating"><span class="stars" style="--r:4.6">★★★★★</span><span><b>4,6</b> · <span data-i="reviews_n">456 avis Google</span></span></div>
+        <div class="rating"><span class="stars" data-cstar style="--r:4.6">★★★★★</span><span><b data-c="note">4,6</b> · <span data-i="reviews_n">456 avis Google</span></span></div>
       </div>
       <div class="plate" id="plate">
         <canvas id="bubbles" aria-hidden="true"></canvas>
@@ -772,7 +776,7 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
   <section class="sec" style="padding-top:0">
     <div class="wrap">
       <div class="proof reveal">
-        <div class="big"><span id="count5">4,6</span><small><span class="stars" style="--r:4.6">★★★★★</span> · <span id="count456">458</span> <span data-i="reviews_w">avis Google</span></small></div>
+        <div class="big"><span id="count5" data-c="note">4,6</span><small><span class="stars" data-cstar style="--r:4.6">★★★★★</span> · <span id="count456" data-c="avis">458</span> <span data-i="reviews_w">avis Google</span></small></div>
         <div>
           <span class="eyebrow" data-i="proof_k">Ils en parlent</span>
           <h2 data-i="proof_t">Une note parfaite, une huître à la fois.</h2>
@@ -1006,7 +1010,7 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
         <h1 style="margin-top:14px" data-ih="contact_h">Venez<br>nous <span style="color:var(--rasp)">voir</span></h1>
         <p class="lead" style="margin-top:16px" data-i="contact_lead">Au bord de la baie de Txingudi, à deux pas du port de plaisance et de l'ancien port de pêche.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
-          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Le+Parc+A+Huitres+5+Rue+des+Orangers+64700+Hendaye" target="_blank" rel="noopener"><span data-i="route_btn">Itinéraire</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Le+Parc+A+Huitres+5+Rue+des+Orangers+64700+Hendaye" data-ch="maps" target="_blank" rel="noopener"><span data-i="route_btn">Itinéraire</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
           <a class="btn ghost" href="#reserver" data-i="cta_book">Réserver une table</a>
         </div>
       </div>
@@ -1016,10 +1020,10 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
   <section style="padding-bottom:60px">
     <div class="wrap">
       <div class="ccards">
-        <div class="cc reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span><h3 data-i="f_addr">Adresse</h3><span class="v">5 rue des Orangers<br>64700 Hendaye</span><div class="acts"><button type="button" class="chip" data-copy="5 rue des Orangers, 64700 Hendaye" data-i="copy">Copier</button></div></div>
-        <div class="cc reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><h3 data-i="f_phone">Téléphone</h3><span class="v tab">05 59 20 32 38</span><div class="acts"><button type="button" class="chip" data-copy="05 59 20 32 38" data-i="copy">Copier</button><a class="chip" href="tel:+33559203238" data-i="call">Appeler</a></div></div>
-        <div class="cc reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><h3>E-mail</h3><span class="v">contact@leparcahuitres-hendaye.fr</span><div class="acts"><button type="button" class="chip" data-copy="contact@leparcahuitres-hendaye.fr" data-i="copy">Copier</button></div></div>
-        <div class="cc reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="var(--navy)"/></svg></span><h3 data-i="f_follow">Suivez-nous</h3><span class="v">@leparcahuitres_hendaye</span><div class="acts"><a class="chip" href="https://www.instagram.com/leparcahuitres_hendaye/" target="_blank" rel="noopener">Instagram</a><a class="chip" href="https://www.facebook.com/leparcahuitres.hendaye" target="_blank" rel="noopener">Facebook</a></div></div>
+        <div class="cc reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span><h3 data-i="f_addr">Adresse</h3><span class="v"><span data-c="rue">5 rue des Orangers</span><br><span data-c="cpville">64700 Hendaye</span></span><div class="acts"><button type="button" class="chip" data-cc="addr" data-copy="5 rue des Orangers, 64700 Hendaye" data-i="copy">Copier</button></div></div>
+        <div class="cc reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><h3 data-i="f_phone">Téléphone</h3><span class="v tab" data-c="tel">05 59 20 32 38</span><div class="acts"><button type="button" class="chip" data-cc="tel" data-copy="05 59 20 32 38" data-i="copy">Copier</button><a class="chip" data-ch="tel" href="tel:+33559203238" data-i="call">Appeler</a></div></div>
+        <div class="cc reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><h3>E-mail</h3><span class="v" data-c="email">contact@leparcahuitres-hendaye.fr</span><div class="acts"><button type="button" class="chip" data-cc="email" data-copy="contact@leparcahuitres-hendaye.fr" data-i="copy">Copier</button><a class="chip" data-ch="email" href="mailto:contact@leparcahuitres-hendaye.fr" data-i="write_t">Écrivez-nous</a></div></div>
+        <div class="cc reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="var(--navy)"/></svg></span><h3 data-i="f_follow">Suivez-nous</h3><span class="v" data-c="insta">@leparcahuitres_hendaye</span><div class="acts"><a class="chip" href="https://www.instagram.com/leparcahuitres_hendaye/" data-ch="insta" target="_blank" rel="noopener">Instagram</a><a class="chip" href="https://www.facebook.com/leparcahuitres.hendaye" data-ch="fb" target="_blank" rel="noopener">Facebook</a></div></div>
       </div>
     </div>
   </section>
@@ -1028,6 +1032,7 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
       <div class="card reveal" style="box-shadow:none;border-width:1.5px;border-color:var(--line)">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px"><h2 style="font-size:2rem" data-i="f_hours">Horaires</h2><span class="status" id="status"><i></i><span></span></span></div>
         <div class="hours" id="hours"></div>
+        <p class="hnote" id="hnote" hidden></p>
         
       </div>
       <form class="card reveal" id="cform" novalidate>
@@ -1066,9 +1071,9 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
         <b>Le Parc à Huîtres</b>
         <p data-i="foot_about">Bar à huîtres et fruits de mer à Hendaye. Huîtres ouvertes à la minute, coquillages cuits maison, cuisine de l'océan.</p>
         <div class="social">
-          <a href="https://www.instagram.com/leparcahuitres_hendaye/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
-          <a href="https://www.facebook.com/leparcahuitres.hendaye" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v7h4v-7h3l1-4h-4V8z"/></svg></a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Le+Parc+A+Huitres+5+Rue+des+Orangers+64700+Hendaye" target="_blank" rel="noopener" aria-label="Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+          <a href="https://www.instagram.com/leparcahuitres_hendaye/" data-ch="insta" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://www.facebook.com/leparcahuitres.hendaye" data-ch="fb" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v7h4v-7h3l1-4h-4V8z"/></svg></a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Le+Parc+A+Huitres+5+Rue+des+Orangers+64700+Hendaye" data-ch="maps" target="_blank" rel="noopener" aria-label="Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
       </div>
       <div>
@@ -1077,7 +1082,7 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
       </div>
       <div>
         <h3 data-i="f_find">Nous trouver</h3>
-        <ul><li>5 rue des Orangers</li><li>64700 Hendaye</li><li class="tab">05 59 20 32 38</li><li style="word-break:break-word">contact@leparcahuitres-hendaye.fr</li></ul>
+        <ul><li data-c="rue">5 rue des Orangers</li><li data-c="cpville">64700 Hendaye</li><li class="tab"><a data-ch="tel" href="tel:+33559203238" data-c="tel">05 59 20 32 38</a></li><li style="word-break:break-word"><a data-ch="email" href="mailto:contact@leparcahuitres-hendaye.fr" data-c="email">contact@leparcahuitres-hendaye.fr</a></li></ul>
       </div>
       <div>
         <h3 data-i="f_hours">Horaires</h3>
@@ -1109,7 +1114,7 @@ nav_home:["Accueil","Inicio","Home"],nav_house:["La Maison","La Casa","Our story
 kicker:["Bar à huîtres · Hendaye · à deux pas du port","Bar de ostras · Hendaya · junto al puerto","Oyster bar · Hendaye · steps from the harbour"],
 hero_lead:["Au bord de la baie de Txingudi, entre France et Espagne, Le Parc à Huîtres est un comptoir iodé où l'on vient comme chez des amis. Huîtres ouvertes à la minute, coquillages cuits maison, crustacés et cuisine de l'océan, à partager sur place ou à emporter.","Junto a la bahía de Txingudi, entre Francia y España, Le Parc à Huîtres es una barra con sabor a mar donde uno se siente como en casa de amigos. Ostras abiertas al momento, mariscos cocidos en casa, crustáceos y cocina del océano, para compartir aquí o para llevar.","On Txingudi bay, between France and Spain, Le Parc à Huîtres is a sea-salted counter where you feel like you're at a friend's place. Oysters opened to order, shellfish cooked in-house, crustaceans and ocean cooking, to share here or take away."],
 cta_book:["Réserver une table","Reservar mesa","Book a table"],cta_book_s:["Réserver","Reservar","Book"],cta_take:["Commander à emporter","Pedir para llevar","Order takeaway"],cta_menu:["Voir la carte","Ver la carta","See the menu"],cta_ourmenu:["Notre carte","Nuestra carta","Our menu"],
-reviews_n:["458 avis Google","458 reseñas en Google","458 Google reviews"],reviews_w:["avis Google","reseñas en Google","Google reviews"],
+reviews_n:["{avis} avis Google","{avis} reseñas en Google","{avis} Google reviews"],reviews_w:["avis Google","reseñas en Google","Google reviews"],
 ways_k:["Réserver, emporter, découvrir","Reservar, llevar, descubrir","Book, take away, explore"],ways_t:["Trois façons de profiter du Parc","Tres formas de disfrutar del Parc","Three ways to enjoy the Parc"],
 way1_t:["Sur place","En el local","Dine in"],way1_d:["Au comptoir ou à table, une douzaine et un verre de Txakoli face à la baie.","En la barra o en mesa, una docena y una copa de Txakoli frente a la bahía.","At the counter or at a table, a dozen and a glass of Txakoli facing the bay."],
 way2_t:["À emporter","Para llevar","Takeaway"],way2_d:["Commandez en ligne, passez prendre à l'heure choisie, réglez sur place.","Pida en línea, recoja a la hora elegida y pague en el local.","Order online, collect at your chosen time, pay on site."],
@@ -1122,7 +1127,7 @@ oys_k:["Notre sélection","Nuestra selección","Our selection"],oys_t:["Nos huî
 per12:["les 12","las 12","per dozen"],iod:["Iode","Yodo","Brine"],
 plat_k:["À partager","Para compartir","To share"],plat_t:["Les plateaux","Las bandejas","Platters"],plat_d:["Sur place ou à emporter. Composition fixe, vous pouvez ajouter coquillages et crustacés.","En el local o para llevar. Composición fija, puede añadir mariscos y crustáceos.","Dine in or take away. Fixed platters, you can add extra shellfish."],
 add_take:["À emporter","Para llevar","Take away"],
-proof_k:["Ils en parlent","Lo dicen ellos","In their words"],proof_t:["Nos clients en parlent mieux que nous.","Nuestros clientes lo cuentan mejor.","Our guests say it best."],rev_lang:["Avis Google, en français","Reseñas de Google, en francés","Google reviews, in French"],rev_all:["Lire tous les avis sur Google","Leer todas las reseñas en Google","Read all reviews on Google"],visited:["Visité en","Visitado en","Visited in"],proof_d:["4,6 sur 5 sur Google, 458 avis. Merci à tous ceux qui partagent ce moment avec nous.","4,6 sobre 5 en Google, 458 reseñas. Gracias a todos los que comparten este momento con nosotros.","4.6 out of 5 on Google, 458 reviews. Thank you to everyone who shares this moment with us."],
+proof_k:["Ils en parlent","Lo dicen ellos","In their words"],proof_t:["Nos clients en parlent mieux que nous.","Nuestros clientes lo cuentan mejor.","Our guests say it best."],rev_lang:["Avis Google, en français","Reseñas de Google, en francés","Google reviews, in French"],rev_all:["Lire tous les avis sur Google","Leer todas las reseñas en Google","Read all reviews on Google"],visited:["Visité en","Visitado en","Visited in"],proof_d:["{note} sur 5 sur Google, {avis} avis. Merci à tous ceux qui partagent ce moment avec nous.","{note} sobre 5 en Google, {avis} reseñas. Gracias a todos los que comparten este momento con nosotros.","{note} out of 5 on Google, {avis} reviews. Thank you to everyone who shares this moment with us."],
 house_h:["Passionnés<br>de la <span class=\"accent\">mer</span>","Apasionados<br>del <span class=\"accent\">mar</span>","In love<br>with the <span class=\"accent\">sea</span>"],
 house_lead:["Des artisans du goût, un comptoir au bord de la baie, et une seule règle : la fraîcheur d'abord.","Artesanos del sabor, una barra junto a la bahía y una sola regla: la frescura primero.","Flavour artisans, a counter by the bay, and one rule: freshness first."],
 house_p1:["Le Parc à Huîtres, c'est un comptoir posé à deux pas du port de plaisance et de l'ancien port de pêche d'Hendaye. On y vient pour une douzaine au soleil, un plateau à partager ou une soupe de poissons de la criée basque.","Le Parc à Huîtres es una barra a dos pasos del puerto deportivo y del antiguo puerto pesquero de Hendaya. Se viene por una docena al sol, una bandeja para compartir o una sopa de pescado de la lonja vasca.","Le Parc à Huîtres is a counter a few steps from Hendaye's marina and old fishing port. People come for a dozen in the sun, a platter to share or a fish soup from the Basque fish market."],
@@ -1162,7 +1167,7 @@ b_ok_t:["Table réservée !","¡Mesa reservada!","Table booked!"],b_ok_d:["Un SM
 again:["Nouvelle réservation","Nueva reserva","New booking"],
 take_h:["Le plateau,<br><span class=\"accent\">chez vous</span>","La bandeja,<br><span class=\"accent\">en su casa</span>","The platter,<br><span class=\"accent\">at home</span>"],
 take_lead:["Composez votre commande, choisissez votre heure de retrait et réglez au comptoir. Aucun paiement en ligne.","Prepare su pedido, elija la hora de recogida y pague en la barra. Sin pago en línea.","Build your order, pick a collection time and pay at the counter. No online payment."],
-pill1:["Prête à l'heure choisie","Lista a la hora elegida","Ready at your chosen time"],pill2:["Retrait 5 rue des Orangers","Recogida 5 rue des Orangers","Collect at 5 rue des Orangers"],pill3:["CB ou espèces au retrait","Tarjeta o efectivo al recoger","Card or cash on collection"],
+pill1:["Prête à l'heure choisie","Lista a la hora elegida","Ready at your chosen time"],pill2:["Retrait {rue}","Recogida {rue}","Collect at {rue}"],pill3:["CB ou espèces au retrait","Tarjeta o efectivo al recoger","Card or cash on collection"],
 ts1:["Votre sélection","Su selección","Your selection"],ts2:["Retrait","Recogida","Collection"],ts3:["Coordonnées","Datos","Details"],ts4:["Confirmation","Confirmación","Confirmation"],
 all:["Tout","Todo","All"],add:["Ajouter","Añadir","Add"],cart:["Votre commande","Su pedido","Your order"],empty:["Votre panier est vide. Ajoutez une douzaine pour commencer.","Su cesta está vacía. Añada una docena para empezar.","Your basket is empty. Add a dozen to start."],
 total_site:["À régler au retrait","A pagar al recoger","To pay on collection"],pay_t:["Paiement sur place","Pago en el local","Pay on site"],pay_d:["Par carte bancaire ou en espèces, au moment du retrait. Ticket de caisse remis avec la commande.","Con tarjeta o en efectivo, al recoger. Se entrega el ticket con el pedido.","By card or cash when you collect. Receipt handed over with your order."],
@@ -1191,86 +1196,65 @@ legal:["Mentions légales","Aviso legal","Legal notice"],cookies:["Cookies","Coo
 };
 const DAYS=[["Lundi","Lunes","Monday"],["Mardi","Martes","Tuesday"],["Mercredi","Miércoles","Wednesday"],["Jeudi","Jueves","Thursday"],["Vendredi","Viernes","Friday"],["Samedi","Sábado","Saturday"],["Dimanche","Domingo","Sunday"]];
 const ALL=[["Amidon","Almidón","Starch"],["Produits laitiers","Lácteos","Dairy"],["Œufs","Huevos","Eggs"],["Gluten","Gluten","Gluten"],["Poisson","Pescado","Fish"],["Mollusques","Moluscos","Molluscs"],["Sulfites","Sulfitos","Sulphites"],["Arachide","Cacahuete","Peanut"],["Moutarde","Mostaza","Mustard"],["Crustacés","Crustáceos","Crustaceans"]]; // index 0..8 = codes 1..9, index 9 = code 0
-const FAQ=[
-[["Faut-il réserver ?","¿Hay que reservar?","Do I need to book?"],["C'est conseillé, surtout le week-end et l'été. Réservez en ligne en trente secondes.","Es recomendable, sobre todo el fin de semana y en verano. Reserve en línea en treinta segundos.","It is a good idea, especially at weekends and in summer. Book online in thirty seconds."]],
-[["Quels moyens de paiement acceptez-vous ?","¿Qué formas de pago aceptan?","How can I pay?"],["Carte bancaire et espèces. Nous n'acceptons pas les chèques. À emporter, le règlement se fait au retrait.","Tarjeta y efectivo. No aceptamos cheques. Para llevar, se paga al recoger.","Card and cash. We do not accept cheques. For takeaway, you pay when you collect."]],
-[["Peut-on modifier un plateau ?","¿Se puede modificar una bandeja?","Can I change a platter?"],["La composition des plateaux est fixe, mais vous pouvez y ajouter d'autres coquillages et crustacés.","La composición es fija, pero puede añadir otros mariscos y crustáceos.","Platters are fixed, but you can add other shellfish and crustaceans."]],
-[["Où trouver la liste des allergènes ?","¿Dónde está la lista de alérgenos?","Where is the allergen list?"],["Sur la page La Carte, activez « Allergènes » pour les voir plat par plat. L'équipe reste à votre disposition sur place.","En La Carta, active «Alérgenos» para verlos plato por plato. El equipo está a su disposición.","On the Menu page, switch on “Allergens” to see them dish by dish. Our team is happy to help on site."]],
-[["Les moules sont-elles toujours à la carte ?","¿Hay mejillones todo el año?","Are mussels always on the menu?"],["Les moules de bouchot et les moules marinières sont servies de juin à décembre.","Los mejillones de bouchot y a la marinera se sirven de junio a diciembre.","Bouchot mussels and moules marinières are served from June to December."]]
-];
-const OYS=[
- {n:"Fines de Claires",c:"n°3",o:["Marennes-Oléron","Marennes-Oléron","Marennes-Oléron"],p:26.4,i:3,note:["Affinée en claires : équilibrée, légèrement sucrée, l'huître pour commencer.","Afinada en «claires»: equilibrada, ligeramente dulce, la ostra para empezar.","Refined in claires: balanced, slightly sweet, the one to start with."]},
- {n:["Normandes","Normandes","Normandy"],c:"n°3",o:["Pleine mer","Mar abierto","Open sea"],p:28.2,i:5,note:["Élevée en pleine mer : très iodée, franche, une vraie bouffée d'océan.","Criada en mar abierto: muy yodada, franca, un golpe de océano.","Grown in the open sea: very briny and bright, a real gust of ocean."]},
- {n:["Spéciales Boudeuses","Especiales Boudeuse","Boudeuse Spéciales"],c:"n°4",o:["Forme ronde et creuse","Forma redonda y honda","Round, deep shell"],p:32.8,i:3,note:["Coquille ronde et profonde, chair charnue et croquante, finale douce.","Concha redonda y honda, carne firme y crujiente, final suave.","Round, deep shell, plump and crunchy flesh, a gentle finish."]},
- {n:["Spéciales Royales","Especiales Royales","Royale Spéciales"],c:"n°3",o:["Irlande","Irlanda","Ireland"],p:42.0,i:4,note:["Des eaux froides d'Irlande : charnue, ample, notes de noisette.","De las aguas frías de Irlanda: carnosa, amplia, notas de avellana.","From Ireland's cold waters: meaty, generous, hazelnut notes."]},
- {n:["Spéciales Gillardeau","Especiales Gillardeau","Gillardeau Spéciales"],c:"n°3",o:["La signature","La firma","The signature"],p:47.4,i:4,note:["La plus célèbre : chair ferme et croquante, longue finale sucrée.","La más célebre: carne firme y crujiente, largo final dulce.","The most famous: firm, crunchy flesh and a long sweet finish."]}
-];
 
-/* =============== MENU DATA (carte V5) [fr,es,en,dfr,des,den,price,allergens,takeaway] =============== */
-const MENU=[
-{id:"huitres",t:["Nos huîtres","Nuestras ostras","Our oysters"],n:["Les 12 · par 6, 9 ou 12","Las 12 · por 6, 9 o 12","Per dozen · by 6, 9 or 12"],icon:"oyster",items:[
- ["Fines de Claires n°3","Fines de Claires n°3","Fines de Claires n°3","Marennes-Oléron","Marennes-Oléron","Marennes-Oléron",26.4,"6",1],
- ["Normandes n°3","Normandes n°3","Normandy n°3","Pleine mer","Mar abierto","Open sea",28.2,"6",1],
- ["Spéciales Boudeuses n°4","Especiales Boudeuse n°4","Boudeuse Spéciales n°4","","","",32.8,"6",1],
- ["Spéciales Royales n°3","Especiales Royales n°3","Royale Spéciales n°3","Irlande","Irlanda","Ireland",42.0,"6",1],
- ["Spéciales Gillardeau n°3","Especiales Gillardeau n°3","Gillardeau Spéciales n°3","","","",47.4,"6",1]]},
-{id:"plateaux",t:["L'iode à partager","El yodo para compartir","Platters to share"],n:["Le temps d'une marée","El tiempo de una marea","For one tide"],icon:"platter",items:[
- ["Plateau Le Parc","Bandeja El Parque","Le Parc platter","10 Normandes n°3, 4 crevettes roses de Madagascar, 10 bulots cuits maison","10 Normandes n°3, 4 langostinos rosas, 10 caracoles de mar cocidos en casa","10 Normandy n°3, 4 Madagascar pink prawns, 10 house-cooked whelks",36.8,"0367",1],
- ["Le Parc + tourteau","El Parque + buey de mar","Le Parc + brown crab","10 Normandes n°3, 4 crevettes roses, 10 bulots maison, 1 tourteau cuit de Normandie","10 Normandes n°3, 4 langostinos rosas, 10 caracoles de mar, 1 buey de mar de Normandía","10 Normandy n°3, 4 pink prawns, 10 house whelks, 1 cooked Normandy brown crab",61.8,"0367",1],
- ["Huîtres assorties","Ostras surtidas","Assorted oysters","4 Fines de Claires, 4 Normandes, 4 Spéciales Royales n°3","4 Fines de Claires, 4 Normandes, 4 Especiales Royales n°3","4 Fines de Claires, 4 Normandy, 4 Royale Spéciales n°3",33.9,"6",1]]},
-{id:"coquillages",t:["Coquillages & crustacés","Mariscos y crustáceos","Shellfish & crustaceans"],n:["Selon nos arrivages","Según llegadas","Depending on the catch"],icon:"shrimp",items:[
- ["Crevettes roses de Madagascar","Langostinos rosas de Madagascar","Madagascar pink prawns","6 pièces · calibre 30/35","6 piezas · calibre 30/35","6 pieces · size 30/35",17.8,"07",1],
- ["Bulots & aïoli","Caracoles de mar y alioli","Whelks & aïoli","300 g, cuits maison","300 g, cocidos en casa","300 g, cooked in-house",13.8,"36",1],
- ["Langoustines","Cigalas","Langoustines","3 pièces, cuites maison","3 piezas, cocidas en casa","3 pieces, cooked in-house",18.6,"03",1],
- ["Tourteau cuit","Buey de mar cocido","Cooked brown crab","700 g la pièce","700 g la pieza","700 g each",28.6,"03",1],
- ["Homard bleu","Bogavante azul","Blue lobster","700 g la pièce","700 g la pieza","700 g each",null,"03",0],
- ["Moules de bouchot crues","Mejillones de bouchot crudos","Raw bouchot mussels","12 pièces · juin à décembre","12 piezas · junio a diciembre","12 pieces · June to December",null,"6",0]]},
-{id:"assiettes",t:["Petites assiettes","Platos pequeños","Small plates"],n:["À partager… ou pas","Para compartir… o no","To share… or not"],icon:"jar",items:[
- ["Pâté basque au piment d'Espelette","Paté vasco con pimiento de Espelette","Basque pâté with Espelette pepper","Guindillas · Ferme Elizaldia · 125 g","Guindillas · Granja Elizaldia · 125 g","Guindillas · Elizaldia farm · 125 g",8.9,"7832",1],
- ["Caviar de truite des Pyrénées","Caviar de trucha de los Pirineos","Pyrenees trout caviar","Crème épaisse · 80 g","Crema espesa · 80 g","Thick cream · 80 g",23.8,"57",1],
- ["Saumon gravlax","Salmón gravlax","Salmon gravlax","Fait maison · 150 g","Hecho en casa · 150 g","House-cured · 150 g",20.8,"597",1],
- ["Saumon fumé","Salmón ahumado","Smoked salmon","Tranché main · 150 g","Cortado a mano · 150 g","Hand-sliced · 150 g",20.8,"5",1],
- ["Soupe de poissons","Sopa de pescado","Fish soup","Criée Pays basque · croûtons, aïoli, rouille, emmental","Lonja vasca · picatostes, alioli, rouille, queso","Basque fish market · croutons, aïoli, rouille, cheese",13.8,"12567",0],
- ["Foie gras, pain toasté","Foie gras, pan tostado","Foie gras, toasted bread","La Basse-Cour de Castelnau, Landes","La Basse-Cour de Castelnau, Landas","La Basse-Cour de Castelnau, Landes",20.9,"",0],
- ["Saucisson de montagne","Salchichón de montaña","Mountain saucisson","Ferme Elizaldia","Granja Elizaldia","Elizaldia farm",13.8,"",1]]},
-{id:"cuisine",t:["Sortie de cuisine","Salida de cocina","From the kitchen"],n:["Attention, c'est chaud","Cuidado, quema","Careful, it's hot"],icon:"pot",items:[
- ["Noix de Saint-Jacques","Vieiras","Scallops","Comme en Normandie · 20 min de cuisson","Como en Normandía · 20 min de cocción","Normandy style · 20 min cooking",27.8,"12467",0],
- ["Txangurro","Txangurro","Txangurro","20 min de cuisson","20 min de cocción","20 min cooking",24.9,"0561",0],
- ["Bourride","Bourride","Bourride","Soupe de poisson, merlu basque, pommes de terre safranées · 20 min","Sopa de pescado, merluza vasca, patatas al azafrán · 20 min","Fish soup, Basque hake, saffron potatoes · 20 min",25.9,"145678",0],
- ["Huîtres gratinées","Ostras gratinadas","Oysters gratin","Au beurre blanc · 6 pièces","Con beurre blanc · 6 piezas","Beurre blanc · 6 pieces",18.6,"12467",0],
- ["Moules marinières","Mejillones a la marinera","Moules marinières","Riz blanc · 700 g · juin à décembre","Arroz blanco · 700 g · junio a diciembre","White rice · 700 g · June to December",18.8,"1467",0],
- ["Garniture","Guarnición","Side","Riz ou salade","Arroz o ensalada","Rice or salad",3.2,"",0]]},
-{id:"desserts",t:["Les gourmands","Los golosos","Something sweet"],n:["À croquer sans culpabilité","Para disfrutar sin culpa","Guilt-free"],icon:"jar",items:[
- ["Fromage de brebis du Pays basque","Queso de oveja del País Vasco","Basque sheep's cheese","Confiture de cerises noires","Mermelada de cereza negra","Black cherry jam",7.8,"1234",0],
- ["Tarte aux pommes","Tarta de manzana","Apple tart","","","",7.8,"1234",0],
- ["Île flottante maison","Isla flotante casera","Île flottante","Crème anglaise","Crema inglesa","Custard",7.8,"1234",0],
- ["Baba au rhum","Baba al ron","Rum baba","Sirop et chantilly","Sirope y nata","Syrup and whipped cream",8.0,"1234",0]]},
-{id:"vins",t:["On arrose ça ?","¿Lo brindamos?","Shall we drink?"],n:["Verre 12,5 cl / bouteille 75 cl","Copa 12,5 cl / botella 75 cl","Glass 12.5 cl / bottle 75 cl"],icon:"glass",items:[
- ["Entre-deux-Mers AOC","Entre-deux-Mers AOC","Entre-deux-Mers AOC","Blanc","Blanco","White","3,90 / 22,80","",0],
- ["Uby n°2, Gascogne IGP","Uby n°2, Gascogne IGP","Uby n°2, Gascogne IGP","Blanc","Blanco","White","3,80 / 23,40","",0],
- ["Jurançon AOC","Jurançon AOC","Jurançon AOC","Blanc","Blanco","White","4,90 / 28,60","",0],
- ["Rueda AOP","Rueda AOP","Rueda AOP","Blanc","Blanco","White","3,90 / 23,60","",0],
- ["Txakoli Getaria AOP","Txakoli Getaria AOP","Txakoli Getaria AOP","Blanc · bouteille","Blanco · botella","White · bottle","29,90","",0],
- ["Gascogne Alain Brumont","Gascogne Alain Brumont","Gascogne Alain Brumont","Blanc","Blanco","White","3,80 / 21,60","",0],
- ["Bordeaux Graves AOC","Bordeaux Graves AOC","Bordeaux Graves AOC","Rouge","Tinto","Red","3,90 / 24,80","",0],
- ["Domaine des Cavaliers","Domaine des Cavaliers","Domaine des Cavaliers","Rosé · Côtes de Provence AOP","Rosado · Côtes de Provence AOP","Rosé · Côtes de Provence AOP","4,50 / 26,60","",0],
- ["Champagne Veuve Pelletier","Champán Veuve Pelletier","Veuve Pelletier Champagne","37,5 cl","37,5 cl","37.5 cl","33,80","",0],
- ["Bière La Locale","Cerveza La Locale","La Locale beer","33 cl","33 cl","33 cl","5,70","",0]]},
-{id:"soifs",t:["Petites soifs","Pequeñas sedes","Soft & hot drinks"],n:["Chaudes ou froides","Calientes o frías","Hot or cold"],icon:"glass",items:[
- ["Eau plate ou gazeuse","Agua sin o con gas","Still or sparkling water","50 cl","50 cl","50 cl","3,80","",0],
- ["Coca-Cola","Coca-Cola","Coca-Cola","50 cl","50 cl","50 cl","4,50","",0],
- ["Sirop à l'eau","Sirope con agua","Cordial","","","","2,80","",0],
- ["Café / noisette","Café / cortado","Espresso / macchiato","","","","2,30 / 2,50","",0],
- ["Café glacé","Café con hielo","Iced coffee","","","","2,50","",0],
- ["Thé / thé au lait","Té / té con leche","Tea / tea with milk","","","","3,00 / 3,20","",0]]}
-];
-const HOURS=[null,null,[["11:00","15:00"],["18:00","23:00"]],[["11:00","15:00"],["18:00","23:00"]],[["11:00","15:00"],["18:00","23:00"]],[["11:00","15:00"],["18:00","23:00"]],[["11:00","15:00"],["18:00","23:00"]]]; // Mon..Sun · ouvert du mercredi au dimanche, 11h-15h et 18h-23h
+/* =============== CONTENT (chargé depuis content/*.json, modifiable dans /admin/) =============== */
+let FAQ=[],OYS=[],MENU=[],HOURS=[null,null,null,null,null,null,null],REVIEWS=[],PRODS=[],CLOSURES=[],ANN=['','',''];
+let OPEN_FEE=2,CONSIGNE={small:5,large:10},PICK={md:'11:30',mf:'14:00',sd:'18:30',sf:'21:00',step:30,delay:30,days:4};
+let INFO={nom:'Le Parc à Huîtres',rue:'5 rue des Orangers',code_postal:'64700',ville:'Hendaye',telephone:'05 59 20 32 38',email:'contact@leparcahuitres-hendaye.fr',instagram:'',facebook:'',google_note:'4,6',google_avis:458};
+const RAYON={plateaux:["Plateaux","Bandejas","Platters"],coquillages:["Coquillages & crustacés","Mariscos y crustáceos","Shellfish & crustaceans"],assiettes:["Petites assiettes","Platos pequeños","Small plates"],cuisine:["Sortie de cuisine","Salida de cocina","From the kitchen"],desserts:["Desserts","Postres","Desserts"],vins:["Vins","Vinos","Wines"],soifs:["Boissons","Bebidas","Drinks"]};
+const AL_ID=['amidon','lait','oeufs','gluten','poisson','mollusques','sulfites','arachide','moutarde','crustaces'];
+const clean=v=>v==null?'':String(v).replace(/</g,'‹').replace(/>/g,'›');
+const num=v=>{if(v==null||v==='')return null;const s=String(v).trim();return /^\d+([.,]\d+)?$/.test(s)?parseFloat(s.replace(',','.')):s;};
+const t3=(fr,tr_,k)=>{const f=clean(fr);return [f,clean(tr_&&tr_.es&&tr_.es[k])||f,clean(tr_&&tr_.en&&tr_.en[k])||f];};
+const o3=o=>{o=o||{};const f=clean(o.fr);return [f,clean(o.es)||f,clean(o.en)||f];};
+const alc=a=>(a||[]).map(x=>{const i=AL_ID.indexOf(x);return i<0?'':String((i+1)%10);}).join('');
+const hm=s=>{const m=/^(\d{1,2}):(\d{2})/.exec(s||'');return m?+m[1]*60+ +m[2]:null;};
+const hhmm=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
+function buildContent(C){
+  const inf=C.infos||{};Object.keys(INFO).forEach(k=>{if(inf[k]!=null&&inf[k]!=='')INFO[k]=inf[k];});
+  const H=C.horaires||{};
+  if(Array.isArray(H.jours))HOURS=[0,1,2,3,4,5,6].map(i=>{const j=H.jours[i];if(!j||!j.ouvert)return null;const s=(j.services||[]).filter(x=>hm(x.debut)!=null&&hm(x.fin)!=null).map(x=>[x.debut.slice(0,5),x.fin.slice(0,5)]);return s.length?s:null;});
+  CLOSURES=(H.fermetures||[]).filter(f=>f&&f.du).map(f=>({du:f.du.slice(0,10),au:(f.au||f.du).slice(0,10),motif:clean(f.motif)}));
+  ANN=o3(H.annonce);
+  const O=C.huitres||{};
+  const oysCat={id:'huitres',t:t3(O.titre||'Nos huîtres',O.traductions,'titre'),n:t3(O.sous_titre,O.traductions,'sous_titre'),items:[]};
+  OYS=[];
+  (O.liste||[]).forEach(o=>{const tr_=o.traductions||{};const nm=t3(o.nom,tr_,'nom'),cal=clean(o.calibre),orig=t3(o.origine,tr_,'origine');
+    const full=nm.map(n=>cal?n+' '+cal:n);
+    OYS.push({n:nm,c:cal,o:orig,p:num(o.prix),i:Math.max(1,Math.min(5,+o.iode||3)),note:t3(o.description,tr_,'description')});
+    const it=[...full,...orig,num(o.prix),alc(o.allergenes),o.a_emporter?1:0,o.illustration||''];it.tk=num(o.prix_emporter);oysCat.items.push(it);});
+  MENU=[oysCat];
+  ((C.carte||{}).categories||[]).forEach((c,ci)=>{MENU.push({id:c.id||('cat'+ci),t:t3(c.titre,c.traductions,'titre'),n:t3(c.sous_titre,c.traductions,'sous_titre'),
+    items:(c.plats||[]).map(p=>{const tr_=p.traductions||{};return [...t3(p.nom,tr_,'nom'),...t3(p.description,tr_,'description'),num(p.prix),alc(p.allergenes),0,p.illustration||''];})});});
+  const E=C.emporter||{};
+  const n_=(v,d)=>{const x=num(v);return typeof x==='number'?x:d;};
+  OPEN_FEE=n_(E.supplement_ouverture,OPEN_FEE);CONSIGNE={small:n_(E.consigne_petit,CONSIGNE.small),large:n_(E.consigne_grand,CONSIGNE.large)};
+  const R=E.retrait||{};PICK={md:R.midi_debut||PICK.md,mf:R.midi_fin||PICK.mf,sd:R.soir_debut||PICK.sd,sf:R.soir_fin||PICK.sf,step:Math.max(5,+R.intervalle||30),delay:Math.max(0,+(R.delai??30)),days:Math.max(1,Math.min(14,+R.jours_affiches||4))};
+  PRODS=[];
+  oysCat.items.forEach((it,i)=>{if(it[8]&&typeof it.tk==='number')PRODS.push({k:'oy'+i,cat:oysCat,it,price:it.tk,mode:'choice',ill:it[9]});});
+  (E.produits||[]).forEach((p,i)=>{const pr=num(p.prix);if(typeof pr!=='number')return;const tr_=p.traductions||{};
+    const cat=MENU.find(c=>c.id===p.rayon)||{id:p.rayon||'autres',t:RAYON[p.rayon]||['Autres','Otros','Other']};
+    const it=[...t3(p.nom,tr_,'nom'),...t3(p.description,tr_,'description'),pr,alc(p.allergenes),1,p.illustration||''];
+    PRODS.push({k:'tk'+i,cat,it,price:pr,mode:p.toujours_ouvert?'always':null,ill:it[9]});});
+  const X=C.textes||{};
+  Object.keys(X).forEach(g=>{const grp=X[g];if(!grp||Array.isArray(grp)||typeof grp!=='object')return;Object.keys(grp).forEach(k=>{const v=grp[k];if(v&&v.fr)I[k]=[v.fr,v.es||v.fr,v.en||v.fr];});});
+  if(Array.isArray(X.faq))FAQ=X.faq.filter(q=>q&&q.question&&q.question.fr).map(q=>[o3(q.question),o3(q.reponse)]);
+  if(Array.isArray(X.avis))REVIEWS=X.avis.filter(r=>r&&r.texte).map(r=>[clean(r.nom),clean(r.texte),Math.max(0,MONTHS.findIndex(m=>m[0]===r.mois))]);
+}
+const CFILES=['infos','horaires','huitres','carte','emporter','textes'];
+function loadContent(){return Promise.all(CFILES.map(f=>fetch('content/'+f+'.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null))).then(a=>{const C={};CFILES.forEach((f,i)=>C[f]=a[i]);buildContent(C);return a.some(x=>!x);});}
+const ymdS=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const closure=d=>{const k=ymdS(d);return CLOSURES.find(f=>k>=f.du&&k<=f.au);};
+const telHref=t=>'tel:'+(String(t).replace(/\D/g,'').replace(/^0/,'+33'));
+const mapsHref=()=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(INFO.nom+' '+INFO.rue+' '+INFO.code_postal+' '+INFO.ville);
+const eurS=v=>(Number.isInteger(v)?String(v):(LANG==='en'?v.toFixed(2):v.toFixed(2).replace('.',',')))+' €';
 
 let LANG='fr',AUTO=true;
 const li=()=>({fr:0,es:1,en:2})[LANG];
-const tr=k=>I[k]?I[k][li()]:k;
+const fill=s=>String(s).replace(/\{rue\}/g,INFO.rue).replace(/\{ville\}/g,INFO.ville).replace(/\{note\}/g,LANG==='en'?String(INFO.google_note).replace(',','.'):INFO.google_note).replace(/\{avis\}/g,INFO.google_avis);
+const tr=k=>I[k]?fill(I[k][li()]||I[k][0]):k;
 const tx=v=>Array.isArray(v)?v[li()]:v;
-const eur=v=>v==null?tr('market'):(typeof v==='string'?v+' €':(LANG==='en'?v.toFixed(2):v.toFixed(2).replace('.',','))+' €');
+const eur=v=>v==null?tr('market'):(typeof v==='string'?(LANG==='en'?v.replace(/,/g,'.'):v)+' €':(LANG==='en'?v.toFixed(2):v.toFixed(2).replace('.',','))+' €');
 const loc=()=>({fr:'fr-FR',es:'es-ES',en:'en-GB'})[LANG];
 
 /* =============== SVG generators =============== */
@@ -1416,10 +1400,10 @@ function renderLineup(){
 }
 $('#lineup').addEventListener('click',e=>{const b=e.target.closest('.ocard');if(!b)return;const on=!b.classList.contains('open');b.classList.toggle('open',on);b.setAttribute('aria-pressed',on);b.querySelector('.oy').classList.toggle('open',on);});
 function renderPlateaux(){
-  $('#plateaux').innerHTML=MENU[1].items.map((it,i)=>`<article class="pcard reveal"><div class="ill">${ill('plateaux:'+i)}</div><div class="body"><h3>${it[li()]}</h3><ul>${it[3+li()].split(', ').map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="foot"><b>${eur(it[6])}</b>${i===0?`<a class="add" href="#emporter">${tr('add_take')} →</a>`:`<a class="add" href="#reserver">${tr('cta_book_s')}</a>`}</div></article>`).join('');
+  $('#plateaux').innerHTML=((MENU.find(c=>c.id==='plateaux')||{}).items||[]).map((it,i)=>`<article class="pcard reveal"><div class="ill">${ill(it[9])}</div><div class="body"><h3>${it[li()]}</h3><ul>${it[3+li()].split(', ').filter(Boolean).map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="foot"><b>${eur(it[6])}</b>${i===0?`<a class="add" href="#emporter">${tr('add_take')} →</a>`:`<a class="add" href="#reserver">${tr('cta_book_s')}</a>`}</div></article>`).join('');
 }
 function renderMarquee(){
-  const words=MENU[0].items.map(i=>i[li()]).concat([tr('s2_t'),'Ostras','Oysters','Hendaye']);
+  const words=(MENU[0]?MENU[0].items:[]).map(i=>i[li()]).concat([tr('s2_t'),'Ostras','Oysters','Hendaye']);
   const oy=`<i><svg viewBox="0 0 300 190">${rings(5,158,95,128,78,1.3,'var(--cream)','var(--navy)')}</svg></i>`;
   const one=`<span>${words.map(w=>w+' '+oy).join(' ')}</span>`;
   $('#mq1').innerHTML=one+one;
@@ -1430,25 +1414,15 @@ function alCodes(s){return s.split('').map(ch=>{const idx=ch==='0'?9:(+ch-1);ret
 function renderMenu(){
   const l=li();
   $('#chips').innerHTML=MENU.map((c,i)=>`<a href="#carte" data-jump="${c.id}" class="${i===0?'on':''}">${c.t[l]}</a>`).join('');
-  $('#menu').innerHTML=MENU.map(c=>`<div class="mcat reveal" id="m-${c.id}"><header><h2>${c.t[l]}</h2><small>${c.n[l]}</small></header>${c.items.map((i,ix)=>`<div class="mi"><span class="ic">${ill(c.id+':'+ix)}</span><span class="n">${i[l]}</span><span class="p">${eur(i[6])}</span>${i[3+l]?`<span class="d">${i[3+l]}</span>`:''}${i[7]?`<span class="al">${alCodes(i[7]).map(a=>`<span>${a}</span>`).join('')}</span>`:''}</div>`).join('')}</div>`).join('');
+  $('#menu').innerHTML=MENU.map(c=>`<div class="mcat reveal" id="m-${c.id}"><header><h2>${c.t[l]}</h2><small>${c.n[l]}</small></header>${c.items.map((i,ix)=>`<div class="mi"><span class="ic">${ill(i[9])}</span><span class="n">${i[l]}</span><span class="p">${eur(i[6])}</span>${i[3+l]?`<span class="d">${i[3+l]}</span>`:''}${i[7]?`<span class="al">${alCodes(i[7]).map(a=>`<span>${a}</span>`).join('')}</span>`:''}</div>`).join('')}</div>`).join('');
   $('#allegend').textContent=({fr:"Activez « Allergènes » en haut de la carte pour les voir plat par plat. Liste complète sur demande.",es:"Active «Alérgenos» arriba para verlos plato por plato. Lista completa bajo petición.",en:"Switch on “Allergens” above to see them dish by dish. Full list on request."})[LANG];
   $('#langnote').textContent=(AUTO?tr('auto'):tr('manual'))+' · '+({fr:'Français',es:'Español',en:'English'})[LANG];
 }
 $('#altoggle').addEventListener('change',e=>$('#menu').classList.toggle('show-al',e.target.checked));
 $('#chips').addEventListener('click',e=>{const a=e.target.closest('a[data-jump]');if(!a)return;e.preventDefault();const el=$('#m-'+a.dataset.jump);window.scrollTo({top:el.getBoundingClientRect().top+scrollY-(innerHeight<700?150:160),behavior:RM?'auto':'smooth'});});
-const REVIEWS=[
- ["Marie M.","Allez-y les yeux fermés, tout est bon, que dis-je ! Pas bon ! Excellent !",7],
- ["Aurélia M.","Service au top, équipe agréable, prix corrects et surtout des fruits de mer délicieux et de très bonne qualité.",8],
- ["Danielle G.","Les plats sont cuisinés avec soin et le baba au rhum est super bon !",4],
- ["Tamara C.","Les huîtres un vrai régal !!!",4],
- ["Titemo","Des fruits de mer délicieux d'une très grande fraîcheur. Un plateau préparé avec soin.",6],
- ["Eva L.","Très bon moment sans chichis.",7],
- ["Sophie B.","Très belle expérience gustative ! […] Une adresse que je recommande sans hésitation.",6],
- ["Christian M.","Très bonne cuisine et produits de qualités !",8]
-];
-const MONTHS=[["janvier","enero","January"],["février","febrero","February"],["mars","marzo","March"],["avril","abril","April"],["mai","mayo","May"],["juin","junio","June"],["juillet","julio","July"],["août","agosto","August"],["septembre","septiembre","September"]];
+const MONTHS=[["janvier","enero","January"],["février","febrero","February"],["mars","marzo","March"],["avril","abril","April"],["mai","mayo","May"],["juin","junio","June"],["juillet","julio","July"],["août","agosto","August"],["septembre","septiembre","September"],["octobre","octubre","October"],["novembre","noviembre","November"],["décembre","diciembre","December"]];
 function renderReviews(){
-  const one=REVIEWS.map((r,i)=>`<figure class="rev" style="--rot:${[-1.2,.8,-.5,1.1][i%4]}deg"><q>${r[1]}</q><figcaption class="who"><span class="av">${r[0][0]}</span><span><b>${r[0]}</b>${tr('visited')} ${MONTHS[r[2]][li()]}</span><span class="g">Google</span></figcaption></figure>`).join('');
+  const one=REVIEWS.map((r,i)=>`<figure class="rev" style="--rot:${[-1.2,.8,-.5,1.1][i%4]}deg"><q>${r[1]}</q><figcaption class="who"><span class="av">${r[0][0]}</span><span><b>${r[0]}</b>${tr('visited')} ${(MONTHS[r[2]]||MONTHS[0])[li()]}</span><span class="g">Google</span></figcaption></figure>`).join('');
   $('#revs').innerHTML=one+one;
 }
 function renderFAQ(){ $('#faq').innerHTML=FAQ.map((q,i)=>`<details class="reveal"${i===0?' open':''}><summary>${tx(q[0])}</summary><p>${tx(q[1])}</p></details>`).join(''); }
@@ -1457,7 +1431,8 @@ function renderHours(){
   const now=new Date();const di=(now.getDay()+6)%7;
   $('#hours').innerHTML=DAYS.map((d,i)=>`<div class="${i===di?'today':''}"><span>${d[li()]}</span><span class="${HOURS[i]?'':'off'}">${fmtSlots(HOURS[i])}</span></div>`).join('');
   $('#fhours').innerHTML=DAYS.map((d,i)=>`<div><span>${d[li()].slice(0,3)}.</span><span>${HOURS[i]?HOURS[i].map(s=>s[0].replace(':00','h')+'–'+s[1].replace(':00','h').replace(':30','h30')).join(' · '):tr('closed')}</span></div>`).join('');
-  const hm=now.getHours()*60+now.getMinutes();const open=(HOURS[di]||[]).some(([a,b])=>{const A=+a.slice(0,2)*60+ +a.slice(3),B=+b.slice(0,2)*60+ +b.slice(3);return hm>=A&&hm<B;});
+  const nm=now.getHours()*60+now.getMinutes();const open=!closure(now)&&(HOURS[di]||[]).some(([a,b])=>{const A=hm(a),B=hm(b);return nm>=A&&nm<B;});
+  renderHNote();
   const st=$('#status');st.classList.toggle('closed',!open);st.querySelector('span').textContent=open?tr('open_now'):tr('closed_now');
 }
 function renderBay(){
@@ -1477,7 +1452,7 @@ function renderBay(){
   <text class="lbl it" x="420" y="60">Bidassoa</text>
   <g transform="translate(468 196)"><circle class="pinring" r="14" fill="var(--rasp)" opacity=".5"/><g class="pinb"><path d="M0 0 C-14 -16 -16 -34 0 -38 C16 -34 14 -16 0 0Z" fill="var(--rasp)" stroke="var(--navy)" stroke-width="2.5"/><circle cy="-26" r="6" fill="var(--cream)"/></g></g>
   </svg>
-  <div class="overlay"><div class="addrcard"><b>Le Parc à Huîtres</b><span>5 rue des Orangers, 64700 Hendaye</span></div></div>`;
+  <div class="overlay"><div class="addrcard"><b>${INFO.nom}</b><span>${INFO.rue}, ${INFO.code_postal} ${INFO.ville}</span></div></div>`;
 }
 function renderTerroirs(){
   const pts=[["Normandie",255,70],["Irlande",90,30],["Marennes-Oléron",230,250],["Landes",265,330],["Pays basque",250,392]];
@@ -1494,13 +1469,13 @@ function renderTerroirs(){
 /* =============== booking =============== */
 const B={date:null,slot:null,covers:2,month:null};
 const SL={lunch:["11:30","12:00","12:30","13:00","13:30","14:00"],dinner:["18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00"]};
-const SHUT=d=>d.getDay()===1||d.getDay()===2;
+const SHUT=d=>!HOURS[(d.getDay()+6)%7]||!!closure(d);
 const FULL={"13:00":1,"20:30":1};
 function ymd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function renderCal(){
   const today=new Date();today.setHours(0,0,0,0);
   if(!B.month){B.month=new Date(today.getFullYear(),today.getMonth(),1);}
-  if(!B.date){const d=new Date(today);d.setDate(d.getDate()+1);while(SHUT(d))d.setDate(d.getDate()+1);B.date=ymd(d);}
+  if(!B.date){const d=new Date(today);d.setDate(d.getDate()+1);for(let g=0;g<60&&SHUT(d);g++)d.setDate(d.getDate()+1);B.date=ymd(d);}
   const m=B.month;$('#calmonth').textContent=m.toLocaleDateString(loc(),{month:'long',year:'numeric'});
   const first=(m.getDay()+6)%7,days=new Date(m.getFullYear(),m.getMonth()+1,0).getDate();
   let h=DAYS.map(d=>`<span class="dow">${d[li()].slice(0,2)}</span>`).join('');
@@ -1522,7 +1497,7 @@ $('#cminus').addEventListener('click',()=>{B.covers=Math.max(1,B.covers-1);$('#c
 $('#cplus').addEventListener('click',()=>{B.covers=Math.min(8,B.covers+1);$('#covers').value=B.covers;recap();});
 function fmtDate(k){return new Date(k+'T12:00').toLocaleDateString(loc(),{weekday:'long',day:'numeric',month:'long'});}
 function recap(){
-  $('#brecap').innerHTML=[[tr('r_day'),B.date?fmtDate(B.date):'—'],[tr('r_time'),B.slot||'—'],[tr('r_cov'),B.covers],[tr('r_where'),'5 rue des Orangers']].map(([a,b])=>`<div><span>${a}</span><span>${b}</span></div>`).join('');
+  $('#brecap').innerHTML=[[tr('r_day'),B.date?fmtDate(B.date):'—'],[tr('r_time'),B.slot||'—'],[tr('r_cov'),B.covers],[tr('r_where'),INFO.rue]].map(([a,b])=>`<div><span>${a}</span><span>${b}</span></div>`).join('');
 }
 function step(sel,n){$$(sel+' > span').forEach((s,i)=>{s.classList.toggle('on',i===n);s.classList.toggle('done',i<n);});}
 $('#bookform').addEventListener('submit',e=>{
@@ -1537,24 +1512,19 @@ $('#bookform').addEventListener('submit',e=>{
 /* =============== takeaway =============== */
 const CART={};let TCAT='all';const T={day:0,slot:null};
 /* Takeaway catalogue (tarifs à emporter du Parc) : huîtres à la douzaine, fermées en bourriche ou ouvertes (+2 € la douzaine), plateau toujours ouvert. */
-const TK_OYS=[19.2,21,23.4,28.8,39.6],OPEN_FEE=2;
-const TK_PLATEAU=["Plateau du Parc","Bandeja El Parque","Le Parc platter","12 Fines de Claires n°3, 6 crevettes roses de Madagascar, 12 bulots cuits, mayonnaise, aïoli, citron, vinaigre","12 Fines de Claires n°3, 6 langostinos rosas de Madagascar, 12 caracoles de mar cocidos, mayonesa, alioli, limón, vinagre","12 Fines de Claires n°3, 6 Madagascar pink prawns, 12 cooked whelks, mayonnaise, aïoli, lemon, vinegar",37.8,"0367",1];
-const PRODS=[];MENU.forEach(c=>{if(c.id==='plateaux'){PRODS.push({k:'plateaux:0',cat:c,it:TK_PLATEAU,price:TK_PLATEAU[6],mode:'always'});return;}
-  c.items.forEach((it,i)=>{if(!it[8])return;if(c.id==='huitres')PRODS.push({k:c.id+':'+i,cat:c,it,price:TK_OYS[i],mode:'choice'});else PRODS.push({k:c.id+':'+i,cat:c,it,price:it[6],mode:null});});});
 /* Consigne des plateaux pour les huîtres ouvertes : jusqu'à 2 douzaines sur un petit plateau, 3 douzaines sur un grand.
-   MONTANTS PROVISOIRES, à remplacer par les vrais tarifs de consigne. */
-const CONSIGNE={small:5,large:10};
+   Les montants se règlent dans l'admin (À emporter), fichier content/emporter.json. */
 function trays(){let n=0;PRODS.forEach(p=>{if(p.mode==='choice')n+=CART[p.k+'|o']||0;});if(!n)return [];const L=Math.floor(n/3),r=n%3,out=[];if(L)out.push({label:tr('tray_l'),q:L,u:CONSIGNE.large});if(r)out.push({label:tr('tray_s'),q:1,u:CONSIGNE.small});return out;}
 const OPEN={};// per oyster product: 'c' fermées (default) or 'o' ouvertes
 const pk=p=>p.mode==='choice'?p.k+'|'+(OPEN[p.k]||'c'):p.k;
 const unit=(p,v)=>p.price+(v==='o'?OPEN_FEE:0);
 function cartLines(){const out=[];PRODS.forEach(p=>{(p.mode==='choice'?['c','o']:[null]).forEach(v=>{const key=v?p.k+'|'+v:p.k;const q=CART[key]||0;if(!q)return;const u=unit(p,v);out.push({p,v,q,u,label:p.it[li()]+(v==='o'?' · '+tr('o_open'):v==='c'?' · '+tr('o_closed'):p.mode==='always'?' · '+tr('o_always'):'')});});});return out;}
 function renderShop(){
-  const l=li();const cats=MENU.filter(c=>c.items.some(i=>i[8]));
+  const l=li();const cats=[...new Set(PRODS.map(p=>p.cat))];
   $('#tcats').innerHTML=`<button type="button" data-c="all" aria-pressed="${TCAT==='all'}">${tr('all')}</button>`+cats.map(c=>`<button type="button" data-c="${c.id}" aria-pressed="${TCAT===c.id}">${c.t[l]}</button>`).join('');
   $('#products').innerHTML=PRODS.filter(p=>TCAT==='all'||p.cat.id===TCAT).map(p=>{const key=pk(p),v=p.mode==='choice'?(OPEN[p.k]||'c'):null,q=CART[key]||0;
-    const tog=p.mode==='choice'?`<div class="otog" role="group" aria-label="${tr('oys_opt')}"><button type="button" data-ov="c" data-k="${p.k}" aria-pressed="${v==='c'}">${tr('o_closed')}</button><button type="button" data-ov="o" data-k="${p.k}" aria-pressed="${v==='o'}">${tr('o_open')} <small>+${OPEN_FEE} €</small></button></div><p class="ohint">${tr(v==='o'?'o_open_d':'o_closed_d')}</p>`:p.mode==='always'?`<p class="ohint"><b>${tr('o_always')}</b> · ${tr('o_always_d')}</p>`:'';
-    return `<article class="prod"><div class="ill">${ill(p.k)}${p.cat.id==='huitres'?`<span class="tagq">${tr('per12')}</span>`:''}</div><div class="body"><h3>${p.it[li()]}</h3>${p.it[3+li()]?`<p class="d">${p.it[3+li()]}</p>`:''}${tog}</div><div class="foot"><b>${eur(unit(p,v))}</b>${q?`<span class="qmini"><button type="button" data-q="-1" data-k="${key}" aria-label="−">−</button><output>${q}</output><button type="button" data-q="1" data-k="${key}" aria-label="+">+</button></span>`:`<button type="button" class="add" data-add="${key}">+ ${tr('add')}</button>`}</div></article>`;}).join('');
+    const tog=p.mode==='choice'?`<div class="otog" role="group" aria-label="${tr('oys_opt')}"><button type="button" data-ov="c" data-k="${p.k}" aria-pressed="${v==='c'}">${tr('o_closed')}</button><button type="button" data-ov="o" data-k="${p.k}" aria-pressed="${v==='o'}">${tr('o_open')} <small>+${eurS(OPEN_FEE)}</small></button></div><p class="ohint">${tr(v==='o'?'o_open_d':'o_closed_d')}</p>`:p.mode==='always'?`<p class="ohint"><b>${tr('o_always')}</b> · ${tr('o_always_d')}</p>`:'';
+    return `<article class="prod"><div class="ill">${ill(p.ill)}${p.cat.id==='huitres'?`<span class="tagq">${tr('per12')}</span>`:''}</div><div class="body"><h3>${p.it[li()]}</h3>${p.it[3+li()]?`<p class="d">${p.it[3+li()]}</p>`:''}${tog}</div><div class="foot"><b>${eur(unit(p,v))}</b>${q?`<span class="qmini"><button type="button" data-q="-1" data-k="${key}" aria-label="−">−</button><output>${q}</output><button type="button" data-q="1" data-k="${key}" aria-label="+">+</button></span>`:`<button type="button" class="add" data-add="${key}">+ ${tr('add')}</button>`}</div></article>`;}).join('');
   renderBasket();
 }
 function renderBasket(){
@@ -1577,13 +1547,13 @@ document.addEventListener('click',e=>{const a=e.target.closest('[data-add]');if(
 $('#products').addEventListener('click',e=>{const b=e.target.closest('button[data-q]');if(!b)return;const k=b.dataset.k;CART[k]=Math.max(0,(CART[k]||0)+ +b.dataset.q);renderShop();});
 $('#products').addEventListener('click',e=>{const b=e.target.closest('button[data-ov]');if(!b)return;OPEN[b.dataset.k]=b.dataset.ov;renderShop();});
 $('#tcats').addEventListener('click',e=>{const b=e.target.closest('button[data-c]');if(!b)return;TCAT=b.dataset.c;renderShop();});
-function tDays(){const out=[];const d=new Date();for(let i=0;out.length<4&&i<8;i++){const x=new Date(d);x.setDate(d.getDate()+i);if(!SHUT(x))out.push(x);}return out;}
+function tDays(){const out=[];const d=new Date();for(let i=0;out.length<PICK.days&&i<45;i++){const x=new Date(d);x.setDate(d.getDate()+i);if(!SHUT(x))out.push(x);}return out;}
 function renderPickup(){
   const ds=tDays();
   $('#tdays').innerHTML=ds.map((d,i)=>{const lab=i===0&&d.toDateString()===new Date().toDateString()?tr('today'):(new Date(Date.now()+864e5).toDateString()===d.toDateString()?tr('tomorrow'):d.toLocaleDateString(loc(),{weekday:'short'}));return `<button type="button" data-i="${i}" aria-pressed="${i===T.day}"><small>${lab}</small><b>${d.getDate()}</b></button>`;}).join('');
-  // Retrait des commandes : 11h30-14h le midi, 18h30-21h le soir. Le jour même, pas de créneau à moins de 30 min.
-  const sl=["11:30","12:00","12:30","13:00","13:30","14:00","18:30","19:00","19:30","20:00","20:30","21:00"];
-  const isToday=ds[T.day]&&ds[T.day].toDateString()===new Date().toDateString();const nowM=new Date().getHours()*60+new Date().getMinutes()+30;
+  // Créneaux de retrait réglés dans l'admin (À emporter) : midi et soir, tous les PICK.step minutes ; le jour même, pas de créneau à moins de PICK.delay minutes.
+  const sl=[];[[PICK.md,PICK.mf],[PICK.sd,PICK.sf]].forEach(([a,b])=>{const A=hm(a),B=hm(b);if(A==null||B==null)return;for(let m=A;m<=B;m+=PICK.step)sl.push(hhmm(m));});
+  const isToday=ds[T.day]&&ds[T.day].toDateString()===new Date().toDateString();const nowM=new Date().getHours()*60+new Date().getMinutes()+PICK.delay;
   const past={};if(isToday)sl.forEach(s=>{if(+s.slice(0,2)*60+ +s.slice(3)<nowM)past[s]=1;});if(past[T.slot])T.slot=null;
   $('#tslots').innerHTML=slotHTML(sl,T.slot,past);
 }
@@ -1596,7 +1566,7 @@ $('#takeform').addEventListener('submit',e=>{
   const no='PAH-'+String(Math.floor(1000+Math.random()*9000));const d=tDays()[T.day];
   const lines=cartLines().concat(trays()).map(c=>`<div class="tl"><span>${c.q} × ${c.label}</span><span>${eur(c.q*c.u)}</span></div>`).join('');
   $('#takebody').hidden=true;const ok=$('#takeok');ok.hidden=false;
-  ok.innerHTML=`<h3 style="font-size:1.5rem;margin-bottom:14px">${tr('t_ok')}</h3><div class="ticket"><div style="display:flex;justify-content:center;margin-bottom:8px"><svg viewBox="0 0 300 190" width="70">${rings(5,158,95,128,78,1.3,'var(--navy)','var(--white)')}</svg></div><div style="text-align:center;font-family:var(--fd);letter-spacing:.14em">LE PARC À HUÎTRES</div><div style="text-align:center;font-size:.8rem;color:var(--ink-soft)">5 rue des Orangers · 64700 Hendaye</div><hr><div class="tnum">${no}</div><span class="stamp">${tr('stamp')}</span><hr>${lines}<hr><div class="tl" style="font-weight:700;font-size:1.05rem"><span>${tr('t_pay')}</span><span>${eur(tot)}</span></div><div class="tl"><span>${tr('t_paym')}</span><span></span></div><hr><div class="tl"><span>${tr('t_pick')}</span><span>${d.toLocaleDateString(loc(),{weekday:'short',day:'numeric',month:'short'})} · ${T.slot}</span></div><div class="tl"><span>${tr('f_name')}</span><span>${$('#tname').value}</span></div></div><p style="margin-top:16px;text-align:center"><span class="demo">${tr('demo_gg')}</span></p><button type="button" class="btn ghost sm" id="tagain" style="margin:14px auto 0;display:flex">${tr('t_again')}</button>`;
+  ok.innerHTML=`<h3 style="font-size:1.5rem;margin-bottom:14px">${tr('t_ok')}</h3><div class="ticket"><div style="display:flex;justify-content:center;margin-bottom:8px"><svg viewBox="0 0 300 190" width="70">${rings(5,158,95,128,78,1.3,'var(--navy)','var(--white)')}</svg></div><div style="text-align:center;font-family:var(--fd);letter-spacing:.14em">LE PARC À HUÎTRES</div><div style="text-align:center;font-size:.8rem;color:var(--ink-soft)">${INFO.rue} · ${INFO.code_postal} ${INFO.ville}</div><hr><div class="tnum">${no}</div><span class="stamp">${tr('stamp')}</span><hr>${lines}<hr><div class="tl" style="font-weight:700;font-size:1.05rem"><span>${tr('t_pay')}</span><span>${eur(tot)}</span></div><div class="tl"><span>${tr('t_paym')}</span><span></span></div><hr><div class="tl"><span>${tr('t_pick')}</span><span>${d.toLocaleDateString(loc(),{weekday:'short',day:'numeric',month:'short'})} · ${T.slot}</span></div><div class="tl"><span>${tr('f_name')}</span><span>${$('#tname').value}</span></div></div><p style="margin-top:16px;text-align:center"><span class="demo">${tr('demo_gg')}</span></p><button type="button" class="btn ghost sm" id="tagain" style="margin:14px auto 0;display:flex">${tr('t_again')}</button>`;
   ok.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});
   $('#tagain').onclick=()=>{Object.keys(CART).forEach(k=>delete CART[k]);T.slot=null;ok.hidden=true;$('#takebody').hidden=false;renderPickup();renderShop();};
 });
@@ -1608,11 +1578,32 @@ document.addEventListener('click',e=>{const c=e.target.closest('[data-copy]');if
 $('#cform').addEventListener('submit',e=>{e.preventDefault();const p=$('#cok');p.hidden=false;p.textContent=tr('c_ok');});
 $('#news').addEventListener('submit',e=>{e.preventDefault();toast(tr('news_ok'));});
 
+/* =============== infos pratiques (content/infos.json) =============== */
+function applyInfos(){
+  const addr=INFO.rue+', '+INFO.code_postal+' '+INFO.ville;
+  const V={nom:INFO.nom,rue:INFO.rue,cpville:INFO.code_postal+' '+INFO.ville,addr,tel:INFO.telephone,email:INFO.email,note:INFO.google_note,avis:INFO.google_avis,
+    insta:(INFO.instagram.match(/instagram\.com\/([^/?#]+)/)||[])[1]?'@'+INFO.instagram.match(/instagram\.com\/([^/?#]+)/)[1]:''};
+  $$('[data-c]').forEach(el=>{const v=V[el.dataset.c];if(v!=null)el.textContent=v;});
+  $$('[data-cc]').forEach(el=>{const v=V[el.dataset.cc];if(v!=null)el.dataset.copy=v;});
+  const L={tel:telHref(INFO.telephone),email:'mailto:'+INFO.email,maps:mapsHref(),insta:INFO.instagram,fb:INFO.facebook};
+  $$('[data-ch]').forEach(el=>{const v=L[el.dataset.ch];if(v){el.href=v;el.hidden=false;}else el.hidden=true;});
+  $$('.stars[data-cstar]').forEach(el=>el.style.setProperty('--r',String(INFO.google_note).replace(',','.')));
+  const an=$('#annonce');const t=ANN[li()];an.hidden=!t;an.textContent=t||'';
+}
+function renderHNote(){
+  const el=$('#hnote');if(!el)return;const today=ymdS(new Date());
+  const up=CLOSURES.filter(f=>f.au>=today).sort((a,b)=>a.du<b.du?-1:1).slice(0,3);
+  const fd=k=>new Date(k+'T12:00').toLocaleDateString(loc(),{weekday:'short',day:'numeric',month:'long'});
+  el.hidden=!up.length;
+  el.innerHTML=up.map(f=>`<span><b>${tr('closed')}</b> ${f.du===f.au?fd(f.du):fd(f.du)+' → '+fd(f.au)}${f.motif?' · '+f.motif:''}</span>`).join('');
+}
+
 /* =============== language =============== */
 function applyLang(lang,auto){
   LANG=lang;AUTO=auto;document.documentElement.lang=lang;
-  $$('[data-i]').forEach(el=>{const k=el.dataset.i;if(I[k])el.textContent=I[k][li()];});
-  $$('[data-ih]').forEach(el=>{const k=el.dataset.ih;if(I[k])el.innerHTML=I[k][li()];});
+  $$('[data-i]').forEach(el=>{const k=el.dataset.i;if(I[k])el.textContent=tr(k);});
+  $$('[data-ih]').forEach(el=>{const k=el.dataset.ih;if(I[k])el.innerHTML=tr(k);});
+  applyInfos();
   $$('[data-iph]').forEach(el=>{const k=el.dataset.iph;if(I[k])el.placeholder=I[k][li()];});
   $$('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang?'true':'false'));
   renderLineup();renderPlateaux();renderMarquee();renderReviews();renderMenu();renderFAQ();renderHours();renderCal();renderBSlots();recap();renderShop();renderPickup();
@@ -1692,7 +1683,7 @@ if(!RM)requestAnimationFrame(loop);
 
 /* count-up */
 let counted=false;
-function countUp(){if(counted)return;const el=$('#count456');const r=el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0){counted=true;if(RM)return;const t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/1400);el.textContent=Math.round(458*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f);};requestAnimationFrame(f);}}
+function countUp(){if(counted)return;const el=$('#count456');const r=el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0){counted=true;if(RM)return;const t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/1400);el.textContent=Math.round(INFO.google_avis*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f);};requestAnimationFrame(f);}}
 addEventListener('scroll',countUp,{passive:true});
 
 /* hero title letters */
@@ -1702,10 +1693,14 @@ addEventListener('scroll',countUp,{passive:true});
 function detect(){try{const s=localStorage.getItem('pah-lang');if(s&&['fr','es','en'].includes(s))return [s,false];}catch(e){}
   const ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'fr']).map(x=>x.slice(0,2).toLowerCase());for(const x of ls)if(['fr','es','en'].includes(x))return [x,true];return ['en',true];}
 const [L0,A0]=detect();
-renderBay();renderTerroirs();
-show((location.hash||'#accueil').slice(1),false);
-applyLang(L0,A0);
-const ld=$('#loader');if(RM){ld.remove();}else{setTimeout(()=>{ld.classList.add('out');setTimeout(()=>ld.remove(),900);},850);}
+const T0=Date.now();
+loadContent().then(miss=>{
+  if(miss)console.warn('Contenu : un ou plusieurs fichiers content/*.json manquent');
+  renderBay();renderTerroirs();
+  show((location.hash||'#accueil').slice(1),false);
+  applyLang(L0,A0);
+  const ld=$('#loader');if(RM){ld.remove();}else{setTimeout(()=>{ld.classList.add('out');setTimeout(()=>ld.remove(),900);},Math.max(0,850-(Date.now()-T0)));}
+});
 </script>
 
 </body>

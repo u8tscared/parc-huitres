@@ -1,0 +1,471 @@
+{
+  "accueil": {
+    "kicker": {
+      "fr": "Bar à huîtres · Hendaye · à deux pas du port",
+      "es": "Bar de ostras · Hendaya · junto al puerto",
+      "en": "Oyster bar · Hendaye · steps from the harbour"
+    },
+    "hero_lead": {
+      "fr": "Au bord de la baie de Txingudi, entre France et Espagne, Le Parc à Huîtres est un comptoir iodé où l'on vient comme chez des amis. Huîtres ouvertes à la minute, coquillages cuits maison, crustacés et cuisine de l'océan, à partager sur place ou à emporter.",
+      "es": "Junto a la bahía de Txingudi, entre Francia y España, Le Parc à Huîtres es una barra con sabor a mar donde uno se siente como en casa de amigos. Ostras abiertas al momento, mariscos cocidos en casa, crustáceos y cocina del océano, para compartir aquí o para llevar.",
+      "en": "On Txingudi bay, between France and Spain, Le Parc à Huîtres is a sea-salted counter where you feel like you're at a friend's place. Oysters opened to order, shellfish cooked in-house, crustaceans and ocean cooking, to share here or take away."
+    },
+    "ways_t": {
+      "fr": "Trois façons de profiter du Parc",
+      "es": "Tres formas de disfrutar del Parc",
+      "en": "Three ways to enjoy the Parc"
+    },
+    "way1_t": {
+      "fr": "Sur place",
+      "es": "En el local",
+      "en": "Dine in"
+    },
+    "way1_d": {
+      "fr": "Au comptoir ou à table, une douzaine et un verre de Txakoli face à la baie.",
+      "es": "En la barra o en mesa, una docena y una copa de Txakoli frente a la bahía.",
+      "en": "At the counter or at a table, a dozen and a glass of Txakoli facing the bay."
+    },
+    "way2_t": {
+      "fr": "À emporter",
+      "es": "Para llevar",
+      "en": "Takeaway"
+    },
+    "way2_d": {
+      "fr": "Commandez en ligne, passez prendre à l'heure choisie, réglez sur place.",
+      "es": "Pida en línea, recoja a la hora elegida y pague en el local.",
+      "en": "Order online, collect at your chosen time, pay on site."
+    },
+    "way3_t": {
+      "fr": "La carte",
+      "es": "La carta",
+      "en": "The menu"
+    },
+    "way3_d": {
+      "fr": "En français, en español, in English : elle s'ouvre dans la langue de votre téléphone.",
+      "es": "En français, en español, in English: se abre en el idioma de su teléfono.",
+      "en": "En français, en español, in English: it opens in your phone's language."
+    },
+    "geste_t": {
+      "fr": "De la bourriche à l'assiette",
+      "es": "De la cesta al plato",
+      "en": "From basket to plate"
+    },
+    "s1_t": {
+      "fr": "On choisit",
+      "es": "Elegimos",
+      "en": "We select"
+    },
+    "s1_d": {
+      "fr": "Cinq huîtres, cinq terroirs, triées au calibre selon les arrivages.",
+      "es": "Cinco ostras, cinco terruños, clasificadas por calibre según las llegadas.",
+      "en": "Five oysters, five terroirs, graded by size as they arrive."
+    },
+    "s2_t": {
+      "fr": "On ouvre à la minute",
+      "es": "Abrimos al momento",
+      "en": "We open to order"
+    },
+    "s2_d": {
+      "fr": "Jamais à l'avance. La lame dans la charnière, un quart de tour, le muscle tranché net.",
+      "es": "Nunca antes. La hoja en la charnela, un cuarto de vuelta, el músculo cortado limpio.",
+      "en": "Never in advance. Blade in the hinge, a quarter turn, the muscle cut clean."
+    },
+    "s3_t": {
+      "fr": "On sert sur glace",
+      "es": "Servimos sobre hielo",
+      "en": "We serve on ice"
+    },
+    "s3_d": {
+      "fr": "Pain de seigle, beurre demi-sel, citron, aïoli et mayonnaise maison.",
+      "es": "Pan de centeno, mantequilla semisalada, limón, alioli y mayonesa casera.",
+      "en": "Rye bread, salted butter, lemon, aïoli and house mayonnaise."
+    },
+    "oys_t": {
+      "fr": "Nos huîtres",
+      "es": "Nuestras ostras",
+      "en": "Our oysters"
+    },
+    "oys_d": {
+      "fr": "Touchez une huître pour l'ouvrir et découvrir son caractère.",
+      "es": "Toque una ostra para abrirla y descubrir su carácter.",
+      "en": "Tap an oyster to open it and discover its character."
+    },
+    "plat_t": {
+      "fr": "Les plateaux",
+      "es": "Las bandejas",
+      "en": "Platters"
+    },
+    "plat_d": {
+      "fr": "Sur place ou à emporter. Composition fixe, vous pouvez ajouter coquillages et crustacés.",
+      "es": "En el local o para llevar. Composición fija, puede añadir mariscos y crustáceos.",
+      "en": "Dine in or take away. Fixed platters, you can add extra shellfish."
+    },
+    "proof_t": {
+      "fr": "Nos clients en parlent mieux que nous.",
+      "es": "Nuestros clientes lo cuentan mejor.",
+      "en": "Our guests say it best."
+    }
+  },
+  "maison": {
+    "house_lead": {
+      "fr": "Des artisans du goût, un comptoir au bord de la baie, et une seule règle : la fraîcheur d'abord.",
+      "es": "Artesanos del sabor, una barra junto a la bahía y una sola regla: la frescura primero.",
+      "en": "Flavour artisans, a counter by the bay, and one rule: freshness first."
+    },
+    "house_p1": {
+      "fr": "Le Parc à Huîtres, c'est un comptoir posé à deux pas du port de plaisance et de l'ancien port de pêche d'Hendaye. On y vient pour une douzaine au soleil, un plateau à partager ou une soupe de poissons de la criée basque.",
+      "es": "Le Parc à Huîtres es una barra a dos pasos del puerto deportivo y del antiguo puerto pesquero de Hendaya. Se viene por una docena al sol, una bandeja para compartir o una sopa de pescado de la lonja vasca.",
+      "en": "Le Parc à Huîtres is a counter a few steps from Hendaye's marina and old fishing port. People come for a dozen in the sun, a platter to share or a fish soup from the Basque fish market."
+    },
+    "house_p2": {
+      "fr": "Depuis des années, on goûte, on compare, on choisit. On travaille avec des ostréiculteurs et des producteurs artisans qu'on connaît, et la carte suit les saisons et les arrivages, sans compromis.",
+      "es": "Desde hace años probamos, comparamos y elegimos. Trabajamos con ostricultores y productores artesanos que conocemos, y la carta sigue las estaciones y las llegadas, sin concesiones.",
+      "en": "For years we have tasted, compared and chosen. We work with oyster farmers and artisan producers we know, and the menu follows the seasons and the catch, with no compromise."
+    },
+    "house_q": {
+      "fr": "« Ici, on cuisine avec passion et on partage avec plaisir. »",
+      "es": "« Aquí cocinamos con pasión y compartimos con placer. »",
+      "en": "“We cook with passion and share with pleasure.”"
+    },
+    "house_p3": {
+      "fr": "Ce savoir-faire se transmet de main en main : choisir une huître, l'ouvrir proprement, la servir au bon moment. C'est ce qu'on aime partager à table.",
+      "es": "Este oficio se transmite de mano en mano: elegir una ostra, abrirla bien, servirla en su momento. Es lo que nos gusta compartir en la mesa.",
+      "en": "This craft is passed hand to hand: choosing an oyster, opening it cleanly, serving it at the right moment. That is what we love to share at the table."
+    },
+    "val_t": {
+      "fr": "Nos engagements",
+      "es": "Nuestros compromisos",
+      "en": "Our commitments"
+    },
+    "v1_t": {
+      "fr": "Fraîcheur",
+      "es": "Frescura",
+      "en": "Freshness"
+    },
+    "v1_d": {
+      "fr": "Huîtres ouvertes à la commande, coquillages cuits sur place, rien ne patiente en vitrine.",
+      "es": "Ostras abiertas al pedirlas, mariscos cocidos aquí, nada espera en la vitrina.",
+      "en": "Oysters opened to order, shellfish cooked here, nothing waits in a display case."
+    },
+    "v2_t": {
+      "fr": "Artisans",
+      "es": "Artesanos",
+      "en": "Artisans"
+    },
+    "v2_d": {
+      "fr": "Ostréiculteurs, fermes du Pays basque, criée locale : des producteurs qu'on connaît.",
+      "es": "Ostricultores, granjas del País Vasco, lonja local: productores que conocemos.",
+      "en": "Oyster farmers, Basque farms, the local fish market: producers we know."
+    },
+    "v3_t": {
+      "fr": "Transmission",
+      "es": "Transmisión",
+      "en": "Know-how"
+    },
+    "v3_d": {
+      "fr": "Un geste appris, répété, transmis. Chaque ouverture est faite à la main.",
+      "es": "Un gesto aprendido, repetido, transmitido. Cada ostra se abre a mano.",
+      "en": "A skill learned, repeated, passed on. Every oyster is opened by hand."
+    },
+    "v4_t": {
+      "fr": "Partage",
+      "es": "Compartir",
+      "en": "Sharing"
+    },
+    "v4_d": {
+      "fr": "Des plateaux faits pour la table, des vins choisis pour l'iode, trois langues à la carte.",
+      "es": "Bandejas para la mesa, vinos elegidos para el yodo, tres idiomas en la carta.",
+      "en": "Platters made for the table, wines chosen for the brine, three languages on the menu."
+    },
+    "route_t": {
+      "fr": "Du parc à votre assiette",
+      "es": "Del parque a su plato",
+      "en": "From the farm to your plate"
+    },
+    "r1_t": {
+      "fr": "Le parc",
+      "es": "El parque",
+      "en": "The farm"
+    },
+    "r1_d": {
+      "fr": "Deux à quatre ans d'élevage en mer, au rythme des marées.",
+      "es": "De dos a cuatro años de cría en el mar, al ritmo de las mareas.",
+      "en": "Two to four years growing at sea, with the tides."
+    },
+    "r2_t": {
+      "fr": "L'affinage",
+      "es": "El afinado",
+      "en": "Refining"
+    },
+    "r2_d": {
+      "fr": "En claires pour les Fines de Claires de Marennes-Oléron.",
+      "es": "En «claires» para las Fines de Claires de Marennes-Oléron.",
+      "en": "In claires ponds for Marennes-Oléron Fines de Claires."
+    },
+    "r3_t": {
+      "fr": "L'arrivage",
+      "es": "La llegada",
+      "en": "Arrival"
+    },
+    "r3_d": {
+      "fr": "Selon les marées et les saisons, jusqu'à notre comptoir.",
+      "es": "Según mareas y estaciones, hasta nuestra barra.",
+      "en": "With the tides and seasons, all the way to our counter."
+    },
+    "r4_t": {
+      "fr": "L'ouverture",
+      "es": "La apertura",
+      "en": "Opening"
+    },
+    "r4_d": {
+      "fr": "À la minute, au couteau, juste avant de servir.",
+      "es": "Al momento, a cuchillo, justo antes de servir.",
+      "en": "To order, by knife, just before serving."
+    },
+    "r5_t": {
+      "fr": "La table",
+      "es": "La mesa",
+      "en": "The table"
+    },
+    "r5_d": {
+      "fr": "Sur glace, avec seigle, beurre demi-sel et citron.",
+      "es": "Sobre hielo, con centeno, mantequilla y limón.",
+      "en": "On ice, with rye, salted butter and lemon."
+    }
+  },
+  "carte": {
+    "menu_lead": {
+      "fr": "Elle s'affiche dans la langue de votre téléphone. Vous pouvez la changer à tout moment.",
+      "es": "Se muestra en el idioma de su teléfono. Puede cambiarlo cuando quiera.",
+      "en": "It appears in your phone's language. You can switch at any time."
+    },
+    "mn1_t": {
+      "fr": "Accompagnement",
+      "es": "Acompañamiento",
+      "en": "Served with"
+    },
+    "mn1_d": {
+      "fr": "Huîtres, coquillages et crustacés servis avec pain de seigle, beurre demi-sel, citron, aïoli et mayonnaise maison.",
+      "es": "Ostras y mariscos servidos con pan de centeno, mantequilla semisalada, limón, alioli y mayonesa casera.",
+      "en": "Oysters and shellfish come with rye bread, salted butter, lemon, aïoli and house mayonnaise."
+    },
+    "mn3_t": {
+      "fr": "Règlement",
+      "es": "Pago",
+      "en": "Payment"
+    },
+    "mn3_d": {
+      "fr": "Prix nets, taxes et service compris. CB et espèces acceptées, pas de chèques.",
+      "es": "Precios netos, impuestos y servicio incluidos. Tarjeta y efectivo, no se aceptan cheques.",
+      "en": "Net prices, tax and service included. Card and cash, no cheques."
+    }
+  },
+  "emporter": {
+    "take_lead": {
+      "fr": "Composez votre commande, choisissez votre heure de retrait et réglez au comptoir. Aucun paiement en ligne.",
+      "es": "Prepare su pedido, elija la hora de recogida y pague en la barra. Sin pago en línea.",
+      "en": "Build your order, pick a collection time and pay at the counter. No online payment."
+    },
+    "pill1": {
+      "fr": "Prête à l'heure choisie",
+      "es": "Lista a la hora elegida",
+      "en": "Ready at your chosen time"
+    },
+    "pill3": {
+      "fr": "CB ou espèces au retrait",
+      "es": "Tarjeta o efectivo al recoger",
+      "en": "Card or cash on collection"
+    },
+    "o_closed_d": {
+      "fr": "En bourriche, à ouvrir chez vous",
+      "es": "En cesta, para abrir en casa",
+      "en": "In a basket, to open at home"
+    },
+    "o_open_d": {
+      "fr": "Sur plateau consigné, à déguster vite",
+      "es": "En bandeja con fianza, para tomar enseguida",
+      "en": "On a deposit tray, to enjoy quickly"
+    },
+    "o_always_d": {
+      "fr": "Un plateau est toujours servi ouvert",
+      "es": "Una bandeja siempre se sirve abierta",
+      "en": "A platter always comes opened"
+    },
+    "tray_note": {
+      "fr": "rendue au retour du plateau",
+      "es": "se devuelve al traer la bandeja",
+      "en": "refunded when you bring the tray back"
+    },
+    "pay_t": {
+      "fr": "Paiement sur place",
+      "es": "Pago en el local",
+      "en": "Pay on site"
+    },
+    "pay_d": {
+      "fr": "Par carte bancaire ou en espèces, au moment du retrait. Ticket de caisse remis avec la commande.",
+      "es": "Con tarjeta o en efectivo, al recoger. Se entrega el ticket con el pedido.",
+      "en": "By card or cash when you collect. Receipt handed over with your order."
+    },
+    "keep_t": {
+      "fr": "Bien garder vos huîtres",
+      "es": "Cómo conservar sus ostras",
+      "en": "Keeping your oysters"
+    },
+    "k1_t": {
+      "fr": "Au frais",
+      "es": "En fresco",
+      "en": "Keep cool"
+    },
+    "k1_d": {
+      "fr": "Entre 5 et 15 °C, dans le bas du réfrigérateur, jamais dans l'eau.",
+      "es": "Entre 5 y 15 °C, en la parte baja de la nevera, nunca en agua.",
+      "en": "Between 5 and 15 °C, low in the fridge, never in water."
+    },
+    "k2_t": {
+      "fr": "Bien à plat",
+      "es": "Bien planas",
+      "en": "Lay them flat"
+    },
+    "k2_d": {
+      "fr": "Côté creux en dessous, pour qu'elles gardent leur eau.",
+      "es": "Con la parte cóncava abajo, para que conserven su agua.",
+      "en": "Cupped side down, so they keep their water."
+    },
+    "k3_t": {
+      "fr": "Ouvertes ? Tout de suite",
+      "es": "¿Abiertas? Enseguida",
+      "en": "Opened? Straight away"
+    },
+    "k3_d": {
+      "fr": "Une huître ouverte se déguste dans l'heure. Fermée, elle patiente quelques jours.",
+      "es": "Una ostra abierta se toma en la hora. Cerrada, aguanta unos días.",
+      "en": "An opened oyster is best within the hour. Closed, it keeps a few days."
+    }
+  },
+  "contact": {
+    "contact_lead": {
+      "fr": "Au bord de la baie de Txingudi, à deux pas du port de plaisance et de l'ancien port de pêche.",
+      "es": "Junto a la bahía de Txingudi, a dos pasos del puerto deportivo y del antiguo puerto pesquero.",
+      "en": "On Txingudi bay, a few steps from the marina and the old fishing port."
+    },
+    "write_t": {
+      "fr": "Écrivez-nous",
+      "es": "Escríbanos",
+      "en": "Write to us"
+    },
+    "write_d": {
+      "fr": "Groupes, privatisation, presse ou simple question : on vous répond rapidement.",
+      "es": "Grupos, privatización, prensa o cualquier pregunta: le respondemos rápido.",
+      "en": "Groups, private events, press or a simple question: we reply quickly."
+    },
+    "foot_about": {
+      "fr": "Bar à huîtres et fruits de mer à Hendaye. Huîtres ouvertes à la minute, coquillages cuits maison, cuisine de l'océan.",
+      "es": "Bar de ostras y mariscos en Hendaya. Ostras abiertas al momento, mariscos cocidos en casa, cocina del océano.",
+      "en": "Oyster and seafood bar in Hendaye. Oysters opened to order, shellfish cooked in-house, ocean cooking."
+    }
+  },
+  "faq": [
+    {
+      "question": {
+        "fr": "Faut-il réserver ?",
+        "es": "¿Hay que reservar?",
+        "en": "Do I need to book?"
+      },
+      "reponse": {
+        "fr": "C'est conseillé, surtout le week-end et l'été. Réservez en ligne en trente secondes.",
+        "es": "Es recomendable, sobre todo el fin de semana y en verano. Reserve en línea en treinta segundos.",
+        "en": "It is a good idea, especially at weekends and in summer. Book online in thirty seconds."
+      }
+    },
+    {
+      "question": {
+        "fr": "Quels moyens de paiement acceptez-vous ?",
+        "es": "¿Qué formas de pago aceptan?",
+        "en": "How can I pay?"
+      },
+      "reponse": {
+        "fr": "Carte bancaire et espèces. Nous n'acceptons pas les chèques. À emporter, le règlement se fait au retrait.",
+        "es": "Tarjeta y efectivo. No aceptamos cheques. Para llevar, se paga al recoger.",
+        "en": "Card and cash. We do not accept cheques. For takeaway, you pay when you collect."
+      }
+    },
+    {
+      "question": {
+        "fr": "Peut-on modifier un plateau ?",
+        "es": "¿Se puede modificar una bandeja?",
+        "en": "Can I change a platter?"
+      },
+      "reponse": {
+        "fr": "La composition des plateaux est fixe, mais vous pouvez y ajouter d'autres coquillages et crustacés.",
+        "es": "La composición es fija, pero puede añadir otros mariscos y crustáceos.",
+        "en": "Platters are fixed, but you can add other shellfish and crustaceans."
+      }
+    },
+    {
+      "question": {
+        "fr": "Où trouver la liste des allergènes ?",
+        "es": "¿Dónde está la lista de alérgenos?",
+        "en": "Where is the allergen list?"
+      },
+      "reponse": {
+        "fr": "Sur la page La Carte, activez « Allergènes » pour les voir plat par plat. L'équipe reste à votre disposition sur place.",
+        "es": "En La Carta, active «Alérgenos» para verlos plato por plato. El equipo está a su disposición.",
+        "en": "On the Menu page, switch on “Allergens” to see them dish by dish. Our team is happy to help on site."
+      }
+    },
+    {
+      "question": {
+        "fr": "Les moules sont-elles toujours à la carte ?",
+        "es": "¿Hay mejillones todo el año?",
+        "en": "Are mussels always on the menu?"
+      },
+      "reponse": {
+        "fr": "Les moules de bouchot et les moules marinières sont servies de juin à décembre.",
+        "es": "Los mejillones de bouchot y a la marinera se sirven de junio a diciembre.",
+        "en": "Bouchot mussels and moules marinières are served from June to December."
+      }
+    }
+  ],
+  "avis": [
+    {
+      "nom": "Marie M.",
+      "texte": "Allez-y les yeux fermés, tout est bon, que dis-je ! Pas bon ! Excellent !",
+      "mois": "août"
+    },
+    {
+      "nom": "Aurélia M.",
+      "texte": "Service au top, équipe agréable, prix corrects et surtout des fruits de mer délicieux et de très bonne qualité.",
+      "mois": "septembre"
+    },
+    {
+      "nom": "Danielle G.",
+      "texte": "Les plats sont cuisinés avec soin et le baba au rhum est super bon !",
+      "mois": "mai"
+    },
+    {
+      "nom": "Tamara C.",
+      "texte": "Les huîtres un vrai régal !!!",
+      "mois": "mai"
+    },
+    {
+      "nom": "Titemo",
+      "texte": "Des fruits de mer délicieux d'une très grande fraîcheur. Un plateau préparé avec soin.",
+      "mois": "juillet"
+    },
+    {
+      "nom": "Eva L.",
+      "texte": "Très bon moment sans chichis.",
+      "mois": "août"
+    },
+    {
+      "nom": "Sophie B.",
+      "texte": "Très belle expérience gustative ! […] Une adresse que je recommande sans hésitation.",
+      "mois": "juillet"
+    },
+    {
+      "nom": "Christian M.",
+      "texte": "Très bonne cuisine et produits de qualités !",
+      "mois": "septembre"
+    }
+  ]
+}
