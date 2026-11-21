@@ -21,7 +21,9 @@ la carte et les prix, la vente à emporter, les horaires, les coordonnées et le
 
 La **carte en PDF** se fabrique toute seule à partir de « Nos huîtres » et « La carte » : bouton « Carte en PDF » sur la page La Carte (adresse directe : https://u8tscared.github.io/parc-huitres/carte-pdf.html). Elle est donc toujours à jour.
 
-Les réservations ne sont pas dans l'admin : elles passeront plus tard par Growth Gusto.
+**Si le site est relié à Growth Gusto** (voir README.md), la carte, les huîtres et leurs prix, les horaires, les fermetures, la vente à emporter et la réservation se gèrent dans l'app Growth Gusto : les fiches de l'admin correspondantes ne s'affichent plus sur le site. Les coordonnées, textes, photos, le mode fermé / complet et les mentions légales restent dans l'admin.
+
+La réservation se fait avec le module Growth Gusto dès que le site y est relié.
 
 ## Comment ça marche
 
