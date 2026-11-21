@@ -8,22 +8,26 @@
   var meta = document.querySelector('meta[name="gg-r"]'), qs = new URLSearchParams(location.search);
   var RID = String(qs.get("gg") || (meta && meta.content) || "").trim();
   if (!RID || !window.GGSite || typeof MENU === "undefined") return;
-  var D = null, ON = false, TAKE = false, KEYS = {}, SPEC = {}, ORIG = {};
+  var D = null, ON = false, TAKE = false, SPEC = {}, ORIG = {};
   var AL = { lait: "2", oeufs: "3", gluten: "4", poissons: "5", mollusques: "6", sulfites: "7", arachides: "8", moutarde: "9", crustaces: "0" };
   var norm = function (s) { return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\s+/g, " ").trim(); };
   var base = function (s) { return String(s || "").replace(/\s*·\s*(verre|bouteille|à emporter|copa|botella|para llevar|glass|bottle|takeaway)$/i, ""); };
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return "&#" + c.charCodeAt(0) + ";"; }); };
-  /* the page's own drawings stay, found by the dish's French name */
-  MENU.forEach(function (c) { var n = {}; c.items.forEach(function (it, i) { String(it[0]).split(" / ").forEach(function (x) { ORIG[norm(c.id + "|" + x)] = c.id + ":" + i; }); }); });
-  var ICON = {}, SUB = {}; MENU.forEach(function (c) { ICON[c.id] = c.icon; SUB[c.id] = c.n; });
+  /* the page's own drawings (and photos from /admin/) stay, found by the dish's French name.
+     Read once the site's own content (content/*.json) is loaded: see PAH_READY in index.html. */
+  var ICON = {}, SUB = {}, PH = {};
+  function indexPage() {
+    MENU.forEach(function (c) { ICON[c.id] = c.icon; SUB[c.id] = c.n; c.items.forEach(function (it) { String(it[0]).split(" / ").forEach(function (x) { var k = norm(c.id + "|" + x); ORIG[k] = it[9] || ""; PH[k] = it[10] || ""; }); }); });
+    PRODS.forEach(function (p) { var k = norm(p.cat.id + "|" + p.it[0]); if (!(k in ORIG)) { ORIG[k] = p.it[9] || ""; PH[k] = p.it[10] || ""; } });
+  }
   function origOf(cat, t) { return ORIG[norm(cat + "|" + base(t))] || ORIG[norm(cat + "|" + t)] || ""; }
+  function phOf(cat, t, ph) { return ph || PH[norm(cat + "|" + base(t))] || PH[norm(cat + "|" + t)] || ""; }
   var fmt = function (v) { return (+v).toFixed(2).replace(".", ","); };
 
   function build(L) {
     var fr = L.fr, byId = { es: {}, en: {} }, catT = { es: {}, en: {} };
     ["es", "en"].forEach(function (g) { (L[g] ? L[g].carte.items : []).forEach(function (i) { byId[g][i.id] = i; }); (L[g] ? L[g].carte.cats : []).forEach(function (c) { catT[g][c.id] = c.t; }); });
     var tri = function (i, k) { return [i[k], (byId.es[i.id] || i)[k], (byId.en[i.id] || i)[k]]; };
-    KEYS = {};
     /* 1 · the menu (dishes served on site), wines « · verre » + « · bouteille » back on one line */
     var M = [];
     fr.carte.cats.forEach(function (c) {
@@ -32,8 +36,7 @@
         if (seen[i.id]) return; var t = tri(i, "t"), d = tri(i, "d"), p = i.p, m = /\s*·\s*verre$/i.exec(i.t);
         if (m) { var b = its.find(function (x) { return !seen[x.id] && norm(x.t) === norm(base(i.t) + " · bouteille"); }); if (b) { seen[b.id] = 1; p = fmt(i.p) + " / " + fmt(b.p); t = t.map(base); d = d.map(function (x) { return String(x || "").replace(/\s*·\s*[\d,.]+\s*cl$/i, ""); }); } }
         seen[i.id] = 1;
-        var k = c.id + ":" + rows.length; KEYS[k] = { o: origOf(c.id, i.t), ph: i.ph };
-        rows.push([t[0], t[1], t[2], d[0], d[1], d[2], p, (i.al || []).map(function (a) { return AL[a] || ""; }).join(""), i.nt ? 0 : 1]);
+        rows.push([t[0], t[1], t[2], d[0], d[1], d[2], p, (i.al || []).map(function (a) { return AL[a] || ""; }).join(""), i.nt ? 0 : 1, origOf(c.id, i.t), esc(phOf(c.id, i.t, i.ph))]);
       });
       if (rows.length) M.push({ id: c.id, t: [c.t, catT.es[c.id] || c.t, catT.en[c.id] || c.t], n: SUB[c.id] || ["", "", ""], icon: ICON[c.id] || "", items: rows });
     });
@@ -51,8 +54,8 @@
         var cat = MENU.find(function (x) { return x.id === c.id; }) || { id: c.id, t: [c.t, catT.es[c.id] || c.t, catT.en[c.id] || c.t] };
         T.filter(function (i) { return i.c === c.id && i !== SPEC.open && i !== SPEC.small && i !== SPEC.large; }).forEach(function (i) {
           var k = "t:" + i.id, t = tri(i, "t").map(function (x, j) { return j === 0 ? x : x; }), d = tri(i, "d");
-          var o = origOf(c.id, i.t) || (c.id === "plateaux" && i.ot ? "plateaux:0" : ""); KEYS[k] = { o: o, ph: i.ph };
-          PRODS.push({ k: k, gid: i.id, cat: cat, it: [base(t[0]), base(t[1]), base(t[2]), d[0], d[1], d[2], i.p, "", 1], price: i.p,
+          var o = origOf(c.id, i.t) || (c.id === "plateaux" && i.ot ? "plateaux:0" : "");
+          PRODS.push({ k: k, gid: i.id, cat: cat, it: [base(t[0]), base(t[1]), base(t[2]), d[0], d[1], d[2], i.p, "", 1, o, esc(phOf(c.id, i.t, i.ph))], price: i.p,
             mode: c.id === "huitres" && SPEC.open ? "choice" : c.id === "plateaux" && i.ot ? "always" : null });
         });
       });
@@ -93,7 +96,6 @@
   window.GGP = {
     rid: RID,
     on: function () { return ON && TAKE; },
-    ill: function (k) { var x = KEYS[k]; if (!ON || !x) return null; if (x.ph) return '<img src="' + esc(x.ph) + '" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block">'; return x.o && ILL[x.o] ? ILL[x.o]() : ""; },
     shut: function (k) { return !!(D && (D.closures || []).some(function (c) { return c.from <= k && k <= (c.to || c.from); })); },
     days: function () { return D ? GGSite.days(D).map(function (k) { return new Date(k + "T12:00:00"); }) : []; },
     slots: function (dt) { return D && dt ? GGSite.slots(D, ymd(dt)) : []; },
@@ -111,11 +113,11 @@
     },
   };
 
-  Promise.all(["fr", "es", "en"].map(function (g) { return GGSite.load(RID, { lang: g }).catch(function () { return null; }); })).then(function (r) {
+  (window.PAH_READY || Promise.resolve()).then(function () { indexPage(); return Promise.all(["fr", "es", "en"].map(function (g) { return GGSite.load(RID, { lang: g }).catch(function () { return null; }); })).then(function (r) {
     if (!r[0]) return; D = r[0];
     try { build({ fr: r[0], es: r[1], en: r[2] }); } catch (e) { console.warn("gg-parc carte", e); }
     try { hours(D); } catch (e) {}
     notice(D.notice); resa(D); contact(D); demoOff();
     applyLang(LANG, AUTO);
-  });
+  }); });
 })();

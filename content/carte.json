@@ -1,0 +1,935 @@
+{
+  "categories": [
+    {
+      "id": "plateaux",
+      "titre": "L'iode à partager",
+      "sous_titre": "Le temps d'une marée",
+      "traductions": {
+        "es": {
+          "titre": "El yodo para compartir",
+          "sous_titre": "El tiempo de una marea"
+        },
+        "en": {
+          "titre": "Platters to share",
+          "sous_titre": "For one tide"
+        }
+      },
+      "plats": [
+        {
+          "nom": "Plateau Le Parc",
+          "description": "10 Normandes n°3, 4 crevettes roses de Madagascar, 10 bulots cuits maison",
+          "prix": "36,80",
+          "allergenes": [
+            "crustaces",
+            "oeufs",
+            "mollusques",
+            "sulfites"
+          ],
+          "illustration": "plateaux:0",
+          "traductions": {
+            "es": {
+              "nom": "Bandeja El Parque",
+              "description": "10 Normandes n°3, 4 langostinos rosas, 10 caracoles de mar cocidos en casa"
+            },
+            "en": {
+              "nom": "Le Parc platter",
+              "description": "10 Normandy n°3, 4 Madagascar pink prawns, 10 house-cooked whelks"
+            }
+          }
+        },
+        {
+          "nom": "Le Parc + tourteau",
+          "description": "10 Normandes n°3, 4 crevettes roses, 10 bulots maison, 1 tourteau cuit de Normandie",
+          "prix": "61,80",
+          "allergenes": [
+            "crustaces",
+            "oeufs",
+            "mollusques",
+            "sulfites"
+          ],
+          "illustration": "plateaux:1",
+          "traductions": {
+            "es": {
+              "nom": "El Parque + buey de mar",
+              "description": "10 Normandes n°3, 4 langostinos rosas, 10 caracoles de mar, 1 buey de mar de Normandía"
+            },
+            "en": {
+              "nom": "Le Parc + brown crab",
+              "description": "10 Normandy n°3, 4 pink prawns, 10 house whelks, 1 cooked Normandy brown crab"
+            }
+          }
+        },
+        {
+          "nom": "Huîtres assorties",
+          "description": "4 Fines de Claires, 4 Normandes, 4 Spéciales Royales n°3",
+          "prix": "33,90",
+          "allergenes": [
+            "mollusques"
+          ],
+          "illustration": "plateaux:2",
+          "traductions": {
+            "es": {
+              "nom": "Ostras surtidas",
+              "description": "4 Fines de Claires, 4 Normandes, 4 Especiales Royales n°3"
+            },
+            "en": {
+              "nom": "Assorted oysters",
+              "description": "4 Fines de Claires, 4 Normandy, 4 Royale Spéciales n°3"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coquillages",
+      "titre": "Coquillages & crustacés",
+      "sous_titre": "Selon nos arrivages",
+      "traductions": {
+        "es": {
+          "titre": "Mariscos y crustáceos",
+          "sous_titre": "Según llegadas"
+        },
+        "en": {
+          "titre": "Shellfish & crustaceans",
+          "sous_titre": "Depending on the catch"
+        }
+      },
+      "plats": [
+        {
+          "nom": "Crevettes roses de Madagascar",
+          "description": "6 pièces · calibre 30/35",
+          "prix": "17,80",
+          "allergenes": [
+            "crustaces",
+            "sulfites"
+          ],
+          "illustration": "coquillages:0",
+          "traductions": {
+            "es": {
+              "nom": "Langostinos rosas de Madagascar",
+              "description": "6 piezas · calibre 30/35"
+            },
+            "en": {
+              "nom": "Madagascar pink prawns",
+              "description": "6 pieces · size 30/35"
+            }
+          }
+        },
+        {
+          "nom": "Bulots & aïoli",
+          "description": "300 g, cuits maison",
+          "prix": "13,80",
+          "allergenes": [
+            "oeufs",
+            "mollusques"
+          ],
+          "illustration": "coquillages:1",
+          "traductions": {
+            "es": {
+              "nom": "Caracoles de mar y alioli",
+              "description": "300 g, cocidos en casa"
+            },
+            "en": {
+              "nom": "Whelks & aïoli",
+              "description": "300 g, cooked in-house"
+            }
+          }
+        },
+        {
+          "nom": "Langoustines",
+          "description": "3 pièces, cuites maison",
+          "prix": "18,60",
+          "allergenes": [
+            "crustaces",
+            "oeufs"
+          ],
+          "illustration": "coquillages:2",
+          "traductions": {
+            "es": {
+              "nom": "Cigalas",
+              "description": "3 piezas, cocidas en casa"
+            },
+            "en": {
+              "nom": "Langoustines",
+              "description": "3 pieces, cooked in-house"
+            }
+          }
+        },
+        {
+          "nom": "Tourteau cuit",
+          "description": "700 g la pièce",
+          "prix": "28,60",
+          "allergenes": [
+            "crustaces",
+            "oeufs"
+          ],
+          "illustration": "coquillages:3",
+          "traductions": {
+            "es": {
+              "nom": "Buey de mar cocido",
+              "description": "700 g la pieza"
+            },
+            "en": {
+              "nom": "Cooked brown crab",
+              "description": "700 g each"
+            }
+          }
+        },
+        {
+          "nom": "Homard bleu",
+          "description": "700 g la pièce",
+          "prix": "",
+          "allergenes": [
+            "crustaces",
+            "oeufs"
+          ],
+          "illustration": "coquillages:4",
+          "traductions": {
+            "es": {
+              "nom": "Bogavante azul",
+              "description": "700 g la pieza"
+            },
+            "en": {
+              "nom": "Blue lobster",
+              "description": "700 g each"
+            }
+          }
+        },
+        {
+          "nom": "Moules de bouchot crues",
+          "description": "12 pièces · juin à décembre",
+          "prix": "",
+          "allergenes": [
+            "mollusques"
+          ],
+          "illustration": "coquillages:5",
+          "traductions": {
+            "es": {
+              "nom": "Mejillones de bouchot crudos",
+              "description": "12 piezas · junio a diciembre"
+            },
+            "en": {
+              "nom": "Raw bouchot mussels",
+              "description": "12 pieces · June to December"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "assiettes",
+      "titre": "Petites assiettes",
+      "sous_titre": "À partager… ou pas",
+      "traductions": {
+        "es": {
+          "titre": "Platos pequeños",
+          "sous_titre": "Para compartir… o no"
+        },
+        "en": {
+          "titre": "Small plates",
+          "sous_titre": "To share… or not"
+        }
+      },
+      "plats": [
+        {
+          "nom": "Pâté basque au piment d'Espelette",
+          "description": "Guindillas · Ferme Elizaldia · 125 g",
+          "prix": "8,90",
+          "allergenes": [
+            "sulfites",
+            "arachide",
+            "oeufs",
+            "lait"
+          ],
+          "illustration": "assiettes:0",
+          "traductions": {
+            "es": {
+              "nom": "Paté vasco con pimiento de Espelette",
+              "description": "Guindillas · Granja Elizaldia · 125 g"
+            },
+            "en": {
+              "nom": "Basque pâté with Espelette pepper",
+              "description": "Guindillas · Elizaldia farm · 125 g"
+            }
+          }
+        },
+        {
+          "nom": "Caviar de truite des Pyrénées",
+          "description": "Crème épaisse · 80 g",
+          "prix": "23,80",
+          "allergenes": [
+            "poisson",
+            "sulfites"
+          ],
+          "illustration": "assiettes:1",
+          "traductions": {
+            "es": {
+              "nom": "Caviar de trucha de los Pirineos",
+              "description": "Crema espesa · 80 g"
+            },
+            "en": {
+              "nom": "Pyrenees trout caviar",
+              "description": "Thick cream · 80 g"
+            }
+          }
+        },
+        {
+          "nom": "Saumon gravlax",
+          "description": "Fait maison · 150 g",
+          "prix": "20,80",
+          "allergenes": [
+            "poisson",
+            "moutarde",
+            "sulfites"
+          ],
+          "illustration": "assiettes:2",
+          "traductions": {
+            "es": {
+              "nom": "Salmón gravlax",
+              "description": "Hecho en casa · 150 g"
+            },
+            "en": {
+              "nom": "Salmon gravlax",
+              "description": "House-cured · 150 g"
+            }
+          }
+        },
+        {
+          "nom": "Saumon fumé",
+          "description": "Tranché main · 150 g",
+          "prix": "20,80",
+          "allergenes": [
+            "poisson"
+          ],
+          "illustration": "assiettes:3",
+          "traductions": {
+            "es": {
+              "nom": "Salmón ahumado",
+              "description": "Cortado a mano · 150 g"
+            },
+            "en": {
+              "nom": "Smoked salmon",
+              "description": "Hand-sliced · 150 g"
+            }
+          }
+        },
+        {
+          "nom": "Soupe de poissons",
+          "description": "Criée Pays basque · croûtons, aïoli, rouille, emmental",
+          "prix": "13,80",
+          "allergenes": [
+            "amidon",
+            "lait",
+            "poisson",
+            "mollusques",
+            "sulfites"
+          ],
+          "illustration": "assiettes:4",
+          "traductions": {
+            "es": {
+              "nom": "Sopa de pescado",
+              "description": "Lonja vasca · picatostes, alioli, rouille, queso"
+            },
+            "en": {
+              "nom": "Fish soup",
+              "description": "Basque fish market · croutons, aïoli, rouille, cheese"
+            }
+          }
+        },
+        {
+          "nom": "Foie gras, pain toasté",
+          "description": "La Basse-Cour de Castelnau, Landes",
+          "prix": "20,90",
+          "allergenes": [],
+          "illustration": "assiettes:5",
+          "traductions": {
+            "es": {
+              "nom": "Foie gras, pan tostado",
+              "description": "La Basse-Cour de Castelnau, Landas"
+            },
+            "en": {
+              "nom": "Foie gras, toasted bread",
+              "description": "La Basse-Cour de Castelnau, Landes"
+            }
+          }
+        },
+        {
+          "nom": "Saucisson de montagne",
+          "description": "Ferme Elizaldia",
+          "prix": "13,80",
+          "allergenes": [],
+          "illustration": "assiettes:6",
+          "traductions": {
+            "es": {
+              "nom": "Salchichón de montaña",
+              "description": "Granja Elizaldia"
+            },
+            "en": {
+              "nom": "Mountain saucisson",
+              "description": "Elizaldia farm"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cuisine",
+      "titre": "Sortie de cuisine",
+      "sous_titre": "Attention, c'est chaud",
+      "traductions": {
+        "es": {
+          "titre": "Salida de cocina",
+          "sous_titre": "Cuidado, quema"
+        },
+        "en": {
+          "titre": "From the kitchen",
+          "sous_titre": "Careful, it's hot"
+        }
+      },
+      "plats": [
+        {
+          "nom": "Noix de Saint-Jacques",
+          "description": "Comme en Normandie · 20 min de cuisson",
+          "prix": "27,80",
+          "allergenes": [
+            "amidon",
+            "lait",
+            "gluten",
+            "mollusques",
+            "sulfites"
+          ],
+          "illustration": "cuisine:0",
+          "traductions": {
+            "es": {
+              "nom": "Vieiras",
+              "description": "Como en Normandía · 20 min de cocción"
+            },
+            "en": {
+              "nom": "Scallops",
+              "description": "Normandy style · 20 min cooking"
+            }
+          }
+        },
+        {
+          "nom": "Txangurro",
+          "description": "20 min de cuisson",
+          "prix": "24,90",
+          "allergenes": [
+            "crustaces",
+            "poisson",
+            "mollusques",
+            "amidon"
+          ],
+          "illustration": "cuisine:1",
+          "traductions": {
+            "es": {
+              "nom": "Txangurro",
+              "description": "20 min de cocción"
+            },
+            "en": {
+              "nom": "Txangurro",
+              "description": "20 min cooking"
+            }
+          }
+        },
+        {
+          "nom": "Bourride",
+          "description": "Soupe de poisson, merlu basque, pommes de terre safranées · 20 min",
+          "prix": "25,90",
+          "allergenes": [
+            "amidon",
+            "gluten",
+            "poisson",
+            "mollusques",
+            "sulfites",
+            "arachide"
+          ],
+          "illustration": "cuisine:2",
+          "traductions": {
+            "es": {
+              "nom": "Bourride",
+              "description": "Sopa de pescado, merluza vasca, patatas al azafrán · 20 min"
+            },
+            "en": {
+              "nom": "Bourride",
+              "description": "Fish soup, Basque hake, saffron potatoes · 20 min"
+            }
+          }
+        },
+        {
+          "nom": "Huîtres gratinées",
+          "description": "Au beurre blanc · 6 pièces",
+          "prix": "18,60",
+          "allergenes": [
+            "amidon",
+            "lait",
+            "gluten",
+            "mollusques",
+            "sulfites"
+          ],
+          "illustration": "cuisine:3",
+          "traductions": {
+            "es": {
+              "nom": "Ostras gratinadas",
+              "description": "Con beurre blanc · 6 piezas"
+            },
+            "en": {
+              "nom": "Oysters gratin",
+              "description": "Beurre blanc · 6 pieces"
+            }
+          }
+        },
+        {
+          "nom": "Moules marinières",
+          "description": "Riz blanc · 700 g · juin à décembre",
+          "prix": "18,80",
+          "allergenes": [
+            "amidon",
+            "gluten",
+            "mollusques",
+            "sulfites"
+          ],
+          "illustration": "cuisine:4",
+          "traductions": {
+            "es": {
+              "nom": "Mejillones a la marinera",
+              "description": "Arroz blanco · 700 g · junio a diciembre"
+            },
+            "en": {
+              "nom": "Moules marinières",
+              "description": "White rice · 700 g · June to December"
+            }
+          }
+        },
+        {
+          "nom": "Garniture",
+          "description": "Riz ou salade",
+          "prix": "3,20",
+          "allergenes": [],
+          "illustration": "cuisine:5",
+          "traductions": {
+            "es": {
+              "nom": "Guarnición",
+              "description": "Arroz o ensalada"
+            },
+            "en": {
+              "nom": "Side",
+              "description": "Rice or salad"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "titre": "Les gourmands",
+      "sous_titre": "À croquer sans culpabilité",
+      "traductions": {
+        "es": {
+          "titre": "Los golosos",
+          "sous_titre": "Para disfrutar sin culpa"
+        },
+        "en": {
+          "titre": "Something sweet",
+          "sous_titre": "Guilt-free"
+        }
+      },
+      "plats": [
+        {
+          "nom": "Fromage de brebis du Pays basque",
+          "description": "Confiture de cerises noires",
+          "prix": "7,80",
+          "allergenes": [
+            "amidon",
+            "lait",
+            "oeufs",
+            "gluten"
+          ],
+          "illustration": "desserts:0",
+          "traductions": {
+            "es": {
+              "nom": "Queso de oveja del País Vasco",
+              "description": "Mermelada de cereza negra"
+            },
+            "en": {
+              "nom": "Basque sheep's cheese",
+              "description": "Black cherry jam"
+            }
+          }
+        },
+        {
+          "nom": "Tarte aux pommes",
+          "description": "",
+          "prix": "7,80",
+          "allergenes": [
+            "amidon",
+            "lait",
+            "oeufs",
+            "gluten"
+          ],
+          "illustration": "desserts:1",
+          "traductions": {
+            "es": {
+              "nom": "Tarta de manzana",
+              "description": ""
+            },
+            "en": {
+              "nom": "Apple tart",
+              "description": ""
+            }
+          }
+        },
+        {
+          "nom": "Île flottante maison",
+          "description": "Crème anglaise",
+          "prix": "7,80",
+          "allergenes": [
+            "amidon",
+            "lait",
+            "oeufs",
+            "gluten"
+          ],
+          "illustration": "desserts:2",
+          "traductions": {
+            "es": {
+              "nom": "Isla flotante casera",
+              "description": "Crema inglesa"
+            },
+            "en": {
+              "nom": "Île flottante",
+              "description": "Custard"
+            }
+          }
+        },
+        {
+          "nom": "Baba au rhum",
+          "description": "Sirop et chantilly",
+          "prix": "8,00",
+          "allergenes": [
+            "amidon",
+            "lait",
+            "oeufs",
+            "gluten"
+          ],
+          "illustration": "desserts:3",
+          "traductions": {
+            "es": {
+              "nom": "Baba al ron",
+              "description": "Sirope y nata"
+            },
+            "en": {
+              "nom": "Rum baba",
+              "description": "Syrup and whipped cream"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "vins",
+      "titre": "On arrose ça ?",
+      "sous_titre": "Verre 12,5 cl / bouteille 75 cl",
+      "traductions": {
+        "es": {
+          "titre": "¿Lo brindamos?",
+          "sous_titre": "Copa 12,5 cl / botella 75 cl"
+        },
+        "en": {
+          "titre": "Shall we drink?",
+          "sous_titre": "Glass 12.5 cl / bottle 75 cl"
+        }
+      },
+      "plats": [
+        {
+          "nom": "Entre-deux-Mers AOC",
+          "description": "Blanc",
+          "prix": "3,90 / 22,80",
+          "allergenes": [],
+          "illustration": "vins:0",
+          "traductions": {
+            "es": {
+              "nom": "Entre-deux-Mers AOC",
+              "description": "Blanco"
+            },
+            "en": {
+              "nom": "Entre-deux-Mers AOC",
+              "description": "White"
+            }
+          }
+        },
+        {
+          "nom": "Uby n°2, Gascogne IGP",
+          "description": "Blanc",
+          "prix": "3,80 / 23,40",
+          "allergenes": [],
+          "illustration": "vins:1",
+          "traductions": {
+            "es": {
+              "nom": "Uby n°2, Gascogne IGP",
+              "description": "Blanco"
+            },
+            "en": {
+              "nom": "Uby n°2, Gascogne IGP",
+              "description": "White"
+            }
+          }
+        },
+        {
+          "nom": "Jurançon AOC",
+          "description": "Blanc",
+          "prix": "4,90 / 28,60",
+          "allergenes": [],
+          "illustration": "vins:2",
+          "traductions": {
+            "es": {
+              "nom": "Jurançon AOC",
+              "description": "Blanco"
+            },
+            "en": {
+              "nom": "Jurançon AOC",
+              "description": "White"
+            }
+          }
+        },
+        {
+          "nom": "Rueda AOP",
+          "description": "Blanc",
+          "prix": "3,90 / 23,60",
+          "allergenes": [],
+          "illustration": "vins:3",
+          "traductions": {
+            "es": {
+              "nom": "Rueda AOP",
+              "description": "Blanco"
+            },
+            "en": {
+              "nom": "Rueda AOP",
+              "description": "White"
+            }
+          }
+        },
+        {
+          "nom": "Txakoli Getaria AOP",
+          "description": "Blanc · bouteille",
+          "prix": "29,90",
+          "allergenes": [],
+          "illustration": "vins:4",
+          "traductions": {
+            "es": {
+              "nom": "Txakoli Getaria AOP",
+              "description": "Blanco · botella"
+            },
+            "en": {
+              "nom": "Txakoli Getaria AOP",
+              "description": "White · bottle"
+            }
+          }
+        },
+        {
+          "nom": "Gascogne Alain Brumont",
+          "description": "Blanc",
+          "prix": "3,80 / 21,60",
+          "allergenes": [],
+          "illustration": "vins:5",
+          "traductions": {
+            "es": {
+              "nom": "Gascogne Alain Brumont",
+              "description": "Blanco"
+            },
+            "en": {
+              "nom": "Gascogne Alain Brumont",
+              "description": "White"
+            }
+          }
+        },
+        {
+          "nom": "Bordeaux Graves AOC",
+          "description": "Rouge",
+          "prix": "3,90 / 24,80",
+          "allergenes": [],
+          "illustration": "vins:6",
+          "traductions": {
+            "es": {
+              "nom": "Bordeaux Graves AOC",
+              "description": "Tinto"
+            },
+            "en": {
+              "nom": "Bordeaux Graves AOC",
+              "description": "Red"
+            }
+          }
+        },
+        {
+          "nom": "Domaine des Cavaliers",
+          "description": "Rosé · Côtes de Provence AOP",
+          "prix": "4,50 / 26,60",
+          "allergenes": [],
+          "illustration": "vins:7",
+          "traductions": {
+            "es": {
+              "nom": "Domaine des Cavaliers",
+              "description": "Rosado · Côtes de Provence AOP"
+            },
+            "en": {
+              "nom": "Domaine des Cavaliers",
+              "description": "Rosé · Côtes de Provence AOP"
+            }
+          }
+        },
+        {
+          "nom": "Champagne Veuve Pelletier",
+          "description": "37,5 cl",
+          "prix": "33,80",
+          "allergenes": [],
+          "illustration": "vins:8",
+          "traductions": {
+            "es": {
+              "nom": "Champán Veuve Pelletier",
+              "description": "37,5 cl"
+            },
+            "en": {
+              "nom": "Veuve Pelletier Champagne",
+              "description": "37.5 cl"
+            }
+          }
+        },
+        {
+          "nom": "Bière La Locale",
+          "description": "33 cl",
+          "prix": "5,70",
+          "allergenes": [],
+          "illustration": "vins:9",
+          "traductions": {
+            "es": {
+              "nom": "Cerveza La Locale",
+              "description": "33 cl"
+            },
+            "en": {
+              "nom": "La Locale beer",
+              "description": "33 cl"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "soifs",
+      "titre": "Petites soifs",
+      "sous_titre": "Chaudes ou froides",
+      "traductions": {
+        "es": {
+          "titre": "Pequeñas sedes",
+          "sous_titre": "Calientes o frías"
+        },
+        "en": {
+          "titre": "Soft & hot drinks",
+          "sous_titre": "Hot or cold"
+        }
+      },
+      "plats": [
+        {
+          "nom": "Eau plate ou gazeuse",
+          "description": "50 cl",
+          "prix": "3,80",
+          "allergenes": [],
+          "illustration": "soifs:0",
+          "traductions": {
+            "es": {
+              "nom": "Agua sin o con gas",
+              "description": "50 cl"
+            },
+            "en": {
+              "nom": "Still or sparkling water",
+              "description": "50 cl"
+            }
+          }
+        },
+        {
+          "nom": "Coca-Cola",
+          "description": "50 cl",
+          "prix": "4,50",
+          "allergenes": [],
+          "illustration": "soifs:1",
+          "traductions": {
+            "es": {
+              "nom": "Coca-Cola",
+              "description": "50 cl"
+            },
+            "en": {
+              "nom": "Coca-Cola",
+              "description": "50 cl"
+            }
+          }
+        },
+        {
+          "nom": "Sirop à l'eau",
+          "description": "",
+          "prix": "2,80",
+          "allergenes": [],
+          "illustration": "soifs:2",
+          "traductions": {
+            "es": {
+              "nom": "Sirope con agua",
+              "description": ""
+            },
+            "en": {
+              "nom": "Cordial",
+              "description": ""
+            }
+          }
+        },
+        {
+          "nom": "Café / noisette",
+          "description": "",
+          "prix": "2,30 / 2,50",
+          "allergenes": [],
+          "illustration": "soifs:3",
+          "traductions": {
+            "es": {
+              "nom": "Café / cortado",
+              "description": ""
+            },
+            "en": {
+              "nom": "Espresso / macchiato",
+              "description": ""
+            }
+          }
+        },
+        {
+          "nom": "Café glacé",
+          "description": "",
+          "prix": "2,50",
+          "allergenes": [],
+          "illustration": "soifs:4",
+          "traductions": {
+            "es": {
+              "nom": "Café con hielo",
+              "description": ""
+            },
+            "en": {
+              "nom": "Iced coffee",
+              "description": ""
+            }
+          }
+        },
+        {
+          "nom": "Thé / thé au lait",
+          "description": "",
+          "prix": "3,00 / 3,20",
+          "allergenes": [],
+          "illustration": "soifs:5",
+          "traductions": {
+            "es": {
+              "nom": "Té / té con leche",
+              "description": ""
+            },
+            "en": {
+              "nom": "Tea / tea with milk",
+              "description": ""
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
