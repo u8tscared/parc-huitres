@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Growth Gusto : identifiant de l'établissement (app.growthgusto.fr › Votre site internet). Vide = carte et horaires d'exemple de cette page. -->
+<meta name="gg-r" content="">
 <meta name="description" content="Le Parc à Huîtres, bar à huîtres et fruits de mer à Hendaye. Huîtres ouvertes à la minute, coquillages cuits maison, réservation et vente à emporter.">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -1098,6 +1100,8 @@ footer.site .fwave{position:absolute;left:0;right:0;top:-69px;height:70px;width:
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="https://app.growthgusto.fr/w/gg-site.js" defer></script>
+<script src="gg-parc.js" defer></script>
 <script>
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -1154,7 +1158,7 @@ bs1:["Date","Fecha","Date"],bs2:["Heure & couverts","Hora y comensales","Time & 
 b_date:["Choisissez un jour","Elija un día","Pick a day"],b_time:["Heure et couverts","Hora y comensales","Time and guests"],b_you:["Vos coordonnées","Sus datos","Your details"],
 covers:["Couverts","Comensales","Guests"],lunch:["Midi","Mediodía","Lunch"],dinner:["Soir","Noche","Dinner"],
 f_name:["Nom","Nombre","Name"],f_phone:["Téléphone","Teléfono","Phone"],f_email:["E-mail (facultatif)","E-mail (opcional)","Email (optional)"],f_email2:["E-mail","E-mail","Email"],f_note:["Une occasion, une allergie ?","¿Una ocasión, una alergia?","An occasion, an allergy?"],f_msg:["Message","Mensaje","Message"],
-demo_gg:["Démo · connexion Growth Gusto à venir","Demo · conexión Growth Gusto próximamente","Demo · Growth Gusto connection coming"],demo:["Démo","Demo","Demo"],
+stamp_wait:["En attente de confirmation","Pendiente de confirmación","Awaiting confirmation"],t_track:["Suivre ma commande","Seguir mi pedido","Track my order"],t_wait:["Le Parc confirme votre commande et l'heure de retrait par SMS ou par téléphone.","El Parque confirma su pedido y la hora de recogida por SMS o teléfono.","Le Parc confirms your order and pickup time by text or phone."],demo_gg:["Démo · connexion Growth Gusto à venir","Demo · conexión Growth Gusto próximamente","Demo · Growth Gusto connection coming"],demo:["Démo","Demo","Demo"],
 b_confirm:["Confirmer la réservation","Confirmar reserva","Confirm booking"],recap:["Récapitulatif","Resumen","Summary"],
 good_k:["Bon à savoir","Conviene saber","Good to know"],g1:["Table gardée 15 minutes après l'heure réservée.","Mesa guardada 15 minutos después de la hora reservada.","Table held for 15 minutes after your time."],g2:["Plus de 8 personnes ou privatisation : écrivez-nous depuis la page Contact.","Más de 8 personas o privatización: escríbanos desde la página Contacto.","More than 8 guests or a private event: write to us from the Contact page."],g3:["CB et espèces acceptées, pas de chèques.","Tarjeta y efectivo, no se aceptan cheques.","Card and cash accepted, no cheques."],
 r_day:["Jour","Día","Day"],r_time:["Heure","Hora","Time"],r_cov:["Couverts","Comensales","Guests"],r_where:["Lieu","Lugar","Where"],
@@ -1406,7 +1410,7 @@ const ILL={
  'soifs:4':()=>SV(glass('#A8774F','tumbler')),
  'soifs:5':()=>SV(glass('#C98A4B','cup')+`<path d="M86 42 l12 -20" stroke="${cN}" stroke-width="1.2"/><rect x="94" y="14" width="10" height="10" rx="1" fill="${cY}" ${ST.replace('2.4','1.2')}/>`)
 };
-const ill=k=>(ILL[k]?ILL[k]():'');
+const ill=k=>{if(window.GGP){const r=GGP.ill(k);if(r!=null)return r;}return ILL[k]?ILL[k]():'';};
 
 /* =============== render dynamic content =============== */
 function renderLineup(){
@@ -1416,10 +1420,10 @@ function renderLineup(){
 }
 $('#lineup').addEventListener('click',e=>{const b=e.target.closest('.ocard');if(!b)return;const on=!b.classList.contains('open');b.classList.toggle('open',on);b.setAttribute('aria-pressed',on);b.querySelector('.oy').classList.toggle('open',on);});
 function renderPlateaux(){
-  $('#plateaux').innerHTML=MENU[1].items.map((it,i)=>`<article class="pcard reveal"><div class="ill">${ill('plateaux:'+i)}</div><div class="body"><h3>${it[li()]}</h3><ul>${it[3+li()].split(', ').map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="foot"><b>${eur(it[6])}</b>${i===0?`<a class="add" href="#emporter">${tr('add_take')} →</a>`:`<a class="add" href="#reserver">${tr('cta_book_s')}</a>`}</div></article>`).join('');
+  $('#plateaux').innerHTML=(MENU.find(c=>c.id==='plateaux')||{items:[]}).items.map((it,i)=>`<article class="pcard reveal"><div class="ill">${ill('plateaux:'+i)}</div><div class="body"><h3>${it[li()]}</h3><ul>${it[3+li()].split(', ').map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="foot"><b>${eur(it[6])}</b>${i===0?`<a class="add" href="#emporter">${tr('add_take')} →</a>`:`<a class="add" href="#reserver">${tr('cta_book_s')}</a>`}</div></article>`).join('');
 }
 function renderMarquee(){
-  const words=MENU[0].items.map(i=>i[li()]).concat([tr('s2_t'),'Ostras','Oysters','Hendaye']);
+  const words=(MENU.find(c=>c.id==='huitres')||MENU[0]).items.map(i=>i[li()]).concat([tr('s2_t'),'Ostras','Oysters','Hendaye']);
   const oy=`<i><svg viewBox="0 0 300 190">${rings(5,158,95,128,78,1.3,'var(--cream)','var(--navy)')}</svg></i>`;
   const one=`<span>${words.map(w=>w+' '+oy).join(' ')}</span>`;
   $('#mq1').innerHTML=one+one;
@@ -1494,7 +1498,7 @@ function renderTerroirs(){
 /* =============== booking =============== */
 const B={date:null,slot:null,covers:2,month:null};
 const SL={lunch:["11:30","12:00","12:30","13:00","13:30","14:00"],dinner:["18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00"]};
-const SHUT=d=>d.getDay()===1||d.getDay()===2;
+const SHUT=d=>!HOURS[(d.getDay()+6)%7]||!!(window.GGP&&GGP.shut(ymd(d)));
 const FULL={"13:00":1,"20:30":1};
 function ymd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function renderCal(){
@@ -1537,7 +1541,7 @@ $('#bookform').addEventListener('submit',e=>{
 /* =============== takeaway =============== */
 const CART={};let TCAT='all';const T={day:0,slot:null};
 /* Takeaway catalogue (tarifs à emporter du Parc) : huîtres à la douzaine, fermées en bourriche ou ouvertes (+2 € la douzaine), plateau toujours ouvert. */
-const TK_OYS=[19.2,21,23.4,28.8,39.6],OPEN_FEE=2;
+let TK_OYS=[19.2,21,23.4,28.8,39.6],OPEN_FEE=2;
 const TK_PLATEAU=["Plateau du Parc","Bandeja El Parque","Le Parc platter","12 Fines de Claires n°3, 6 crevettes roses de Madagascar, 12 bulots cuits, mayonnaise, aïoli, citron, vinaigre","12 Fines de Claires n°3, 6 langostinos rosas de Madagascar, 12 caracoles de mar cocidos, mayonesa, alioli, limón, vinagre","12 Fines de Claires n°3, 6 Madagascar pink prawns, 12 cooked whelks, mayonnaise, aïoli, lemon, vinegar",37.8,"0367",1];
 const PRODS=[];MENU.forEach(c=>{if(c.id==='plateaux'){PRODS.push({k:'plateaux:0',cat:c,it:TK_PLATEAU,price:TK_PLATEAU[6],mode:'always'});return;}
   c.items.forEach((it,i)=>{if(!it[8])return;if(c.id==='huitres')PRODS.push({k:c.id+':'+i,cat:c,it,price:TK_OYS[i],mode:'choice'});else PRODS.push({k:c.id+':'+i,cat:c,it,price:it[6],mode:null});});});
@@ -1550,7 +1554,7 @@ const pk=p=>p.mode==='choice'?p.k+'|'+(OPEN[p.k]||'c'):p.k;
 const unit=(p,v)=>p.price+(v==='o'?OPEN_FEE:0);
 function cartLines(){const out=[];PRODS.forEach(p=>{(p.mode==='choice'?['c','o']:[null]).forEach(v=>{const key=v?p.k+'|'+v:p.k;const q=CART[key]||0;if(!q)return;const u=unit(p,v);out.push({p,v,q,u,label:p.it[li()]+(v==='o'?' · '+tr('o_open'):v==='c'?' · '+tr('o_closed'):p.mode==='always'?' · '+tr('o_always'):'')});});});return out;}
 function renderShop(){
-  const l=li();const cats=MENU.filter(c=>c.items.some(i=>i[8]));
+  const l=li();const cats=MENU.filter(c=>PRODS.some(p=>p.cat.id===c.id));
   $('#tcats').innerHTML=`<button type="button" data-c="all" aria-pressed="${TCAT==='all'}">${tr('all')}</button>`+cats.map(c=>`<button type="button" data-c="${c.id}" aria-pressed="${TCAT===c.id}">${c.t[l]}</button>`).join('');
   $('#products').innerHTML=PRODS.filter(p=>TCAT==='all'||p.cat.id===TCAT).map(p=>{const key=pk(p),v=p.mode==='choice'?(OPEN[p.k]||'c'):null,q=CART[key]||0;
     const tog=p.mode==='choice'?`<div class="otog" role="group" aria-label="${tr('oys_opt')}"><button type="button" data-ov="c" data-k="${p.k}" aria-pressed="${v==='c'}">${tr('o_closed')}</button><button type="button" data-ov="o" data-k="${p.k}" aria-pressed="${v==='o'}">${tr('o_open')} <small>+${OPEN_FEE} €</small></button></div><p class="ohint">${tr(v==='o'?'o_open_d':'o_closed_d')}</p>`:p.mode==='always'?`<p class="ohint"><b>${tr('o_always')}</b> · ${tr('o_always_d')}</p>`:'';
@@ -1577,12 +1581,12 @@ document.addEventListener('click',e=>{const a=e.target.closest('[data-add]');if(
 $('#products').addEventListener('click',e=>{const b=e.target.closest('button[data-q]');if(!b)return;const k=b.dataset.k;CART[k]=Math.max(0,(CART[k]||0)+ +b.dataset.q);renderShop();});
 $('#products').addEventListener('click',e=>{const b=e.target.closest('button[data-ov]');if(!b)return;OPEN[b.dataset.k]=b.dataset.ov;renderShop();});
 $('#tcats').addEventListener('click',e=>{const b=e.target.closest('button[data-c]');if(!b)return;TCAT=b.dataset.c;renderShop();});
-function tDays(){const out=[];const d=new Date();for(let i=0;out.length<4&&i<8;i++){const x=new Date(d);x.setDate(d.getDate()+i);if(!SHUT(x))out.push(x);}return out;}
+function tDays(){if(window.GGP&&GGP.on())return GGP.days();const out=[];const d=new Date();for(let i=0;out.length<4&&i<8;i++){const x=new Date(d);x.setDate(d.getDate()+i);if(!SHUT(x))out.push(x);}return out;}
 function renderPickup(){
   const ds=tDays();
   $('#tdays').innerHTML=ds.map((d,i)=>{const lab=i===0&&d.toDateString()===new Date().toDateString()?tr('today'):(new Date(Date.now()+864e5).toDateString()===d.toDateString()?tr('tomorrow'):d.toLocaleDateString(loc(),{weekday:'short'}));return `<button type="button" data-i="${i}" aria-pressed="${i===T.day}"><small>${lab}</small><b>${d.getDate()}</b></button>`;}).join('');
   // Retrait des commandes : 11h30-14h le midi, 18h30-21h le soir. Le jour même, pas de créneau à moins de 30 min.
-  const sl=["11:30","12:00","12:30","13:00","13:30","14:00","18:30","19:00","19:30","20:00","20:30","21:00"];
+  const sl=window.GGP&&GGP.on()?GGP.slots(ds[T.day]):["11:30","12:00","12:30","13:00","13:30","14:00","18:30","19:00","19:30","20:00","20:30","21:00"];
   const isToday=ds[T.day]&&ds[T.day].toDateString()===new Date().toDateString();const nowM=new Date().getHours()*60+new Date().getMinutes()+30;
   const past={};if(isToday)sl.forEach(s=>{if(+s.slice(0,2)*60+ +s.slice(3)<nowM)past[s]=1;});if(past[T.slot])T.slot=null;
   $('#tslots').innerHTML=slotHTML(sl,T.slot,past);
@@ -1592,14 +1596,18 @@ $('#tslots').addEventListener('click',e=>{const b=e.target.closest('button[data-
 $('#takeform').addEventListener('submit',e=>{
   e.preventDefault();const tot=renderBasket();const err=$('#terr');
   if(!tot||!T.slot||!$('#tname').value.trim()||!$('#tphone').value.trim()){err.hidden=false;err.textContent=tr('t_need');return;}
-  err.hidden=true;step('#tstepper',3);
-  const no='PAH-'+String(Math.floor(1000+Math.random()*9000));const d=tDays()[T.day];
+  err.hidden=true;
+  if(window.GGP&&GGP.on()){const sb=e.submitter||$('#takeform [type=submit]');if(sb)sb.disabled=true;GGP.send(tot).then(r=>{if(sb)sb.disabled=false;tTicket(r.no,tot,r);}).catch(x=>{if(sb)sb.disabled=false;err.hidden=false;err.textContent=GGP.say(x);});return;}
+  tTicket('PAH-'+String(Math.floor(1000+Math.random()*9000)),tot,null);
+});
+function tTicket(no,tot,G){
+  step('#tstepper',3);const d=tDays()[T.day];
   const lines=cartLines().concat(trays()).map(c=>`<div class="tl"><span>${c.q} × ${c.label}</span><span>${eur(c.q*c.u)}</span></div>`).join('');
   $('#takebody').hidden=true;const ok=$('#takeok');ok.hidden=false;
-  ok.innerHTML=`<h3 style="font-size:1.5rem;margin-bottom:14px">${tr('t_ok')}</h3><div class="ticket"><div style="display:flex;justify-content:center;margin-bottom:8px"><svg viewBox="0 0 300 190" width="70">${rings(5,158,95,128,78,1.3,'var(--navy)','var(--white)')}</svg></div><div style="text-align:center;font-family:var(--fd);letter-spacing:.14em">LE PARC À HUÎTRES</div><div style="text-align:center;font-size:.8rem;color:var(--ink-soft)">5 rue des Orangers · 64700 Hendaye</div><hr><div class="tnum">${no}</div><span class="stamp">${tr('stamp')}</span><hr>${lines}<hr><div class="tl" style="font-weight:700;font-size:1.05rem"><span>${tr('t_pay')}</span><span>${eur(tot)}</span></div><div class="tl"><span>${tr('t_paym')}</span><span></span></div><hr><div class="tl"><span>${tr('t_pick')}</span><span>${d.toLocaleDateString(loc(),{weekday:'short',day:'numeric',month:'short'})} · ${T.slot}</span></div><div class="tl"><span>${tr('f_name')}</span><span>${$('#tname').value}</span></div></div><p style="margin-top:16px;text-align:center"><span class="demo">${tr('demo_gg')}</span></p><button type="button" class="btn ghost sm" id="tagain" style="margin:14px auto 0;display:flex">${tr('t_again')}</button>`;
+  ok.innerHTML=`<h3 style="font-size:1.5rem;margin-bottom:14px">${tr('t_ok')}</h3><div class="ticket"><div style="display:flex;justify-content:center;margin-bottom:8px"><svg viewBox="0 0 300 190" width="70">${rings(5,158,95,128,78,1.3,'var(--navy)','var(--white)')}</svg></div><div style="text-align:center;font-family:var(--fd);letter-spacing:.14em">LE PARC À HUÎTRES</div><div style="text-align:center;font-size:.8rem;color:var(--ink-soft)">5 rue des Orangers · 64700 Hendaye</div><hr><div class="tnum">${no}</div><span class="stamp">${G&&G.pending?tr('stamp_wait'):tr('stamp')}</span><hr>${lines}<hr><div class="tl" style="font-weight:700;font-size:1.05rem"><span>${tr('t_pay')}</span><span>${eur(tot)}</span></div><div class="tl"><span>${tr('t_paym')}</span><span></span></div><hr><div class="tl"><span>${tr('t_pick')}</span><span>${d.toLocaleDateString(loc(),{weekday:'short',day:'numeric',month:'short'})} · ${T.slot}</span></div><div class="tl"><span>${tr('f_name')}</span><span>${$('#tname').value}</span></div></div>${G?(G.track?`<p style="margin-top:16px;text-align:center"><a class="btn ghost sm" href="${G.track}" target="_blank" rel="noopener">${tr('t_track')}</a></p>`:''):`<p style="margin-top:16px;text-align:center"><span class="demo">${tr('demo_gg')}</span></p>`}${G&&G.pending?`<p style="margin-top:12px;text-align:center;color:var(--ink-soft)">${tr('t_wait')}</p>`:''}<button type="button" class="btn ghost sm" id="tagain" style="margin:14px auto 0;display:flex">${tr('t_again')}</button>`;
   ok.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});
   $('#tagain').onclick=()=>{Object.keys(CART).forEach(k=>delete CART[k]);T.slot=null;ok.hidden=true;$('#takebody').hidden=false;renderPickup();renderShop();};
-});
+}
 $('#mgo').addEventListener('click',e=>{e.preventDefault();$('#basket').scrollIntoView({behavior:RM?'auto':'smooth'});});
 
 /* =============== misc =============== */
